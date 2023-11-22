@@ -13,6 +13,7 @@ import { useAuth } from '../../../_providers/Auth'
 import classes from './index.module.scss'
 
 type FormData = {
+  name: string
   email: string
   password: string
   passwordConfirm: string
@@ -62,7 +63,8 @@ const CreateAccountForm: React.FC = () => {
         await login(data)
         clearTimeout(timer)
         if (redirect) router.push(redirect as string)
-        else router.push(`/account?success=${encodeURIComponent('Account created successfully')}`)
+        else router.push(`/`)
+        window.location.href = '/'
       } catch (_) {
         clearTimeout(timer)
         setError('There was an error with the credentials provided. Please try again.')
@@ -88,6 +90,14 @@ const CreateAccountForm: React.FC = () => {
         type="email"
       />
       <Input
+        name="name"
+        label="Full name"
+        required
+        register={register}
+        error={errors.name}
+        type="text"
+      />
+      <Input
         name="password"
         type="password"
         label="Password"
@@ -106,7 +116,7 @@ const CreateAccountForm: React.FC = () => {
       />
       <Button
         type="submit"
-        label={loading ? 'Processing' : 'Create Account'}
+        label={loading ? 'Processing' : 'Sign up'}
         disabled={loading}
         appearance="primary"
         className={classes.submit}

@@ -1,7 +1,6 @@
 @import '../../_css/common';
 
-.card  {
-  border: 1px var(--theme-elevation-200) solid;
+.card {
   border-radius: 4px;
   height: 100%;
   display: flex;
@@ -9,11 +8,12 @@
 }
 
 .content {
-  padding: var(--base);
-  flex-grow: 1;
+  padding: 8px 0;
   display: flex;
   flex-direction: column;
-  gap: calc(var(--base) / 2);
+  gap: 4px;
+  background-color: white;
+  width: 100%;
 
   @include small-break {
     padding: calc(var(--base) / 2);
@@ -23,10 +23,12 @@
 
 .title {
   margin: 0;
-}
+  font-size: 20px;
+  font-weight: 700;
 
-.titleLink {
-  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .centerAlign {
@@ -54,6 +56,11 @@
 
 .description {
   margin: 0;
+  line-height: 24px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hideImageOnMobile {
@@ -66,11 +73,15 @@
   text-decoration: none;
   display: block;
   position: relative;
-  aspect-ratio: 16 / 9;
+  min-height: 262px;
+  background-color: var(--color-dark-50);
 }
 
 .image {
-  object-fit: cover;
+  padding: 24px;
+  object-fit: contain;
+  aspect-ratio: 1/1;
+  max-width: 100%;
 }
 
 .placeholder {

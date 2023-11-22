@@ -7,16 +7,16 @@
 .input {
   width: 100%;
   font-family: system-ui;
-  border-radius: 0;
+  border-radius: 10px;
   box-shadow: none;
-  border: none;
+  border: 1px solid var(--color-gray-500);
   background: none;
   background-color: var(--theme-elevation-100);
   color: var(--theme-elevation-1000);
-  height: calc(var(--base) * 2);
+  height: 52px;
   line-height: calc(var(--base) * 2);
-  padding: 0 calc(var(--base) / 2);
-  font-size: inherit;
+  padding: 16px;
+  font-size: 16px;
 
   &:focus {
     border: none;
@@ -51,6 +51,7 @@
   display: block;
   line-height: 1;
   margin-bottom: calc(var(--base) / 2);
+  font-size: 12px;
 }
 
 .errorMessage {

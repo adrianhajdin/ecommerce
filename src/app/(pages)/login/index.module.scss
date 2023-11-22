@@ -1,7 +1,96 @@
-@import "../../_css/common";
+@import '../../_css/common';
 
 .login {
-  margin-bottom: var(--block-padding);
+  display: grid;
+  grid-template-columns: 1fr 45%;
+  height: 100vh;
+
+  @include mid-break {
+    grid-template-columns: 1fr;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('/assets/images/image-1.svg');
+  }
+
+  p {
+    color: var(--color-gray-500);
+  }
+}
+
+.formTitle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+
+  h3 {
+    margin: 0;
+
+    @include mid-break {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+  }
+
+}
+
+.heroImg {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/assets/images/image-1.svg');
+
+  @include mid-break {
+    background: none;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.logo {
+  margin: 60px;
+  width: 30%;
+  min-width: 150px;
+  z-index: 10;
+
+  @include mid-break {
+    width: 45%;
+    margin: 10px;
+  }
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  @include mid-break {
+    justify-content: flex-start;
+    padding: 10px;
+  }
+}
+
+.formContainer {
+  max-width: 600px;
+  width: 100%;
+  padding: 50px;
+  border-radius: 10px;
+
+  @include mid-break {
+    backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  @include small-break {
+    padding: 30px;
+  }
 }
 
 .params {

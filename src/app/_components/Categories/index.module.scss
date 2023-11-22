@@ -1,0 +1,28 @@
+@use '../../_css/queries.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    font-weight: 400;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 30px;
+  padding: 0;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,87 @@
+@use '../../../_css/queries.scss' as *;
+
+.footer {
+  padding: 30px 0;
+  background-color: var(--theme-elevation-1000);
+  color: var(--theme-elevation-0);
+
+  @include small-break {
+    padding: calc(var(--base) * 2) 0;
+  }
+}
+
+
+.inclusions {
+  display: grid;
+  justify-content: center;
+  gap: 30px;
+  padding: 0;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 100px 0;
+
+  @include large-break {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mid-break {
+    margin: 60px 0;
+  }
+
+  @include extra-small-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+.icon {
+  margin-bottom: 16px;
+}
+
+
+:global([data-theme='dark']) {
+  .footer {
+    background-color: var(--theme-elevation-50);
+    color: var(--theme-elevation-1000);
+  }
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(var(--base) / 2) var(--base);
+
+  @include small-break {
+    margin-top: 30px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.logo {
+  width: 170px;
+}
+
+.hr {
+  border-color: var(--color-white-500-20);
+}
+
+.socialLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.socialLinkItem {
+  width: 100%;
+}
+
+.socialIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.hide {
+  display: none;
+}
+

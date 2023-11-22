@@ -36,7 +36,8 @@ const LoginForm: React.FC = () => {
       try {
         await login(data)
         if (redirect?.current) router.push(redirect.current as string)
-        else router.push('/account')
+        else router.push('/')
+        window.location.href = '/'
       } catch (_) {
         setError('There was an error with the credentials provided. Please try again.')
       }
@@ -46,11 +47,6 @@ const LoginForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-      <p>
-        {`This is where your customers will login to manage their account, review their order history, and more. To manage all users, `}
-        <Link href="/admin/collections/users">login to the admin dashboard</Link>
-        {'.'}
-      </p>
       <Message error={error} className={classes.message} />
       <Input
         name="email"
@@ -75,7 +71,7 @@ const LoginForm: React.FC = () => {
         disabled={isLoading}
         className={classes.submit}
       />
-      <div>
+      <div className={classes.links}>
         <Link href={`/create-account${allParams}`}>Create an account</Link>
         <br />
         <Link href={`/recover-password${allParams}`}>Recover your password</Link>

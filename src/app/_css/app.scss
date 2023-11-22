@@ -5,8 +5,8 @@
 
 :root {
   --base: 24px;
-  --font-body: system-ui;
-  --font-mono: 'Roboto Mono', monospace;
+  --font-body: 'Jost', sans-serif;
+  --font-jost: 'Jost', sans-serif;
 
   --gutter-h: 180px;
   --block-padding: 120px;
@@ -45,18 +45,26 @@ body,
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-jost);
   margin: 0;
-  color: var(--theme-text);
+  padding: 0;
+  color: var(--color-dark-500);
+
+  display: flex;
+  flex-flow: column;
+}
+
+.main {
+  flex: 1 1 auto;
 }
 
 ::selection {
-  background: var(--theme-success-500);
+  background: var(--color-dark-500);
   color: var(--color-base-800);
 }
 
 ::-moz-selection {
-  background: var(--theme-success-500);
+  background: var(--color-dark-50);
   color: var(--color-base-800);
 }
 
@@ -91,21 +99,18 @@ h6 {
 }
 
 p {
-  margin: var(--base) 0;
-
-  @include mid-break {
-    margin: calc(var(--base) * .75) 0;
-  }
+  margin: 0;
 }
 
 ul,
 ol {
-  padding-left: var(--base);
-  margin: 0 0 var(--base);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 a {
-  color: currentColor;
+  color: var(--color-dark-500);
 
   &:focus {
     opacity: .8;
