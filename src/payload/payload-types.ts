@@ -190,7 +190,7 @@ export interface Product {
   id: string;
   title: string;
   publishedOn?: string;
-  layout: (
+  layout?: (
     | {
         invertBackground?: boolean;
         richText: {

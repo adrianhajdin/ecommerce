@@ -1,5 +1,10 @@
 @import "../../_css/common";
 
-.checkoutPage {
-  margin-bottom: var(--block-padding);
+.checkout {
+  margin: 50px 0;
+  width: 100%;
+
+  @include small-break {
+    margin-top: 30px;
+  }
 }

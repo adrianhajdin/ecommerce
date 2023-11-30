@@ -8,15 +8,13 @@ import { useRouter } from 'next/navigation'
 
 import { Settings } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
-import { HR } from '../../../_components/HR'
 import { LoadingShimmer } from '../../../_components/LoadingShimmer'
-import { Media } from '../../../_components/Media'
-import { Price } from '../../../_components/Price'
 import { useAuth } from '../../../_providers/Auth'
 import { useCart } from '../../../_providers/Cart'
 import { useTheme } from '../../../_providers/Theme'
 import cssVariables from '../../../cssVariables'
 import { CheckoutForm } from '../CheckoutForm'
+import { CheckoutItem } from '../CheckoutItem'
 
 import classes from './index.module.scss'
 
@@ -95,57 +93,47 @@ export const CheckoutPage: React.FC<{
       )}
       {!cartIsEmpty && (
         <div className={classes.items}>
-          {cart?.items?.map((item, index) => {
-            if (typeof item.product === 'object') {
-              const {
-                quantity,
-                product,
-                product: { id, stripeProductID, title, meta },
-              } = item
+          <div className={classes.header}>
+            <p>Products</p>
+            <div className={classes.headerItemDetails}>
+              <p></p>
+              <p className={classes.quantity}>Quantity</p>
+            </div>
+            <p className={classes.subtotal}>Subtotal</p>
+          </div>
 
-              if (!quantity) return null
+          <ul>
+            {cart?.items?.map((item, index) => {
+              if (typeof item.product === 'object') {
+                const {
+                  quantity,
+                  product,
+                  product: { title, meta },
+                } = item
 
-              const isLast = index === (cart?.items?.length || 0) - 1
+                if (!quantity) return null
 
-              const metaImage = meta?.image
+                const metaImage = meta?.image
 
-              return (
-                <Fragment key={index}>
-                  <div className={classes.row}>
-                    <div className={classes.mediaWrapper}>
-                      {!metaImage && <span className={classes.placeholder}>No image</span>}
-                      {metaImage && typeof metaImage !== 'string' && (
-                        <Media
-                          className={classes.media}
-                          imgClassName={classes.image}
-                          resource={metaImage}
-                          fill
-                        />
-                      )}
-                    </div>
-                    <div className={classes.rowContent}>
-                      {!stripeProductID && (
-                        <p className={classes.warning}>
-                          {'This product is not yet connected to Stripe. To link this product, '}
-                          <Link
-                            href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/products/${id}`}
-                          >
-                            edit this product in the admin panel
-                          </Link>
-                          {'.'}
-                        </p>
-                      )}
-                      <h6 className={classes.title}>{title}</h6>
-                      <Price product={product} button={false} quantity={quantity} />
-                    </div>
-                  </div>
-                  {!isLast && <HR />}
-                </Fragment>
-              )
-            }
-            return null
-          })}
-          <div className={classes.orderTotal}>{`Order total: ${cartTotal.formatted}`}</div>
+                return (
+                  <Fragment key={index}>
+                    <CheckoutItem
+                      product={product}
+                      title={title}
+                      metaImage={metaImage}
+                      quantity={quantity}
+                      index={index}
+                    />
+                  </Fragment>
+                )
+              }
+              return null
+            })}
+            <div className={classes.orderTotal}>
+              <p>Order Total</p>
+              <p>{cartTotal.formatted}</p>
+            </div>
+          </ul>
         </div>
       )}
       {!clientSecret && !error && (
@@ -161,6 +149,7 @@ export const CheckoutPage: React.FC<{
       )}
       {clientSecret && (
         <Fragment>
+          <h3 className={classes.payment}>Payment Details</h3>
           {error && <p>{`Error: ${error}`}</p>}
           <Elements
             stripe={stripe}

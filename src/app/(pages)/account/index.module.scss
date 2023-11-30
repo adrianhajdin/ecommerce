@@ -1,25 +1,41 @@
-.account {
-  margin-bottom: var(--block-padding);
-}
+@import '../../_css/common';
 
-.params {
-  margin-top: var(--base);
-}
+.container {
+  width: 100%;
+  margin: 50px 0;
 
-.purchases {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--base);
-}
-
-.purchase {
-  > * {
-    margin: 0;
+  @include small-break {
+    margin-top: 30px;
   }
 }
 
-.noPurchases {
-  font-weight: 600;
+.account {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 60px;
+  margin-top: 30px;
+
+  @include small-break {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 30px;
+  }
+}
+
+.nav {
+  border: 1px solid var(--color-dark-50);
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+  border-radius: 10px;
+}
+
+.navItem {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+}
+
+.personalInfo {
+  margin-bottom: 30px;
 }

@@ -3,6 +3,7 @@
 .actions {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: calc(var(--base) / 2);
 
@@ -13,14 +14,20 @@
 }
 
 .price {
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
+  font-size: 18px;
 
   > * {
     margin: 0;
+  }
+
+  @include small-break {
+    grid-template-colums: 1fr;
+    font-size: 16p;
   }
 }
 

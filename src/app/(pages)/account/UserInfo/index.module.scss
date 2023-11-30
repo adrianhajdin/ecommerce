@@ -1,0 +1,28 @@
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px;
+  border-bottom: 1px solid var(--color-dark-50);
+  width: 100%;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 4px;
+  overflow: hidden;
+}
+
+.name {
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.email {
+  font-size: 16px;
+  line-height: 14px;
+}

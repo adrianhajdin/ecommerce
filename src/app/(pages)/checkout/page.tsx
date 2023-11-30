@@ -29,80 +29,11 @@ export default async function Checkout() {
   }
 
   return (
-    <Fragment>
-      {!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY && (
-        <Gutter>
-          <Message
-            className={classes.message}
-            warning={
-              <Fragment>
-                {'To enable checkout, you must '}
-                <a
-                  href="https://dashboard.stripe.com/test/apikeys"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {'obtain your Stripe API Keys'}
-                </a>
-                {' then set them as environment variables. See the '}
-                <a
-                  href="https://github.com/payloadcms/payload/blob/main/templates/ecommerce/README.md#stripe"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {'README'}
-                </a>
-                {' for more details.'}
-              </Fragment>
-            }
-          />
-        </Gutter>
-      )}
-      <LowImpactHero
-        type="lowImpact"
-        media={null}
-        richText={[
-          {
-            type: 'h1',
-            children: [
-              {
-                text: 'Checkout',
-              },
-            ],
-          },
-          {
-            type: 'paragraph',
-            children: [
-              {
-                text: `This is a self-hosted, secure checkout using Stripe's Payment Element component. To create a mock purchase, use a `,
-              },
-              {
-                type: 'link',
-                url: 'https://stripe.com/docs/testing#cards',
-                children: [
-                  {
-                    text: 'test credit card',
-                  },
-                ],
-              },
-              {
-                text: ' like ',
-              },
-              {
-                text: '4242 4242 4242 4242',
-                bold: true,
-              },
-              {
-                text: ' with any future date and CVC. An order will be generated in Stripe and will appear in your account. In production, this checkout form will require a real card with sufficient funds.',
-              },
-            ],
-          },
-        ]}
-      />
-      <Gutter className={classes.checkoutPage}>
+    <div className={classes.checkout}>
+      <Gutter>
         <CheckoutPage settings={settings} />
       </Gutter>
-    </Fragment>
+    </div>
   )
 }
 
