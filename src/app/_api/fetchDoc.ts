@@ -5,6 +5,7 @@ import { ORDER } from '../_graphql/orders'
 import { PAGE } from '../_graphql/pages'
 import { PRODUCT } from '../_graphql/products'
 import { payloadToken } from './token'
+import { GRAPHQL_API_URL } from './shared'
 
 const queryMap = {
   pages: {
@@ -38,7 +39,7 @@ export const fetchDoc = async <T>(args: {
     token = cookies().get(payloadToken)
   }
 
-  const doc: T = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`, {
+  const doc: T = await fetch(`${GRAPHQL_API_URL}/api/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
