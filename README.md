@@ -5,7 +5,7 @@
 #
 
 <details>
-`<summary>_css/colors.scss</summary>`
+<summary><code>_css/colors.scss</code></summary>
 
 ```scss
 // Keep these in sync with the colors exported in '../cssVariables.js'
