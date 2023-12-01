@@ -1,321 +1,1698 @@
-# Payload E-Commerce Template
+# Code Snippets
 
-This is the official [Payload E-Commerce Template](https://github.com/payloadcms/payload/blob/main/templates/ecommerce). Use it to power e-commerce businesses and online stores of all sizes. This repo includes a fully-working backend, enterprise-grade admin panel, and a beautifully designed, production-ready website.
+[Public Folder ZIP](https://drive.google.com/file/d/1hnTWWNZFit-dhp93Begj58avaoQtNBwW/view?usp=sharing)
 
-This template is right for you if you are selling:
+#
 
-- Physical products like clothing or merchandise
-- Digital assets like ebooks or videos
-- Access to content like courses or premium articles
+<details>
+<summary>_css/colors.scss</summary>
 
-Core features:
+```scss
+// Keep these in sync with the colors exported in '../cssVariables.js'
 
-- [Pre-configured Payload Config](#how-it-works)
-- [Authentication](#users-authentication)
-- [Access Control](#access-control)
-- [Shopping Cart](#shopping-cart)
-- [Checkout](#checkout)
-- [Paywall](#paywall)
-- [Layout Builder](#layout-builder)
-- [SEO](#seo)
-- [Website](#website)
+:root {
+  --color-base-0: rgb(255, 255, 255);
+  --color-base-50: rgb(245, 245, 245);
+  --color-base-100: rgb(235, 235, 235);
+  --color-base-150: rgb(221, 221, 221);
+  --color-base-200: rgb(208, 208, 208);
+  --color-base-250: rgb(195, 195, 195);
+  --color-base-300: rgb(181, 181, 181);
+  --color-base-350: rgb(168, 168, 168);
+  --color-base-400: rgb(154, 154, 154);
+  --color-base-450: rgb(141, 141, 141);
+  --color-base-500: rgb(128, 128, 128);
+  --color-base-550: rgb(114, 114, 114);
+  --color-base-600: rgb(101, 101, 101);
+  --color-base-650: rgb(87, 87, 87);
+  --color-base-700: rgb(74, 74, 74);
+  --color-base-750: rgb(60, 60, 60);
+  --color-base-800: rgb(47, 47, 47);
+  --color-base-850: rgb(34, 34, 34);
+  --color-base-900: rgb(20, 20, 20);
+  --color-base-950: rgb(7, 7, 7);
+  --color-base-1000: rgb(0, 0, 0);
 
-## Quick Start
+  --color-success-50: rgb(247, 255, 251);
+  --color-success-100: rgb(240, 255, 247);
+  --color-success-150: rgb(232, 255, 243);
+  --color-success-200: rgb(224, 255, 239);
+  --color-success-250: rgb(217, 255, 235);
+  --color-success-300: rgb(209, 255, 230);
+  --color-success-350: rgb(201, 255, 226);
+  --color-success-400: rgb(193, 255, 222);
+  --color-success-450: rgb(186, 255, 218);
+  --color-success-500: rgb(178, 255, 214);
+  --color-success-550: rgb(160, 230, 193);
+  --color-success-600: rgb(142, 204, 171);
+  --color-success-650: rgb(125, 179, 150);
+  --color-success-700: rgb(107, 153, 128);
+  --color-success-750: rgb(89, 128, 107);
+  --color-success-800: rgb(71, 102, 86);
+  --color-success-850: rgb(53, 77, 64);
+  --color-success-900: rgb(36, 51, 43);
+  --color-success-950: rgb(18, 25, 21);
 
-To spin up this example locally, follow these steps:
+  --color-warning-50: rgb(255, 255, 246);
+  --color-warning-100: rgb(255, 255, 237);
+  --color-warning-150: rgb(254, 255, 228);
+  --color-warning-200: rgb(254, 255, 219);
+  --color-warning-250: rgb(254, 255, 210);
+  --color-warning-300: rgb(254, 255, 200);
+  --color-warning-350: rgb(254, 255, 191);
+  --color-warning-400: rgb(253, 255, 182);
+  --color-warning-450: rgb(253, 255, 173);
+  --color-warning-500: rgb(253, 255, 164);
+  --color-warning-550: rgb(228, 230, 148);
+  --color-warning-600: rgb(202, 204, 131);
+  --color-warning-650: rgb(177, 179, 115);
+  --color-warning-700: rgb(152, 153, 98);
+  --color-warning-750: rgb(127, 128, 82);
+  --color-warning-800: rgb(101, 102, 66);
+  --color-warning-850: rgb(76, 77, 49);
+  --color-warning-900: rgb(51, 51, 33);
+  --color-warning-950: rgb(25, 25, 16);
 
-### Clone
+  --color-error-50: rgb(255, 241, 241);
+  --color-error-100: rgb(255, 226, 228);
+  --color-error-150: rgb(255, 212, 214);
+  --color-error-200: rgb(255, 197, 200);
+  --color-error-250: rgb(255, 183, 187);
+  --color-error-300: rgb(255, 169, 173);
+  --color-error-350: rgb(255, 154, 159);
+  --color-error-400: rgb(255, 140, 145);
+  --color-error-450: rgb(255, 125, 132);
+  --color-error-500: rgb(255, 111, 118);
+  --color-error-550: rgb(230, 100, 106);
+  --color-error-600: rgb(204, 89, 94);
+  --color-error-650: rgb(179, 78, 83);
+  --color-error-700: rgb(153, 67, 71);
+  --color-error-750: rgb(128, 56, 59);
+  --color-error-800: rgb(102, 44, 47);
+  --color-error-850: rgb(77, 33, 35);
+  --color-error-900: rgb(51, 22, 24);
+  --color-error-950: rgb(25, 11, 12);
 
-If you have not done so already, you need to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+    // BRAND COLORS
+  --color-dark-50: rgba(243, 243, 243, 1);
+  --color-dark-60: rgba(237, 236, 238, 1);
+  --color-dark-500: rgba(19, 17, 24, 1);
+  --color-dark-500-5: rgba(19, 17, 24, 0.05);
 
-#### Method 1 (recommended)
-
-  Go to Payload Cloud and [clone this template](https://payloadcms.com/new/clone/ecommerce). This will create a new repository on your GitHub account with this template's code which you can then clone to your own machine.
-
-#### Method 2
-
-  Use the `create-payload-app` CLI to clone this template directly to your machine:
-
-    npx create-payload-app@latest my-project -t ecommerce
-
-#### Method 3
-
-  Use the `git` CLI to clone this template directly to your machine:
-
-    git clone -n --depth=1 --filter=tree:0 https://github.com/payloadcms/payload my-project && cd my-project && git sparse-checkout set --no-cone templates/ecommerce && git checkout && rm -rf .git && git init && git add . && git mv -f templates/ecommerce/{.,}* . && git add . && git commit -m "Initial commit"
-
-### Development
-
-1. First [clone the repo](#clone) if you have not done so already
-1. `cd my-project && cp .env.example .env` to copy the example environment variables
-1. `yarn && yarn dev` to install dependencies and start the dev server
-1. `open http://localhost:3000` to open the app in your browser
-
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. To begin accepting payment, follow the [Stripe](#stripe) guide. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
-
-## How it works
-
-The Payload config is tailored specifically to the needs of most e-commerce businesses. It is pre-configured in the following ways:
-
-### Collections
-
-See the [Collections](https://payloadcms.com/docs/configuration/collections)  docs for details on how to extend this functionality.
-
-- #### Users (Authentication)
-
-  Users are auth-enabled and encompass both admins and customers based on the value of their `roles` field. Only `admin` users can access your admin panel to manage your store whereas `customer` can authenticate on your front-end to create [shopping carts](#shopping-cart) and place [orders](#orders) but have limited access to the platform. See [Access Control](#access-control) for more details.
-
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
-
-- #### Products
-
-  Products are linked to Stripe via a custom select field that is dynamically populated in the sidebar of each product. This field fetches all available products in the background and displays them as options. Once a product has been selected, prices get automatically synced between Stripe and Payload through [Payload Hooks](https://payloadcms.com/docs/hooks) and [Stripe Webhooks](https://stripe.com/docs/webhooks). See [Stripe](#stripe) for more details.
-
-  All products are layout builder enabled so you can generate unique pages for each product using layout building blocks, see [Layout Builder](#layout-builder) for more details.
-
-  Products can also restrict access to content or digital assets behind a paywall (gated content), see [Paywall](#paywall) for more details.
-
-- #### Orders
-
-  Orders are created when a user successfully completes a checkout. They contain all the data about the order including the products purchased, the total price, and the user who placed the order. See [Checkout](#checkout) for more details.
-
-- #### Pages
-
-  All pages are layout builder enabled so you can generate unique layouts for each page using layout-building blocks, see [Layout Builder](#layout-builder) for more details.
-
-- #### Media
-
-  This is the uploads enabled collection used by products and pages to contain media like images, videos, downloads, and other assets.
-
-- #### Categories
-
-  A taxonomy used to group products together. Categories can be nested inside of one another, for example "Courses > Technology". See the official [Payload Nested Docs Plugin](https://github.com/payloadcms/plugin-nested-docs) for more details.
-
-### Globals
-
-See the [Globals](https://payloadcms.com/docs/configuration/globals) docs for details on how to extend this functionality.
-
-- `Header`
-
-  The data required by the header on your front-end like nav links.
-
-- `Footer`
-
-  Same as above but for the footer of your site.
-
-## Access control
-
-Basic role-based access control is setup to determine what users can and cannot do based on their roles, which are:
-
-- `admin`: They can access the Payload admin panel to manage your store. They can see all data and make all operations.
-- `customer`: They cannot access the Payload admin panel and can perform limited operations based on their user (see below).
-
-This applies to each collection in the following ways:
-
-- `users`: Only admins and the user themselves can access their profile. Anyone can create a user but only admins can delete users.
-- `products`: Everyone can access products, but only admins can create, update, or delete them. Paywall-enabled products may also have content that is only accessible to only users who have purchased the product. See [Paywall](#paywall) for more details.
-
-For more details on how to extend this functionality, see the [Payload Access Control](https://payloadcms.com/docs/access-control/overview#access-control) docs.
-
-## Shopping cart
-
-Logged-in users can have their shopping carts saved to their profiles as they shop. This way they can continue shopping at a later date or on another device. When not logged in, the cart can be saved to local storage and synced to Payload on the next login. This works by maintaining a `cart` field on the `user`:
-
-```ts
-{
-  name: 'cart',
-  label: 'Shopping Cart',
-  type: 'object',
-  fields: [
-    {
-      name: 'items',
-      label: 'Items',
-      type: 'array',
-      fields: [
-        // product, quantity, etc
-      ]
-    },
-    // other metadata like `createdOn`, etc
-  ]
+  --color-white-500: rgba(255, 255, 255, 1);
+  --color-white-500-20: rgba(255, 255, 255, 0.2);
+  
+  --color-gray-500: rgba(164, 161, 170, 1);
+  --color-green-500: rgba(60, 209, 57, 1);
 }
 ```
+</details>
 
-## Stripe
+<details>
 
-Payload itself handles no currency exchange. All payments are processed and billed using [Stripe](https://stripe.com). This means you must have access to a Stripe account via an API key, see [Connect Stripe](#connect-stripe) for how to get one. When you create a product in Payload that you wish to sell, it must be connected to a Stripe product by selecting one from the field in the product's sidebar, see [Products](#products) for more details. Once set, data is automatically synced between the two platforms in the following ways:
+<summary>FooterComponent/index.module.scss</summary>
 
-1. Stripe to Payload using [Stripe Webhooks](https://stripe.com/docs/webhooks):
-   - `product.created`
-   - `product.updated`
-   - `price.updated`
+```scss
+@use '../../../_css/queries.scss' as *;
 
-1. Payload to Stripe using [Payload Hooks](https://payloadcms.com/docs/hooks/overview):
-   - `user.create`
+.footer {
+  padding: 30px 0;
+  background-color: var(--theme-elevation-1000);
+  color: var(--theme-elevation-0);
 
-For more details on how to extend this functionality, see the the official [Payload Stripe Plugin](https://github.com/payloadcms/plugin-stripe).
+  @include small-break {
+    padding: calc(var(--base) * 2) 0;
+  }
+}
 
-### Connect Stripe
+:global([data-theme='dark']) {
+  .footer {
+    background-color: var(--theme-elevation-50);
+    color: var(--theme-elevation-1000);
+  }
+}
 
-To integrate with Stripe, follow these steps:
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(var(--base) / 2) var(--base);
 
-1. You will first need to create a [Stripe](https://stripe.com) account if you do not already have one.
-1. Retrieve your [Stripe API keys](https://dashboard.stripe.com/test/apikeys) and paste them into your `env`:
-   ```bash
-   STRIPE_SECRET_KEY=
-   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-   ```
-1. In another terminal, listen for webhooks (optional):
-   ```bash
-   stripe login # follow the prompts
-   yarn stripe:webhooks
-   ```
-1. Paste the given webhook signing secret into your `env`:
-   ```bash
-   STRIPE_WEBHOOKS_SIGNING_SECRET=
-   ```
-1. Reboot Payload to ensure that Stripe connects and the webhooks are registered.
+  @include small-break {
+    margin-top: 30px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
 
-## Checkout
+.logo {
+  width: 170px;
+}
 
-A custom endpoint is opened at `POST /api/create-payment-intent` which initiates the checkout process. This endpoint totals your cart and creates a [Stripe Payment Intent](https://stripe.com/docs/payments/payment-intents). The total price is recalculated on the server to ensure accuracy and security, and once completed, passes the `client_secret` back in the response for your front-end to finalize the payment. Once the payment has succeeded, an [Order](#orders) will be created in Payload with a `stripePaymentIntentID`. Each purchased product will be recorded to the user's profile, and the user's cart will be automatically cleared.
+.hr {
+  border-color: var(--color-white-500-20);
+}
 
-## Paywall
+.socialLinks {
+  display: flex;
+  gap: 20px;
+}
 
-Products can optionally restrict access to content or digital assets behind a paywall. This will require the product to be purchased before it's data and resources are accessible. To do this, a `purchases` field is maintained on each user to track their purchase history:
+.socialLinkItem {
+  width: 100%;
+}
 
-```ts
-{
-  name: 'purchases',
-  label: 'Purchases',
-  type: 'array',
-  fields: [
-    {
-      name: 'product',
-      label: 'Product',
-      type: 'relationship',
-      relationTo: 'products',
-    },
-    // other metadata like `createdOn`, etc
-  ]
+.socialIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.hide {
+  display: none;
 }
 ```
+</details>
 
-Then, a `paywall` field is added to the `product` with `read` access control set to check for associated purchases. Every time a user requests a product, this will only return data to those who have purchased it:
+<details>
+<summary>constants/index.ts</summary>
 
-```ts
-{
-  name: 'paywall',
-  label: 'Paywall',
-  type: 'blocks',
-  access: {
-    read: checkUserPurchases,
+```typescript
+export const inclusions = [
+  {
+    title: 'Free Shipping',
+    description: 'Free shipping for order above $150',
+    icon: '/assets/icons/shipping.svg',
   },
-  fields: [
-    // assets
-  ]
+  {
+    title: 'Money Guarantee',
+    description: 'Within 30 days for an exchange',
+    icon: '/assets/icons/dollar.svg',
+  },
+  {
+    title: 'Online Support',
+    description: '24 hours a day, 7 days a week',
+    icon: '/assets/icons/support.svg',
+  },
+  {
+    title: 'Flexible Payment',
+    description: 'Pay with multiple credit cards',
+    icon: '/assets/icons/payment.svg',
+  },
+]
+
+export const profileNavItems = [
+  {
+    title: 'Personal Information',
+    url: '/account',
+    icon: '/assets/icons/user.svg',
+  },
+  {
+    title: 'My Purchases',
+    url: '/account/purchases',
+    icon: '/assets/icons/purchases.svg',
+  },
+  {
+    title: 'My Orders',
+    url: '/account/orders',
+    icon: '/assets/icons/orders.svg',
+  },
+  {
+    title: 'Logout',
+    url: '/logout',
+    icon: '/assets/icons/logout.svg',
+  },
+]
+
+export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-password']
+
+```
+</details>
+
+<details>
+<summary>_css/type.scss</summary>
+
+```scss
+@use 'queries' as *;
+
+%h1,
+%h2,
+%h3,
+%h4,
+%h5,
+%h6 {
+  font-weight: 700;
+  margin: 0;
+}
+
+%h1 {
+  font-size: 64px;
+  line-height: 70px;
+  font-weight: bold;
+
+  @include mid-break {
+    font-size: 42px;
+    line-height: 42px;
+  }
+}
+
+%h2 {
+  font-size: 48px;
+  line-height: 54px;
+  font-weight: bold;
+
+  @include mid-break {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+%h3 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: bold;
+
+  @include mid-break {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+
+%h4 {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 43px;
+  letter-spacing: 0em;
+
+  @include mid-break {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+
+%h5 {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: bold;
+
+  @include mid-break {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+%h6 {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: bold;
+}
+
+%body {
+  font-size: 18px;
+  line-height: 32px;
+
+  @include mid-break {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
+
+%large-body {
+  font-size: 25px;
+  line-height: 32px;
+
+  @include mid-break {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+
+%label {
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+
+  @include mid-break {
+    font-size: 13px;
+  }
 }
 ```
+</details>
 
-## Layout Builder
+<details>
+<summary>create-account/index.module.scss</summary>
 
-Create unique product and page layouts for any type fo content using a powerful layout builder. This template comes pre-configured with the following layout building blocks:
+```scss
+@import '../../_css/common';
 
-- Hero
-- Content
-- Media
-- Call To Action
-- Archive
+.createAccount {
+  display: grid;
+  grid-template-columns: 1fr 45%;
+  height: 100vh;
+  overflow: auto;
 
-Each block is fully designed and built into the front-end website that comes with this template. See [Website](#website) for more details.
+  @include mid-break {
+    grid-template-columns: 1fr;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('/assets/images/image-2.svg');
+  }
 
-## Draft Preview
+  p {
+    color: var(--color-gray-500);
+  }
+}
 
-All pages and products are draft-enabled so you can preview them before publishing them to your website. To do this, these collections use [Versions](https://payloadcms.com/docs/configuration/collections#versions) with `drafts` set to `true`. This means that when you create a new page or product, it will be saved as a draft and will not be visible on your website until you publish it. This also means that you can preview your draft before publishing it to your website. To do this, we automatically format a custom URL which redirects to your front-end to securely fetch the draft version of your content.
+.formTitle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
 
-Since the front-end of this template is statically generated, this also means that pages and products will need to be regenerated as changes are made to published documents. To do this, we use an `afterChange` hook to regenerate the front-end when a document has changed and its `_status` is `published`.
+  h3 {
+    margin: 0;
 
-For more details on how to extend this functionality, see the official [Draft Preview Example](https://github.com/payloadcms/payload/tree/main/examples/draft-preview).
+    @include mid-break {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+  }
 
-## SEO
+  .handImg {
+    height: 24px;
+  }
+}
 
-This template comes pre-configured with the official [Payload SEO Plugin](https://github.com/payloadcms/plugin-seo) for complete SEO control from the admin panel. All SEO data is fully integrated into the front-end website that comes with this template. See [Website](#website) for more details.
+.heroImg {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/assets/images/image-2.svg');
 
-## Redirects
+  @include mid-break {
+    background: none;
+    display: flex;
+    justify-content: center;
+  }
+}
 
-If you are migrating an existing site or moving content to a new URL, you can use the `redirects` collection to create a proper redirect from old URLs to new ones. This will ensure that proper request status codes are returned to search engines and that your users are not left with a broken link. This template comes pre-configured with the official [Payload Redirects Plugin](https://github.com/payloadcms/plugin-redirects) for complete redirect control from the admin panel. All redirects are fully integrated into the front-end website that comes with this template. See [Website](#website) for more details.
+.logo {
+  margin: 60px;
+  width: 30%;
+  min-width: 150px;
+  z-index: 10;
 
-## Website
+  @include mid-break {
+    width: 45%;
+    margin: 10px;
+  }
+}
 
-This template includes a beautifully designed, production-ready front-end built with the [Next.js App Router](https://nextjs.org), served right alongside your Payload app in a single Express server. This makes is so that you can deploy both apps simultaneously and host them together. If you prefer a different front-end framework, this pattern works for any framework that supports a custom server. If you prefer to host your website separately from Payload, you can easily [Eject](#eject) the front-end out from this template to swap in your own, or to use it as a standalone CMS. For more details, see the official [Custom Server Example](https://github.com/payloadcms/payload/tree/main/examples/custom-server).
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+ 
 
-Core features:
+  @include mid-break {
+    justify-content: flex-start;
+    padding: 10px;
+  }
+}
 
-- [Next.js App Router](https://nextjs.org)
-- [Stripe](https://stripe.com)
-- [GraphQL](https://graphql.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [React Hook Form](https://react-hook-form.com)
-- [Payload Admin Bar](https://github.com/payloadcms/payload-admin-bar)
-- Authentication
-- Publication workflow
-- Shopping cart
-- Checkout
-- Customer accounts
-- Dark mode
-- Pre-made layout building blocks
-- SEO
-- Redirects
-- Paywall
+.formContainer {
+  max-width: 600px;
+  width: 100%;
+  padding: 50px;
+  border-radius: 10px;
 
-### Cache
+  @include mid-break {
+    backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
 
-Although Next.js includes a robust set of caching strategies out of the box, Payload Cloud proxies and caches all files through Cloudflare using the [Official Cloud Plugin](https://github.com/payloadcms/plugin-cloud). This means that Next.js caching is not needed and is disabled by default. If you are hosting your app outside of Payload Cloud, you can easily reenable the Next.js caching mechanisms by removing the `no-store` directive from all fetch requests in `./src/app/_api` and then removing all instances of `export const dynamic = 'force-dynamic'` from pages files, such as `./src/app/(pages)/[slug]/page.tsx`. For more details, see the official [Next.js Caching Docs](https://nextjs.org/docs/app/building-your-application/caching).
+  @include small-break {
+    padding: 30px ;
+  }
+}
 
-### Eject
+.params {
+  margin-top: var(--base);
+}
+```
+</details>
 
-If you prefer another front-end framework or would like to use Payload as a standalone CMS, you can easily eject the front-end from this template. To eject, simply run `yarn eject`. This will uninstall all Next.js related dependencies and delete all files and folders related to the Next.js front-end. It also removes all custom routing from your `server.ts` file and updates your `eslintrc.js`.
+<details>
+<summary>RecoverPasswordForm/index.module.scss</summary>
 
-> Note: Your eject script may not work as expected if you've made significant modifications to your project. If you run into any issues, compare your project's dependencies and file structure with this template. See [./src/eject](./src/eject) for full details.
+```scss
+@import '../../../_css/common';
 
-For more details on how setup a custom server, see the official [Custom Server Example](https://github.com/payloadcms/payload/tree/main/examples/custom-server).
+.form {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
 
-##  Development
+.subTitle {
+  font-size: 18px;
+  line-height: 24px;
+}
 
-To spin up this example locally, follow the [Quick Start](#quick-start). Then [Connect Stripe](#connect-stripe) to enable payments, and [Seed](#seed) the database with a few products and pages.
+.requestSuccess {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+}
 
-### Docker
+.openMailBtn {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+}
 
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
+.submit {
+  width: 100%;
+}
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+.message {
+  margin-bottom: var(--base);
+}
 
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
+.error {
+  color: red;
+  margin-bottom: 15px;
+}
+```
+</details>
 
-### Seed
+<details>
 
-To seed the database with a few products and pages you can run `yarn seed`. This template also comes with a `GET /api/seed` endpoint you can use to seed the database from the admin panel.
+<summary>CustomHero/index.module.scss</summary>
 
-> NOTICE: seeding the database is destructive because it drops your current database to populate a fresh one from the seed template. Only run this command if you are starting a new project or can afford to lose your current data.
+```scss
+@import '../../_css/queries.scss';
 
-## Production
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 
-To run Payload in production, you need to build and serve the Admin panel. To do so, follow these steps:
+  @include small-break {
+    margin: 0;
+  }
+}
 
-1. Invoke the `payload build` script by running `yarn build` or `npm run build` in your project root. This creates a `./build` directory with a production-ready admin bundle.
-1. Finally run `yarn serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
-1. When you're ready to go live, see [Deployment](#deployment) for more details.
+.heroWrapper {
+  background-color: var(--color-dark-50);
+  width: 100%;
+  max-width: 1560px;
+  max-height: 884px;
+  display: flex;
+  align-items: center;
 
-### Deployment
+  background-size: cover;
+  background-position: revert;
+  background-repeat: no-repeat;
 
-Before deploying your app, you need to:
+  @include small-break {
+    background-size: cover;
+    background-position: center;
+  }
+}
 
-1. Switch [your Stripe account to live mode](https://stripe.com/docs/test-mode) and update your [Stripe API keys](https://dashboard.stripe.com/test/apikeys). See [Connect Stripe](#connect-stripe) for more details.
-1. Ensure your app builds and serves in production. See [Production](#production) for more details.
+.heroTextBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15% var(--gutter-h);
+  width: 100%;
 
-The easiest way to deploy your project is to use [Payload Cloud](https://payloadcms.com/new/import), a one-click hosting solution to deploy production-ready instances of your Payload apps directly from your GitHub repo. You can also deploy your app manually, check out the [deployment documentation](https://payloadcms.com/docs/production/deployment) for full details.
+  @include mid-break {
+    padding: 10% 30px;
+  }
 
-## Questions
+  @include small-break {
+    padding: 50px 30px;
+  }
 
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+  h2 {
+    font-size: 70px;
+    margin: 32px 0;
+
+    @include mid-break {
+      font-size: 48px;
+      margin: 24px 0;
+      white-space: wrap;
+    }
+
+    @include small-break {
+      width: 70%;
+      font-size: 36px;
+      margin: 8px 0;
+    }
+  }
+
+  p {
+    font-size: 30px;
+
+    @include mid-break {
+      font-size: 24px;
+    }
+
+    @include small-break {
+      font-size: 18px;
+    }
+  }
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  padding-top: 50px;
+  flex-wrap: wrap;
+  margin: calc(var(--base) * -0.5);
+
+  & > * {
+    margin: calc(var(--base) / 2);
+  }
+}
+```
+</details>
+
+<details>
+<summary>Categories/index.module.scss</summary>
+
+```scss
+@use '../../_css/queries.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    font-weight: 400;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 30px;
+  padding: 0;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}
+```
+</details>
+
+<details>
+
+<summary>CategoryCard/index.module.scss</summary>
+
+```scss
+@use '../../../_css/queries.scss' as *;
+
+.card {
+  position: relative;
+  background-color: var(--color-dark-50);
+  min-height: 360px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  cursor: pointer;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.title {
+  border-radius: 10px;
+  padding: 16px;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+}
+```
+</details>
+
+<details>
+<summary>Promotion/index.module.scss</summary>
+
+```scss
+@use '../../_css/queries.scss' as *;
+
+.promotion {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+.title {
+  font-weight: 400;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.image {
+  min-height: 500px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dealBtn {
+  width: fit-content;
+
+  @include mid-break {
+    width: 100%;
+  }
+}
+
+.stats {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, 100px);
+
+  @include large-break {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.statBox {
+  border-radius: 10px;
+  border: 1px solid var(--color-dark-60);
+  padding: 16px;
+  min-width: 100px;
+  width: 100%;
+  text-align: center;
+
+  h4 {
+    font-weight: bold;
+  }
+}
+```
+</details>
+
+<details>
+
+<summary>Filters/index.module.scss</summary>
+
+```scss
+@import '../../../_css/common';
+
+.filters {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include large-break {
+    flex-direction: row;
+    gap: 40px;
+  }
+  
+  @include small-break {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @include small-break {
+    margin-top: 16px;
+  }
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+
+  @include large-break {
+    flex-direction: row;
+  }
+
+  @include small-break {
+    flex-direction: column;
+  }
+}
+
+.title {
+  white-space: nowrap;
+}
+
+.priceSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.sliderWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  p {
+    white-space: nowrap;
+  }
+}
+
+.hr {
+  margin: 20px 0;
+}
+```
+</details>
+
+<details>
+<summary>Checkbox/index.module.scss</summary>
+
+```scss
+@import '../../_css/common';
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  background-color: white;
+  border: 2px solid var(--color-dark-500);
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox:checked {
+  background-color: var(--color-dark-500);
+  position: relative;
+}
+
+.checkbox:checked::before {
+  content: '\2713';
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+```
+</details>
+
+<details>
+
+<summary>Checkbox/index.tsx</summary>
+
+```typescript
+import React, { ChangeEvent, useState } from 'react'
+
+import classes from './index.module.scss'
+
+interface CheckboxProps {
+  label: string
+  value: string
+  isSelected: boolean
+  onClickHandler: (value: string) => void
+}
+
+export const Checkbox: React.FC<CheckboxProps> = ({ label, value, isSelected, onClickHandler }) => {
+  const [isChecked, setIsChecked] = useState(isSelected)
+
+  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(e.target.checked)
+    onClickHandler(value)
+  }
+
+  return (
+    <label className={classes.checkboxWrapper}>
+      <input
+        type="checkbox"
+        checked={isChecked}
+        onChange={handleCheckboxChange}
+        className={classes.checkbox}
+      />
+      {label}
+    </label>
+  )
+}
+```
+</details>
+
+<details>
+<summary>Radio/index.module.scss</summary>
+
+```scss
+@import '../../_css/common';
+
+.radioWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.radio {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid var(--color-dark-500);
+  outline: none;
+  cursor: pointer;
+}
+
+.radio:checked {
+  font-size: 16px;
+  background-color: white;
+  position: relative;
+}
+
+.radio:checked::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-dark-500);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+</details>
+
+<details>
+
+<summary>Radio/index.tsx</summary>
+
+```typescript
+import React from 'react'
+
+import classes from './index.module.scss'
+
+interface RadioButtonProps {
+  label: string
+  value: string
+  isSelected: boolean
+  onRadioChange: (value: string) => void
+  groupName: string
+}
+
+export const RadioButton: React.FC<RadioButtonProps> = ({
+  label,
+  value,
+  isSelected,
+  onRadioChange,
+  groupName,
+}) => {
+  const handleRadioChange = () => {
+    onRadioChange(value)
+  }
+
+  return (
+    <label className={classes.radioWrapper}>
+      <input
+        type="radio"
+        checked={isSelected}
+        onChange={handleRadioChange}
+        className={classes.radio}
+        name={groupName}
+      />
+      {label}
+    </label>
+  )
+}
+```
+</details>
+
+<details>
+<summary>_components/Card/index.module.scss</summary>
+
+```scss
+@import '../../_css/common';
+
+.card {
+  border-radius: 4px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background-color: white;
+  width: 100%;
+
+  @include small-break {
+    padding: calc(var(--base) / 2);
+    gap: calc(var(--base) / 4);
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.centerAlign {
+  align-items: center;
+}
+
+.body {
+  flex-grow: 1;
+}
+
+.priceActions {
+  gap: var(--base);
+}
+
+.price {
+  font-weight: 600;
+  margin: 0;
+}
+
+.leader {
+  @extend %label;
+  display: flex;
+  gap: var(--base);
+}
+
+.description {
+  margin: 0;
+  line-height: 24px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hideImageOnMobile {
+  @include mid-break {
+    display: none;
+  }
+}
+
+.mediaWrapper {
+  text-decoration: none;
+  display: block;
+  position: relative;
+  min-height: 262px;
+  background-color: var(--color-dark-50);
+}
+
+.image {
+  padding: 24px;
+  object-fit: contain;
+  aspect-ratio: 1/1;
+  max-width: 100%;
+}
+
+.placeholder {
+  background-color: var(--theme-elevation-50);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+
+  @include mid-break {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+```
+</details>
+
+<details>
+
+<summary>_components/CollectionArchive/index.module.scss</summary>
+
+```scss
+@import '../../_css/common';
+
+// this is to make up for the space taken by the fixed header, since the scroll method does not accept an offset parameter
+.scrollRef {
+  position: absolute;
+  left: 0;
+  top: calc(var(--base) * -5);
+  @include mid-break {
+    top: calc(var(--base) * -2);
+  }
+}
+
+.introContent {
+  position: relative;
+  margin-bottom: calc(var(--base) * 2);
+
+  @include mid-break {
+    margin-bottom: var(--base);
+  }
+}
+
+.resultCountWrapper {
+  display: flex;
+  margin-bottom: calc(var(--base) * 2);
+
+  @include mid-break {
+    margin-bottom: var(--base);
+  }
+}
+
+.pageRange {
+  margin-bottom: var(--base);
+
+  @include mid-break {
+    margin-bottom: var(--base);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(30%, 1fr));
+  gap: 30px;
+  padding: 0;
+  width: 100%;
+
+  @include mid-break {
+    gap: 20px;
+  }
+
+  @include small-break {
+    grid-template-columns: 100%;
+  }
+}
+
+.pagination {
+  margin-top: calc(var(--base) * 2);
+  display: flex;
+  justify-content: center;
+
+  @include mid-break {
+    margin-top: var(--base);
+  }
+}
+```
+</details>
+
+<details>
+<summary>_heros/Product/index.module.scss</summary>
+
+```scss
+@use '../../_css/common.scss' as *;
+
+.productHero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 100%;
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mediaWrapper {
+  position: relative;
+  min-height: 400px;
+  background-color: var(--color-dark-50);
+
+  @include small-break {
+    min-height: 250px;
+  }
+}
+
+.image {
+  padding: 24px;
+  object-fit: contain;
+  aspect-ratio: 1/1;
+  max-width: 100%;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.categoryWrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.category {
+  font-size: 16px;
+}
+
+.stock {
+  color: var(--color-green-500);
+}
+
+.separator {
+  color: var(--color-gray-500);
+  padding: 0 10px;
+}
+
+.description {
+  padding: 30px 0;
+}
+```
+</details>
+
+<details>
+
+<summary>CartItem/index.module.scss</summary>
+
+```scss
+@import '../../../_css/common';
+
+.item {
+  display: grid;
+  grid-template-columns: 100px 2fr 1fr;
+  padding: 24px 0;
+  gap: 24px;
+  border-bottom: 1px solid var(--color-dark-50);
+}
+
+.mediaWrapper {
+  position: relative;
+  min-height: 100px;
+  padding: 16px;
+  background-color: var(--color-dark-50);
+}
+
+.media {
+  position: relative;
+  height: 100%;
+}
+
+.image {
+  object-fit: contain;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.itemDetails {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  align-items: center;
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+.titleWrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  h6 {
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+}
+
+.quantity {
+  border: 1px solid var(--color-dark-500);
+  display: grid;
+  grid-template-columns: 45px 1fr 45px;
+  border-radius: 10px;
+  align-items: center;
+  height: 45px;
+  width: 100%;
+  max-width: 120px;
+}
+
+.quantityBtn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.quantityInput {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  min-width: 30px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.subtotalWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 60px;
+
+  @include small-break {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+  }
+}
+```
+</details>
+
+<details>
+
+<summary>CartPage/index.module.scss</summary>
+
+```scss
+@import '../../../_css/common';
+
+.cart {
+  margin: 30px 0;
+}
+
+.cartWrapper {
+  display: grid;
+  grid-template-columns: 65% 1fr;
+  gap: 60px;
+
+  @include large-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 100px 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 8px;
+
+  @include small-break {
+    display: none;
+  }
+}
+
+.headerItemDetails {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.headersubtotal {
+  text-align: end;
+}
+
+.itemsList {
+  border-top: 1px solid var(--color-dark-50);
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 30px 24px;
+  border: 1px solid var(--color-dark-50);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-dark-50);
+}
+```
+</details>
+
+<details>
+
+<summary>CheckoutItem/index.module.scss</summary>
+
+```scss
+@import '../../../_css/common';
+
+.item {
+  display: grid;
+  grid-template-columns: 100px 5fr 1fr;
+  padding: 16px 0;
+  gap: 16px;
+  border-bottom: 1px solid var(--color-dark-50);
+}
+
+.mediaWrapper {
+  position: relative;
+  min-height: 80px;
+  padding: 8px;
+  background-color: var(--color-dark-50);
+}
+
+.media {
+  position: relative;
+  height: 100%;
+}
+
+.image {
+  object-fit: contain;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.itemDetails {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 30px;
+  align-items: center;
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+.titleWrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  p {
+    font-size: 16px;
+    margin-top: 8px;
+  }
+}
+
+.quantity {
+  text-align: center;
+  font-size: 18px;
+  
+  @include small-break {
+    text-align: start;
+    font-size: 16px;
+  }
+}
+
+.subtotal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @include small-break {
+    align-items: flex-end;
+  }
+}
+```
+</details>
+
+<details>
+
+<summary>CheckoutItem/index.tsx</summary>
+
+```typescript
+import Link from 'next/link'
+import { Media } from '../../../_components/Media'
+import { Price } from '../../../_components/Price'
+
+import classes from './index.module.scss'
+
+export const CheckoutItem = ({ product, title, metaImage, quantity, index }) => {
+  return (
+    <li className={classes.item} key={index}>
+      <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
+        {!metaImage && <span>No image</span>}
+        {metaImage && typeof metaImage !== 'string' && (
+          <Media className={classes.media} imgClassName={classes.image} resource={metaImage} fill />
+        )}
+      </Link>
+
+      <div className={classes.itemDetails}>
+        <div className={classes.titleWrapper}>
+          <h6>{title}</h6>
+          <Price product={product} button={false} />
+        </div>
+        <p className={classes.quantity}>x{quantity}</p>
+      </div>
+
+      <div className={classes.subtotal}>
+        <Price product={product} button={false} quantity={quantity} />
+      </div>
+    </li>
+  )
+}
+```
+</details>
+
+<details>
+
+<summary>CheckoutPage/index.tsx</summary>
+
+```typescript
+'use client'
+
+import React, { Fragment, useEffect } from 'react'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
+import { Settings } from '../../../../payload/payload-types'
+import { Button } from '../../../_components/Button'
+import { LoadingShimmer } from '../../../_components/LoadingShimmer'
+import { useAuth } from '../../../_providers/Auth'
+import { useCart } from '../../../_providers/Cart'
+import { useTheme } from '../../../_providers/Theme'
+import cssVariables from '../../../cssVariables'
+import { CheckoutForm } from '../CheckoutForm'
+import { CheckoutItem } from '../CheckoutItem'
+
+import classes from './index.module.scss'
+
+const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`
+const stripe = loadStripe(apiKey)
+
+export const CheckoutPage: React.FC<{
+  settings: Settings
+}> = props => {
+  const {
+    settings: { productsPage },
+  } = props
+
+  const { user } = useAuth()
+  const router = useRouter()
+  const [error, setError] = React.useState<string | null>(null)
+  const [clientSecret, setClientSecret] = React.useState()
+  const hasMadePaymentIntent = React.useRef(false)
+  const { theme } = useTheme()
+
+  const { cart, cartIsEmpty, cartTotal } = useCart()
+
+  useEffect(() => {
+    if (user !== null && cartIsEmpty) {
+      router.push('/cart')
+    }
+  }, [router, user, cartIsEmpty])
+
+  useEffect(() => {
+    if (user && cart && hasMadePaymentIntent.current === false) {
+      hasMadePaymentIntent.current = true
+
+      const makeIntent = async () => {
+        try {
+          const paymentReq = await fetch(
+            `${process.env.NEXT_PUBLIC_SERVER_URL}/api/create-payment-intent`,
+            {
+              method: 'POST',
+              credentials: 'include',
+            },
+          )
+
+          const res = await paymentReq.json()
+
+          if (res.error) {
+            setError(res.error)
+          } else if (res.client_secret) {
+            setError(null)
+            setClientSecret(res.client_secret)
+          }
+        } catch (e) {
+          setError('Something went wrong.')
+        }
+      }
+
+      makeIntent()
+    }
+  }, [cart, user])
+
+  if (!user || !stripe) return null
+
+  return (
+    <Fragment>
+      {cartIsEmpty && (
+        <div>
+          {'Your '}
+          <Link href="/cart">cart</Link>
+          {' is empty.'}
+          {typeof productsPage === 'object' && productsPage?.slug && (
+            <Fragment>
+              {' '}
+              <Link href={`/${productsPage.slug}`}>Continue shopping?</Link>
+            </Fragment>
+          )}
+        </div>
+      )}
+      {!cartIsEmpty && (
+        <div className={classes.items}>
+          <div className={classes.header}>
+            <p>Products</p>
+            <div className={classes.headerItemDetails}>
+              <p></p>
+              <p className={classes.quantity}>Quantity</p>
+            </div>
+            <p className={classes.subtotal}>Subtotal</p>
+          </div>
+
+          <ul>
+            {cart?.items?.map((item, index) => {
+              if (typeof item.product === 'object') {
+                const {
+                  quantity,
+                  product,
+                  product: { title, meta },
+                } = item
+
+                if (!quantity) return null
+
+                const metaImage = meta?.image
+
+                return (
+                  <Fragment key={index}>
+                    <CheckoutItem
+                      product={product}
+                      title={title}
+                      metaImage={metaImage}
+                      quantity={quantity}
+                      index={index}
+                    />
+                  </Fragment>
+                )
+              }
+              return null
+            })}
+            <div className={classes.orderTotal}>
+              <p>Order Total</p>
+              <p>{cartTotal.formatted}</p>
+            </div>
+          </ul>
+        </div>
+      )}
+      {!clientSecret && !error && (
+        <div className={classes.loading}>
+          <LoadingShimmer number={2} />
+        </div>
+      )}
+      {!clientSecret && error && (
+        <div className={classes.error}>
+          <p>{`Error: ${error}`}</p>
+          <Button label="Back to cart" href="/cart" appearance="secondary" />
+        </div>
+      )}
+      {clientSecret && (
+        <Fragment>
+          <h3 className={classes.payment}>Payment Details</h3>
+          {error && <p>{`Error: ${error}`}</p>}
+          <Elements
+            stripe={stripe}
+            options={{
+              clientSecret,
+              appearance: {
+                theme: 'stripe',
+                variables: {
+                  colorText:
+                    theme === 'dark' ? cssVariables.colors.base0 : cssVariables.colors.base1000,
+                  fontSizeBase: '16px',
+                  fontWeightNormal: '500',
+                  fontWeightBold: '600',
+                  colorBackground:
+                    theme === 'dark' ? cssVariables.colors.base850 : cssVariables.colors.base0,
+                  fontFamily: 'Inter, sans-serif',
+                  colorTextPlaceholder: cssVariables.colors.base500,
+                  colorIcon:
+                    theme === 'dark' ? cssVariables.colors.base0 : cssVariables.colors.base1000,
+                  borderRadius: '0px',
+                  colorDanger: cssVariables.colors.error500,
+                  colorDangerText: cssVariables.colors.error500,
+                },
+              },
+            }}
+          >
+            <CheckoutForm />
+          </Elements>
+        </Fragment>
+      )}
+    </Fragment>
+  )
+}
+```
+</details>
+
+#
+
+[Account page Challenge ZIP](https://drive.google.com/file/d/18yGEKKLAzmbo5whzZSFWoMG-QntLB22S/view?usp=sharing)
