@@ -110,7 +110,7 @@
 
 <details>
 
-<summary>FooterComponent/index.module.scss</summary>
+<summary><code>FooterComponent/index.module.scss</code></summary>
 
 ```scss
 @use '../../../_css/queries.scss' as *;
@@ -176,7 +176,7 @@
 </details>
 
 <details>
-<summary>constants/index.ts</summary>
+<summary><code>constants/index.ts</code></summary>
 
 ```typescript
 export const inclusions = [
@@ -231,7 +231,7 @@ export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-passwo
 </details>
 
 <details>
-<summary>_css/type.scss</summary>
+<summary><code>_css/type.scss</code></summary>
 
 ```scss
 @use 'queries' as *;
@@ -341,7 +341,7 @@ export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-passwo
 </details>
 
 <details>
-<summary>create-account/index.module.scss</summary>
+<summary><code>create-account/index.module.scss</code></summary>
 
 ```scss
 @import '../../_css/common';
@@ -451,7 +451,7 @@ export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-passwo
 </details>
 
 <details>
-<summary>RecoverPasswordForm/index.module.scss</summary>
+<summary><code>RecoverPasswordForm/index.module.scss</code></summary>
 
 ```scss
 @import '../../../_css/common';
@@ -500,7 +500,7 @@ export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-passwo
 
 <details>
 
-<summary>CustomHero/index.module.scss</summary>
+<summary><code>CustomHero/index.module.scss</code></summary>
 
 ```scss
 @import '../../_css/queries.scss';
@@ -596,7 +596,7 @@ export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-passwo
 </details>
 
 <details>
-<summary>Categories/index.module.scss</summary>
+<summary><code>Categories/index.module.scss</code></summary>
 
 ```scss
 @use '../../_css/queries.scss' as *;
@@ -632,7 +632,7 @@ export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-passwo
 
 <details>
 
-<summary>CategoryCard/index.module.scss</summary>
+<summary><code>CategoryCard/index.module.scss</code></summary>
 
 ```scss
 @use '../../../_css/queries.scss' as *;
@@ -664,7 +664,7 @@ export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-passwo
 </details>
 
 <details>
-<summary>Promotion/index.module.scss</summary>
+<summary><code>Promotion/index.module.scss</code></summary>
 
 ```scss
 @use '../../_css/queries.scss' as *;
@@ -733,7 +733,7 @@ export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-passwo
 
 <details>
 
-<summary>Filters/index.module.scss</summary>
+<summary><code>Filters/index.module.scss</code></summary>
 
 ```scss
 @import '../../../_css/common';
@@ -802,7 +802,7 @@ export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-passwo
 </details>
 
 <details>
-<summary>Checkbox/index.module.scss</summary>
+<summary><code>Checkbox/index.module.scss</code></summary>
 
 ```scss
 @import '../../_css/common';
@@ -846,7 +846,7 @@ export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-passwo
 
 <details>
 
-<summary>Checkbox/index.tsx</summary>
+<summary><code>Checkbox/index.tsx</code></summary>
 
 ```typescript
 import React, { ChangeEvent, useState } from 'react'
@@ -884,7 +884,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({ label, value, isSelected, on
 </details>
 
 <details>
-<summary>Radio/index.module.scss</summary>
+<summary><code>Radio/index.module.scss</code></summary>
 
 ```scss
 @import '../../_css/common';
@@ -932,7 +932,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({ label, value, isSelected, on
 
 <details>
 
-<summary>Radio/index.tsx</summary>
+<summary><code>Radio/index.tsx</code></summary>
 
 ```typescript
 import React from 'react'
@@ -975,7 +975,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 </details>
 
 <details>
-<summary>_components/Card/index.module.scss</summary>
+<summary><code>_components/Card/index.module.scss</code></summary>
 
 ```scss
 @import '../../_css/common';
@@ -1087,7 +1087,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 
 <details>
 
-<summary>_components/CollectionArchive/index.module.scss</summary>
+<summary><code>_components/CollectionArchive/index.module.scss</code></summary>
 
 ```scss
 @import '../../_css/common';
@@ -1157,7 +1157,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 </details>
 
 <details>
-<summary>_heros/Product/index.module.scss</summary>
+<summary><code>_heros/Product/index.module.scss</code></summary>
 
 ```scss
 @use '../../_css/common.scss' as *;
@@ -1224,7 +1224,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 
 <details>
 
-<summary>CartItem/index.module.scss</summary>
+<summary><code>CartItem/index.module.scss</code></summary>
 
 ```scss
 @import '../../../_css/common';
@@ -1324,7 +1324,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 
 <details>
 
-<summary>CartPage/index.module.scss</summary>
+<summary><code>CartPage/index.module.scss</code></summary>
 
 ```scss
 @import '../../../_css/common';
@@ -1387,7 +1387,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 
 <details>
 
-<summary>CheckoutItem/index.module.scss</summary>
+<summary><code>CheckoutItem/index.module.scss</code></summary>
 
 ```scss
 @import '../../../_css/common';
@@ -1464,7 +1464,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 
 <details>
 
-<summary>CheckoutItem/index.tsx</summary>
+<summary><code>CheckoutItem/index.tsx</code></summary>
 
 ```typescript
 import Link from 'next/link'
@@ -1502,7 +1502,7 @@ export const CheckoutItem = ({ product, title, metaImage, quantity, index }) => 
 
 <details>
 
-<summary>CheckoutPage/index.tsx</summary>
+<summary><code>CheckoutPage/index.tsx</code></summary>
 
 ```typescript
 'use client'
