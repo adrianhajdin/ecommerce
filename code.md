@@ -125,6 +125,27 @@
   }
 }
 
+.inclusions {
+    display: grid;
+    justify-content: center;
+    gap: 30px;
+    padding: 0;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 100px 0;
+
+    @include large-break {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mid-break {
+        margin: 60px 0;
+    }
+
+    @include extra-small-break {
+        grid-template-columns: 1fr;
+    }
+}
+
 :global([data-theme='dark']) {
   .footer {
     background-color: var(--theme-elevation-50);
