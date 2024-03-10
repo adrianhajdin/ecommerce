@@ -5,6 +5,7 @@ import { AddToCartButton } from '../../_components/AddToCartButton'
 import { ColorSelectButton } from '../../_components/ColorSelectButton'
 import { SizePicker } from '../../_components/SizePicker'
 import { SocialShare } from '../../_components/SocialShare'
+import { FavButton } from '../../_components/FavButton'
 
 import { Gutter } from '../../_components/Gutter'
 import { Media } from '../../_components/Media'
@@ -56,7 +57,10 @@ export const ProductHero: React.FC<{
         </div>
         <ColorSelectButton />
         <SizePicker />
+        <div className={classes.buttonGroup}>
         <AddToCartButton product={product} className={classes.addToCartButton} />
+        <FavButton product={product} />
+      </div>
         <SocialShare/>
         
       </div>

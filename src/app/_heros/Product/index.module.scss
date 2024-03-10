@@ -57,3 +57,9 @@
 .description {
   padding: 30px 0;
 }
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Ajuste o espaço entre os botões conforme necessário */
+}

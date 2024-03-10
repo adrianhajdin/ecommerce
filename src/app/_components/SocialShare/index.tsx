@@ -14,7 +14,7 @@ export const SocialShare = () => {
 
   return (
     <div className={classes.socialShare}>
-      <span className={classes.shareText}>Share</span>
+      <span className={classes.shareText}>Curtiu? Compartilhe esta peça!</span>
       <a href={socialLinks.facebook} className={classes.icon} aria-label="Share on Facebook">
         {/* Ícone do Facebook */}
       </a>
