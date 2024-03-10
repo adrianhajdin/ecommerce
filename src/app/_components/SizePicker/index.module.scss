@@ -1,0 +1,32 @@
+.sizeLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.sizeOptions {
+  display: flex;
+  gap: 10px; /* Espaço entre os botões */
+}
+
+.sizeButton {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 20px; /* Bordas arredondadas */
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s, border-color 0.3s;
+  margin-bottom: 1rem;
+
+  &:hover,
+  &.selectedSize {
+    border-color: #333;
+    background-color: #f7f7f7; /* Cor de fundo ao passar o mouse e para tamanho selecionado */
+  }
+}
+
+.selectedSize {
+  font-weight: bold; /* Texto em negrito para o tamanho selecionado */
+}

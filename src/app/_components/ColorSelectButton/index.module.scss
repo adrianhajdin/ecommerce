@@ -1,0 +1,47 @@
+.colorSelectWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.colorLabel {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.colorsContainer {
+  display: flex;
+}
+
+.colorButton {
+  width: 24px;
+  height: 24px;
+  border: none;
+  margin-right: 0.5rem;  
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &.selected {
+    &:after {
+      content: '✓';
+      position: center;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: bold;
+      z-index: 1;
+    }
+  }
+}
+
+.checkmark {
+  display: none;
+}
