@@ -116,6 +116,8 @@ a {
   &:focus {
     opacity: .8;
     outline: none;
+    font-weight: bold;
+    color: black;
   }
 
   &:active {
