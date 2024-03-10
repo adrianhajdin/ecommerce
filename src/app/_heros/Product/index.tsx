@@ -4,6 +4,7 @@ import { Category, Product } from '../../../payload/payload-types'
 import { AddToCartButton } from '../../_components/AddToCartButton'
 import { ColorSelectButton } from '../../_components/ColorSelectButton'
 import { SizePicker } from '../../_components/SizePicker'
+import { SocialShare } from '../../_components/SocialShare'
 
 import { Gutter } from '../../_components/Gutter'
 import { Media } from '../../_components/Media'
@@ -56,6 +57,7 @@ export const ProductHero: React.FC<{
         <ColorSelectButton />
         <SizePicker />
         <AddToCartButton product={product} className={classes.addToCartButton} />
+        <SocialShare/>
         
       </div>
     </Gutter>
