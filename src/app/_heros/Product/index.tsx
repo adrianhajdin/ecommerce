@@ -6,6 +6,8 @@ import { ColorSelectButton } from '../../_components/ColorSelectButton'
 import { SizePicker } from '../../_components/SizePicker'
 import { SocialShare } from '../../_components/SocialShare'
 import { FavButton } from '../../_components/FavButton'
+import { FreightCalculator } from '../../_components/FreightCalculator'
+
 
 import { Gutter } from '../../_components/Gutter'
 import { Media } from '../../_components/Media'
@@ -62,7 +64,9 @@ export const ProductHero: React.FC<{
         <FavButton product={product} />
       </div>
         <SocialShare/>
-        
+        <hr className={classes.socialShareFreightSeparator} />
+        <FreightCalculator/>
+
       </div>
     </Gutter>
   )
