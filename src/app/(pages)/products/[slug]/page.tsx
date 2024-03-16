@@ -45,14 +45,14 @@ export default async function Product({ params: { slug } }) {
         blocks={[
           {
             blockType: 'relatedProducts',
-            blockName: 'Related Product',
+            blockName: 'Produtos Relacionados',
             relationTo: 'products',
             introContent: [
               {
                 type: 'h3',
                 children: [
                   {
-                    text: 'Related Products',
+                    text: 'Produtos Relacionados',
                   },
                 ],
               },
