@@ -1,0 +1,37 @@
+.socialShare {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  .shareText {
+    margin-right: 8px;
+    font-size: 14px;
+  }
+  .icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+  
+    background-size: cover;
+    &:hover {
+      opacity: 0.7;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    // Aqui você adicionaria o fundo de cada ícone com a imagem correspondente
+    &[aria-label="Share on Facebook"] {
+      background-image: url('./facebook.png');
+    }
+    &[aria-label="Share on Instagram"] {
+      background-image: url('./instagram.png');
+    }
+    &[aria-label="Share on WhatsApp"] {
+      background-image: url('./whatsApp.png');
+    }
+    &[aria-label="Share on Twitter"] {
+      background-image: url('./twitter.png');
+    }
+
+  }
+}

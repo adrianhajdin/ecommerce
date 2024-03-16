@@ -57,3 +57,16 @@
 .description {
   padding: 30px 0;
 }
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Ajuste o espaço entre os botões conforme necessário */
+}
+
+.socialShareFreightSeparator {
+  border: none;
+  height: 1px;
+  background-color: #ccc; /* Ou use outra cor para combinar com o seu design */
+  margin: 5px 0; /* Espaçamento acima e abaixo da barra */
+}

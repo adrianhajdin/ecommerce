@@ -1,0 +1,15 @@
+.favoriteButton {
+  background: none;
+  border: none;
+  font-size: 28px; /* Ajuste o tamanho conforme necessário */
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #99103e; /* Cor quando o mouse passa por cima */
+  }
+}
+
+.isFavorite {
+  color: #99103e; /* Cor do coração quando está como favorito */
+}
