@@ -81,12 +81,12 @@ export const CheckoutPage: React.FC<{
       {cartIsEmpty && (
         <div>
           {'Your '}
-          <Link href="/cart">cart</Link>
+          <Link href="/cart">carrinho</Link>
           {' is empty.'}
           {typeof productsPage === 'object' && productsPage?.slug && (
             <Fragment>
               {' '}
-              <Link href={`/${productsPage.slug}`}>Continue shopping?</Link>
+              <Link href={`/${productsPage.slug}`}>Continue comprando?</Link>
             </Fragment>
           )}
         </div>
@@ -94,10 +94,10 @@ export const CheckoutPage: React.FC<{
       {!cartIsEmpty && (
         <div className={classes.items}>
           <div className={classes.header}>
-            <p>Products</p>
+            <p>Produtos</p>
             <div className={classes.headerItemDetails}>
               <p></p>
-              <p className={classes.quantity}>Quantity</p>
+              <p className={classes.quantity}>Quantidade</p>
             </div>
             <p className={classes.subtotal}>Subtotal</p>
           </div>
@@ -130,7 +130,7 @@ export const CheckoutPage: React.FC<{
               return null
             })}
             <div className={classes.orderTotal}>
-              <p>Order Total</p>
+              <p>Total do pedido</p>
               <p>{cartTotal.formatted}</p>
             </div>
           </ul>
@@ -144,12 +144,12 @@ export const CheckoutPage: React.FC<{
       {!clientSecret && error && (
         <div className={classes.error}>
           <p>{`Error: ${error}`}</p>
-          <Button label="Back to cart" href="/cart" appearance="secondary" />
+          <Button label="Volte para o carrinho" href="/cart" appearance="secondary" />
         </div>
       )}
       {clientSecret && (
         <Fragment>
-          <h3 className={classes.payment}>Payment Details</h3>
+          <h3 className={classes.payment}>Detalhes do pagamento</h3>
           {error && <p>{`Error: ${error}`}</p>}
           <Elements
             stripe={stripe}

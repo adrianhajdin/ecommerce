@@ -18,7 +18,7 @@ export const cartPage: Partial<Page> = {
         type: 'h1',
         children: [
           {
-            text: 'Cart',
+            text: 'Carrinho',
           },
         ],
       },
