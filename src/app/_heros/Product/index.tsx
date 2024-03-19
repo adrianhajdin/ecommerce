@@ -18,7 +18,7 @@ import classes from './index.module.scss'
 export const ProductHero: React.FC<{
   product: Product
 }> = ({ product }) => {
-  const { title, categories, colors, meta: { image: metaImage, description } = {} } = product
+  const { title, categories, colors, sizes, meta: { image: metaImage, description } = {} } = product
 
   //const colors = ['#1c212c', '#ffed03', '#0dcaf0']; // substitua com as cores do seu produto
 
@@ -60,7 +60,7 @@ export const ProductHero: React.FC<{
           <p>{description}</p>
         </div>
         <ColorSelectButton colors={colors}/>
-        <SizePicker />
+        <SizePicker sizes={sizes}/>
         <div className={classes.buttonGroup}>
         <AddToCartButton product={product} className={classes.addToCartButton} />
         <FavButton product={product} />
