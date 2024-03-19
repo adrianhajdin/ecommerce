@@ -383,7 +383,7 @@ export interface Product {
   skipSync?: boolean;
   meta?: {
     title?: string;
-    description?: string;
+    Descrição?: string;
     image?: string | Media;
   };
   updatedAt: string;
