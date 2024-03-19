@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import classes from './index.module.scss';
 
-export const SizePicker = ({ }) => {
+export const SizePicker = ({ sizes}) => {
 
   // colocar nos parametros
-  const sizes = ['PP (XS)', 'P (S)', 'M (M)', 'G (L)'];
+  //const sizes = ['PP (XS)', 'P (S)', 'M (M)', 'G (L)'];
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
 
   return (
