@@ -35,6 +35,8 @@ export const PRODUCT = `
           ${META}
         }
         ${META}
+        colors
+        sizes
       }
     }
   }

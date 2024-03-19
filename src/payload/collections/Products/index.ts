@@ -152,6 +152,33 @@ const Products: CollectionConfig = {
         hidden: true,
       },
     },
+    {
+      name: 'colors',
+      label: 'Cores disponíveis',
+      type: 'select',
+      options: [
+        { value: 'FF7F7F', label: 'Vermelho' },
+        { value: 'ADD8E6', label: 'Azul' },
+        { value: 'CBC3E3', label: 'Lilas' },
+        { value: 'FFFFED', label: 'Amarelho' },
+        // Adicione mais tamanhos conforme necessário
+      ],
+      hasMany: true, // Isso permite selecionar múltiplas opções
+    },
+    {
+      name: 'sizes',
+      label: 'Tamanhos disponíveis',
+      type: 'select',
+      options: [
+        { value: 'XS', label: 'XS' },
+        { value: 'S', label: 'S' },
+        { value: 'M', label: 'M' },
+        { value: 'L', label: 'L' },
+        { value: 'XL', label: 'XL' },
+        // Adicione mais tamanhos conforme necessário
+      ],
+      hasMany: true, // Isso permite selecionar múltiplas opções
+    },
   ],
 }
 
