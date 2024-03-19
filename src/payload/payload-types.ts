@@ -190,6 +190,8 @@ export interface Product {
   id: string;
   title: string;
   publishedOn?: string;
+  colors: string[]; 
+  sizes?: string[]; 
   layout?: (
     | {
         invertBackground?: boolean;
