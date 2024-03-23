@@ -18,7 +18,7 @@ import classes from './index.module.scss'
 export default async function Order({ params: { id } }) {
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to view this order.',
+      'Você deve estar logado para visualizar este pedido.',
     )}&redirect=${encodeURIComponent(`/order/${id}`)}`,
   })
 
@@ -48,24 +48,24 @@ export default async function Order({ params: { id } }) {
   return (
     <Gutter className={classes.orders}>
       <h1>
-        {`Order`}
+        {`Pedido `}
         <span className={classes.id}>{`${order.id}`}</span>
       </h1>
       <div className={classes.itemMeta}>
         <p>{`ID: ${order.id}`}</p>
-        <p>{`Payment Intent: ${order.stripePaymentIntentID}`}</p>
-        <p>{`Ordered On: ${formatDateTime(order.createdAt)}`}</p>
+        <p>{`Intenção de Pagamento: ${order.stripePaymentIntentID}`}</p>
+        <p>{`Data do Pedido: ${formatDateTime(order.createdAt)}`}</p>
         <p className={classes.total}>
           {'Total: '}
-          {new Intl.NumberFormat('en-US', {
+          {new Intl.NumberFormat('pt-BR', {
             style: 'currency',
-            currency: 'usd',
+            currency: 'BRL',
           }).format(order.total / 100)}
         </p>
       </div>
       <HR />
       <div className={classes.order}>
-        <h4 className={classes.orderItems}>Items</h4>
+        <h4 className={classes.orderItems}>Itens</h4>
         {order.items?.map((item, index) => {
           if (typeof item.product === 'object') {
             const {
@@ -82,7 +82,7 @@ export default async function Order({ params: { id } }) {
               <Fragment key={index}>
                 <div className={classes.row}>
                   <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
-                    {!metaImage && <span className={classes.placeholder}>No image</span>}
+                    {!metaImage && <span className={classes.placeholder}>Sem imagem</span>}
                     {metaImage && typeof metaImage !== 'string' && (
                       <Media
                         className={classes.media}
@@ -95,11 +95,11 @@ export default async function Order({ params: { id } }) {
                   <div className={classes.rowContent}>
                     {!stripeProductID && (
                       <p className={classes.warning}>
-                        {'This product is not yet connected to Stripe. To link this product, '}
+                        {'Este produto ainda não está conectado ao Stripe. Para vincular este produto, '}
                         <Link
                           href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/products/${id}`}
                         >
-                          edit this product in the admin panel
+                          edite este produto no painel administrativo
                         </Link>
                         {'.'}
                       </p>
@@ -109,7 +109,7 @@ export default async function Order({ params: { id } }) {
                         {title}
                       </Link>
                     </h5>
-                    <p>{`Quantity: ${quantity}`}</p>
+                    <p>{`Quantidade: ${quantity}`}</p>
                     <Price product={product} button={false} quantity={quantity} />
                   </div>
                 </div>
@@ -123,20 +123,11 @@ export default async function Order({ params: { id } }) {
       </div>
       <HR />
       <div className={classes.actions}>
-        <Button href="/orders" appearance="primary" label="See all orders" />
-        <Button href="/account" appearance="secondary" label="Go to account" />
+        <Button href="/orders" appearance="primary" label="Ver todos os pedidos" />
+        <Button href="/account" appearance="secondary" label="Ir para a conta" />
       </div>
     </Gutter>
   )
 }
 
 export async function generateMetadata({ params: { id } }): Promise<Metadata> {
-  return {
-    title: `Order ${id}`,
-    description: `Order details for order ${id}.`,
-    openGraph: mergeOpenGraph({
-      title: `Order ${id}`,
-      url: `/orders/${id}`,
-    }),
-  }
-}

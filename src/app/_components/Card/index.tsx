@@ -17,7 +17,8 @@ const priceFromJSON = (priceJSON): string => {
       const parsed = JSON.parse(priceJSON)?.data[0]
       const priceValue = parsed.unit_amount
       const priceType = parsed.type
-      price = `${parsed.currency === 'usd' ? '$' : ''}${(priceValue / 100).toFixed(2)}`
+      // Adicionando suporte para o dólar americano e Real brasileiro como exemplo
+      price = `${parsed.currency === 'usd' ? '$' : parsed.currency === 'brl' ? 'R$' : ''}${(priceValue / 100).toFixed(2)}`
       if (priceType === 'recurring') {
         price += `/${
           parsed.recurring.interval_count > 1
@@ -26,7 +27,7 @@ const priceFromJSON = (priceJSON): string => {
         }`
       }
     } catch (e) {
-      console.error(`Cannot parse priceJSON`) // eslint-disable-line no-console
+      console.error(`Não foi possível analisar priceJSON`) // Mensagem traduzida
     }
   }
 
@@ -42,6 +43,7 @@ export const Card: React.FC<{
   relationTo?: 'products'
   doc?: Product
 }> = props => {
+  // Desestruturação de props, mantida inalterada para tradução
   const {
     showCategories,
     title: titleFromProps,
@@ -54,11 +56,11 @@ export const Card: React.FC<{
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
   const titleToUse = titleFromProps || title
-  const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
+  const sanitizedDescription = description?.replace(/\s/g, ' ')
   const href = `/products/${slug}`
 
   const [
-    price, // eslint-disable-line no-unused-vars
+    price,
     setPrice,
   ] = useState(() => priceFromJSON(priceJSON))
 
@@ -69,7 +71,7 @@ export const Card: React.FC<{
   return (
     <Link href={href} className={[classes.card, className].filter(Boolean).join(' ')}>
       <div className={classes.mediaWrapper}>
-        {!metaImage && <div className={classes.placeholder}>No image</div>}
+        {!metaImage && <div className={classes.placeholder}>Sem imagem</div>}
         {metaImage && typeof metaImage !== 'string' && (
           <Media imgClassName={classes.image} resource={metaImage} fill />
         )}

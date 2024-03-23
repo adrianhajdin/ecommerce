@@ -7,21 +7,21 @@ import { OrderConfirmationPage } from './OrderConfirmationPage'
 
 import classes from './index.module.scss'
 
-export default async function OrderConfirmation() {
+export default function OrderConfirmation() {
   return (
     <Gutter className={classes.confirmationPage}>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Carregando...</div>}>
         <OrderConfirmationPage />
       </Suspense>
     </Gutter>
   )
 }
 
-export const metadata: Metadata = {
-  title: 'Order Confirmation',
-  description: 'Your order has been confirmed.',
+export const metadata = {
+  title: 'Confirmação de Pedido',
+  description: 'Seu pedido foi confirmado.',
   openGraph: mergeOpenGraph({
-    title: 'Order Confirmation',
+    title: 'Confirmação de Pedido',
     url: '/order-confirmation',
   }),
 }

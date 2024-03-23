@@ -17,7 +17,7 @@ import classes from './index.module.scss'
 export default async function Orders() {
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to view your orders.',
+      'Você deve estar logado para visualizar seus pedidos.',
     )}&redirect=${encodeURIComponent('/orders')}`,
   })
 
@@ -40,17 +40,17 @@ export default async function Orders() {
       })
       ?.then(json => json.docs)
   } catch (error) {
-    // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
-    // so swallow the error here and simply render the page with fallback data where necessary
-    // in production you may want to redirect to a 404  page or at least log the error somewhere
+    // Ao implantar esse template no Payload Cloud, essa página precisa ser construída antes das APIs estarem ativas
+    // então ignore o erro aqui e simplesmente renderize a página com dados de fallback quando necessário
+    // na produção, você pode querer redirecionar para uma página 404 ou pelo menos registrar o erro em algum lugar
     // console.error(error)
   }
 
   return (
     <Gutter className={classes.orders}>
-      <h1>Orders</h1>
+      <h1>Pedidos</h1>
       {(!orders || !Array.isArray(orders) || orders?.length === 0) && (
-        <p className={classes.noOrders}>You have no orders.</p>
+        <p className={classes.noOrders}>Você não tem pedidos.</p>
       )}
       <RenderParams />
       {orders && orders.length > 0 && (
@@ -59,21 +59,21 @@ export default async function Orders() {
             <li key={order.id} className={classes.listItem}>
               <Link className={classes.item} href={`/orders/${order.id}`}>
                 <div className={classes.itemContent}>
-                  <h4 className={classes.itemTitle}>{`Order ${order.id}`}</h4>
+                  <h4 className={classes.itemTitle}>{`Pedido ${order.id}`}</h4>
                   <div className={classes.itemMeta}>
-                    <p>{`Ordered On: ${formatDateTime(order.createdAt)}`}</p>
+                    <p>{`Data do Pedido: ${formatDateTime(order.createdAt)}`}</p>
                     <p>
                       {'Total: '}
-                      {new Intl.NumberFormat('en-US', {
+                      {new Intl.NumberFormat('pt-BR', {
                         style: 'currency',
-                        currency: 'usd',
+                        currency: 'BRL',
                       }).format(order.total / 100)}
                     </p>
                   </div>
                 </div>
                 <Button
                   appearance="secondary"
-                  label="View Order"
+                  label="Ver Pedido"
                   className={classes.button}
                   el="button"
                 />
@@ -84,16 +84,16 @@ export default async function Orders() {
         </ul>
       )}
       <HR />
-      <Button href="/account" appearance="primary" label="Go to account" />
+      <Button href="/account" appearance="primary" label="Ir para a conta" />
     </Gutter>
   )
 }
 
 export const metadata: Metadata = {
-  title: 'Orders',
-  description: 'Your orders.',
+  title: 'Pedidos',
+  description: 'Seus pedidos.',
   openGraph: mergeOpenGraph({
-    title: 'Orders',
+    title: 'Pedidos',
     url: '/orders',
   }),
 }
