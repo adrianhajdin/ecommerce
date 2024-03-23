@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import classes from './index.module.scss';
 
-export const ColorSelectButton = ({colors}) => {
+export const ColorSelectButton = ({ title = "Cores", colors }) => {
 
   console.log(colors);
 
@@ -19,7 +19,7 @@ export const ColorSelectButton = ({colors}) => {
 
   return (
     <div className={classes.colorSelectWrapper}>
-      <span className={classes.colorLabel}>Color:</span>
+      <span className={classes.colorLabel}>Cores:</span>
       <div className={classes.colorsContainer}>
         {hexaColors.map((color) => (
           <button
