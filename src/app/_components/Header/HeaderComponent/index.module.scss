@@ -16,10 +16,10 @@
 
 .headerButtons {
   display: flex;
-  gap: 40px;
+  gap: 50px;
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
   top: 60px; /* Ajuste conforme necessário para baixar os ícones de navegação */
-  left: 20%; /* Alinha os ícones à direita */
+  left: 35%; /* Alinha os ícones à direita */
   font-size: 35px; /* Aumenta o tamanho da fonte */
 }
 
@@ -27,25 +27,31 @@
   display: flex;
   justify-content: flex-end; /* Alinha os ícones à direita */
   align-items: flex-start; /* Alinha os ícones ao topo */
-  width: 40px; /* Aumenta o tamanho do ícone */
-  height: 40px; /* Aumenta o tamanho do ícone */
+  width: 100%; /* Asume toda a largura disponível */
   position: relative; /* Para posicionamento absoluto dos ícones de navegação */
+  width: 200px; // Novo tamanho do ícone
+  height: 200px; // Novo tamanho do ícone
 }
 
 .headerSocialIcons {
   display: flex;
-  gap: 10px; /* Distância entre os ícones */
+  gap: 20px; /* Distância entre os ícones */
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
-  top: 25px; /* Ajuste conforme necessário para baixar os ícones de navegação */
-  left: 96%; /* Alinha os ícones à direita */
+  top: 30px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  left: 92.5%; /* Alinha os ícones à direita */
+  width: 500px; // Novo tamanho do ícone
+  height: 500px; // Novo tamanho do ícone
 }
 
 .headerIcons {
   display: flex;
-  gap: 10px; /* Distância entre os ícones */
+  gap: 25px; /* Distância entre os ícones */
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
-  top: 55px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  top: 72px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  left: 91.5%; /* Alinha os ícones à direita */
   right: 0; /* Alinha os ícones à direita */
+  width: 500px; // Novo tamanho do ícone
+  height: 500px; // Novo tamanho do ícone
 }
 
 .iconLink {
