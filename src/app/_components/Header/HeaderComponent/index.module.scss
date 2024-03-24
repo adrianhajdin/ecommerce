@@ -14,11 +14,21 @@
   align-self: flex-start; /* Alinha o logo à esquerda */
 }
 
+.headerButtons {
+  display: flex;
+  gap: 40px;
+  position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
+  top: 60px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  left: 20%; /* Alinha os ícones à direita */
+  font-size: 35px; /* Aumenta o tamanho da fonte */
+}
+
 .iconsContainer {
   display: flex;
   justify-content: flex-end; /* Alinha os ícones à direita */
   align-items: flex-start; /* Alinha os ícones ao topo */
-  width: 100%; /* Asume toda a largura disponível */
+  width: 40px; /* Aumenta o tamanho do ícone */
+  height: 40px; /* Aumenta o tamanho do ícone */
   position: relative; /* Para posicionamento absoluto dos ícones de navegação */
 }
 
