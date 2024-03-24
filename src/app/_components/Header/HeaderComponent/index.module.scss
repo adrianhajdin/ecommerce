@@ -1,19 +1,49 @@
+/* HeaderComponent.module.scss */
 .header {
-  padding: 36px 0;
-}
-
-.wrap {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: calc(var(--base) / 2) var(--base)
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os itens à esquerda */
+  justify-content: space-between; /* Espaço entre o topo e o fundo do cabeçalho */
+  padding: 20px;
+  height: 200px; /* Ajuste a altura conforme necessário */
 }
 
 .logo {
-  width: 170px;
+  font-weight: bold;
+  font-size: 24px;
+  align-self: flex-start; /* Alinha o logo à esquerda */
 }
 
-.hide { 
-  display: none;
+.iconsContainer {
+  display: flex;
+  justify-content: flex-end; /* Alinha os ícones à direita */
+  align-items: flex-start; /* Alinha os ícones ao topo */
+  width: 100%; /* Asume toda a largura disponível */
+  position: relative; /* Para posicionamento absoluto dos ícones de navegação */
 }
+
+.headerSocialIcons {
+  display: flex;
+  gap: 10px; /* Distância entre os ícones */
+  position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
+  top: 25px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  left: 96%; /* Alinha os ícones à direita */
+}
+
+.headerIcons {
+  display: flex;
+  gap: 10px; /* Distância entre os ícones */
+  position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
+  top: 55px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  right: 0; /* Alinha os ícones à direita */
+}
+
+.iconLink {
+  display: inline-flex; /* Usa inline-flex para permitir o alinhamento dos itens */
+  align-items: center; /* Centraliza verticalmente os ícones dentro do link */
+  justify-content: center; /* Centraliza horizontalmente os ícones dentro do link */
+  width: 24px; /* Tamanho do ícone */
+  height: 24px;
+}
+
+// Adicione o CSS para Image aqui, se necessário
