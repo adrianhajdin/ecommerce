@@ -30,60 +30,60 @@ const HeaderComponent = ({ header }) => {
 
       <div className={classes.headerButtons}>
         {/* New in */}
-        <Link href="#" onMouseEnter={() => toggleDropdown('newIn')} className={classes.buttonLink}>
+        <Link href="#" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
           <span>New in</span>
           {dropdownStates.newIn && (
             <div className={classes.dropdownMenuVertical}>
               <Link href="/products" className={classes.dropdownItem}>
-                A
+                Produto A
               </Link>
               <Link href="/products" className={classes.dropdownItem}>
-                B
+                Produto B
               </Link>
             </div>
           )}
         </Link>
 
         {/* Peças */}
-        <Link href="#" onMouseEnter={() => toggleDropdown('peças')} className={classes.buttonLink}>
+        <Link href="#" onMouseEnter={() => toggleDropdown('peças')} onMouseLeave={() => toggleDropdown('peças')} className={classes.buttonLink}>
         <span>Peças</span>
         {dropdownStates.peças && (
           <div className={classes.dropdownMenuVertical}> {/* Apply vertical positioning class */}
             <Link href="/products" className={classes.dropdownItem}>
-              A
+              Produto A
             </Link>
             <Link href="/products" className={classes.dropdownItem}>
-              B
+              Produto B
             </Link>
           </div>
         )}
         </Link>
 
         {/* Em Alta */}
-        <Link href="#" onMouseEnter={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
+        <Link href="#" onMouseEnter={() => toggleDropdown('emAlta')} onMouseLeave={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
           <span>Em Alta</span>
           {dropdownStates.emAlta && (
             <div className={classes.dropdownMenuVertical}> {/* Use a different class for vertical positioning */}
               <Link href="/products" className={classes.dropdownItem}>
-                A
+                Produto A
               </Link>
               <Link href="/products" className={classes.dropdownItem}>
-                B
+                Produto B
               </Link>
             </div>
           )}
         </Link>
 
         {/* Sale */}
-        <Link href="#" onMouseEnter={() => toggleDropdown('sale')} className={classes.buttonLink}>
+        <Link href="#" onMouseEnter={() => toggleDropdown('sale')} onMouseLeave={() => toggleDropdown('sale')} className={classes.buttonLink}>
           <span>Sale</span>
           {dropdownStates.sale && (
             <div className={classes.dropdownMenuVertical}>
               <Link href="/products" className={classes.dropdownItem}>
-                A
+                Produto A
               </Link>
               <Link href="/products" className={classes.dropdownItem}>
-                B
+                Produto B
               </Link>
             </div>
           )}
