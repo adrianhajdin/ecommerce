@@ -21,6 +21,7 @@
   top: 60px; /* Ajuste conforme necessário para baixar os ícones de navegação */
   left: 30%; /* Alinha os ícones à direita */
   font-size: 36px; /* Aumenta o tamanho da fonte */
+  font-weight: normal;
 }
 
 .iconsContainer {
@@ -63,3 +64,21 @@
 }
 
 // Adicione o CSS para Image aqui, se necessário
+.buttonLink {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+/* styles.css or your appropriate CSS file */
+.dropdownMenuVertical {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+}
+
+.dropdownItem {
+  margin-bottom: 5px; /* Add spacing between dropdown items */
+  font-weight: normal; /* Remove o negrito */
+  font-size: 25px; /* Diminui o tamanho da fonte para 14px */
+}
