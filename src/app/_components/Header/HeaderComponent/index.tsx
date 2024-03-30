@@ -30,7 +30,7 @@ const HeaderComponent = ({ header }) => {
 
       <div className={classes.headerButtons}>
         {/* New in */}
-        <Link href="#" onClick={() => toggleDropdown('newIn')} className={classes.buttonLink}>
+        <Link href="#" onMouseEnter={() => toggleDropdown('newIn')} className={classes.buttonLink}>
           <span>New in</span>
           {dropdownStates.newIn && (
             <div className={classes.dropdownMenuVertical}>
@@ -45,7 +45,7 @@ const HeaderComponent = ({ header }) => {
         </Link>
 
         {/* Peças */}
-        <Link href="#" onClick={() => toggleDropdown('peças')} className={classes.buttonLink}>
+        <Link href="#" onMouseEnter={() => toggleDropdown('peças')} className={classes.buttonLink}>
         <span>Peças</span>
         {dropdownStates.peças && (
           <div className={classes.dropdownMenuVertical}> {/* Apply vertical positioning class */}
@@ -60,7 +60,7 @@ const HeaderComponent = ({ header }) => {
         </Link>
 
         {/* Em Alta */}
-        <Link href="#" onClick={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
+        <Link href="#" onMouseEnter={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
           <span>Em Alta</span>
           {dropdownStates.emAlta && (
             <div className={classes.dropdownMenuVertical}> {/* Use a different class for vertical positioning */}
@@ -75,7 +75,7 @@ const HeaderComponent = ({ header }) => {
         </Link>
 
         {/* Sale */}
-        <Link href="#" onClick={() => toggleDropdown('sale')} className={classes.buttonLink}>
+        <Link href="#" onMouseEnter={() => toggleDropdown('sale')} className={classes.buttonLink}>
           <span>Sale</span>
           {dropdownStates.sale && (
             <div className={classes.dropdownMenuVertical}>
