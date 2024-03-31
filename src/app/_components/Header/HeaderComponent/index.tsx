@@ -154,11 +154,6 @@ const HeaderComponent = ({ header }) => {
               <Link href="/products" className={classes.dropdownItem}> MACACÃO </Link>
             </div>
             <div className={classes.dropdownColumn}>
-             <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PEÇAS ÚNICAS</Link>
-              <Link href="/products" className={classes.dropdownItem}> VESTIDOS </Link>
-              <Link href="/products" className={classes.dropdownItem}> MACACÃO </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
               <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>LINGERIE</Link>
               <Link href="/products" className={classes.dropdownItem}> TOPS </Link>
               <Link href="/products" className={classes.dropdownItem}> CALCINHAS </Link>
@@ -200,11 +195,6 @@ const HeaderComponent = ({ header }) => {
               <Link href="/products" className={classes.dropdownItem}> CALÇAS </Link>
               <Link href="/products" className={classes.dropdownItem}> SAIAS </Link>
               <Link href="/products" className={classes.dropdownItem}> SHORTS </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-             <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PEÇAS ÚNICAS</Link>
-              <Link href="/products" className={classes.dropdownItem}> VESTIDOS </Link>
-              <Link href="/products" className={classes.dropdownItem}> MACACÃO </Link>
             </div>
             <div className={classes.dropdownColumn}>
              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PEÇAS ÚNICAS</Link>

@@ -70,8 +70,7 @@
   cursor: pointer;
   font-weight: normal;
   background-color: white;
-
-  z-index: 10
+  z-index: 1000
 }
 
 .dropdownMenuVertical {
@@ -80,7 +79,7 @@
   z-index: 1000; /* Ensure it stacks above other content */
   position: fixed; /* Fix the menu to the screen */
   top: 10; /* Align to the top of the screen */
-  padding-top: 65px;
+  padding-top: 50px;
   left: 0; /* Align to the left edge of the screen */
   width: 100vw; /* Set the desired width of the menu */
 }
