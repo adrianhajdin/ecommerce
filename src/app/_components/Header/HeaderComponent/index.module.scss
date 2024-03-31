@@ -86,12 +86,10 @@
 }
 
 .dropdownColumn {
-  flex: 0.5; /* Flex each column equally */
   display: flex; /* Display children in a flex layout */
   flex-direction: column; /* Stack items vertically */
   padding: 10px; /* Padding inside the column */
-  min-width: 160px; /* Minimum width for each column, adjust as needed */
-  border-right: 1px solid #f7f7f7; /* Separator between columns */
+  min-width: 190px; /* Minimum width for each column, adjust as needed */
 }
 
 .dropdownColumn:last-child {
@@ -100,7 +98,7 @@
 
 .dropdownItem {
   padding: 5px 0; /* Vertical padding for each item */
-  margin-bottom: 5px; /* Space between items */
+  margin-bottom: 1px; /* Space between items */
   font-weight: normal; /* Regular font weight */
   font-size: 20px; /* Font size */
   color: #333; /* Text color */
