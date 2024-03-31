@@ -78,18 +78,19 @@
   display: flex; /* Use flexbox to layout children horizontally */
   background-color: white; /* White background */
   z-index: 1000; /* Ensure it stacks above other content */
-  position: absolute; /* Position relative to its positioned ancestor */
-  top: 100%; /* Directly below the dropdown button */
-  left: 0; /* Align to the left edge of the viewport */
-  right: 0; /* Align to the right edge of the viewport */
-  width: 100vw; /* Take the full width of the viewport */
+  position: fixed; /* Fix the menu to the screen */
+  top: 10; /* Align to the top of the screen */
+  padding-top: 50px;
+  left: 0; /* Align to the left edge of the screen */
+  width: 100vw; /* Set the desired width of the menu */
 }
 
 .dropdownColumn {
   display: flex; /* Display children in a flex layout */
   flex-direction: column; /* Stack items vertically */
-  padding: 10px; /* Padding inside the column */
   min-width: 190px; /* Minimum width for each column, adjust as needed */
+  /* Added property */
+  flex: 1;
 }
 
 .dropdownColumn:last-child {
@@ -97,16 +98,18 @@
 }
 
 .dropdownItem {
-  padding: 5px 0; /* Vertical padding for each item */
-  margin-bottom: 1px; /* Space between items */
-  font-weight: normal; /* Regular font weight */
-  font-size: 20px; /* Font size */
-  color: #333; /* Text color */
-  text-decoration: none; /* No underline */
+  padding: 5px 0; /* Espaçamento vertical para cada item */
+  margin-bottom: 0.5px; /* Reduz o espaço entre os itens */
+  font-weight: normal; /* Peso da fonte normal */
+  font-size: 20px; /* Tamanho da fonte */
+  color: #333; /* Cor do texto */
+  text-decoration: none; /* Sem sublinhado */
+  padding: 2px 5px; /* Ajusta o espaçamento interno dos itens */
+  border-bottom: 1px solid #f7f7f7;
 }
 
 .dropdownItem:last-child {
-  margin-bottom: 0; /* No bottom margin for the last item */
+  margin-bottom: 0; /* Sem margem inferior para o último item */
 }
 
 .dropdownItem:hover {
