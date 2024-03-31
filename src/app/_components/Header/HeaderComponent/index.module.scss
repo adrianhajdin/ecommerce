@@ -80,7 +80,7 @@
   z-index: 1000; /* Ensure it stacks above other content */
   position: fixed; /* Fix the menu to the screen */
   top: 10; /* Align to the top of the screen */
-  padding-top: 50px;
+  padding-top: 65px;
   left: 0; /* Align to the left edge of the screen */
   width: 100vw; /* Set the desired width of the menu */
 }
@@ -99,13 +99,14 @@
 
 .dropdownItem {
   padding: 5px 0; /* Espaçamento vertical para cada item */
-  margin-bottom: 0.5px; /* Reduz o espaço entre os itens */
+  margin-bottom: 1px; /* Reduz o espaço entre os itens */
+  text-align: left; /* Center the text if needed */
   font-weight: normal; /* Peso da fonte normal */
   font-size: 20px; /* Tamanho da fonte */
   color: #333; /* Cor do texto */
   text-decoration: none; /* Sem sublinhado */
   padding: 2px 5px; /* Ajusta o espaçamento interno dos itens */
-  border-bottom: 1px solid #f7f7f7;
+  // border-bottom: 1px solid #f7f7f7;
 }
 
 .dropdownItem:last-child {
@@ -114,4 +115,12 @@
 
 .dropdownItem:hover {
   background-color: white
+}
+
+.boldUnderlineDropdownItem {
+  font-size: 23px; /* Set the font size to match the design */
+  font-weight: bold; /* Make the text bold */
+  text-align: left; /* Center the text if needed */
+  text-underline-offset: 10px; /* Adjust the space between the text and the underline */
+  text-decoration: underline
 }
