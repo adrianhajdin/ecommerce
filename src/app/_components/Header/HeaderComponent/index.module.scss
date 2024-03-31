@@ -69,17 +69,48 @@
   display: inline-block;
   cursor: pointer;
   font-weight: normal;
+  background-color: white;
+
+  z-index: 10
 }
 
-/* styles.css or your appropriate CSS file */
 .dropdownMenuVertical {
-  display: flex;
+  display: flex; /* Use flexbox to layout children horizontally */
+  background-color: white; /* White background */
+  z-index: 1000; /* Ensure it stacks above other content */
+  position: absolute; /* Position relative to its positioned ancestor */
+  top: 100%; /* Directly below the dropdown button */
+  left: 0; /* Align to the left edge of the viewport */
+  right: 0; /* Align to the right edge of the viewport */
+  width: 100vw; /* Take the full width of the viewport */
+}
+
+.dropdownColumn {
+  flex: 0.5; /* Flex each column equally */
+  display: flex; /* Display children in a flex layout */
   flex-direction: column; /* Stack items vertically */
+  padding: 10px; /* Padding inside the column */
+  min-width: 160px; /* Minimum width for each column, adjust as needed */
+  border-right: 1px solid #f7f7f7; /* Separator between columns */
+}
+
+.dropdownColumn:last-child {
+  border-right: none; /* Remove the border from the last column */
 }
 
 .dropdownItem {
-  margin-bottom: 5px; /* Add spacing between dropdown items */
-  font-weight: normal; /* Remove o negrito */
-  font-size: 20px; /* Diminui o tamanho da fonte para 14px */
-  margin-top: 10px;
+  padding: 5px 0; /* Vertical padding for each item */
+  margin-bottom: 5px; /* Space between items */
+  font-weight: normal; /* Regular font weight */
+  font-size: 20px; /* Font size */
+  color: #333; /* Text color */
+  text-decoration: none; /* No underline */
+}
+
+.dropdownItem:last-child {
+  margin-bottom: 0; /* No bottom margin for the last item */
+}
+
+.dropdownItem:hover {
+  background-color: white
 }
