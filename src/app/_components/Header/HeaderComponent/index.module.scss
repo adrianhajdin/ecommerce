@@ -81,6 +81,7 @@
   padding-top: 50px;
   left: 0; /* Align to the left edge of the screen */
   width: 100vw; /* Set the desired width of the menu */
+  border-bottom: 0.01px inset  black; 
 }
 
 .dropdownColumn {
@@ -104,7 +105,7 @@
   color: #333; /* Cor do texto */
   text-decoration: none; /* Sem sublinhado */
   padding: 2px 5px; /* Ajusta o espaçamento interno dos itens */
-  // border-bottom: 1px solid #f7f7f7;
+  // border: 1px solid black; /* Add a black border */
 }
 
 .dropdownItem:last-child {
