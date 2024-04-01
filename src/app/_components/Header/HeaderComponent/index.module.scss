@@ -30,8 +30,8 @@
   align-items: flex-start; /* Alinha os ícones ao topo */
   width: 100%; /* Asume toda a largura disponível */
   position: relative; /* Para posicionamento absoluto dos ícones de navegação */
-  width: 200px; // Novo tamanho do ícone
-  height: 200px; // Novo tamanho do ícone
+  // width: 100px; // Novo tamanho do ícone
+  // height: 100px; // Novo tamanho do ícone
 }
 
 .headerSocialIcons {
@@ -40,8 +40,8 @@
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
   top: 30px; /* Ajuste conforme necessário para baixar os ícones de navegação */
   left: 92.5%; /* Alinha os ícones à direita */
-  width: 500px; // Novo tamanho do ícone
-  height: 500px; // Novo tamanho do ícone
+  // width: 100px; // Novo tamanho do ícone
+  // height: 100px; // Novo tamanho do ícone
 }
 
 .headerIcons {

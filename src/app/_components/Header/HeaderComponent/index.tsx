@@ -228,13 +228,13 @@ const HeaderComponent = ({ header }) => {
       <div className={classes.headerIcons}>
         {/* Removed <a> within Link */}
         <Link href="/products" className={classes.iconLink}>
-          <Image src="/search.png" alt="Search" width={500} height={500} layout="fixed"/>
+          <Image src="/search.png" alt="Search" width={100} height={100} layout="fixed"/>
         </Link>
         <Link href="/orders" className={classes.iconLink}>
-          <Image src="/user_profile.png" alt="Orders" width={500} height={500} layout="fixed" />
+          <Image src="/user_profile.png" alt="Orders" width={100} height={100} layout="fixed" />
         </Link>
         <Link href="/cart" className={classes.iconLink}>
-          <Image src="/cart.png" alt="Cart" width={500} height={500} layout="fixed"/>
+          <Image src="/cart.png" alt="Cart" width={100} height={100} layout="fixed"/>
         </Link>
       </div>
       <div className={classes.headerSocialIcons}>
