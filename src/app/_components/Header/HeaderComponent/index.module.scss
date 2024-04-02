@@ -1,19 +1,125 @@
+/* HeaderComponent.module.scss */
 .header {
-  padding: 36px 0;
-}
-
-.wrap {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: calc(var(--base) / 2) var(--base)
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os itens à esquerda */
+  justify-content: space-between; /* Espaço entre o topo e o fundo do cabeçalho */
+  padding: 20px;
+  height: 200px; /* Ajuste a altura conforme necessário */
 }
 
 .logo {
-  width: 170px;
+  font-weight: bold;
+  font-size: 24px;
+  align-self: flex-start; /* Alinha o logo à esquerda */
 }
 
-.hide { 
-  display: none;
+.headerButtons {
+  display: flex;
+  gap: 50px;
+  position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
+  top: 60px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  left: 30%; /* Alinha os ícones à direita */
+  font-size: 36px; /* Aumenta o tamanho da fonte */
+  font-weight: normal;
+}
+
+.iconsContainer {
+  display: flex;
+  justify-content: flex-end; /* Alinha os ícones à direita */
+  align-items: flex-start; /* Alinha os ícones ao topo */
+  width: 100%; /* Asume toda a largura disponível */
+  position: relative; /* Para posicionamento absoluto dos ícones de navegação */
+  // width: 100px; // Novo tamanho do ícone
+  // height: 100px; // Novo tamanho do ícone
+}
+
+.headerSocialIcons {
+  display: flex;
+  gap: 20px; /* Distância entre os ícones */
+  position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
+  top: 30px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  left: 92.5%; /* Alinha os ícones à direita */
+  // width: 100px; // Novo tamanho do ícone
+  // height: 100px; // Novo tamanho do ícone
+}
+
+.headerIcons {
+  display: flex;
+  gap: 25px; /* Distância entre os ícones */
+  position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
+  top: 65px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  left: 91.5%; /* Alinha os ícones à direita */
+  right: 0; /* Alinha os ícones à direita */
+  width: 500px; // Novo tamanho do ícone
+  height: 500px; // Novo tamanho do ícone
+}
+
+.iconLink {
+  display: inline-flex; /* Usa inline-flex para permitir o alinhamento dos itens */
+  align-items: center; /* Centraliza verticalmente os ícones dentro do link */
+  justify-content: center; /* Centraliza horizontalmente os ícones dentro do link */
+  width: 24px; /* Tamanho do ícone */
+  height: 24px;
+}
+
+// Adicione o CSS para Image aqui, se necessário
+.buttonLink {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: normal;
+  background-color: white;
+  z-index: 1000
+}
+
+.dropdownMenuVertical {
+  display: flex; /* Use flexbox to layout children horizontally */
+  background-color: white; /* White background */
+  z-index: 1000; /* Ensure it stacks above other content */
+  position: fixed; /* Fix the menu to the screen */
+  padding-top: 50px;
+  left: 0; /* Align to the left edge of the screen */
+  width: 100vw; /* Set the desired width of the menu */
+  border-bottom: 0.01px inset  black; 
+}
+
+.dropdownColumn {
+  display: flex; /* Display children in a flex layout */
+  flex-direction: column; /* Stack items vertically */
+  min-width: 190px; /* Minimum width for each column, adjust as needed */
+  /* Added property */
+  flex: 1;
+}
+
+.dropdownColumn:last-child {
+  border-right: none; /* Remove the border from the last column */
+}
+
+.dropdownItem {
+  padding: 5px 0; /* Espaçamento vertical para cada item */
+  margin-bottom: 1px; /* Reduz o espaço entre os itens */
+  text-align: left; /* Center the text if needed */
+  font-weight: normal; /* Peso da fonte normal */
+  font-size: 20px; /* Tamanho da fonte */
+  color: #333; /* Cor do texto */
+  text-decoration: none; /* Sem sublinhado */
+  padding: 2px 5px; /* Ajusta o espaçamento interno dos itens */
+  // border: 1px solid black; /* Add a black border */
+}
+
+.dropdownItem:last-child {
+  margin-bottom: 0; /* Sem margem inferior para o último item */
+}
+
+.dropdownItem:hover {
+  background-color: white
+}
+
+.boldUnderlineDropdownItem {
+  font-size: 23px; /* Set the font size to match the design */
+  font-weight: bold; /* Make the text bold */
+  text-align: left; /* Center the text if needed */
+  text-underline-offset: 10px; /* Adjust the space between the text and the underline */
+  text-decoration: underline
 }

@@ -10,7 +10,7 @@ export const SizePicker = ({ sizes}) => {
 
   return (
     <div>
-      <label className={classes.sizeLabel}>Size </label>
+      <label className={classes.sizeLabel}>Tamanho </label>
       <div className={classes.sizeOptions}>
         {sizes.map((size) => (
           <button
