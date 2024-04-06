@@ -237,11 +237,11 @@
 }
 /* Aplicando estilos de seleção personalizados para temas claro e escuro */
 [data-theme="light"] ::selection {
-  background-color: #e2e6e7; /* Cor de fundo clara para seleção */
+  background-color: #fafafa; /* Cor de fundo clara para seleção */
   color: black; /* Cor de texto branca */
 }
 
 [data-theme="dark"] ::selection {
-  background-color: #e2e6e7; /* Cor de fundo clara para seleção */
+  background-color: #fafafa; /* Cor de fundo clara para seleção */
   color: black; /* Cor de texto branca */
 }
