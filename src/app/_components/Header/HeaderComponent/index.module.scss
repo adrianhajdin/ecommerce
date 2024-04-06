@@ -20,7 +20,7 @@
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
   top: 60px; /* Ajuste conforme necessário para baixar os ícones de navegação */
   left: 30%; /* Alinha os ícones à direita */
-  font-size: 30px; /* Aumenta o tamanho da fonte */
+  font-size: 32px; /* Aumenta o tamanho da fonte */
   font-weight: normal;
 }
 
@@ -75,9 +75,9 @@
   z-index: 1000; /* Garante que fique acima de outros conteúdos */
   position: fixed; /* Fixa o menu na tela */
   padding-top: 30px;
-  left: 60px; /* Inicia próximo, mas não exatamente na borda esquerda */
+  left: 45px; /* Inicia próximo, mas não exatamente na borda esquerda */
   right: 60px; /* Inicia próximo, mas não exatamente na borda esquerda */
-  width: calc(100vw - 60px); /* Ajusta a largura para compensar o espaço à esquerda */
+  width: calc(100vw - 45px); /* Ajusta a largura para compensar o espaço à esquerda */
   // border-bottom: 0.01px ; /* Borda inferior sutil */
 }
 
