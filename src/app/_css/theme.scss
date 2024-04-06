@@ -94,7 +94,7 @@
 
   --highlight-danger-bg-color: var(--theme-error-150);
   --highlight-danger-text-color: var(--theme-text);
-
+  user-select: auto;
   h1 a,
   h2 a,
   h3 a,
@@ -213,7 +213,7 @@
 
   --highlight-danger-bg-color: var(--theme-error-100);
   --highlight-danger-text-color: var(--theme-error-550);
-
+  user-select: auto;
   h1 a,
   h2 a,
   h3 a,
@@ -234,4 +234,14 @@
       }
     }
   }
+}
+/* Aplicando estilos de seleção personalizados para temas claro e escuro */
+[data-theme="light"] ::selection {
+  background-color: #fafafa; /* Cor de fundo clara para seleção */
+  color: black; /* Cor de texto branca */
+}
+
+[data-theme="dark"] ::selection {
+  background-color: #fafafa; /* Cor de fundo clara para seleção */
+  color: black; /* Cor de texto branca */
 }

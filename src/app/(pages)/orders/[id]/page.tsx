@@ -130,4 +130,4 @@ export default async function Order({ params: { id } }) {
   )
 }
 
-export async function generateMetadata({ params: { id } }): Promise<Metadata> {
+export async function generateMetadata({ params: { id } }): Promise<Metadata> 
