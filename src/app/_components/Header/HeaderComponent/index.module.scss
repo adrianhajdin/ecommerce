@@ -117,3 +117,15 @@
   text-underline-offset: 10px; /* Adjust the space between the text and the underline */
   text-decoration: underline
 }
+
+/* Sobrescreve qualquer configuração de transparência/foco nos links do cabeçalho */
+.headerButtons a:active, .headerButtons a:focus,
+.headerSocialIcons a:active, .headerSocialIcons a:focus,
+.headerIcons a:active, .headerIcons a:focus,
+.iconLink:active, .iconLink:focus,
+.buttonLink:active, .buttonLink:focus,
+.dropdownItem:active, .dropdownItem:focus {
+  background-color: inherit; /* Usa a cor de fundo do elemento pai */
+  opacity: 1; /* Define a opacidade para 1, evitando transparência */
+  outline: none; /* Remove qualquer contorno que possa aparecer ao focar */
+}
