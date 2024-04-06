@@ -16,11 +16,11 @@
 
 .headerButtons {
   display: flex;
-  gap: 50px;
+  gap: 70px;
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
   top: 60px; /* Ajuste conforme necessário para baixar os ícones de navegação */
   left: 30%; /* Alinha os ícones à direita */
-  font-size: 36px; /* Aumenta o tamanho da fonte */
+  font-size: 32px; /* Aumenta o tamanho da fonte */
   font-weight: normal;
 }
 
@@ -30,26 +30,22 @@
   align-items: flex-start; /* Alinha os ícones ao topo */
   width: 100%; /* Asume toda a largura disponível */
   position: relative; /* Para posicionamento absoluto dos ícones de navegação */
-  // width: 100px; // Novo tamanho do ícone
-  // height: 100px; // Novo tamanho do ícone
 }
 
 .headerSocialIcons {
   display: flex;
   gap: 20px; /* Distância entre os ícones */
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
-  top: 30px; /* Ajuste conforme necessário para baixar os ícones de navegação */
-  left: 92.5%; /* Alinha os ícones à direita */
-  // width: 100px; // Novo tamanho do ícone
-  // height: 100px; // Novo tamanho do ícone
+  top: 39px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  left: 89.3%; /* Alinha os ícones à direita */
 }
 
 .headerIcons {
   display: flex;
   gap: 25px; /* Distância entre os ícones */
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
-  top: 65px; /* Ajuste conforme necessário para baixar os ícones de navegação */
-  left: 91.5%; /* Alinha os ícones à direita */
+  top: 69px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+  left: 87.7%; /* Alinha os ícones à direita */
   right: 0; /* Alinha os ícones à direita */
   width: 500px; // Novo tamanho do ícone
   height: 500px; // Novo tamanho do ícone
@@ -74,14 +70,15 @@
 }
 
 .dropdownMenuVertical {
-  display: flex; /* Use flexbox to layout children horizontally */
-  background-color: white; /* White background */
-  z-index: 1000; /* Ensure it stacks above other content */
-  position: fixed; /* Fix the menu to the screen */
-  padding-top: 50px;
-  left: 0; /* Align to the left edge of the screen */
-  width: 100vw; /* Set the desired width of the menu */
-  border-bottom: 0.01px inset  black; 
+  display: flex; /* Use flexbox para organizar os filhos horizontalmente */
+  background-color: white; /* Cor de fundo branca */
+  z-index: 1000; /* Garante que fique acima de outros conteúdos */
+  position: fixed; /* Fixa o menu na tela */
+  padding-top: 30px;
+  left: 45px; /* Inicia próximo, mas não exatamente na borda esquerda */
+  right: 60px; /* Inicia próximo, mas não exatamente na borda esquerda */
+  width: calc(100vw - 45px); /* Ajusta a largura para compensar o espaço à esquerda */
+  // border-bottom: 0.01px ; /* Borda inferior sutil */
 }
 
 .dropdownColumn {
@@ -97,15 +94,12 @@
 }
 
 .dropdownItem {
-  padding: 5px 0; /* Espaçamento vertical para cada item */
-  margin-bottom: 1px; /* Reduz o espaço entre os itens */
   text-align: left; /* Center the text if needed */
   font-weight: normal; /* Peso da fonte normal */
-  font-size: 20px; /* Tamanho da fonte */
+  font-size: 15px; /* Tamanho da fonte */
   color: #333; /* Cor do texto */
   text-decoration: none; /* Sem sublinhado */
-  padding: 2px 5px; /* Ajusta o espaçamento interno dos itens */
-  // border: 1px solid black; /* Add a black border */
+  margin-bottom: 5px; /* Mantém o mesmo espaço vertical entre os itens */
 }
 
 .dropdownItem:last-child {
@@ -117,9 +111,21 @@
 }
 
 .boldUnderlineDropdownItem {
-  font-size: 23px; /* Set the font size to match the design */
+  font-size: 18px; /* Set the font size to match the design */
   font-weight: bold; /* Make the text bold */
   text-align: left; /* Center the text if needed */
   text-underline-offset: 10px; /* Adjust the space between the text and the underline */
   text-decoration: underline
+}
+
+/* Sobrescreve qualquer configuração de transparência/foco nos links do cabeçalho */
+.headerButtons a:active, .headerButtons a:focus,
+.headerSocialIcons a:active, .headerSocialIcons a:focus,
+.headerIcons a:active, .headerIcons a:focus,
+.iconLink:active, .iconLink:focus,
+.buttonLink:active, .buttonLink:focus,
+.dropdownItem:active, .dropdownItem:focus {
+  background-color: inherit; /* Usa a cor de fundo do elemento pai */
+  opacity: 1; /* Define a opacidade para 1, evitando transparência */
+  outline: none; /* Remove qualquer contorno que possa aparecer ao focar */
 }
