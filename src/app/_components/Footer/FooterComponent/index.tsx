@@ -40,9 +40,9 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
       <div className={classes.footer}>
         <Gutter>
           <div className={classes.wrap}>
-            <Link href="/">
+            {/* <Link href="/">
               <Image src="/minimo_1.jpeg" alt="TMínimo 1" width={300} height={300} />
-            </Link>
+            </Link> */}
 
             <p>{footer?.copyright}</p>
 
