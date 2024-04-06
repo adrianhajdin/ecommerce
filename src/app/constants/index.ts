@@ -1,24 +1,24 @@
 export const inclusions = [
-  {
-    title: 'Frete Grátis',
-    description: 'Frete grátis para pedidos acima de $150',
-    icon: '/assets/icons/shipping.svg',
-  },
-  {
-    title: 'Garantia de Dinheiro',
-    description: 'Dentro de 30 dias para uma troca',
-    icon: '/assets/icons/dollar.svg',
-  },
-  {
-    title: 'Suporte',
-    description: '24 horas por dia, 7 dias por semana',
-    icon: '/assets/icons/support.svg',
-  },
-  {
-    title: 'Pagamento Flexível',
-    description: 'Pague com vários cartões de crédito',
-    icon: '/assets/icons/payment.svg',
-  },
+  // {
+  //   title: 'Frete Grátis',
+  //   description: 'Frete grátis para pedidos acima de $150',
+  //   icon: '/assets/icons/shipping.svg',
+  // },
+  // {
+  //   title: 'Garantia de Dinheiro',
+  //   description: 'Dentro de 30 dias para uma troca',
+  //   icon: '/assets/icons/dollar.svg',
+  // },
+  // {
+  //   title: 'Suporte',
+  //   description: '24 horas por dia, 7 dias por semana',
+  //   icon: '/assets/icons/support.svg',
+  // },
+  // {
+  //   title: 'Pagamento Flexível',
+  //   description: 'Pague com vários cartões de crédito',
+  //   icon: '/assets/icons/payment.svg',
+  // },
 ]
 
 export const profileNavItems = [
