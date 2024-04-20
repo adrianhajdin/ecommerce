@@ -46,6 +46,8 @@ export default async function Page({ params: { slug = 'home' } }) {
     // console.error(error)
   }
 
+  console.log(page)
+
   // if no `home` page exists, render a static one using dummy content
   // you should delete this code once you have a home page in the CMS
   // this is really only useful for those who are demoing this template
@@ -64,7 +66,6 @@ export default async function Page({ params: { slug = 'home' } }) {
       {slug === 'home' ? (
         <section>
           <Hero {...hero} />
-
           <Gutter className={classes.home}>
             {/* <Categories categories={categories} /> */}
             {/* <Promotion /> */} 

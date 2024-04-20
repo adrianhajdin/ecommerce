@@ -11,19 +11,23 @@
 }
 
 .media {
-  width: calc(100% + var(--gutter-h));
-  left: calc(var(--gutter-h) / -2);
-  margin-top: calc(var(--base) * 3);
+  width: 100%;
   position: relative;
 
-  @include mid-break {
-    left: 0;
-    margin-top: var(--base);
-    margin-left: calc(var(--gutter-h) * -1);
-    width: calc(100% + var(--gutter-h) * 2);
+  img {
+    width: 100%;
+    display: block;
+    object-fit: cover; // Garante que a imagem cubra o espaço sem distorcer
+    object-position: center; // Centraliza a imagem em seu contêiner
+  }
+
+  // Media query para dispositivos móveis
+  @media (max-width: 600px) {
+    img {
+      height: 700px; // Define uma altura fixa para a imagem
+    }
   }
 }
-
 .links {
   list-style: none;
   margin: 0;

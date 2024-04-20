@@ -3,11 +3,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Dropdown from 'react-simple-dropdown';
 // import { HeaderNav } from '../Nav';
 import classes from './index.module.scss'// Garanta que o caminho está correto
 
-const HeaderComponent = ({ header }) => {
+import { Gutter } from '../../Gutter'
+
+export  const HeaderComponent = ({ header }) => {
   const [dropdownStates, setDropdownStates] = useState({
     peças: false,
     emAlta: false,
@@ -25,10 +26,6 @@ const HeaderComponent = ({ header }) => {
   return (
     <header className={classes.header}>
       {/* Use Link correctly without <a> */}
-      <Link href="/">
-        <Image src="/minimo_1.jpeg" alt="TMínimo 1" width={300} height={300} className={classes.logo} />
-      </Link>
-
       <div className={classes.headerButtons}>
         {/* New in */}
         <Link href="#" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
@@ -225,28 +222,8 @@ const HeaderComponent = ({ header }) => {
         </Link>
       </div>
 
-      <div className={classes.headerIcons}>
-        {/* Removed <a> within Link */}
-        <Link href="/products" className={classes.iconLink}>
-          <Image src="/search.png" alt="Search" width={100} height={100} layout="fixed"/>
-        </Link>
-        <Link href="/orders" className={classes.iconLink}>
-          <Image src="/user_profile.png" alt="Orders" width={100} height={100} layout="fixed" />
-        </Link>
-        <Link href="/cart" className={classes.iconLink}>
-          <Image src="/cart.png" alt="Cart" width={100} height={100} layout="fixed"/>
-        </Link>
-      </div>
-      <div className={classes.headerSocialIcons}>
-        <a href="https://www.instagram.com" className={classes.iconLink} target="_blank" rel="noopener noreferrer">
-          <Image src="/instagram.png" alt="Instagram" width={500} height={500} layout="fixed"/>
-        </a>
-        <a href="https://www.tiktok.com" className={classes.iconLink} target="_blank" rel="noopener noreferrer">
-          <Image src="/tiktok.png" alt="TikTok" width={500} height={500} layout="fixed"/>
-        </a>
-      </div>
+
     </header>
+    
   );
 };
-
-export default HeaderComponent;

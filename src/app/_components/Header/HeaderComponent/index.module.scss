@@ -1,27 +1,11 @@
-/* HeaderComponent.module.scss */
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Alinha os itens à esquerda */
-  justify-content: space-between; /* Espaço entre o topo e o fundo do cabeçalho */
-  padding: 20px;
-  height: 200px; /* Ajuste a altura conforme necessário */
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 24px;
-  align-self: flex-start; /* Alinha o logo à esquerda */
-}
 
 .headerButtons {
   display: flex;
   gap: 70px;
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
-  top: 60px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+ 
   left: 30%; /* Alinha os ícones à direita */
-  font-size: 32px; /* Aumenta o tamanho da fonte */
-  font-weight: normal;
+
 }
 
 .iconsContainer {
@@ -128,4 +112,7 @@
   background-color: inherit; /* Usa a cor de fundo do elemento pai */
   opacity: 1; /* Define a opacidade para 1, evitando transparência */
   outline: none; /* Remove qualquer contorno que possa aparecer ao focar */
+}
+.blockContainer {
+  position: relative;
 }
