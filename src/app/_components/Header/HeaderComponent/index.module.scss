@@ -59,17 +59,18 @@
   z-index: 1000; /* Garante que fique acima de outros conteúdos */
   position: fixed; /* Fixa o menu na tela */
   padding-top: 30px;
-  left: 45px; /* Inicia próximo, mas não exatamente na borda esquerda */
-  right: 60px; /* Inicia próximo, mas não exatamente na borda esquerda */
-  width: calc(100vw - 45px); /* Ajusta a largura para compensar o espaço à esquerda */
+  left: 0px; /* Inicia próximo, mas não exatamente na borda esquerda */
+  right: 0px; /* Inicia próximo, mas não exatamente na borda esquerda */
+  width: 100%; /* Ajusta a largura para compensar o espaço à esquerda */
   // border-bottom: 0.01px ; /* Borda inferior sutil */
 }
 
 .dropdownColumn {
   display: flex;
   flex-direction: column;
-  min-width: 290px; /* Ajuste conforme necessário para melhor ajuste dos itens */
-  flex: 0 0 auto; /* Isso evitará que as colunas cresçam além do necessário */
+  align-items: flex-start; /* Alinha os itens à esquerda, você pode mudar para 'center' se necessário */
+  padding-left: 4%; /* Ajuste o preenchimento à esquerda conforme necessário para mover o texto para a direita */
+  /* Outros estilos permanecem */
 }
 
 .dropdownColumn:last-child {
