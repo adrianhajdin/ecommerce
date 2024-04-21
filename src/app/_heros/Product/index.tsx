@@ -4,7 +4,6 @@ import { Category, Product } from '../../../payload/payload-types'
 import { AddToCartButton } from '../../_components/AddToCartButton'
 import { ColorSelectButton } from '../../_components/ColorSelectButton'
 import { SizePicker } from '../../_components/SizePicker'
-import { SocialShare } from '../../_components/SocialShare'
 import { FavButton } from '../../_components/FavButton'
 import { FreightCalculator } from '../../_components/FreightCalculator'
 
@@ -14,6 +13,7 @@ import { Media } from '../../_components/Media'
 import { Price } from '../../_components/Price'
 
 import classes from './index.module.scss'
+
 
 export const ProductHero: React.FC<{
   product: Product

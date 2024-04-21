@@ -66,11 +66,10 @@
 }
 
 .dropdownColumn {
-  display: flex; /* Display children in a flex layout */
-  flex-direction: column; /* Stack items vertically */
-  min-width: 190px; /* Minimum width for each column, adjust as needed */
-  /* Added property */
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 290px; /* Ajuste conforme necessário para melhor ajuste dos itens */
+  flex: 0 0 auto; /* Isso evitará que as colunas cresçam além do necessário */
 }
 
 .dropdownColumn:last-child {

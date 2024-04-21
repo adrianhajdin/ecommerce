@@ -9,10 +9,14 @@ export const PRODUCT_CATEGORIES = `categories {
 
 export const CATEGORIES = `
   query Categories {
-    Categories(limit: 300) {
+    Categories(limit: 100) {
       docs {
         id
         title
+        parent{
+          id
+          title
+        }
         media {
           alt
           width

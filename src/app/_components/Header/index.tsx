@@ -13,8 +13,21 @@ import { HeaderComponent } from './HeaderComponent'
 
 import classes from './index.module.scss'
 
+import { fetchDocs } from '../../_api/fetchDocs'
+import { Category } from '../../../payload/payload-types'
+
 export async function Header() {
   let header: Header | null = null
+  let categories: Category[] | null = null
+
+  try {
+    categories = await fetchDocs<Category>('categories')
+
+    // console.log(categories)
+  
+  } catch (error) {
+    console.log(error)
+  }
 
   try {
     header = await fetchHeader()
@@ -41,7 +54,7 @@ export async function Header() {
               src="/minimo_1_small.jpeg"
             />
           </Link>
-          <HeaderComponent  header={header}/>
+          <HeaderComponent categories={categories}/>
           <HeaderNav header={header} />
         </Gutter>
       </header>
