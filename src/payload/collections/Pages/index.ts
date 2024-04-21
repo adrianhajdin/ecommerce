@@ -37,7 +37,7 @@ export const Pages: CollectionConfig = {
   },
   fields: [
     {
-      name: 'titulo',
+      name: 'title',
       type: 'text',
       required: true,
     },
