@@ -8,12 +8,17 @@ dotenv.config({
 })
 
 import express from 'express'
+import calculateFreightRouter from './payload/endpoints/melhor_envio';
 import payload from 'payload'
 
 import { seed } from './payload/seed'
 
 const app = express()
 const PORT = process.env.PORT || 3000
+
+
+app.use(express.json());
+app.use('/api', calculateFreightRouter);
 
 const start = async (): Promise<void> => {
   await payload.init({

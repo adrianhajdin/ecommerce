@@ -7,6 +7,7 @@ const policies = {
     'https://checkout.stripe.com',
     'https://js.stripe.com',
     'https://maps.googleapis.com',
+    'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate'
   ],
   'child-src': ["'self'"],
   'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
@@ -23,6 +24,7 @@ const policies = {
     'https://checkout.stripe.com',
     'https://api.stripe.com',
     'https://maps.googleapis.com',
+    'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate'
   ],
 }
 

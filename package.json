@@ -44,7 +44,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.1",
     "react-router-dom": "5.3.4",
-    "stripe": "^10.2.0"
+    "stripe": "^10.2.0",
+    "axios": "1.6.8"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.1.6",
@@ -74,5 +75,6 @@
   },
   "resolutions": {
     "jackspeak": "2.1.1"
-  }
+  },
+  "proxy": "https://sandbox.melhorenvio.com.br"
 }

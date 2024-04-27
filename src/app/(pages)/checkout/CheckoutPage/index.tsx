@@ -66,7 +66,7 @@ export const CheckoutPage: React.FC<{
             setClientSecret(res.client_secret)
           }
         } catch (e) {
-          setError('Something went wrong.')
+          setError('Algo deu errado, tente novamente.')
         }
       }
 

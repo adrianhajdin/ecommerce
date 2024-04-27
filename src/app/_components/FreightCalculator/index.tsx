@@ -1,18 +1,47 @@
 'use client'
 
 import React, { useState } from 'react';
-import classes from './index.module.scss';
+import axios from 'axios';
+import classes from './index.module.scss'; // Verifique o caminho para o seu arquivo CSS
 
 export const FreightCalculator = () => {
   const [cep, setCep] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [freightInfo, setFreightInfo] = useState(null);
+  const [error, setError] = useState('');
 
   const handleCepChange = (event) => {
     setCep(event.target.value);
   };
 
-  const calculateFreight = () => {
-    // Aqui você poderia chamar uma API para calcular o frete com base no CEP
-    console.log('Calculando frete para o CEP:', cep);
+  const calculateFreight = async () => {
+    if (cep.length !== 8) {
+      setError('O CEP deve conter 8 dígitos.');
+      return;
+    }
+    
+    setLoading(true);
+    setError('');
+    setFreightInfo(null);
+
+    try {
+      const response = await axios.post('/api/calculate-freight', { cep });
+      const firstOption = response.data[0]; // A resposta é assumida como um array
+
+      // Formata as informações desejadas
+      const formattedFreightInfo = {
+        price: `R$ ${firstOption.custom_price || firstOption.price}`,
+        deliveryTime: `${firstOption.delivery_time} dias`,
+        carrier: firstOption.name
+      };
+
+      setFreightInfo(formattedFreightInfo);
+    } catch (err) {
+      console.error('Erro ao calcular o frete:', err);
+      setError('Falha ao calcular o frete. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -27,14 +56,30 @@ export const FreightCalculator = () => {
           onChange={handleCepChange}
           className={classes.cepInput}
         />
-        <button onClick={calculateFreight} className={classes.okButton}>
-          OK
+        <button 
+          onClick={calculateFreight} 
+          className={classes.okButton} 
+          disabled={loading}
+        >
+          {loading ? 'Calculando...' : 'OK'}
         </button>
       </div>
-      <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" className={classes.forgotCep}>
+      {freightInfo && (
+        <div className={classes.result}>
+          <p>Transportadora: {freightInfo.carrier}</p>
+          <p>Preço: {freightInfo.price}</p>
+          <p>Prazo de entrega: {freightInfo.deliveryTime}</p>
+        </div>
+      )}
+      {error && <div className={classes.error}>{error}</div>}
+      <a 
+        href="http://www.buscacep.correios.com.br/sistemas/buscacep/" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className={classes.forgotCep}
+      >
         Não sei meu CEP
       </a>
     </div>
   );
 };
-
