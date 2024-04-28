@@ -45,52 +45,8 @@ export  const  HeaderComponent = ({ categories}) => {
       {/* Use Link correctly without <a> */}
       <div className={classes.headerButtons}>
         {/* New in */}
-        <Link href="#" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
+        <Link href="/products" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
           <span>New in</span>
-          {dropdownStates.newIn && (
-            <div className={classes.dropdownMenuVertical}>
-            <div className={classes.dropdownColumn}>
-              {/* All dropdown items except the last one */}
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PARTES DE CIMA</Link>
-              <Link href="/products" className={classes.dropdownItem}>BLUSAS | COLETES</Link>
-              <Link href="/products" className={classes.dropdownItem}>BODY</Link>
-              <Link href="/products" className={classes.dropdownItem}>CAMISAS</Link>
-              <Link href="/products" className={classes.dropdownItem}>BLAZES | CASACOS | JAQUETAS</Link>
-              <Link href="/products" className={classes.dropdownItem}>CROPPED</Link>
-              <Link href="/products" className={classes.dropdownItem}>T-SHIRT</Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-            <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PARTES DE BAIXO </Link>
-              <Link href="/products" className={classes.dropdownItem}> CALÇAS </Link>
-              <Link href="/products" className={classes.dropdownItem}> SAIAS </Link>
-              <Link href="/products" className={classes.dropdownItem}> SHORTS </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-             <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PEÇAS ÚNICAS</Link>
-              <Link href="/products" className={classes.dropdownItem}> VESTIDOS </Link>
-              <Link href="/products" className={classes.dropdownItem}> MACACÃO </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>LINGERIE</Link>
-              <Link href="/products" className={classes.dropdownItem}> TOPS </Link>
-              <Link href="/products" className={classes.dropdownItem}> CALCINHAS </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>ACESSÓRIOS</Link>
-              <Link href="/products" className={classes.dropdownItem}> CINTOS </Link>
-              <Link href="/products" className={classes.dropdownItem}> CASA </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>LINHAS | TECIDO </Link>
-              <Link href="/products" className={classes.dropdownItem}> ALFAIATARIA </Link>
-              <Link href="/products" className={classes.dropdownItem}> CASHMERE </Link>
-              <Link href="/products" className={classes.dropdownItem}>COURO</Link>
-              <Link href="/products" className={classes.dropdownItem}>JEANS</Link>
-              <Link href="/products" className={classes.dropdownItem}>SEDA</Link>
-              <Link href="/products" className={classes.dropdownItem}>TRICOT</Link>
-            </div>
-          </div>
-          )}
         </Link>
 
         {/* Peças */}
@@ -110,100 +66,12 @@ export  const  HeaderComponent = ({ categories}) => {
       )}
       </Link>
         {/* Em Alta */}
-        <Link href="#" onMouseEnter={() => toggleDropdown('emAlta')} onMouseLeave={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
+        <Link href="/products" onMouseEnter={() => toggleDropdown('emAlta')} onMouseLeave={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
           <span>Em Alta</span>
-          {dropdownStates.emAlta && (
-            <div className={classes.dropdownMenuVertical}>
-            <div className={classes.dropdownColumn}>
-              {/* All dropdown items except the last one */}
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PARTES DE CIMA</Link>
-              <Link href="/products" className={classes.dropdownItem}>BLUSAS | COLETES</Link>
-              <Link href="/products" className={classes.dropdownItem}>BODY</Link>
-              <Link href="/products" className={classes.dropdownItem}>CAMISAS</Link>
-              <Link href="/products" className={classes.dropdownItem}>BLAZES | CASACOS | JAQUETAS</Link>
-              <Link href="/products" className={classes.dropdownItem}>CROPPED</Link>
-              <Link href="/products" className={classes.dropdownItem}>T-SHIRT</Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PARTES DE BAIXO </Link>
-              <Link href="/products" className={classes.dropdownItem}> CALÇAS </Link>
-              <Link href="/products" className={classes.dropdownItem}> SAIAS </Link>
-              <Link href="/products" className={classes.dropdownItem}> SHORTS </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-             <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PEÇAS ÚNICAS</Link>
-              <Link href="/products" className={classes.dropdownItem}> VESTIDOS </Link>
-              <Link href="/products" className={classes.dropdownItem}> MACACÃO </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>LINGERIE</Link>
-              <Link href="/products" className={classes.dropdownItem}> TOPS </Link>
-              <Link href="/products" className={classes.dropdownItem}> CALCINHAS </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>ACESSÓRIOS</Link>
-              <Link href="/products" className={classes.dropdownItem}> CINTOS </Link>
-              <Link href="/products" className={classes.dropdownItem}> CASA </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>LINHAS | TECIDO </Link>
-              <Link href="/products" className={classes.dropdownItem}> ALFAIATARIA </Link>
-              <Link href="/products" className={classes.dropdownItem}> CASHMERE </Link>
-              <Link href="/products" className={classes.dropdownItem}>COURO</Link>
-              <Link href="/products" className={classes.dropdownItem}>JEANS</Link>
-              <Link href="/products" className={classes.dropdownItem}>SEDA</Link>
-              <Link href="/products" className={classes.dropdownItem}>TRICOT</Link>
-            </div>
-          </div>
-          )}
         </Link>
         {/* Sale */}
-        <Link href="#" onMouseEnter={() => toggleDropdown('sale')} onMouseLeave={() => toggleDropdown('sale')} className={classes.buttonLink}>
+        <Link href="/products" onMouseEnter={() => toggleDropdown('sale')} onMouseLeave={() => toggleDropdown('sale')} className={classes.buttonLink}>
           <span>Sale</span>
-          {dropdownStates.sale && (
-           <div className={classes.dropdownMenuVertical}>
-           <div className={classes.dropdownColumn}>
-             {/* All dropdown items except the last one */}
-             <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PARTES DE CIMA</Link>
-             <Link href="/products" className={classes.dropdownItem}>BLUSAS | COLETES</Link>
-             <Link href="/products" className={classes.dropdownItem}>BODY</Link>
-             <Link href="/products" className={classes.dropdownItem}>CAMISAS</Link>
-             <Link href="/products" className={classes.dropdownItem}>BLAZES | CASACOS | JAQUETAS</Link>
-             <Link href="/products" className={classes.dropdownItem}>CROPPED</Link>
-             <Link href="/products" className={classes.dropdownItem}>T-SHIRT</Link>
-           </div>
-           <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PARTES DE BAIXO </Link>
-              <Link href="/products" className={classes.dropdownItem}> CALÇAS </Link>
-              <Link href="/products" className={classes.dropdownItem}> SAIAS </Link>
-              <Link href="/products" className={classes.dropdownItem}> SHORTS </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-             <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>PEÇAS ÚNICAS</Link>
-              <Link href="/products" className={classes.dropdownItem}> VESTIDOS </Link>
-              <Link href="/products" className={classes.dropdownItem}> MACACÃO </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>LINGERIE</Link>
-              <Link href="/products" className={classes.dropdownItem}> TOPS </Link>
-              <Link href="/products" className={classes.dropdownItem}> CALCINHAS </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>ACESSÓRIOS</Link>
-              <Link href="/products" className={classes.dropdownItem}> CINTOS </Link>
-              <Link href="/products" className={classes.dropdownItem}> CASA </Link>
-            </div>
-            <div className={classes.dropdownColumn}>
-              <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>LINHAS | TECIDO </Link>
-              <Link href="/products" className={classes.dropdownItem}> ALFAIATARIA </Link>
-              <Link href="/products" className={classes.dropdownItem}> CASHMERE </Link>
-              <Link href="/products" className={classes.dropdownItem}>COURO</Link>
-              <Link href="/products" className={classes.dropdownItem}>JEANS</Link>
-              <Link href="/products" className={classes.dropdownItem}>SEDA</Link>
-              <Link href="/products" className={classes.dropdownItem}>TRICOT</Link>
-           </div>
-         </div>
-         )}
         </Link>
       </div>
 

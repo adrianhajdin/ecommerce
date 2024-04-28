@@ -13,6 +13,7 @@ export const CATEGORIES = `
       docs {
         id
         title
+        slug
         parent{
           id
           title
