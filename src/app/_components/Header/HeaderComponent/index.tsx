@@ -5,6 +5,10 @@ import Image from 'next/image';
 // import { HeaderNav } from '../Nav';
 import classes from './index.module.scss'// Garanta que o caminho está correto
 
+const handleNavigation = (url) => {
+  window.location.href = url;
+};
+
 
 const organizeCategories = (categories) => {
   const catMap = {};
@@ -58,7 +62,12 @@ export  const  HeaderComponent = ({ categories}) => {
             <div key={index} className={classes.dropdownColumn}>
               <Link href="/products" className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>{category.toUpperCase()}</Link>
               {items.map((item) => (
-                <Link key={item.id} href={`/products/${item.id}`} className={classes.dropdownItem}>{item.title.toUpperCase()}</Link>
+        <Link key={item.id} href={`/products/${item.slug}`} className={classes.dropdownItem} onClick={(e) => {
+            e.preventDefault();
+            handleNavigation(`/products/${item.slug}`);
+        }}>
+            {item.title.toUpperCase()}
+        </Link>
               ))}
             </div>
           ))}
