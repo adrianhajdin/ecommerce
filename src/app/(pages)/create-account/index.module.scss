@@ -1,13 +1,14 @@
 @import '../../_css/common';
 
 .createAccount {
-  display: grid;
-  grid-template-columns: 1fr 45%;
-  height: 100vh;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Isso vai garantir que o formulário ocupe toda a altura da tela
+  padding: 0 20px; // Isso adiciona um pouco de espaço dos lados para não ficar muito justo nas bordas
 
   @include mid-break {
-    grid-template-columns: 1fr;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -19,73 +20,24 @@
   }
 }
 
-.formTitle {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-
-  h3 {
-    margin: 0;
-
-    @include mid-break {
-      font-size: 34px;
-      margin-bottom: 8px;
-    }
-  }
-
-  .handImg {
-    height: 24px;
-  }
-}
-
-.heroImg {
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url('/assets/images/image-2.svg');
-
-  @include mid-break {
-    background: none;
-    display: flex;
-    justify-content: center;
-  }
-}
-
-.logo {
-  margin: 60px;
-  width: 30%;
-  min-width: 150px;
-  z-index: 10;
-
-  @include mid-break {
-    width: 45%;
-    margin: 10px;
-  }
-}
-
 .formWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
- 
-
-  @include mid-break {
-    justify-content: flex-start;
-    padding: 10px;
-  }
+  max-width: 400px; // Você pode ajustar esta largura para que seja mais próximo do que você precisa
+  margin: auto; // Isso garante que o wrapper esteja centralizado horizontalmente
 }
 
 .formContainer {
-  max-width: 600px;
   width: 100%;
-  padding: 50px;
+  padding: 1rem; // Reduzimos o padding para tornar o formulário mais compacto
   border-radius: 10px;
+  margin: auto;
+  background: white; // Se você quiser um fundo branco para o formulário
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Uma leve sombra para dar destaque
+  // Outros estilos como backdrop-filter podem ser adicionados aqui se necessário
 
   @include mid-break {
     backdrop-filter: blur(30px);
@@ -94,7 +46,7 @@
   }
 
   @include small-break {
-    padding: 30px ;
+    padding: 1rem;
   }
 }
 
