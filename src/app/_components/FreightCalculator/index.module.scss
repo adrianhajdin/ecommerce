@@ -2,26 +2,29 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
+  width: 100%; // Garante que o container principal use toda a largura disponível
 }
 
 .label {
   font-weight: bold;
   margin-bottom: 8px;
+  width: 100%; 
+  text-align: left;
+  white-space: nowrap; // Impede quebra de texto para o rótulo
 }
 
 .inputGroup {
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: 8px; // Espaço entre o inputGroup e o link abaixo
 }
 
 .cepInput {
-  flex-grow: 1;
+  flex-grow: 1; // Garante que o input expanda para preencher o espaço
   border: 1px solid #ccc;
   padding: 8px;
   margin-right: 8px; // Espaço entre o input e o botão
+  min-width: 300px; // Define uma largura mínima para garantir consistência visual
 }
 
 .okButton {
@@ -30,6 +33,15 @@
   color: #fff;
   border: none;
   cursor: pointer;
+  white-space: nowrap; // Evita que o texto do botão quebre
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; // Garante que o container de resultado use toda a largura
+  white-space: nowrap; // Impede que o texto do resultado quebre
 }
 
 .forgotCep {
@@ -40,4 +52,5 @@
   &:hover {
     text-decoration: underline;
   }
+  white-space: nowrap; // Impede quebra de texto para o rótulo
 }

@@ -4,6 +4,7 @@ import { Media } from '../../../_components/Media'
 import { Price } from '../../../_components/Price'
 
 import classes from './index.module.scss'
+import { FreightCalculator } from '../../../_components/FreightCalculator'
 
 export const CheckoutItem = ({ product, title, metaImage, quantity, index }) => {
   return (
@@ -25,6 +26,10 @@ export const CheckoutItem = ({ product, title, metaImage, quantity, index }) => 
 
       <div className={classes.subtotal}>
         <Price product={product} button={false} quantity={quantity} />
+      </div>
+            {/* Nova div adicionada para incluir o FreightCalculator */}
+            <div className={classes.freightCalculatorContainer}>
+        <FreightCalculator />
       </div>
     </li>
   )
