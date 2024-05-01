@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import { useEffect } from 'react'
+
 import { Category } from '../../../../payload/payload-types'
 import { Checkbox } from '../../../_components/Checkbox'
 import { HR } from '../../../_components/HR'
@@ -10,20 +12,33 @@ import { useFilter } from '../../../_providers/Filter'
 
 import classes from './index.module.scss'
 
-const Filters = ({ categories }: { categories: Category[] }) => {
+const Filters = ({ categories, preselectedCategory=null }: { categories: Category[], preselectedCategory:string }) => {
   const { categoryFilters, sort, setCategoryFilters, setSort } = useFilter()
+
+  if (preselectedCategory && !categoryFilters.includes(preselectedCategory) && categoryFilters.length === 0){
+    categoryFilters.push(preselectedCategory)
+  }
 
   const handleCategories = (categoryId: string) => {
     if (categoryFilters.includes(categoryId)) {
       const updatedCategories = categoryFilters.filter(id => id !== categoryId)
 
       setCategoryFilters(updatedCategories)
+
     } else {
       setCategoryFilters([...categoryFilters, categoryId])
     }
   }
 
   const handleSort = (value: string) => setSort(value)
+
+  // // Adiciona efeito para pré-selecionar a categoria
+  // useEffect(() => {
+  //   if (preselectedCategory && !categoryFilters.includes(preselectedCategory)) {
+  //     setCategoryFilters([preselectedCategory])
+  //   }
+  // }, [preselectedCategory, categoryFilters, setCategoryFilters])
+
 
   return (
     <div className={classes.filters}>

@@ -185,6 +185,7 @@ export interface Category {
   }[];
   updatedAt: string;
   createdAt: string;
+  slug: string;
 }
 export interface Product {
   id: string;

@@ -75,15 +75,10 @@ const CreateAccountForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-      <p>
-        {`This is where new customers can signup and create a new account. To manage all users, `}
-        <Link href="/admin/collections/users">login to the admin dashboard</Link>
-        {'.'}
-      </p>
       <Message error={error} className={classes.message} />
       <Input
         name="email"
-        label="Email Address"
+        label="E-mail"
         required
         register={register}
         error={errors.email}
@@ -91,7 +86,7 @@ const CreateAccountForm: React.FC = () => {
       />
       <Input
         name="name"
-        label="Full name"
+        label="Nome Completo"
         required
         register={register}
         error={errors.name}
@@ -100,7 +95,7 @@ const CreateAccountForm: React.FC = () => {
       <Input
         name="password"
         type="password"
-        label="Password"
+        label="Senha"
         required
         register={register}
         error={errors.password}
@@ -108,7 +103,7 @@ const CreateAccountForm: React.FC = () => {
       <Input
         name="passwordConfirm"
         type="password"
-        label="Confirm Password"
+        label="Confirme sua senha"
         required
         register={register}
         validate={value => value === password.current || 'The passwords do not match'}
@@ -116,14 +111,14 @@ const CreateAccountForm: React.FC = () => {
       />
       <Button
         type="submit"
-        label={loading ? 'Processing' : 'Sign up'}
+        label={loading ? 'Processando' : 'Criar conta'}
         disabled={loading}
         appearance="primary"
         className={classes.submit}
       />
       <div>
-        {'Already have an account? '}
-        <Link href={`/login${allParams}`}>Login</Link>
+        {'Já tem uma conta? '}
+        <Link href={`/login${allParams}`}>Faça Login</Link>
       </div>
     </form>
   )

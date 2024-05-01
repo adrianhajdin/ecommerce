@@ -1,27 +1,11 @@
-/* HeaderComponent.module.scss */
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Alinha os itens à esquerda */
-  justify-content: space-between; /* Espaço entre o topo e o fundo do cabeçalho */
-  padding: 20px;
-  height: 200px; /* Ajuste a altura conforme necessário */
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 24px;
-  align-self: flex-start; /* Alinha o logo à esquerda */
-}
 
 .headerButtons {
   display: flex;
   gap: 70px;
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
-  top: 60px; /* Ajuste conforme necessário para baixar os ícones de navegação */
+ 
   left: 30%; /* Alinha os ícones à direita */
-  font-size: 32px; /* Aumenta o tamanho da fonte */
-  font-weight: normal;
+
 }
 
 .iconsContainer {
@@ -75,18 +59,18 @@
   z-index: 1000; /* Garante que fique acima de outros conteúdos */
   position: fixed; /* Fixa o menu na tela */
   padding-top: 30px;
-  left: 45px; /* Inicia próximo, mas não exatamente na borda esquerda */
-  right: 60px; /* Inicia próximo, mas não exatamente na borda esquerda */
-  width: calc(100vw - 45px); /* Ajusta a largura para compensar o espaço à esquerda */
+  left: 0px; /* Inicia próximo, mas não exatamente na borda esquerda */
+  right: 0px; /* Inicia próximo, mas não exatamente na borda esquerda */
+  width: 100%; /* Ajusta a largura para compensar o espaço à esquerda */
   // border-bottom: 0.01px ; /* Borda inferior sutil */
 }
 
 .dropdownColumn {
-  display: flex; /* Display children in a flex layout */
-  flex-direction: column; /* Stack items vertically */
-  min-width: 190px; /* Minimum width for each column, adjust as needed */
-  /* Added property */
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os itens à esquerda, você pode mudar para 'center' se necessário */
+  padding-left: 4%; /* Ajuste o preenchimento à esquerda conforme necessário para mover o texto para a direita */
+  /* Outros estilos permanecem */
 }
 
 .dropdownColumn:last-child {
@@ -128,4 +112,7 @@
   background-color: inherit; /* Usa a cor de fundo do elemento pai */
   opacity: 1; /* Define a opacidade para 1, evitando transparência */
   outline: none; /* Remove qualquer contorno que possa aparecer ao focar */
+}
+.blockContainer {
+  position: relative;
 }
