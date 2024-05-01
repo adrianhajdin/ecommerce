@@ -27,10 +27,6 @@ export const CheckoutItem = ({ product, title, metaImage, quantity, index }) => 
       <div className={classes.subtotal}>
         <Price product={product} button={false} quantity={quantity} />
       </div>
-            {/* Nova div adicionada para incluir o FreightCalculator */}
-            <div className={classes.freightCalculatorContainer}>
-        <FreightCalculator />
-      </div>
     </li>
   )
 }

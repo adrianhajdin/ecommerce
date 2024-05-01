@@ -24,7 +24,7 @@
   border: 1px solid #ccc;
   padding: 8px;
   margin-right: 8px; // Espaço entre o input e o botão
-  min-width: 300px; // Define uma largura mínima para garantir consistência visual
+  max-width: 300px; // Define uma largura mínima para garantir consistência visual
 }
 
 .okButton {
