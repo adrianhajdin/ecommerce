@@ -65,8 +65,7 @@ export const ProductHero: React.FC<{
         <AddToCartButton product={product} className={classes.addToCartButton} />
         <FavButton product={product} />
       </div>
-        <FreightCalculator/>
       </div>
-    </Gutter>
+    </Gutter>  
   )
 }
