@@ -28,7 +28,7 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
       const firstOption = response.data[0];
 
       const formattedFreightInfo = {
-        price: parseFloat(firstOption.custom_price || firstOption.price),
+        price: parseFloat(firstOption.custom_price || firstOption.price) +3,
         deliveryTime: `${firstOption.delivery_time} dias`,
         carrier: firstOption.name
       };
