@@ -4,9 +4,10 @@ import { Category, Product } from '../../../payload/payload-types'
 import { AddToCartButton } from '../../_components/AddToCartButton'
 import { ColorSelectButton } from '../../_components/ColorSelectButton'
 import { SizePicker } from '../../_components/SizePicker'
-import { SocialShare } from '../../_components/SocialShare'
+
 import { FavButton } from '../../_components/FavButton'
 import { FreightCalculator } from '../../_components/FreightCalculator'
+import { PaymentGateway } from '../../_components/PaymentGateway'
 
 
 import { Gutter } from '../../_components/Gutter'
