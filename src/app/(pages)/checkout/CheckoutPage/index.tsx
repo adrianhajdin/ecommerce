@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 
 import { Settings } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
+import { PaymentGateway } from '../../../_components/PaymentGateway'
 import { LoadingShimmer } from '../../../_components/LoadingShimmer'
 import { useAuth } from '../../../_providers/Auth'
 import { useCart } from '../../../_providers/Cart'
@@ -75,7 +76,6 @@ export const CheckoutPage: React.FC<{
   }, [cart, user])
 
   if (!user || !stripe) return null
-
   return (
     <Fragment>
       {cartIsEmpty && (
@@ -151,33 +151,7 @@ export const CheckoutPage: React.FC<{
         <Fragment>
           <h3 className={classes.payment}>Detalhes do pagamento</h3>
           {error && <p>{`Error: ${error}`}</p>}
-          <Elements
-            stripe={stripe}
-            options={{
-              clientSecret,
-              appearance: {
-                theme: 'stripe',
-                variables: {
-                  colorText:
-                    theme === 'dark' ? cssVariables.colors.base0 : cssVariables.colors.base1000,
-                  fontSizeBase: '16px',
-                  fontWeightNormal: '500',
-                  fontWeightBold: '600',
-                  colorBackground:
-                    theme === 'dark' ? cssVariables.colors.base850 : cssVariables.colors.base0,
-                  fontFamily: 'Inter, sans-serif',
-                  colorTextPlaceholder: cssVariables.colors.base500,
-                  colorIcon:
-                    theme === 'dark' ? cssVariables.colors.base0 : cssVariables.colors.base1000,
-                  borderRadius: '0px',
-                  colorDanger: cssVariables.colors.error500,
-                  colorDangerText: cssVariables.colors.error500,
-                },
-              },
-            }}
-          >
-            <CheckoutForm />
-          </Elements>
+          <PaymentGateway amount = {cartTotal.raw}/>
         </Fragment>
       )}
     </Fragment>
