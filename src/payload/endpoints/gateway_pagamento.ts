@@ -4,21 +4,30 @@ import axios from 'axios';
 import { MercadoPagoConfig, Payment } from 'mercadopago';
 
 const router = Router();
-// Step 2: Initialize the client object
-const client = new MercadoPagoConfig({ accessToken: { accessToken: process.env.MP_ACCESS_TOKEN }, options: { timeout: 5000, idempotencyKey: 'abc' } });
 
-// Step 3: Initialize the API object
-const payment = new Payment(client);
 
 router.post('/process-payment', async (req, res) => {
+
+  const key =  process.env.MP_ACCESS_TOKEN
+
+  // Step 2: Initialize the client object
+  const client = new MercadoPagoConfig({ accessToken: 'TEST-3836549751377085-050421-f53c62f74ea0beba6925ee6988668134-152070979', options: { timeout: 5000, idempotencyKey: 'abc' } });
+
+  // Step 3: Initialize the API object
+  const payment = new Payment(client);
+
+  
+  console.log('requisicao', req)
   const paymentData = { body: {
-    transaction_amount: 12.34,
-    description: '<DESCRIPTION>',
-    payment_method_id: 'pix',
+    transaction_amount: 32,
+    description: 'Pagamento',
+    payment_method_id: 'master',
     payer: {
       email: 'nicosathler@hotmail.com'
-    }}, requestOptions: { idempotencyKey: 'dfsds>' } 
+    }}, requestOptions: { idempotencyKey: '119f0281-238d-4793-a868-1cd3c8d56938' } 
   };
+
+  console.log('requisicao', paymentData)
 
   try {
     const result = await payment.create(paymentData);

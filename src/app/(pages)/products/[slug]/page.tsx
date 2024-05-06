@@ -30,7 +30,6 @@ export default async function Product({ params: { slug } }) {
 
   try {
     categories = await fetchDocs<Category>('categories')
-    console.log(categories)
   } catch (error) {
     console.log(error)
   }
