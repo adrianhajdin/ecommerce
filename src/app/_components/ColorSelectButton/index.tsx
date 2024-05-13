@@ -5,14 +5,12 @@ import classes from './index.module.scss';
 
 export const ColorSelectButton = ({ title = "Cores", colors }) => {
 
-  console.log(colors);
 
   const hexaColors = colors.map(cor => "#" + cor);
  
   // const colors = ['#1c212c', '#ffed03', '#0dcaf0']; // substitua com as cores do seu produto
 
   const handleColorSelection = (color) => {
-    console.log('Cor selecionada:', color);
     // Aqui você pode lidar com a mudança de cor, talvez atualizar o estado do produto
   };
   const [selectedColor, setSelectedColor] = useState(hexaColors[0]);

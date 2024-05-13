@@ -35,7 +35,6 @@ export  const  HeaderComponent = ({ categories}) => {
   });
 
   const categoriesMap = organizeCategories(categories)
-  console.log(categoriesMap)
 
   const toggleDropdown = (buttonName) => {
     setDropdownStates((prevStates) => ({
