@@ -15,7 +15,7 @@ import { useTheme } from '../../../_providers/Theme';
 import cssVariables from '../../../cssVariables';
 import { CheckoutForm } from '../CheckoutForm';
 import { CheckoutItem } from '../CheckoutItem';
-import { FreightCalculator } from '../../../_components/FreightSend';
+import { FreightCalculator,completeFreightPurchase} from '../../../_components/FreightSend';
 
 import classes from './index.module.scss';
 
