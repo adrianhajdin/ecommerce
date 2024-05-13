@@ -151,7 +151,7 @@ export const CheckoutPage: React.FC<{
         <Fragment>
           <h3 className={classes.payment}>Detalhes do pagamento</h3>
           {error && <p>{`Error: ${error}`}</p>}
-          <PaymentGateway amount = {cartTotal.raw}/>
+          <PaymentGateway amount = {cartTotal.raw} />
         </Fragment>
       )}
     </Fragment>
