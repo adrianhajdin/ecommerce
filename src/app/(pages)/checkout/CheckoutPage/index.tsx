@@ -15,7 +15,7 @@ import { useTheme } from '../../../_providers/Theme';
 import cssVariables from '../../../cssVariables';
 import { CheckoutForm } from '../CheckoutForm';
 import { CheckoutItem } from '../CheckoutItem';
-import { FreightCalculator } from '../../../_components/FreightCalculator';
+import { FreightCalculator } from '../../../_components/FreightSend';
 
 import classes from './index.module.scss';
 
@@ -81,6 +81,7 @@ export const CheckoutPage = ({ settings }) => {
               <CheckoutItem key={index} product={item.product} title={item.product.title} metaImage={item.product.meta.image} quantity={item.quantity} index={index} />
             ))}
             <FreightCalculator onFreightPriceSet={setFreightPrice} />
+            <Button label="Comprar Frete e Imprimir Etiqueta" onClick={completeFreightPurchase} appearance="primary" disabled={freightPrice <= 0} />
             <div className={classes.orderTotal}>
               <p>Total do pedido</p>
               <p>R$ {totalWithFreight.toFixed(2)}</p>
