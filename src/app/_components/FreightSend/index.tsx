@@ -93,13 +93,13 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
       }
   
       // Step 3: Gera a etiqueta
-      const generateLabelResponse = await axios.post('/generate-labels', { orderIds });
+      const generateLabelResponse = await axios.post('/api/generate-labels', { orderIds });
   
-      // Step 4: Imprime a etiqueta
-      const printResponse = await axios.post('/print-labels', {
-        orders: orderIds,
-        mode: "" // Setting mode to an empty string as required
-      });
+      // // // Step 4: Imprime a etiqueta
+      // const printResponse = await axios.post('/api/print-labels', {
+      //   orders: orderIds, // Garante que orders seja sempre um array
+      //   mode: "public" // Modo ajustado conforme necessário
+      // });
   
       // Step 5: checkout
       const checkoutResponse = await axios.post('/api/purchase-labels', { orderIds });
@@ -132,7 +132,6 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
           <p>Transportadora: {freightInfo.carrier}</p>
           <p>Preço: {freightInfo.price}</p>
           <p>Preço: {orderIds}</p>
-          {/* <p>Preço3: {addToCartResponse.data.id}</p> */}
           <p>Prazo de entrega: {freightInfo.deliveryTime}</p>
           <button onClick={completeFreightPurchase} className={classes.okButton} disabled={loading}>
             {loading ? 'Processando...' : 'Comprar e Imprimir Etiqueta'}

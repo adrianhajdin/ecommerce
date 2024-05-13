@@ -9,7 +9,10 @@ dotenv.config({
 
 import express from 'express'
 import calculateFreightRouter from './payload/endpoints/melhor_envio';
-import carrinho_test from './payload/endpoints/melhor_envio_ordem';
+import carrinhoFreightRouter from './payload/endpoints/melhor_envio_add_carrinho';
+import GeraEtiquetaFreightRouter from './payload/endpoints/melhor_envio_add_etiqueta';
+import PrintEtiquetaFreightRouter from './payload/endpoints/melhor_envio_print_etiqueta';
+import CheckoutFreightRouter from './payload/endpoints/melhor_envio_checkout';
 import payload from 'payload'
 
 import { seed } from './payload/seed'
@@ -20,7 +23,10 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.json());
 app.use('/api', calculateFreightRouter);
-app.use('/api', carrinho_test);
+app.use('/api', carrinhoFreightRouter);
+app.use('/api', GeraEtiquetaFreightRouter);
+app.use('/api', PrintEtiquetaFreightRouter);
+app.use('/api', CheckoutFreightRouter);
 
 const start = async (): Promise<void> => {
   await payload.init({
