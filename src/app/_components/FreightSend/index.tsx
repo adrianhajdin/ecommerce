@@ -55,17 +55,17 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
       // Step 2: insere frete no carrinho
       const addToCartResponse = await axios.post('/api/add-to-cart', {
         service: freightInfo.serviceId,
-        agency: "1", // Replace with your agency ID (if applicable)
+        agency: "", // Replace with your agency ID (if applicable)
         from: {
           postal_code: "96020360",
-          name: "John Doe",
+          name: "BORA FILHO DO BILL",
           address: "123 Main Street",
           city: "Anytown",
           document: "18548537086"
         },
         to: {
           postal_code: cep,
-          name: "Jane Smith",
+          name: "BORA BILLL",
           address: "456 Elm Street",
           city: "Big City",
           document: "44810439895"
