@@ -13,6 +13,18 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
     setCep(event.target.value);
   };
 
+  const sendFreightDetailsEmail = async () => {
+    try {
+      await axios.post('/api/send-email', {
+        type: 'Compra realizada com sucesso',
+        details: 'Obrigado por nos escolher'
+      });
+      console.log('Detalhes do frete enviados por e-mail com sucesso.');
+    } catch (error) {
+      console.error('Erro ao enviar e-mail com detalhes do frete:', error);
+    }
+  };
+
   const calculateFreight = async () => {
     if (cep.length !== 8) {
       setError('O CEP deve conter 8 dígitos.');

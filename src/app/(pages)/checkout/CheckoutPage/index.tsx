@@ -16,7 +16,7 @@ import cssVariables from '../../../cssVariables';
 import { CheckoutForm } from '../CheckoutForm';
 import { CheckoutItem } from '../CheckoutItem';
 import { FreightCalculator,completeFreightPurchase} from '../../../_components/FreightSend';
-
+import { EmailSender } from '../../../_components/email';
 import classes from './index.module.scss';
 
 const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`;

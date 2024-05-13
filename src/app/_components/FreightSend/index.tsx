@@ -58,14 +58,14 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
         agency: "", // Replace with your agency ID (if applicable)
         from: {
           postal_code: "96020360",
-          name: "BORA FILHO DO BILL",
-          address: "123 Main Street",
-          city: "Anytown",
+          name: "cliente_name",
+          address: "cliente_address",
+          city: "cliente_city",
           document: "18548537086"
         },
         to: {
           postal_code: cep,
-          name: "BORA BILLL",
+          name: "Ale",
           address: "456 Elm Street",
           city: "Big City",
           document: "44810439895"
