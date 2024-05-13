@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const router = Router();
 
-// Calcular frete
+// step 1 - Calcular frete
 router.post('/calculate-freight', async (req, res) => {
   const { cep } = req.body;
   
@@ -37,18 +37,19 @@ router.post('/calculate-freight', async (req, res) => {
   }
 });
 
-// Inserir frete no carrinho
+// Step 2: insere frete no carrinho
 router.post('/add-to-cart', async (req, res) => {
-  const { serviceId, agencyId, from, to, volumes, options } = req.body;
+  const { service, agency, from, to, products, volumes, options } = req.body;
 
   try {
     const response = await axios.post('https://sandbox.melhorenvio.com.br/api/v2/me/cart', {
-      service: serviceId,
-      agency: agencyId,
-      from,
-      to,
-      volumes,
-      options
+      service,  // service ID
+      agency,   // agency ID
+      from,     // sender information
+      to,       // recipient information
+      products, // array of products
+      volumes,  // packaging dimensions
+      options   // additional options
     }, {
       headers: {
         'Accept': 'application/json',
@@ -59,12 +60,55 @@ router.post('/add-to-cart', async (req, res) => {
     });
     res.json(response.data);
   } catch (error) {
-    console.error('Error adding to cart:', error);
-    res.status(500).send('Failed to add to cart. Please try again.');
+    console.error('Error generating labels:', error);
+    res.status(500).send('Failed to generate labels. Please try again.');
   }
 });
 
-// Compra de fretes (Checkout)
+// Step 3: Gera a etiqueta
+router.post('/generate-labels', async (req, res) => {
+  const { orderIds } = req.body;
+
+  try {
+    const response = await axios.post('https://sandbox.melhorenvio.com.br/api/v2/me/shipment/generate', {
+      orders: orderIds
+    }, {
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${process.env.SHIPPING_KEY}`,
+        'Content-Type': 'application/json',
+        'User-Agent': 'Aplicação nicosathler@hotmail.com'
+      }
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error generating labels:', error);
+    res.status(500).send('Failed to generate labels. Please try again.');
+  }}
+
+// Step 4: Imprime a etiqueta
+router.post('/print-labels', async (req, res) => {
+  const { orders, mode } = req.body;
+
+  try {
+    const response = await axios.post('https://sandbox.melhorenvio.com.br/api/v2/me/shipment/print', {
+      mode,   // Printing mode to be provided, e.g., "pdf", "zpl"
+      orders  // Array of order IDs
+    }, {
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${process.env.SHIPPING_KEY}`, // Use actual token
+        'Content-Type': 'application/json', // Corrected the content-type
+        'User-Agent': 'Aplicação (your_email@example.com)' // Replace with your actual contact email
+      }
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error printing labels:', error);
+    res.status(500).send('Failed to print labels. Please try again.');
+  }
+})
+  // Step 5: checkout
 router.post('/purchase-labels', async (req, res) => {
   const { orderIds } = req.body;
 
@@ -84,52 +128,7 @@ router.post('/purchase-labels', async (req, res) => {
     console.error('Error purchasing labels:', error);
     res.status(500).send('Failed to purchase labels. Please try again.');
   }
-});
-
-// Gerar etiquetas
-router.post('/generate-labels', async (req, res) => {
-  const { orderIds } = req.body;
-
-  try {
-    const response = await axios.post('https://sandbox.melhorenvio.com.br/api/v2/me/shipment/generate', {
-      orders: orderIds
-    }, {
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${process.env.SHIPPING_KEY}`,
-        'Content-Type': 'application/json',
-        'User-Agent': 'Aplicação nicosathler@hotmail.com'
-      }
-    });
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error generating labels:', error);
-    res.status(500).send('Failed to generate labels. Please try again.');
-  }
-});
-
-// Impressão de etiquetas
-router.post('/print-labels', async (req, res) => {
-  const { orderIds, mode } = req.body;
-
-  try {
-    const response = await axios.post('https://sandbox.melhorenvio.com.br/api/v2/me/shipment/print', {
-      orders: orderIds,
-      mode: mode
-    }, {
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${process.env.SHIPPING_KEY}`,
-        'Content-Type': 'application/json',
-        'User-Agent': 'Aplicação nicosathler@hotmail.com'
-      }
-    });
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error printing labels:', error);
-    res.status(500).send('Failed to print labels. Please try again.');
-  }
-});
+})
 
 // Pré-visualização de etiquetas
 router.post('/preview-labels', async (req, res) => {

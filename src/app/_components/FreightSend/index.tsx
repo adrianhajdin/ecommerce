@@ -7,8 +7,9 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
   const [cep, setCep] = useState('');
   const [loading, setLoading] = useState(false);
   const [freightInfo, setFreightInfo] = useState(null);
+  const [freightData, setFreightData] = useState(null);
+  const [orderIds, setOrderIds] = useState([]);  // Initialize orderIds state
   const [error, setError] = useState('');
-  const [orderIds, setOrderIds] = useState([]);
 
   const handleCepChange = (event) => {
     setCep(event.target.value);
@@ -32,7 +33,7 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
         price: parseFloat(firstOption.custom_price || firstOption.price) + 3,
         deliveryTime: `${firstOption.delivery_time} dias`,
         carrier: firstOption.name,
-        serviceId: firstOption.service_id // Supondo que a resposta inclua um service_id
+        serviceId: firstOption.id // Supondo que a resposta inclua um service_id
       };
 
       setFreightInfo(formattedFreightInfo);
@@ -46,16 +47,32 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
     }
   };
 
-  const handleCompleteFreightPurchase = async () => {
+  const completeFreightPurchase = async () => {
     setLoading(true);
     setError('');
+  
     try {
-      // Adiciona ao carrinho
+      // Step 2: insere frete no carrinho
       const addToCartResponse = await axios.post('/api/add-to-cart', {
-        serviceId: freightInfo.serviceId,
-        agencyId: 1, // Exemplo de ID de agência
-        from: { postal_code: "96020360" },
-        to: { postal_code: cep },
+        service: freightInfo.serviceId,
+        agency: "1", // Replace with your agency ID (if applicable)
+        from: {
+          postal_code: "96020360",
+          name: "John Doe",
+          address: "123 Main Street",
+          city: "Anytown",
+          document: "18548537086"
+        },
+        to: {
+          postal_code: cep,
+          name: "Jane Smith",
+          address: "456 Elm Street",
+          city: "Big City",
+          document: "44810439895"
+        },
+        products: [{
+          name: "T-Shirt"
+        }],
         volumes: [{
           height: 10,
           width: 10,
@@ -64,26 +81,36 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
         }],
         options: {}
       });
-
-      // Realiza o checkout
-      const orderIds = addToCartResponse.data.map(item => item.orderId);
-      setOrderIds(orderIds);
+  
+  
+      // Como a resposta é um objeto único, você deve pegar o ID diretamente
+      if (addToCartResponse.data && addToCartResponse.data.id) {
+        const orderIds = addToCartResponse.data.id; // Pegando o ID do objeto
+        setOrderIds([orderIds]); // Atualizando o estado para ser um array com esse único ID
+      } else {
+        console.error('No valid ID returned from the API');
+        setError('Failed to retrieve order ID from the response.');
+      }
+  
+      // Step 3: Gera a etiqueta
+      const generateLabelResponse = await axios.post('/generate-labels', { orderIds });
+  
+      // Step 4: Imprime a etiqueta
+      const printResponse = await axios.post('/print-labels', {
+        orders: orderIds,
+        mode: "" // Setting mode to an empty string as required
+      });
+  
+      // Step 5: checkout
       const checkoutResponse = await axios.post('/api/purchase-labels', { orderIds });
-
-      // Geração de etiquetas
-      const generateResponse = await axios.post('/api/generate-labels', { orderIds });
-      const printResponse = await axios.post('/api/print-labels', { orderIds, mode: 'private' });
-
-      window.open(printResponse.data.url, '_blank'); // Abre a URL de impressão em uma nova aba
-      alert('Frete comprado e etiqueta pronta para impressão!');
+  
     } catch (err) {
       console.error('Erro durante o processo de compra de frete:', err);
-      setError('Falha durante o processo de compra de frete. Tente novamente.');
+      setError(`Falha durante o processo de compra de frete: ${err.message || err}`);
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <div className={classes.freightCalculator}>
       <label htmlFor="cep-input" className={classes.label}>CALCULAR FRETE</label>
@@ -104,8 +131,9 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
         <div className={classes.result}>
           <p>Transportadora: {freightInfo.carrier}</p>
           <p>Preço: {freightInfo.price}</p>
+          <p>Preço: {orderIds}</p>
           <p>Prazo de entrega: {freightInfo.deliveryTime}</p>
-          <button onClick={handleCompleteFreightPurchase} className={classes.okButton} disabled={loading}>
+          <button onClick={completeFreightPurchase} className={classes.okButton} disabled={loading}>
             {loading ? 'Processando...' : 'Comprar e Imprimir Etiqueta'}
           </button>
         </div>
