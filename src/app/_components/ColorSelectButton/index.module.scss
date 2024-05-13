@@ -1,47 +1,64 @@
 .colorSelectWrapper {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Muda para coluna para colocar a label acima dos botões */
+  align-items: flex-start; /* Alinha os itens à esquerda */
   margin-bottom: 1rem;
 }
 
 .colorLabel {
-  font-weight: bold;
-  margin-right: 1rem;
+  font-size: 15;
+  margin-bottom: 0.5rem; /* Espaço entre a label e os botões */
 }
 
 .colorsContainer {
   display: flex;
+  flex-wrap: wrap; /* Permite que os botões de cor quebrem para a próxima linha, se necessário */
 }
 
 .colorButton {
-  width: 24px;
-  height: 24px;
-  border: none;
-  margin-right: 0.5rem;  
-  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
   cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
   outline: none;
-  
 
   &:last-child {
     margin-right: 0;
   }
 
-  &.selected {
+  .circle {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ccc; /* Borda cinza clara */
+    border-radius: 50%; /* Tornar o botão circular */
+    background-color: transparent; /* Fundo transparente */
+    margin-right: 0.5rem;
+    position: relative;
+  }
+
+  &.selected .circle {
+    border: 2px solid #333; /* Borda mais escura para o botão selecionado */
+
     &:after {
-      content: '✓';
-      position: center;
-      top: -8px;
+      content: '';
+      position: absolute;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: bold;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      background-color: #333; /* Cor do círculo interno */
+      border-radius: 50%; /* Tornar o círculo interno */
       z-index: 1;
     }
   }
-}
 
-.checkmark {
-  display: none;
+  .colorName {
+    font-size: 14px;
+    color: #000; /* Cor do texto do nome da cor */
+  }
 }

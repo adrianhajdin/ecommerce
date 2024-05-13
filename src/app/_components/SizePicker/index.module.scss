@@ -10,13 +10,13 @@
 }
 
 .sizeButton {
-  padding: 8px 16px;
+  padding:16px 24px;
   border: 1px solid #ccc;
   background-color: #fff;
-  border-radius: 20px; /* Bordas arredondadas */
+  border-radius: 1px; /* Bordas arredondadas */
   cursor: pointer;
   font-size: 14px;
-  font-weight: bold;
+  
   transition: background-color 0.3s, border-color 0.3s;
   margin-bottom: 1rem;
 
