@@ -16,6 +16,7 @@ import { useTheme } from '../../../_providers/Theme';
 import cssVariables from '../../../cssVariables';
 import { CheckoutForm } from '../CheckoutForm';
 import { CheckoutItem } from '../CheckoutItem';
+import {CancelShipmentComponent } from '../../../_components/FreightCancel';
 import { FreightCalculator,completeFreightPurchase} from '../../../_components/FreightSend';
 import { useEmailSender } from '../../../_components/email';
 import classes from './index.module.scss';
@@ -33,7 +34,7 @@ export const CheckoutPage = ({ settings }) => {
   const { cart, cartIsEmpty, cartTotal } = useCart();
   const { theme } = useTheme();
 
-  const { sendEmail, loading, error: emailError, success: emailSuccess } = useEmailSender();
+  const { sendEmail, sendEmailCadastro,loading, error: emailError, success: emailSuccess } = useEmailSender();
 
   useEffect(() => {
     if (user === null || cartIsEmpty) {
@@ -70,7 +71,9 @@ export const CheckoutPage = ({ settings }) => {
 
   return (
     <Fragment>
-      <Button label="Enviar Email" onClick={sendEmail} appearance="primary" />
+      <Button label="Email compra" onClick={sendEmail} appearance="primary" />
+      <Button label="Email cadastro" onClick={sendEmailCadastro} appearance="primary" />
+      <CancelShipmentComponent />
       {!cartIsEmpty ? (
         <div className={classes.items}>
           <div className={classes.header}>
@@ -85,7 +88,6 @@ export const CheckoutPage = ({ settings }) => {
               <CheckoutItem key={index} product={item.product} title={item.product.title} metaImage={item.product.meta.image} quantity={item.quantity} index={index} />
             ))}
             <FreightCalculator onFreightPriceSet={setFreightPrice} />
-            <Button label="Comprar Frete e Imprimir Etiqueta" onClick={completeFreightPurchase} appearance="primary" disabled={freightPrice <= 0} />
             <div className={classes.orderTotal}>
               <p>Total do pedido</p>
               <p>R$ {totalWithFreight.toFixed(2)}</p>

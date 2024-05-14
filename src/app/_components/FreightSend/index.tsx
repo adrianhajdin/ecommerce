@@ -131,6 +131,7 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
         <div className={classes.result}>
           <p>Transportadora: {freightInfo.carrier}</p>
           <p>Preço: {freightInfo.price}</p>
+          <p>OrderID: {orderIds}</p>
           <p>Prazo de entrega: {freightInfo.deliveryTime}</p>
           <button onClick={completeFreightPurchase} className={classes.okButton} disabled={loading}>
             {loading ? 'Processando...' : 'Comprar e Imprimir Etiqueta'}

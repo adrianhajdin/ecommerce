@@ -14,7 +14,7 @@ export const useEmailSender = () => {
     try {
       const response = await axios.post('/api/send-email', {
         from_name: "",
-        to_email: "tamires.carv@hotmail.com",
+        to_email: "brunovpm@hotmail.com",
         to_name: "Pessoa"
       });
       setSuccess('Email enviado com sucesso!'); // Define o estado de sucesso
@@ -26,5 +26,26 @@ export const useEmailSender = () => {
     }
   };
 
-  return { sendEmail, loading, error, success };
+  const sendEmailCadastro = async () => {
+    setLoading(true);    // Inicia o estado de carregamento
+    setError('');        // Limpa o estado de erro anterior
+    setSuccess('');      // Limpa o estado de sucesso anterior
+
+    try {
+      const response = await axios.post('/api/send-email-cadastro', 
+      {
+        from_name: "",
+        to_email: "brunovpm@hotmail.com",
+        to_name: "Pessoa"
+      });
+      setSuccess('Email enviado com sucesso!'); // Define o estado de sucesso
+    } catch (err) {
+      console.error('Erro ao enviar email:', err);
+      setError('Falha ao enviar email. Tente novamente.'); // Define o estado de erro
+    } finally {
+      setLoading(false); // Finaliza o estado de carregamento
+    }
+  };
+
+  return { sendEmail,sendEmailCadastro, loading, error, success };
 };

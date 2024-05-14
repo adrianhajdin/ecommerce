@@ -14,7 +14,8 @@ import GeraEtiquetaFreightRouter from './payload/endpoints/melhor_envio_add_etiq
 import PrintEtiquetaFreightRouter from './payload/endpoints/melhor_envio_print_etiqueta';
 import CheckoutFreightRouter from './payload/endpoints/melhor_envio_checkout';
 import CancelFreightRouter from './payload/endpoints/melhor_envio_checkout';
-import EmailRouter from './payload/endpoints/email';
+import EmailRouter from './payload/endpoints/email_compra';
+import EmailRouterCad from './payload/endpoints/email_cadastro';
 import payload from 'payload'
 
 import { seed } from './payload/seed'
@@ -31,6 +32,7 @@ app.use('/api', PrintEtiquetaFreightRouter);
 app.use('/api', CheckoutFreightRouter);
 app.use('/api', CancelFreightRouter);
 app.use('/api', EmailRouter);
+app.use('/api', EmailRouterCad);
 
 const start = async (): Promise<void> => {
   await payload.init({
