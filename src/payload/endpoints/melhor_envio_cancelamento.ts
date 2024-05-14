@@ -23,6 +23,8 @@ router.post('/cancel-labels', async (req, res) => {
         'User-Agent': 'Aplicação nicosathler@hotmail.com'
       }
     });
+    // Log da resposta em caso de sucesso
+    console.log('Label cancel successfully:', response.data);
     res.json(response.data);
   } catch (error) {
     console.error('Error canceling label:', error);

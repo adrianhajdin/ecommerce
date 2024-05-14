@@ -13,7 +13,7 @@ import carrinhoFreightRouter from './payload/endpoints/melhor_envio_add_carrinho
 import GeraEtiquetaFreightRouter from './payload/endpoints/melhor_envio_add_etiqueta';
 import PrintEtiquetaFreightRouter from './payload/endpoints/melhor_envio_print_etiqueta';
 import CheckoutFreightRouter from './payload/endpoints/melhor_envio_checkout';
-import CancelFreightRouter from './payload/endpoints/melhor_envio_checkout';
+import CancelFreightRouter from './payload/endpoints/melhor_envio_cancelamento';
 import EmailRouter from './payload/endpoints/email_compra';
 import EmailRouterCad from './payload/endpoints/email_cadastro';
 import payload from 'payload'
