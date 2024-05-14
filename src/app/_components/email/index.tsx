@@ -1,37 +1,30 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import classes from './index.module.scss';
 
-const EmailSender = () => {
-  // Estado para acompanhar os resultados das operações de envio de e-mail
-  const [result, setResult] = useState('');
+export const useEmailSender = () => {
+  const [loading, setLoading] = useState(false); // Adiciona estado de carregamento
+  const [error, setError] = useState('');        // Adiciona estado de erro
+  const [success, setSuccess] = useState('');    // Adiciona estado de sucesso
 
-  // Função genérica para enviar e-mails
-  const sendEmail = async (emailType, emailDetails) => {
+  const sendEmail = async () => {
+    setLoading(true);    // Inicia o estado de carregamento
+    setError('');        // Limpa o estado de erro anterior
+    setSuccess('');      // Limpa o estado de sucesso anterior
+
     try {
-      const response = await axios.post('/api/send-email', emailDetails);
-      setResult(`Email de ${emailType} enviado com sucesso!`);
-    } catch (error) {
-      console.error('Error sending email:', error);
-      setResult(`Falha ao enviar email de ${emailType}.`);
+      const response = await axios.post('/api/send-email', {
+        from_name: "",
+        to_email: "tamires.carv@hotmail.com",
+        to_name: "Pessoa"
+      });
+      setSuccess('Email enviado com sucesso!'); // Define o estado de sucesso
+    } catch (err) {
+      console.error('Erro ao enviar email:', err);
+      setError('Falha ao enviar email. Tente novamente.'); // Define o estado de erro
+    } finally {
+      setLoading(false); // Finaliza o estado de carregamento
     }
   };
 
-  return (
-    <div className={classes.container}>
-      <h1>Gerenciador de E-mails</h1>
-      <button
-        className={classes.button}
-        onClick={() => sendEmail('boas-vindas', {
-          recipientEmail: 'brunovpm@hotmail.com',
-          recipientName: 'Cliente',
-        })}
-      >
-        Enviar Boas-Vindas
-      </button>
-      <p>{result}</p>
-    </div>
-  );
+  return { sendEmail, loading, error, success };
 };
-
-export default EmailSender;

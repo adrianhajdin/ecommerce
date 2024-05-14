@@ -3,32 +3,36 @@ import axios from 'axios';
 
 const router = Router();
 
+// Rota para enviar e-mails usando EmailJS
 router.post('/send-email', async (req, res) => {
-  const { recipientEmail, recipientName, serviceId, templateId, userId } = req.body;
+  // Desestruture os parâmetros do corpo da requisição
+  const { from_name, to_email, to_name} = req.body;
 
-  const data = {
-    service_id: process.env.EMAIL_SERVICE_ID, // Utilize diretamente as variáveis de ambiente
-    template_id: process.env.EMAIL_TEMPLATE_ID, // Corrigido para process.env
-    user_id: process.env.EMAIL_PUBLIC_KEY, // Corrigido para process.env
-    template_params: {
-      reply_to: recipientEmail,
-      recipient_name: recipientName, // Incluído recipientName nos parâmetros do template
-    }
-  };
-
+  // Envia o e-mail usando EmailJS
   try {
-    const response = await axios.post('https://api.emailjs.com/api/v1.0/email/send', JSON.stringify(data), {
-      headers: {
-        'Content-Type': 'application/json'
+    const response = await axios.post("https://api.emailjs.com/api/v1.0/email/send", 
+      {
+        service_id: process.env.EMAIL_SERVICE_ID,
+        template_id: process.env.EMAIL_TEMPLATE_ID,
+        user_id: process.env.EMAIL_PUBLIC_KEY,
+        accessToken: process.env.EMAIL_PRIVATE_ID,
+        template_params: {
+          from_name: from_name,
+          to_email: to_email,
+          to_name: to_name
+        }
+      }, 
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        }
       }
-    });
+    );
     res.json(response.data);
   } catch (error) {
     console.error('Error sending email:', error);
-    // Melhore o tratamento de erros fornecendo mais detalhes sobre o erro ao cliente
-    res.status(500).send(`Failed to send email: ${error.response?.data?.message || error.message || 'Unknown error'}. Please try again.`);
+    res.status(500).send('Failed to send email. Please try again.');
   }
 });
 
 export default router;
-

@@ -5,6 +5,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import axios from 'axios'; // Certifique-se de ter o axios instalado
 
 import { Settings } from '../../../../payload/payload-types';
 import { Button } from '../../../_components/Button';
@@ -16,7 +17,7 @@ import cssVariables from '../../../cssVariables';
 import { CheckoutForm } from '../CheckoutForm';
 import { CheckoutItem } from '../CheckoutItem';
 import { FreightCalculator,completeFreightPurchase} from '../../../_components/FreightSend';
-import { EmailSender } from '../../../_components/email';
+import { useEmailSender } from '../../../_components/email';
 import classes from './index.module.scss';
 
 const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`;
@@ -31,6 +32,8 @@ export const CheckoutPage = ({ settings }) => {
   const [freightPrice, setFreightPrice] = useState(0);
   const { cart, cartIsEmpty, cartTotal } = useCart();
   const { theme } = useTheme();
+
+  const { sendEmail, loading, error: emailError, success: emailSuccess } = useEmailSender();
 
   useEffect(() => {
     if (user === null || cartIsEmpty) {
@@ -63,10 +66,11 @@ export const CheckoutPage = ({ settings }) => {
   }, [user, cart]);
 
   // Corrigindo a lógica de cálculo do total
-  const totalWithFreight = parseFloat(cartTotal.raw)/100 + parseFloat(freightPrice);
+  const totalWithFreight = parseFloat(cartTotal.raw) / 100 + parseFloat(freightPrice);
 
   return (
     <Fragment>
+      <Button label="Enviar Email" onClick={sendEmail} appearance="primary" />
       {!cartIsEmpty ? (
         <div className={classes.items}>
           <div className={classes.header}>
