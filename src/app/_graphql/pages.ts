@@ -2,7 +2,7 @@ import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK } from './blocks'
 import { LINK_FIELDS } from './link'
 import { MEDIA } from './media'
 import { META } from './meta'
-
+import { MEDIA_FIELDS } from './media'
 export const PAGES = `
   query Pages {
     Pages(limit: 300, where: { slug: { not_equals: "cart" } })  {
@@ -25,16 +25,13 @@ export const PAGE = `
           links {
             link ${LINK_FIELDS()}
           }
+          medias {
+            media{
+              ${MEDIA_FIELDS}
+            }
+          }
           ${MEDIA}
         }
-        layout {
-          ${CONTENT}
-          ${CALL_TO_ACTION}
-          ${CONTENT}
-          ${MEDIA_BLOCK}
-          ${ARCHIVE_BLOCK}
-        }
-        ${META}
       }
     }
   }

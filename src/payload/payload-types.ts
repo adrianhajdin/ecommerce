@@ -35,12 +35,39 @@ export interface Page {
   id: string;
   title: string;
   publishedOn?: string | null;
-  slug?: string | null;
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    image?: string | Media | null;
+  hero: {
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'customHero';
+    richText?:
+      | {
+          [k: string]: unknown;
+        }[]
+      | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?: {
+              relationTo: 'pages';
+              value: string | Page;
+            } | null;
+            url?: string | null;
+            label: string;
+            icon?: string | Media | null;
+            appearance?: ('default' | 'primary' | 'secondary') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+    medias?:
+      | {
+          media?: string | Media | null;
+          id?: string | null;
+        }[]
+      | null;
+    media?: string | Media | null;
   };
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -80,11 +107,6 @@ export interface Product {
   relatedProducts?: (string | Product)[] | null;
   categories?: (string | Category)[] | null;
   slug?: string | null;
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    image?: string | Media | null;
-  };
   updatedAt: string;
   createdAt: string;
 }

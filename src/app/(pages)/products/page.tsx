@@ -6,6 +6,7 @@ import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
 import { Gutter } from '../../_components/Gutter'
+import { CollectionArchive } from '../../_components/CollectionArchive'
 import { HR } from '../../_components/HR'
 import Filters from './Filters'
 

@@ -28,8 +28,9 @@ export const fetchDoc = async <T>(args: {
   id?: string
   draft?: boolean
 }): Promise<T> => {
-  const { collection, slug, draft } = args || {}
 
+  const { collection, slug, draft } = args || {}
+ 
   if (!queryMap[collection]) throw new Error(`Collection ${collection} not found`)
 
   let token: RequestCookie | undefined
@@ -38,6 +39,8 @@ export const fetchDoc = async <T>(args: {
     const { cookies } = await import('next/headers')
     token = cookies().get(payloadToken)
   }
+
+  //console.log(queryMap[collection].query)
   const doc: T = await fetch(`${GRAPHQL_API_URL}/api/graphql`, {
     method: 'POST',
     headers: {
@@ -54,11 +57,14 @@ export const fetchDoc = async <T>(args: {
       },
     }),
   })
-    ?.then(res => res.json())
+    ?.then(res => res.json()
+  )
     ?.then(res => {
       if (res.errors) throw new Error(res?.errors?.[0]?.message ?? 'Error fetching doc')
       return res?.data?.[queryMap[collection].key]?.docs?.[0]
     })
+
+  
 
   return doc
 }

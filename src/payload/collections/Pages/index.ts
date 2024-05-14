@@ -1,6 +1,11 @@
 import type { CollectionConfig } from 'payload/types'
 
 import { admins } from '../../access/admins'
+import { Archive } from '../../blocks/ArchiveBlock'
+import { CallToAction } from '../../blocks/CallToAction'
+import { Content } from '../../blocks/Content'
+import { MediaBlock } from '../../blocks/MediaBlock'
+import { hero } from '../../fields/hero'
 import { slugField } from '../../fields/slug'
 import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
 import { adminsOrPublished } from './access/adminsOrPublished'
@@ -19,7 +24,6 @@ export const Pages: CollectionConfig = {
   },
   hooks: {
     afterChange: [revalidatePage],
-    afterRead: [populateArchiveBlock],
   },
   versions: {
     drafts: true,
@@ -56,6 +60,17 @@ export const Pages: CollectionConfig = {
         ],
       },
     },
+    {
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Página',
+          fields: [hero],
+        },
+      ],
+    },
     slugField(),
+    
+    
   ],
 }
