@@ -69,7 +69,7 @@ const Products: CollectionConfig = {
       label: 'Preço',
       required: true,
       admin: {
-        step: 0.01,
+        step: 20.0,
       },
     },
     {
@@ -77,7 +77,7 @@ const Products: CollectionConfig = {
       label: 'Percentual de Desconto',
       type: 'number',
       admin: {
-        step: 0.01,
+        step: 1.00,
       },
     },
     {
