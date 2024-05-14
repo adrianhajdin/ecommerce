@@ -5,7 +5,7 @@ import classes from './index.module.scss';
 
 export const ColorSelectButton = ({ title = "Cor", colors }) => {
   const hexaColors = colors.map(cor => "#" + cor);
-  const colorNames = ["Jeans Vintage", "Outro Nome", "Mais Um Nome"]; // Substitua pelos nomes das cores apropriados
+  const colorNames = ["Jeans Vintage", "Azul Petróleo", "Mais Um Nome"]; // Substitua pelos nomes das cores apropriados
 
   const handleColorSelection = (color) => {
     // Aqui você pode lidar com a mudança de cor, talvez atualizar o estado do produto

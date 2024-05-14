@@ -18,9 +18,9 @@ import classes from './index.module.scss'
 export const ProductHero: React.FC<{
   product: Product
 }> = ({ product }) => {
-  const { title, price, photos, colors, sizes, description, discountPercentage, meta: { image: metaImage,  } = {} } = product
+  const { title, price, photos, categories, colors, sizes, description, discountPercentage = {} } = product
 
-  console.log(metaImage)
+  const metaImage = photos.map(item => item.photo);
   //const colors = ['#1c212c', '#ffed03', '#0dcaf0']; // substitua com as cores do seu produto
 
   const priceValue = (price).toLocaleString('pt-BR', {
@@ -33,7 +33,7 @@ export const ProductHero: React.FC<{
       <div className={classes.mediaWrapper}>
         {!metaImage && <div className={classes.placeholder}>No image</div>}
         {metaImage && typeof metaImage !== 'string' && (
-          <Media imgClassName={classes.image} resource={metaImage} fill />
+          <Media imgClassName={classes.image} resources={metaImage} fill />
         )}
       </div>
 
