@@ -9,6 +9,7 @@ import { Button } from '../../../_components/Button'
 import { Input } from '../../../_components/Input'
 import { Message } from '../../../_components/Message'
 import { useAuth } from '../../../_providers/Auth'
+import { useEmailSender } from '../../../_components/email';
 
 import classes from './index.module.scss'
 
@@ -26,7 +27,7 @@ const CreateAccountForm: React.FC = () => {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-
+  const { sendEmail, sendEmailCadastro,loading: loadingEmail, error: emailError, success: emailSuccess } = useEmailSender();
   const {
     register,
     handleSubmit,
@@ -61,6 +62,7 @@ const CreateAccountForm: React.FC = () => {
 
       try {
         await login(data)
+        await sendEmailCadastro(data.email, data.name);
         clearTimeout(timer)
         if (redirect) router.push(redirect as string)
         else router.push(`/`)
@@ -70,7 +72,7 @@ const CreateAccountForm: React.FC = () => {
         setError('There was an error with the credentials provided. Please try again.')
       }
     },
-    [login, router, searchParams],
+    [login, router, searchParams,sendEmailCadastro],
   )
 
   return (

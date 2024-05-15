@@ -18,7 +18,6 @@ import { CheckoutForm } from '../CheckoutForm';
 import { CheckoutItem } from '../CheckoutItem';
 import {CancelShipmentComponent } from '../../../_components/FreightCancel';
 import { FreightCalculator,completeFreightPurchase} from '../../../_components/FreightSend';
-import { useEmailSender } from '../../../_components/email';
 import classes from './index.module.scss';
 
 const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`;
@@ -33,8 +32,6 @@ export const CheckoutPage = ({ settings }) => {
   const [freightPrice, setFreightPrice] = useState(0);
   const { cart, cartIsEmpty, cartTotal } = useCart();
   const { theme } = useTheme();
-
-  const { sendEmail, sendEmailCadastro,loading, error: emailError, success: emailSuccess } = useEmailSender();
 
   useEffect(() => {
     if (user === null || cartIsEmpty) {
@@ -71,7 +68,6 @@ export const CheckoutPage = ({ settings }) => {
 
   return (
     <Fragment>
-      <Button label="Email cadastro" onClick={sendEmailCadastro} appearance="primary" />
       <CancelShipmentComponent />
       {!cartIsEmpty ? (
         <div className={classes.items}>
