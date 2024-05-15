@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import classes from './index.module.scss';
 import { useEmailSender } from '../../_components/email';
+import { useAuth } from '../../_providers/Auth'
 
 export const FreightCalculator = ({ onFreightPriceSet }) => {
   const [cep, setCep] = useState('');
@@ -12,7 +13,8 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
   const [orderIds, setOrderIds] = useState([]);  // Initialize orderIds state
   const [error, setError] = useState('');
   const { sendEmail, sendEmailCadastro,loading: loadingEmail, error: emailError, success: emailSuccess } = useEmailSender();
-
+  const { user } = useAuth()
+  
   const handleCepChange = (event) => {
     setCep(event.target.value);
   };
@@ -101,7 +103,7 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
       const checkoutResponse = await axios.post('/api/purchase-labels', { orderIds });
 
       // Step 5: envia email
-      await sendEmail();
+      await sendEmail(user?.email,user?.name);
   
     } catch (err) {
       console.error('Erro durante o processo de compra de frete:', err);
