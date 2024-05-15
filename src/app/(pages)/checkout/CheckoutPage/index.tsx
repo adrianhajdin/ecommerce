@@ -71,7 +71,6 @@ export const CheckoutPage = ({ settings }) => {
 
   return (
     <Fragment>
-      <Button label="Email compra" onClick={sendEmail} appearance="primary" />
       <Button label="Email cadastro" onClick={sendEmailCadastro} appearance="primary" />
       <CancelShipmentComponent />
       {!cartIsEmpty ? (

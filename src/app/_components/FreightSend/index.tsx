@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import classes from './index.module.scss';
+import { useEmailSender } from '../../_components/email';
 
 export const FreightCalculator = ({ onFreightPriceSet }) => {
   const [cep, setCep] = useState('');
@@ -10,6 +11,7 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
   const [freightData, setFreightData] = useState(null);
   const [orderIds, setOrderIds] = useState([]);  // Initialize orderIds state
   const [error, setError] = useState('');
+  const { sendEmail, sendEmailCadastro,loading: loadingEmail, error: emailError, success: emailSuccess } = useEmailSender();
 
   const handleCepChange = (event) => {
     setCep(event.target.value);
@@ -58,7 +60,7 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
         agency: "", // Replace with your agency ID (if applicable)
         from: {
           postal_code: "96020360",
-          name: "cliente_name",
+          name: "cliente_name2",
           address: "cliente_address",
           city: "cliente_city",
           document: "18548537086"
@@ -94,15 +96,12 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
   
       // Step 3: Gera a etiqueta
       const generateLabelResponse = await axios.post('/api/generate-labels', { orderIds });
-  
-      // // // Step 4: Imprime a etiqueta
-      // const printResponse = await axios.post('/api/print-labels', {
-      //   orders: orderIds, // Garante que orders seja sempre um array
-      //   mode: "public" // Modo ajustado conforme necessário
-      // });
-  
-      // Step 5: checkout
+
+      // Step 4: checkout
       const checkoutResponse = await axios.post('/api/purchase-labels', { orderIds });
+
+      // Step 5: envia email
+      await sendEmail();
   
     } catch (err) {
       console.error('Erro durante o processo de compra de frete:', err);
