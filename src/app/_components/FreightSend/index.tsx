@@ -95,14 +95,20 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
         console.error('No valid ID returned from the API');
         setError('Failed to retrieve order ID from the response.');
       }
-  
-      // Step 3: Gera a etiqueta
-      const generateLabelResponse = await axios.post('/api/generate-labels', { orderIds });
 
       // Step 4: checkout
       const checkoutResponse = await axios.post('/api/purchase-labels', { orderIds });
 
-      // Step 5: envia email
+      // Step 5: Gera a etiqueta
+      const generateLabelResponse = await axios.post('/api/generate-labels', { orderIds });
+
+      // Step 6: Gera a etiqueta
+      const printabelResponse = await axios.post('/api/print-labels', {
+        mode : "public", 
+        orders : orderIds,
+      });
+
+      // Step 7: envia email
       await sendEmail(user?.email,user?.name);
   
     } catch (err) {
