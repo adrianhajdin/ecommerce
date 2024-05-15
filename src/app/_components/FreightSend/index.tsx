@@ -87,25 +87,26 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
       });
   
   
-      // Como a resposta é um objeto único, você deve pegar o ID diretamente
+      let localOrderIds;
       if (addToCartResponse.data && addToCartResponse.data.id) {
-        const orderIds = addToCartResponse.data.id; // Pegando o ID do objeto
-        setOrderIds([orderIds]); // Atualizando o estado para ser um array com esse único ID
+        localOrderIds = [addToCartResponse.data.id]; // Armazena localmente
+        setOrderIds(localOrderIds); // Atualiza o estado
       } else {
         console.error('No valid ID returned from the API');
         setError('Failed to retrieve order ID from the response.');
+        return;
       }
 
       // Step 4: checkout
-      const checkoutResponse = await axios.post('/api/purchase-labels', { orderIds });
+      const checkoutResponse = await axios.post('/api/purchase-labels', { orderIds: localOrderIds });
 
       // Step 5: Gera a etiqueta
-      const generateLabelResponse = await axios.post('/api/generate-labels', { orderIds });
+      const generateLabelResponse = await axios.post('/api/generate-labels', { orderIds: localOrderIds });
 
       // Step 6: Gera a etiqueta
       const printabelResponse = await axios.post('/api/print-labels', {
         mode : "public", 
-        orders : orderIds,
+        orders: localOrderIds,
       });
 
       // Step 7: envia email
@@ -138,7 +139,7 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
         <div className={classes.result}>
           <p>Transportadora: {freightInfo.carrier}</p>
           <p>Preço: {freightInfo.price}</p>
-          <p>OrderID: {orderIds}</p>
+          {/* <p>OrderID: {localOrderIds} </p> */}
           <p>Prazo de entrega: {freightInfo.deliveryTime}</p>
           <button onClick={completeFreightPurchase} className={classes.okButton} disabled={loading}>
             {loading ? 'Processando...' : 'Comprar e Imprimir Etiqueta'}
