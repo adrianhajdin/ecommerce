@@ -47,7 +47,8 @@ export const CollectionArchive: React.FC<Props> = props => {
     populatedDocs,
     populatedDocsTotal,
   } = props
-
+  
+  console.log(populatedDocs)
   const [results, setResults] = useState<Result>({
     totalDocs: typeof populatedDocsTotal === 'number' ? populatedDocsTotal : 0,
     docs: (populatedDocs?.map(doc => doc.value) || []) as [],

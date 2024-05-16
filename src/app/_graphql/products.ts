@@ -28,9 +28,7 @@ export const PRODUCT = `
           id
           slug
           title
-          ${META}
         }
-        ${META}
         colors
         sizes
         photos {

@@ -4,7 +4,8 @@ import React, { Fragment, useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { Product } from '../../../payload/payload-types'
-import { Media } from '../Media'
+import { DefaultMedia } from '../Media'
+
 import { Price } from '../Price'
 
 import classes from './index.module.scss'
@@ -44,36 +45,28 @@ export const Card: React.FC<{
   doc?: Product
 }> = props => {
   // Desestruturação de props, mantida inalterada para tradução
+
   const {
     showCategories,
     title: titleFromProps,
     doc,
-    doc: { slug, title, categories, meta, priceJSON } = {},
+    doc: { slug, title, categories, photos, description } = {},
     className,
   } = props
+  const metaImage = photos.map(item => item.photo);
 
-  const { description, image: metaImage } = meta || {}
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
   const titleToUse = titleFromProps || title
   const sanitizedDescription = description?.replace(/\s/g, ' ')
   const href = `/products/${slug}`
 
-  const [
-    price,
-    setPrice,
-  ] = useState(() => priceFromJSON(priceJSON))
-
-  useEffect(() => {
-    setPrice(priceFromJSON(priceJSON))
-  }, [priceJSON])
-
   return (
     <Link href={href} className={[classes.card, className].filter(Boolean).join(' ')}>
       <div className={classes.mediaWrapper}>
-        {!metaImage && <div className={classes.placeholder}>Sem imagem</div>}
-        {metaImage && typeof metaImage !== 'string' && (
-          <Media imgClassName={classes.image} resource={metaImage} fill />
+        {!metaImage[0] && <div className={classes.placeholder}>Sem imagem</div>}
+        {metaImage[0] && typeof metaImage[0] !== 'string' && (
+          <DefaultMedia imgClassName={classes.image} resources={metaImage} fill />
         )}
       </div>
 

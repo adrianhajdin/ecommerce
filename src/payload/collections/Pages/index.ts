@@ -24,6 +24,7 @@ export const Pages: CollectionConfig = {
   },
   hooks: {
     afterChange: [revalidatePage],
+    afterRead: [populateArchiveBlock],
   },
   versions: {
     drafts: true,
@@ -64,13 +65,22 @@ export const Pages: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Página',
+          label: 'Hero',
           fields: [hero],
+        },
+        {
+          label: 'Content',
+          fields: [
+            {
+              name: 'layout',
+              type: 'blocks',
+              required: true,
+              blocks: [CallToAction, Content, MediaBlock, Archive],
+            },
+          ],
         },
       ],
     },
     slugField(),
-    
-    
   ],
 }

@@ -19,6 +19,13 @@ export const PAGE = `
       docs {
         id
         title
+        layout {
+          ${CONTENT}
+          ${CALL_TO_ACTION}
+          ${CONTENT}
+          ${MEDIA_BLOCK}
+          ${ARCHIVE_BLOCK}
+        }
         hero {
           type
           richText
@@ -30,6 +37,7 @@ export const PAGE = `
               ${MEDIA_FIELDS}
             }
           }
+  
           ${MEDIA}
         }
       }
