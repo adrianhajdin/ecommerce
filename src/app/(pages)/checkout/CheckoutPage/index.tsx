@@ -68,7 +68,6 @@ export const CheckoutPage = ({ settings }) => {
 
   return (
     <Fragment>
-      <CancelShipmentComponent />
       {!cartIsEmpty ? (
         <div className={classes.items}>
           <div className={classes.header}>
@@ -104,6 +103,7 @@ export const CheckoutPage = ({ settings }) => {
       )}
       {clientSecret && (
         <Elements stripe={stripePromise} options={{ clientSecret, appearance: { theme: theme === 'dark' ? 'dark' : 'light', variables: cssVariables } }}>
+         <CancelShipmentComponent />
           <CheckoutForm />
         </Elements>
       )}

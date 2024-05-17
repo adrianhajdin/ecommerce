@@ -425,6 +425,10 @@ export interface User {
   loginAttempts?: number;
   lockUntil?: string;
   password: string;
+  address: string;     // Novo campo
+  address2: string;    // Novo campo
+  zipcode: string;     // Novo campo
+  cpf: string;         // Novo campo
 }
 export interface Redirect {
   id: string;
