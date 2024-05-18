@@ -60,8 +60,8 @@ export const ProductHero: React.FC<{
         </div>
 
         <SizePicker sizes={sizes}/>
-        <div className={classes.buttonGroup}>
-        <AddToCartButton product={product} className={classes.addToCartButton} />
+        <div className={classes.cartButton}>
+        <AddToCartButton product={product} className={classes.addToCartButton } />
       </div>
       </div>
     </Gutter>

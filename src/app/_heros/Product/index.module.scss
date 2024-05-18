@@ -2,11 +2,11 @@
 
 .productHero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
   width: 100%;
   background-color: #d3cfc4; /* Cor de fundo */
-
+  height: 80%;
   @include small-break {
     grid-template-columns: 1fr;
   }
@@ -23,7 +23,7 @@
 }
 
 .image {
-  padding: 24px;
+  padding: 5px;
   object-fit: contain;
   aspect-ratio: 1/1;
   max-width: 100%;
@@ -81,4 +81,12 @@
   height: 1px;
   background-color: #ccc; /* Ou use outra cor para combinar com o seu design */
   margin: 5px 0; /* Espaçamento acima e abaixo da barra */
+}
+
+.cartButton {
+  font-size: 30px; // Aumenta o tamanho da fonte
+  padding: 12px 24px; // Aumenta o padding para fazer o botão maior
+  margin: 0 auto; // Centraliza o botão
+  display: block; // Torna o botão um bloco para permitir a centralização automática
+  width: fit-content; // Garante que a largura se ajuste ao conteúdo
 }

@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useState } from 'react';
 import NextImage from 'next/image';
 
@@ -21,6 +20,7 @@ export const Image: React.FC<MediaProps> = props => {
   } = props;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [lastImageIndex, setLastImageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleLoad = () => {
@@ -31,9 +31,12 @@ export const Image: React.FC<MediaProps> = props => {
   };
 
   const handleImageChange = (index) => {
+    setLastImageIndex(currentImageIndex);
     setCurrentImageIndex(index);
     setIsLoading(true);
   };
+
+  const imageAnimationClass = currentImageIndex > lastImageIndex ? classes.imageEnterUp : classes.imageEnterDown;
 
   const sizes = Object.entries(breakpoints)
     .map(([, value]) => `(max-width: ${value}px) ${value}px`)
@@ -45,9 +48,9 @@ export const Image: React.FC<MediaProps> = props => {
   const src = filename ? `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${filename}` : '';
 
   return (
-    <div >
+    <div>
       <NextImage
-        className={[isLoading && classes.placeholder, classes.image, imgClassName].filter(Boolean).join(' ')}
+        className={[isLoading && classes.placeholder, classes.image, imgClassName, imageAnimationClass].filter(Boolean).join(' ')}
         src={src}
         alt={alt || ''}
         onClick={onClick}

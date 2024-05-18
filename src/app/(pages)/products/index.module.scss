@@ -14,3 +14,10 @@
     gap: 48px;
   }
 }
+
+// Exemplo de ajuste no SCSS
+.productHero {
+  height: 100%; // Ajusta para a largura total
+  // Ou você pode especificar uma largura fixa, como
+  // width: 1200px;
+}
