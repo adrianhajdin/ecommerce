@@ -2,7 +2,7 @@ import type { CollectionConfig } from 'payload/types'
 import { slugField } from '../fields/slug';
 
 const Colors: CollectionConfig = {
-  slug: 'cores',
+  slug: 'colors',
   admin: {
     useAsTitle: 'color',
   },

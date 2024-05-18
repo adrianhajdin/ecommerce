@@ -29,16 +29,10 @@ const Products: CollectionConfig = {
     },
     {
       name: 'colors',
-      label: 'Cores disponíveis',
-      type: 'select',
-      options: [
-        { value: 'red', label: 'Vermelho' },
-        { value: 'blue', label: 'Azul' },
-        { value: 'purple', label: 'Lilás' },
-        { value: 'yellow', label: 'Amarelo' },
-        // Adicione mais cores conforme necessário
-      ],
-      hasMany: true,
+      label: "Cores disponíveis",
+      type: 'relationship',
+      relationTo: 'colors',
+      hasMany: true
     },
     {
       name: 'sizes',
@@ -95,7 +89,7 @@ const Products: CollectionConfig = {
     },
     {
       name: 'publishedOn',
-      label: "Publicasr em",
+      label: "Publicar em",
       type: 'date',
       admin: {
         position: 'sidebar',
