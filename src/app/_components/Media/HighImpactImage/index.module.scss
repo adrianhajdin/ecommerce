@@ -1,0 +1,18 @@
+.highImpactImageContainer {
+  display: flex; /* Alinha as imagens lado a lado por padrão */
+  align-items: center; /* Centraliza as imagens verticalmente */
+  justify-content: center; /* Centraliza as imagens horizontalmente na viewport */
+  gap: 10px; /* Adiciona espaço entre as imagens */
+  overflow-x: auto; /* Permite rolagem horizontal se as imagens ultrapassarem a largura da viewport */
+
+  @media (max-width: 600px) { /* Ajuste conforme o breakpoint desejado para dispositivos móveis */
+    flex-direction: column; /* Muda a disposição para uma coluna em telas pequenas */
+    overflow-x: hidden; /* Remove a rolagem horizontal em dispositivos móveis */
+    overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+  }
+}
+
+.image {
+  max-width: 100%;
+  height: auto; /* Mantém a proporção das imagens */
+}

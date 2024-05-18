@@ -1,13 +1,15 @@
 import React, { ElementType, Fragment } from 'react'
 
 import { Image } from './Image'
+import { HighImpactImage } from './HighImpactImage'
+import { DefaultImage } from './DefaultImage'
 import { Props } from './types'
 import { Video } from './Video'
 
 export const Media: React.FC<Props> = props => {
-  const { className, resource, htmlElement = 'div' } = props
+  const { className, resources, htmlElement = 'div' } = props
 
-  const isVideo = typeof resource !== 'string' && resource?.mimeType?.includes('video')
+  const isVideo = typeof resources !== 'string' && resources[0]?.mimeType?.includes('video')
   const Tag = (htmlElement as ElementType) || Fragment
 
   return (
@@ -19,6 +21,45 @@ export const Media: React.FC<Props> = props => {
         : {})}
     >
       {isVideo ? <Video {...props} /> : <Image {...props} />}
+    </Tag>
+  )
+}
+
+export const HighImpactMedia: React.FC<Props> = props => {
+  const { className, resources, htmlElement = 'div' } = props
+
+  const isVideo = typeof resources !== 'string' && resources[0]?.mimeType?.includes('video')
+  const Tag = (htmlElement as ElementType) || Fragment
+
+  return (
+    <Tag
+      {...(htmlElement !== null
+        ? {
+            className,
+          }
+        : {})}
+    >
+      {isVideo ? <Video {...props} /> : <HighImpactImage {...props} />}
+    </Tag>
+  )
+}
+
+
+export const DefaultMedia: React.FC<Props> = props => {
+  const { className, resources, htmlElement = 'div' } = props
+
+  const isVideo = typeof resources !== 'string' && resources[0]?.mimeType?.includes('video')
+  const Tag = (htmlElement as ElementType) || Fragment
+
+  return (
+    <Tag
+      {...(htmlElement !== null
+        ? {
+            className,
+          }
+        : {})}
+    >
+      {isVideo ? <Video {...props} /> : <DefaultImage {...props} />}
     </Tag>
   )
 }

@@ -1,6 +1,8 @@
 import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK } from './blocks'
 import { PRODUCT_CATEGORIES } from './categories'
 import { META } from './meta'
+import { MEDIA_FIELDS } from './media'
+
 
 export const PRODUCTS = `
   query Products {
@@ -18,25 +20,22 @@ export const PRODUCT = `
       docs {
         id
         title
-        stripeProductID
         ${PRODUCT_CATEGORIES}
-        layout {
-          ${CALL_TO_ACTION}
-          ${CONTENT}
-          ${MEDIA_BLOCK}
-          ${ARCHIVE_BLOCK}
-        }
-        priceJSON
-        enablePaywall
+        price
+        discountPercentage
+        description
         relatedProducts {
           id
           slug
           title
-          ${META}
         }
-        ${META}
         colors
         sizes
+        photos {
+          photo{
+            ${MEDIA_FIELDS}
+          }
+        }
       }
     }
   }

@@ -3,18 +3,18 @@ import React, { Fragment } from 'react'
 import { Page } from '../../../payload/payload-types'
 import { Gutter } from '../../_components/Gutter'
 import { CMSLink } from '../../_components/Link'
-import { Media } from '../../_components/Media'
+import { Media, HighImpactMedia } from '../../_components/Media'
 import RichText from '../../_components/RichText'
 
 import classes from './index.module.scss'
 
-export const HighImpactHero: React.FC<Page['hero']> = ({ richText, media, links }) => {
-
+export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links }) => {
+  const metaImage = medias.map(item => item.media);
   return (
     <>
     <Gutter className={classes.hero}>
       <div className={classes.content}>
-        <RichText content={richText} />
+        <RichText content={richText} /> 
         {Array.isArray(links) && links.length > 0 && (
           <ul className={classes.links}>
             {links.map(({ link }, i) => {
@@ -31,15 +31,15 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ richText, media, links 
       </Gutter>
 
       <div className={classes.media}>
-        {typeof media === 'object' && (
+        {typeof metaImage === 'object' && (
           <Fragment>
-            <Media
-              resource={media}
+            <HighImpactMedia
+              resources={metaImage}
               // fill
               imgClassName={classes.image}
               priority
             />
-            {media?.caption && <RichText content={media.caption} className={classes.caption} />}
+            {metaImage[0]?.caption && <RichText content={metaImage[0].caption} className={classes.caption} />}
           </Fragment>
         )}
       </div>

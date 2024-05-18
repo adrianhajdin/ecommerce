@@ -1,7 +1,7 @@
 .imageSelectorOverlay {
   position: absolute;
   top: 10px;
-  left: 10px; /* Alterado de 'right' para 'left' */
+  right: 10px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -41,32 +41,3 @@
   height: 100vh; /* Altura de 100% da tela, ajuste conforme necessário */
 }
 
-@keyframes slideInUp {
-  from {
-    transform: translateY(10%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInDown {
-  from {
-    transform: translateY(-10%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.imageEnterUp {
-  animation: slideInUp 0.5s forwards;
-}
-
-.imageEnterDown {
-  animation: slideInDown 0.5s forwards;
-}

@@ -30,7 +30,7 @@ export default async function Product({ params: { slug } }) {
 
   try {
     categories = await fetchDocs<Category>('categories')
-    console.log(categories)
+
   } catch (error) {
     console.log(error)
   }
@@ -89,8 +89,9 @@ export default async function Product({ params: { slug } }) {
 
   return (
     <>
-      <ProductHero product={product} />
-      {product?.enablePaywall && <PaywallBlocks productSlug={slug as string} disableTopPadding />}
+    
+      <ProductHero product={product}  />
+
       <Blocks
         disableTopPadding
         blocks={[

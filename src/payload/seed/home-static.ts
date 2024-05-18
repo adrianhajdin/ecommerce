@@ -8,7 +8,7 @@ export const staticHome: Page = {
   updatedAt: '',
   meta: {
     title: 'vPayload E-Commerce Template',
-    description: 'An open-source e-commerce store built with Payload and Next.js.',
+    description: 'teste An open-source e-commerce store built with Payload and Next.js.',
   },
   hero: {
     type: 'lowImpact',
@@ -27,7 +27,7 @@ export const staticHome: Page = {
             text: 'Welcome to your e-commerce store! ',
           },
           {
-            text: 'Your database is currently empty.',
+            text: 'dddd Your database is currently empty.',
             bold: true,
           },
           {

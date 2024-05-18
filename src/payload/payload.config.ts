@@ -138,11 +138,6 @@ export default buildConfig({
     nestedDocs({
       collections: ['categories'],
     }),
-    seo({
-      collections: ['pages', 'products'],
-      generateTitle,
-      uploadsCollection: 'media',
-    }),
     payloadCloud(),
   ],
 })
