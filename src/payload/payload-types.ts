@@ -18,9 +18,10 @@ export interface Config {
   collections: {
     pages: Page;
     products: Product;
+    categories: Category;
+    colors: Color;
     orders: Order;
     media: Media;
-    categories: Category;
     users: User;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -181,24 +182,16 @@ export interface Media {
 export interface Category {
   id: string;
   title: string;
-  media?: string | Media | null;
+  subtitle: string;
+  category?: string | null;
   slug?: string | null;
-  parent?: (string | null) | Category;
-  breadcrumbs?:
-    | {
-        doc?: (string | null) | Category;
-        url?: string | null;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt: string;
   createdAt: string;
 }
 export interface Product {
   id: string;
   title: string;
-  colors?: ('red' | 'blue' | 'purple' | 'yellow')[] | null;
+  colors?: (string | Color)[] | null;
   sizes?: ('XS' | 'S' | 'M' | 'L' | 'XL')[] | null;
   description: string;
   price: number;
@@ -212,6 +205,14 @@ export interface Product {
   publishedOn?: string | null;
   relatedProducts?: (string | Product)[] | null;
   categories?: (string | Category)[] | null;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Color {
+  id: string;
+  color: string;
+  colorHex: string;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
