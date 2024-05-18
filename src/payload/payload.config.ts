@@ -3,9 +3,9 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-imp
 import { payloadCloud } from '@payloadcms/plugin-cloud'
 // import formBuilder from '@payloadcms/plugin-form-builder'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
-import seo from '@payloadcms/plugin-seo'
+
 import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
-import stripePlugin from '@payloadcms/plugin-stripe'
+
 import { slateEditor } from '@payloadcms/richtext-slate' // editor-import
 import dotenv from 'dotenv'
 import path from 'path'
@@ -15,19 +15,16 @@ import Categories from './collections/Categories'
 import { Media } from './collections/Media'
 import { Orders } from './collections/Orders'
 import { Pages } from './collections/Pages'
+import  Colors  from './collections/Colors'
 import Products from './collections/Products'
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import BeforeLogin from './components/BeforeLogin'
 import { createPaymentIntent } from './endpoints/create-payment-intent'
-import { customersProxy } from './endpoints/customers'
-import { productsProxy } from './endpoints/products'
-import { seed } from './endpoints/seed'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
-import { priceUpdated } from './stripe/webhooks/priceUpdated'
-import { productUpdated } from './stripe/webhooks/productUpdated'
+
 
 const generateTitle: GenerateTitle = () => {
   return 'My Store'
@@ -81,7 +78,7 @@ export default buildConfig({
   }),
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Products, Orders, Media, Categories, Users],
+  collections: [Pages, Products,Categories, Colors, Orders, Media, Users],
   globals: [Settings, Header, Footer],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
@@ -101,42 +98,13 @@ export default buildConfig({
       method: 'post',
       handler: createPaymentIntent,
     },
-    {
-      path: '/stripe/customers',
-      method: 'get',
-      handler: customersProxy,
-    },
-    {
-      path: '/stripe/products',
-      method: 'get',
-      handler: productsProxy,
-    },
-    // The seed endpoint is used to populate the database with some example data
-    // You should delete this endpoint before deploying your site to production
-    {
-      path: '/seed',
-      method: 'get',
-      handler: seed,
-    },
   ],
   plugins: [
-    // formBuilder({}),
-    stripePlugin({
-      stripeSecretKey: process.env.STRIPE_SECRET_KEY || '',
-      isTestKey: Boolean(process.env.PAYLOAD_PUBLIC_STRIPE_IS_TEST_KEY),
-      stripeWebhooksEndpointSecret: process.env.STRIPE_WEBHOOKS_SIGNING_SECRET,
-      rest: false,
-      webhooks: {
-        'product.created': productUpdated,
-        'product.updated': productUpdated,
-        'price.updated': priceUpdated,
-      },
-    }),
     // redirects({
     //   collections: ['pages', 'products'],
     // }),
     nestedDocs({
-      collections: ['categories'],
+      collections: ['categorias'],
     }),
     payloadCloud(),
   ],
