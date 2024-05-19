@@ -31,6 +31,8 @@ export const fetchDocs = async <T>(
   collection: keyof Config['collections'],
   draft?: boolean,
 ): Promise<T[]> => {
+
+  //console.log(queryMap[collection])
   if (!queryMap[collection]) throw new Error(`Collection ${collection} not found`)
 
   let token: RequestCookie | undefined

@@ -30,7 +30,6 @@ export const HighImpactImage: React.FC<MediaProps> = props => {
   const sizes = Object.entries(breakpoints)
     .map(([, value]) => `(max-width: ${value}px) ${value}px`)
     .join(', ');
-  console.log(resources)
   return (
     <div className={classes.highImpactImageContainer}>
       {resources?.map((resource, index) => (
