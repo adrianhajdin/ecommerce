@@ -38,7 +38,7 @@ const FilterMenu = () => {
   return (
     <div className={classes.filterMenu}>
       <div className={classes.filterDropdown}>
-        <span>Tamanho</span>
+        <span>Coleção</span>
         <ul className={classes.dropdownList}>
           <li>Pequeno</li>
           <li>Médio</li>
@@ -46,7 +46,7 @@ const FilterMenu = () => {
         </ul>
       </div>
       <div className={classes.filterDropdown}>
-        <span>Cor</span>
+        <span>Categoria</span>
         <ul className={classes.dropdownList}>
           <li>Vermelho</li>
           <li>Verde</li>
@@ -54,7 +54,7 @@ const FilterMenu = () => {
         </ul>
       </div>
       <div className={classes.filterDropdown}>
-        <span>Gênero</span>
+        <span>Tamanho</span>
         <ul className={classes.dropdownList}>
           <li>Masculino</li>
           <li>Feminino</li>
@@ -62,17 +62,10 @@ const FilterMenu = () => {
         </ul>
       </div>
       <div className={classes.filterDropdown}>
-        <span>Categoria</span>
+        <span>Cores</span>
         <ul className={classes.dropdownList}>
           <li>Jeans Feminino</li>
           <li>Plus Size Feminino</li>
-        </ul>
-      </div>
-      <div className={classes.filterDropdown}>
-        <span>Sub Categoria</span>
-        <ul className={classes.dropdownList}>
-          <li>Opção 1</li>
-          <li>Opção 2</li>
         </ul>
       </div>
       <div className={classes.sortContainer}>

@@ -2,10 +2,11 @@
 
 .container {
   width: 100%;
+  background-color: rgb(211, 207, 196);
+  padding-top: 20px;
 }
 
 .products {
-  
   @include large-break {
     grid-template-columns: 100%;
     gap: 48px;
@@ -14,7 +15,17 @@
 
 // Exemplo de ajuste no SCSS
 .productHero {
-  height: 100%; // Ajusta para a largura total
-  // Ou você pode especificar uma largura fixa, como
-  // width: 1200px;
+  height: 100%;
+}
+
+// Exemplo de ajuste no SCSS
+.productList {
+  height: 100%;
+  background-color: white; // Ajusta para a largura total
+ 
+}
+
+.productView {
+  margin-top: 10px;
+  padding: 5px; // Adicionado
 }

@@ -1,39 +1,22 @@
 'use client'
 
-import React, { Fragment, useEffect, useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 
 import { Product } from '../../../payload/payload-types'
 import { DefaultMedia } from '../Media'
 
-import { Price } from '../Price'
-
 import classes from './index.module.scss'
 
-const priceFromJSON = (priceJSON): string => {
-  let price = ''
-
-  if (priceJSON) {
-    try {
-      const parsed = JSON.parse(priceJSON)?.data[0]
-      const priceValue = parsed.unit_amount
-      const priceType = parsed.type
-      // Adicionando suporte para o dólar americano e Real brasileiro como exemplo
-      price = `${parsed.currency === 'usd' ? '$' : parsed.currency === 'brl' ? 'R$' : ''}${(priceValue / 100).toFixed(2)}`
-      if (priceType === 'recurring') {
-        price += `/${
-          parsed.recurring.interval_count > 1
-            ? `${parsed.recurring.interval_count} ${parsed.recurring.interval}`
-            : parsed.recurring.interval
-        }`
-      }
-    } catch (e) {
-      console.error(`Não foi possível analisar priceJSON`) // Mensagem traduzida
+const parsePrice = (price, discountPercentage) => {
+  if (price) {
+    if (discountPercentage > 0) {
+      return price * (1 - discountPercentage * 0.01);
     }
+    return price;
   }
-
-  return price
-}
+  return 0;
+};
 
 export const Card: React.FC<{
   alignItems?: 'center'
@@ -50,15 +33,17 @@ export const Card: React.FC<{
     showCategories,
     title: titleFromProps,
     doc,
-    doc: { slug, title, categories, photos, description } = {},
+    doc: { slug, title, categories, photos, description, price, discountPercentage } = {},
     className,
   } = props
   const metaImage = photos.map(item => item.photo);
 
-
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
-  const titleToUse = titleFromProps || title
-  const sanitizedDescription = description?.replace(/\s/g, ' ')
+  const titleToUse = title
+
+  // Verificar se discountPercentage é nulo e atribuir 0 se for o caso
+  const discount = discountPercentage == null ? 0 : discountPercentage;
+  const adjustedPrice = parsePrice(price, discount)
   const href = `/products/${slug}`
 
   return (
@@ -74,10 +59,17 @@ export const Card: React.FC<{
         {titleToUse && <h4 className={classes.title}>{titleToUse}</h4>}
         {description && (
           <div className={classes.body}>
-            {description && <p className={classes.description}>{sanitizedDescription}</p>}
+            <p className={classes.description}>
+              {discount > 0 ? (
+                <>
+                  <s className={classes.strikethrough}>R$ {price.toFixed(2)}</s> R$ {adjustedPrice.toFixed(2)}
+                </>
+              ) : (
+                `R$ ${adjustedPrice.toFixed(2)}`
+              )}
+            </p>
           </div>
         )}
-        {doc && <Price product={doc} />}
       </div>
     </Link>
   )
