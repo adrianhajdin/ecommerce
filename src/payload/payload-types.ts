@@ -192,7 +192,7 @@ export interface Product {
   id: string;
   title: string;
   colors?: (string | Color)[] | null;
-  sizes?: ('XS' | 'S' | 'M' | 'L' | 'XL')[] | null;
+  sizes?: ('GG' | 'G' | 'M' | 'P' | 'PP')[] | null;
   description: string;
   price: number;
   discountPercentage?: number | null;

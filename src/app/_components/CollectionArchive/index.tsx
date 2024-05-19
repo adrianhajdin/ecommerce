@@ -36,7 +36,8 @@ export type Props = {
 }
 
 export const CollectionArchive: React.FC<Props> = props => {
-  const { categoryFilters, sort } = useFilter()
+  const { categoryFilters, subCategoryFilters, colorFilters, sizeFilters, sort } = useFilter()
+  console.log(sizeFilters) 
 
   const {
     className,
@@ -48,7 +49,6 @@ export const CollectionArchive: React.FC<Props> = props => {
     populatedDocsTotal,
   } = props
   
-  // console.log(populatedDocs)
   const [results, setResults] = useState<Result>({
     totalDocs: typeof populatedDocsTotal === 'number' ? populatedDocsTotal : 0,
     docs: (populatedDocs?.map(doc => doc.value) || []) as [],
@@ -82,9 +82,6 @@ export const CollectionArchive: React.FC<Props> = props => {
   }, [isLoading, scrollToRef, results])
 
   useEffect(() => {
-    // hydrate the block with fresh content after first render
-    // don't show loader unless the request takes longer than x ms
-    // and don't show it during initial hydration
     const timer: NodeJS.Timeout = setTimeout(() => {
       if (hasHydrated) {
         setIsLoading(true)
@@ -95,22 +92,32 @@ export const CollectionArchive: React.FC<Props> = props => {
       {
         sort,
         where: {
-          ...(categoryFilters && categoryFilters?.length > 0
-            ? {
-                categories: {
-                  in:
-                    typeof categoryFilters === 'string'
-                      ? [categoryFilters]
-                      : categoryFilters.map((cat: string) => cat).join(','),
-                },
-              }
-            : {}),
+          ...(categoryFilters && categoryFilters.length > 0 ? {
+            'categories.title': {
+              in: categoryFilters
+            }
+          } : {}),
+          ...(subCategoryFilters && subCategoryFilters.length > 0 ? {
+            'categories.subtitle': {
+              in: subCategoryFilters
+            }
+          } : {}),
+          ...(colorFilters && colorFilters.length > 0 ? {
+            'colors.color': {
+              in: colorFilters
+            }
+          } : {}),
+          ...(sizeFilters && sizeFilters.length > 0 ? {
+            sizes: {
+              in: sizeFilters
+            }
+          } : {})
         },
         limit,
         page,
         depth: 1,
       },
-      { encode: false },
+      { encode: false }
     )
 
     const makeRequest = async () => {
@@ -143,14 +150,14 @@ export const CollectionArchive: React.FC<Props> = props => {
     return () => {
       if (timer) clearTimeout(timer)
     }
-  }, [page, categoryFilters, relationTo, onResultChange, sort, limit])
+  }, [page, categoryFilters, subCategoryFilters, colorFilters, sizeFilters, relationTo, onResultChange, sort, limit])
 
   return (
     <div className={[classes.collectionArchive, className].filter(Boolean).join(' ')}>
       <div ref={scrollRef} className={classes.scrollRef} />
       {!isLoading && error && <div>{error}</div>}
       <Fragment>
-        {showPageRange !== false && (
+        {/* {showPageRange !== false && (
           <div className={classes.pageRange}>
             <PageRange
               totalDocs={results.totalDocs}
@@ -159,11 +166,11 @@ export const CollectionArchive: React.FC<Props> = props => {
               limit={limit}
             />
           </div>
-        )}
+        )} */}
 
         <div className={classes.grid}>
           {results.docs?.map((result, index) => {
-            return <Card key={index} relationTo="products" doc={result} showCategories />
+            return <Card className={classes.card} key={index} relationTo="products" doc={result} showCategories />
           })}
         </div>
 

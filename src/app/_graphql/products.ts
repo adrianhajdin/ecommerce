@@ -1,5 +1,6 @@
 import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK } from './blocks'
 import { PRODUCT_CATEGORIES } from './categories'
+import { PRODUCT_COLORS } from './colors'
 import { META } from './meta'
 import { MEDIA_FIELDS } from './media'
 
@@ -28,8 +29,14 @@ export const PRODUCT = `
           id
           slug
           title
+          photos {
+            photo{
+              ${MEDIA_FIELDS}
+            }
+          }
+          
         }
-        colors
+        ${PRODUCT_COLORS}
         sizes
         photos {
           photo{

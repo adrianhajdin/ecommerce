@@ -28,6 +28,7 @@ export const ProductHero: React.FC<{
     currency: 'BRL', // TODO: use `parsed.currency`
   })
 
+
   return (
     <Gutter className={classes.productHero}>
       <div className={classes.mediaWrapper}>

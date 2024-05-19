@@ -5,6 +5,12 @@ import { createContext, ReactNode, SetStateAction, useContext, useState } from '
 interface IContextType {
   categoryFilters: string[]
   setCategoryFilters: React.Dispatch<SetStateAction<string[]>>
+  subCategoryFilters: string[]
+  setSubCategoryFilters: React.Dispatch<SetStateAction<string[]>>
+  colorFilters: string[]
+  setColorFilters: React.Dispatch<SetStateAction<string[]>>
+  sizeFilters: string[]
+  setSizeFilters: React.Dispatch<SetStateAction<string[]>>
   sort: string
   setSort: React.Dispatch<SetStateAction<string>>
 }
@@ -12,6 +18,12 @@ interface IContextType {
 export const INITIAL_FILTER_DATA = {
   categoryFilters: [],
   setCategoryFilters: () => [],
+  subCategoryFilters: [],
+  setSubCategoryFilters: () => [],
+  colorFilters: [],
+  setColorFilters: () => [],
+  sizeFilters: [],
+  setSizeFilters: () => [],
   sort: '',
   setSort: () => '',
 }
@@ -19,7 +31,10 @@ export const INITIAL_FILTER_DATA = {
 const FilterContext = createContext<IContextType>(INITIAL_FILTER_DATA)
 
 export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
-  const [categoryFilters, setCategoryFilters] = useState([])
+  const [categoryFilters, setCategoryFilters] = useState<string[]>([])
+  const [subCategoryFilters, setSubCategoryFilters] = useState<string[]>([])
+  const [colorFilters, setColorFilters] = useState<string[]>([])
+  const [sizeFilters, setSizeFilters] = useState<string[]>([])
   const [sort, setSort] = useState('-createdAt')
 
   return (
@@ -27,6 +42,12 @@ export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         categoryFilters,
         setCategoryFilters,
+        subCategoryFilters,
+        setSubCategoryFilters,
+        colorFilters,
+        setColorFilters,
+        sizeFilters,
+        setSizeFilters,
         sort,
         setSort,
       }}

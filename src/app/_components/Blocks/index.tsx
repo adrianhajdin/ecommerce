@@ -25,6 +25,8 @@ export const Blocks: React.FC<{
 }> = props => {
   const { disableTopPadding, disableBottomPadding, blocks } = props
 
+  console.log(blocks)
+
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 
   if (hasBlocks) {
@@ -35,6 +37,8 @@ export const Blocks: React.FC<{
 
           if (blockType && blockType in blockComponents) {
             const Block = blockComponents[blockType]
+
+        
 
             // the cta block is containerized, so we don't consider it to be inverted at the block-level
             const blockIsInverted =

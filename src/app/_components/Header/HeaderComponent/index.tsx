@@ -35,7 +35,7 @@ export  const  HeaderComponent = ({ categories}) => {
     sale: false,
     newIn: false,
   });
-
+  
 
   const categoriesMap = organizeCategories(categories)
   const toggleDropdown = (buttonName) => {

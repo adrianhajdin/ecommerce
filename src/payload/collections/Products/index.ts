@@ -39,11 +39,11 @@ const Products: CollectionConfig = {
       label: 'Tamanhos disponíveis',
       type: 'select',
       options: [
-        { value: 'XS', label: 'XS' },
-        { value: 'S', label: 'S' },
+        { value: 'GG', label: 'GG' },
+        { value: 'G', label: 'G' },
         { value: 'M', label: 'M' },
-        { value: 'L', label: 'L' },
-        { value: 'XL', label: 'XL' },
+        { value: 'P', label: 'P' },
+        { value: 'PP', label: 'PP' },
         // Adicione mais tamanhos conforme necessário
       ],
       hasMany: true,

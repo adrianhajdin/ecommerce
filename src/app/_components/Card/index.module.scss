@@ -8,7 +8,7 @@
 }
 
 .content {
-  padding: 8px 0;
+  padding: 8px 10px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -55,7 +55,7 @@
 }
 
 .description {
-  margin: 0;
+  margin: 20;
   line-height: 24px;
 
   white-space: nowrap;
@@ -73,13 +73,13 @@
   text-decoration: none;
   display: block;
   position: relative;
-  min-height: 262px;
+  min-height: 600px;
   background-color: var(--color-dark-50);
 }
 
 .image {
-  padding: 24px;
-  object-fit: contain;
+  padding: 1px;
+  object-fit: cover;
   aspect-ratio: 1/1;
   max-width: 100%;
 }
@@ -101,4 +101,12 @@
     flex-direction: column;
     align-items: flex-start;
   }
+}
+.strikethrough {
+  color: #cccccc; // Cinza claro
+}
+
+.title {
+  font-size: 20px; // Tamanho grande da fonte
+  font-weight: normal; // Fonte sem negrito
 }
