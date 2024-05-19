@@ -1,153 +1,121 @@
-'use client'
+'use client';
 
-import React, { Fragment, useEffect } from 'react'
-import { Elements } from '@stripe/react-stripe-js'
-import { loadStripe } from '@stripe/stripe-js'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import React, { Fragment, useEffect, useState } from 'react';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import axios from 'axios'; // Certifique-se de ter o axios instalado
 
-import { Settings } from '../../../../payload/payload-types'
-import { Button } from '../../../_components/Button'
-import { PaymentGateway } from '../../../_components/PaymentGateway'
-import { LoadingShimmer } from '../../../_components/LoadingShimmer'
-import { useAuth } from '../../../_providers/Auth'
-import { useCart } from '../../../_providers/Cart'
-import { useTheme } from '../../../_providers/Theme'
-import cssVariables from '../../../cssVariables'
-import { CheckoutForm } from '../CheckoutForm'
-import { CheckoutItem } from '../CheckoutItem'
+import { Settings } from '../../../../payload/payload-types';
+import { Button } from '../../../_components/Button';
+import { LoadingShimmer } from '../../../_components/LoadingShimmer';
+import { useAuth } from '../../../_providers/Auth';
+import { useCart } from '../../../_providers/Cart';
+import { useTheme } from '../../../_providers/Theme';
+import cssVariables from '../../../cssVariables';
+import { CheckoutForm } from '../CheckoutForm';
+import { CheckoutItem } from '../CheckoutItem';
+import {CancelShipmentComponent } from '../../../_components/FreightCancel';
+import { FreightCalculator,completeFreightPurchase} from '../../../_components/FreightSend';
+import classes from './index.module.scss';
 
-import classes from './index.module.scss'
+const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`;
+const stripePromise = loadStripe(apiKey);
 
-const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`
-const stripe = loadStripe(apiKey)
+export const CheckoutPage = ({ settings }) => {
+  const { productsPage } = settings;
+  const { user } = useAuth();
+  const router = useRouter();
+  const [error, setError] = useState(null);
+  const [clientSecret, setClientSecret] = useState(null);
+  const [freightPrice, setFreightPrice] = useState(0);
+  const { cart, cartIsEmpty, cartTotal } = useCart();
+  const { theme } = useTheme();
 
-export const CheckoutPage: React.FC<{
-  settings: Settings
-}> = props => {
-  const {
-    settings: { productsPage },
-  } = props
-
-  const { user } = useAuth()
-  const router = useRouter()
-  const [error, setError] = React.useState<string | null>(null)
-  const [clientSecret, setClientSecret] = React.useState()
-  const hasMadePaymentIntent = React.useRef(false)
-  const { theme } = useTheme()
-
-  const { cart, cartIsEmpty, cartTotal } = useCart()
 
   useEffect(() => {
-    if (user !== null && cartIsEmpty) {
-      router.push('/cart')
+    if (user === null || cartIsEmpty) {
+      router.push(cartIsEmpty ? '/cart' : '/login');
     }
-  }, [router, user, cartIsEmpty])
+  }, [user, cartIsEmpty, router]);
 
   useEffect(() => {
-    if (user && cart && hasMadePaymentIntent.current === false) {
-      hasMadePaymentIntent.current = true
-
-      const makeIntent = async () => {
+    const makePaymentIntent = async () => {
+      if (!hasMadePaymentIntent.current && user && cart) {
+        hasMadePaymentIntent.current = true;
         try {
-          const paymentReq = await fetch(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/api/create-payment-intent`,
-            {
-              method: 'POST',
-              credentials: 'include',
-            },
-          )
-
-          const res = await paymentReq.json()
-
-          if (res.error) {
-            setError(res.error)
-          } else if (res.client_secret) {
-            setError(null)
-            setClientSecret(res.client_secret)
+          const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/create-payment-intent`, {
+            method: 'POST',
+            credentials: 'include',
+          });
+          const data = await response.json();
+          if (data.error) {
+            setError(data.error);
+          } else {
+            setClientSecret(data.client_secret);
           }
-        } catch (e) {
-          setError('Algo deu errado, tente novamente.')
+        } catch (error) {
+          console.error('Erro ao criar intenção de pagamento:', error);
+          setError('Algo deu errado, tente novamente.');
         }
       }
+    };
+    makePaymentIntent();
+  }, [user, cart]);
+
+  // Corrigindo a lógica de cálculo do total
+  const totalWithFreight = parseFloat(cartTotal.raw) / 100 + parseFloat(freightPrice);
+
 
       makeIntent()
     }
   }, [cart, user])
 
   if (!user || !stripe) return null
+
   return (
     <Fragment>
-      {cartIsEmpty && (
-        <div>
-          {'Your '}
-          <Link href="/cart">carrinho</Link>
-          {' is empty.'}
-          {typeof productsPage === 'object' && productsPage?.slug && (
-            <Fragment>
-              {' '}
-              <Link href={`/${productsPage.slug}`}>Continue comprando?</Link>
-            </Fragment>
-          )}
-        </div>
-      )}
-      {!cartIsEmpty && (
+      {!cartIsEmpty ? (
         <div className={classes.items}>
           <div className={classes.header}>
             <p>Produtos</p>
             <div className={classes.headerItemDetails}>
-              <p></p>
               <p className={classes.quantity}>Quantidade</p>
+              <p className={classes.subtotal}>Subtotal</p>
             </div>
-            <p className={classes.subtotal}>Subtotal</p>
           </div>
-
           <ul>
-            {cart?.items?.map((item, index) => {
-              if (typeof item.product === 'object') {
-                const {
-                  quantity,
-                  product,
-                  product: { title, meta },
-                } = item
-
-                if (!quantity) return null
-
-                const metaImage = meta?.image
-
-                return (
-                  <Fragment key={index}>
-                    <CheckoutItem
-                      product={product}
-                      title={title}
-                      metaImage={metaImage}
-                      quantity={quantity}
-                      index={index}
-                    />
-                  </Fragment>
-                )
-              }
-              return null
-            })}
+            {cart.items.map((item, index) => (
+              <CheckoutItem key={index} product={item.product} title={item.product.title} metaImage={item.product.meta.image} quantity={item.quantity} index={index} />
+            ))}
+            <FreightCalculator onFreightPriceSet={setFreightPrice} />
             <div className={classes.orderTotal}>
               <p>Total do pedido</p>
-              <p>{cartTotal.formatted}</p>
+              <p>R$ {totalWithFreight.toFixed(2)}</p>
             </div>
           </ul>
         </div>
-      )}
-      {!clientSecret && !error && (
-        <div className={classes.loading}>
-          <LoadingShimmer number={2} />
+      ) : (
+        <div>
+          <p>Seu carrinho está vazio.</p>
+          <Link href="/cart">Voltar ao carrinho</Link>
         </div>
       )}
+      {!clientSecret && !error && <LoadingShimmer number={2} />}
       {!clientSecret && error && (
         <div className={classes.error}>
-          <p>{`Error: ${error}`}</p>
+          <p>Error: {error}</p>
           <Button label="Volte para o carrinho" href="/cart" appearance="secondary" />
         </div>
       )}
       {clientSecret && (
+
+        <Elements stripe={stripePromise} options={{ clientSecret, appearance: { theme: theme === 'dark' ? 'dark' : 'light', variables: cssVariables } }}>
+         <CancelShipmentComponent />
+          <CheckoutForm />
+        </Elements>
+
         <Fragment>
           <h3 className={classes.payment}>Detalhes do pagamento</h3>
           {error && <p>{`Error: ${error}`}</p>}
@@ -155,5 +123,7 @@ export const CheckoutPage: React.FC<{
         </Fragment>
       )}
     </Fragment>
-  )
-}
+  );
+};
+
+const hasMadePaymentIntent = { current: false }; // Ajuste para evitar múltiplos intents no mesmo carregamento

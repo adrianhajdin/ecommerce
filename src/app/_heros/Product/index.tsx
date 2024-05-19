@@ -66,6 +66,6 @@ export const ProductHero: React.FC<{
         <AddToCartButton product={product} className={classes.addToCartButton } />
       </div>
       </div>
-    </Gutter>
+    </Gutter>  
   )
 }

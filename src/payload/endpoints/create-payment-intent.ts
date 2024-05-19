@@ -37,6 +37,14 @@ export const createPaymentIntent: PayloadHandler = async (req, res): Promise<voi
       const customer = await stripe.customers.create({
         email: fullUser?.email,
         name: fullUser?.name,
+        address: {
+          line1: fullUser?.address,
+          line2: fullUser?.address2,
+          postal_code: fullUser?.zipcode,
+        },
+        metadata: {
+          cpf: fullUser?.cpf,
+        },
       })
 
       stripeCustomerID = customer.id

@@ -247,6 +247,36 @@ export interface User {
   updatedAt: string;
   createdAt: string;
   email: string;
+  resetPasswordToken?: string;
+  resetPasswordExpiration?: string;
+  salt?: string;
+  hash?: string;
+  loginAttempts?: number;
+  lockUntil?: string;
+  password: string;
+  address: string;     // Novo campo
+  address2: string;    // Novo campo
+  zipcode: string;     // Novo campo
+  cpf: string;         // Novo campo
+}
+export interface Redirect {
+  id: string;
+  from: string;
+  to: {
+    type?: 'reference' | 'custom';
+    reference:
+      | {
+          relationTo: 'pages';
+          value: string | Page;
+        }
+      | {
+          relationTo: 'products';
+          value: string | Product;
+        };
+    url: string;
+  };
+  updatedAt: string;
+  createdAt: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
   salt?: string | null;

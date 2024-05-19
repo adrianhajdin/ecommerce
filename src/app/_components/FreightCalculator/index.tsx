@@ -1,10 +1,9 @@
 'use client'
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import classes from './index.module.scss'; // Verifique o caminho para o seu arquivo CSS
 
-export const FreightCalculator = () => {
+export const FreightCalculator = ({ onFreightPriceSet }) => {
   const [cep, setCep] = useState('');
   const [loading, setLoading] = useState(false);
   const [freightInfo, setFreightInfo] = useState(null);
@@ -12,6 +11,18 @@ export const FreightCalculator = () => {
 
   const handleCepChange = (event) => {
     setCep(event.target.value);
+  };
+
+  const sendFreightDetailsEmail = async () => {
+    try {
+      await axios.post('/api/send-email', {
+        type: 'Compra realizada com sucesso',
+        details: 'Obrigado por nos escolher'
+      });
+      console.log('Detalhes do frete enviados por e-mail com sucesso.');
+    } catch (error) {
+      console.error('Erro ao enviar e-mail com detalhes do frete:', error);
+    }
   };
 
   const calculateFreight = async () => {
@@ -26,19 +37,20 @@ export const FreightCalculator = () => {
 
     try {
       const response = await axios.post('/api/calculate-freight', { cep });
-      const firstOption = response.data[0]; // A resposta é assumida como um array
+      const firstOption = response.data[0];
 
-      // Formata as informações desejadas
       const formattedFreightInfo = {
-        price: `R$ ${firstOption.custom_price || firstOption.price}`,
+        price: parseFloat(firstOption.custom_price || firstOption.price) +3,
         deliveryTime: `${firstOption.delivery_time} dias`,
         carrier: firstOption.name
       };
 
       setFreightInfo(formattedFreightInfo);
+      onFreightPriceSet(formattedFreightInfo.price); // Chama o callback com o preço do frete
     } catch (err) {
       console.error('Erro ao calcular o frete:', err);
       setError('Falha ao calcular o frete. Tente novamente.');
+      onFreightPriceSet(0); // Reseta o preço do frete em caso de erro
     } finally {
       setLoading(false);
     }

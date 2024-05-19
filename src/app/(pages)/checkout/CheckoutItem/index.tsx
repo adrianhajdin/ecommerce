@@ -4,6 +4,7 @@ import { Media } from '../../../_components/Media'
 import { Price } from '../../../_components/Price'
 
 import classes from './index.module.scss'
+import { FreightCalculator } from '../../../_components/FreightCalculator'
 
 export const CheckoutItem = ({ product, title, metaImage, quantity, index }) => {
   return (

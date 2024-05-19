@@ -1,0 +1,24 @@
+.emailSender {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sendButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.sendButton:hover {
+  background-color: #0056b3;
+}
+
+.resultMessage {
+  font-size: 14px;
+  color: #333;
+}
