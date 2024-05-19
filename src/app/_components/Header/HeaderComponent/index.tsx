@@ -38,6 +38,7 @@ export  const  HeaderComponent = ({ categories}) => {
   
 
   const categoriesMap = organizeCategories(categories)
+
   const toggleDropdown = (buttonName) => {
     setDropdownStates((prevStates) => ({
       ...prevStates,

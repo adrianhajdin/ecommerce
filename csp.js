@@ -7,24 +7,30 @@ const policies = {
     'https://checkout.stripe.com',
     'https://js.stripe.com',
     'https://maps.googleapis.com',
-    'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate'
+    'https://*.mercadopago.com/',
+    'https://*.mercadolibre.com/'
   ],
   'child-src': ["'self'"],
   'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-  'img-src': ["'self'", 'https://*.stripe.com', 'https://raw.githubusercontent.com'],
+  'img-src': ["'self'", 'https://*.stripe.com', 'https://raw.githubusercontent.com', 'https://*.mercadolivre.com/', 'https://*.mercadopago.com/', 'https://*.mercadolibre.com/'],
   'font-src': ["'self'"],
   'frame-src': [
     "'self'",
     'https://checkout.stripe.com',
     'https://js.stripe.com',
     'https://hooks.stripe.com',
+    'https://*.mercadopago.com/',
+    'https://*.mercadolibre.com/'
   ],
   'connect-src': [
     "'self'",
     'https://checkout.stripe.com',
     'https://api.stripe.com',
     'https://maps.googleapis.com',
-    'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate'
+    'https://*.mercadopago.com/',
+    'https://api.mercadolibre.com/',
+    'https://*.mercadolibre.com/'
+
   ],
 }
 

@@ -3,7 +3,9 @@
 import React, { useState } from 'react';
 import classes from './index.module.scss';
 
+
 export const ColorSelectButton = ({ title = "Cor", colors }) => {
+
   const hexaColors = colors.map(cor => "#" + cor);
   const colorNames = ["Jeans Vintage", "Azul Petróleo", "Mais Um Nome"]; // Substitua pelos nomes das cores apropriados
 

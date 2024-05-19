@@ -9,6 +9,7 @@ dotenv.config({
 
 import express from 'express'
 import calculateFreightRouter from './payload/endpoints/melhor_envio';
+import processPayment from './payload/endpoints/gateway_pagamento';
 import payload from 'payload'
 
 import { seed } from './payload/seed'
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.json());
 app.use('/api', calculateFreightRouter);
+app.use('/api', processPayment);
 
 const start = async (): Promise<void> => {
   await payload.init({

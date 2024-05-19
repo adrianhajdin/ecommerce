@@ -6,6 +6,7 @@ import { ColorSelectButton } from '../../_components/ColorSelectButton'
 import { SizePicker } from '../../_components/SizePicker'
 import { FavButton } from '../../_components/FavButton'
 import { FreightCalculator } from '../../_components/FreightCalculator'
+import { PaymentGateway } from '../../_components/PaymentGateway'
 
 
 import { Gutter } from '../../_components/Gutter'
