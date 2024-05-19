@@ -5,7 +5,7 @@ const router = Router();
 
 router.post('/calculate-freight', async (req, res) => {
   const { cep } = req.body;
-  
+  console.log(cep)
   try {
     const response = await axios.post('https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate', {
       from: { postal_code: "96020360" },

@@ -33,6 +33,7 @@ export const CheckoutPage = ({ settings }) => {
   const { cart, cartIsEmpty, cartTotal } = useCart();
   const { theme } = useTheme();
 
+
   useEffect(() => {
     if (user === null || cartIsEmpty) {
       router.push(cartIsEmpty ? '/cart' : '/login');
@@ -65,6 +66,13 @@ export const CheckoutPage = ({ settings }) => {
 
   // Corrigindo a lógica de cálculo do total
   const totalWithFreight = parseFloat(cartTotal.raw) / 100 + parseFloat(freightPrice);
+
+
+      makeIntent()
+    }
+  }, [cart, user])
+
+  if (!user || !stripe) return null
 
   return (
     <Fragment>
@@ -102,10 +110,17 @@ export const CheckoutPage = ({ settings }) => {
         </div>
       )}
       {clientSecret && (
+
         <Elements stripe={stripePromise} options={{ clientSecret, appearance: { theme: theme === 'dark' ? 'dark' : 'light', variables: cssVariables } }}>
          <CancelShipmentComponent />
           <CheckoutForm />
         </Elements>
+
+        <Fragment>
+          <h3 className={classes.payment}>Detalhes do pagamento</h3>
+          {error && <p>{`Error: ${error}`}</p>}
+          <PaymentGateway amount = {cartTotal.raw} />
+        </Fragment>
       )}
     </Fragment>
   );

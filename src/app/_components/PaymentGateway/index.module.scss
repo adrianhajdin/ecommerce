@@ -1,0 +1,43 @@
+.freightCalculator {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px; // Espaço entre o inputGroup e o link abaixo
+}
+
+.cepInput {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-right: 8px; // Espaço entre o input e o botão
+}
+
+.okButton {
+  padding: 8px 16px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.forgotCep {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}

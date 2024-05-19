@@ -30,7 +30,7 @@ export default async function Product({ params: { slug } }) {
 
   try {
     categories = await fetchDocs<Category>('categories')
-    console.log(categories)
+
   } catch (error) {
     console.log(error)
   }
@@ -81,6 +81,7 @@ export default async function Product({ params: { slug } }) {
     console.error(error) // eslint-disable-line no-console
   }
 
+
   if (!product) {
     notFound()
   }
@@ -89,8 +90,9 @@ export default async function Product({ params: { slug } }) {
 
   return (
     <>
-      <ProductHero product={product} />
-      {product?.enablePaywall && <PaywallBlocks productSlug={slug as string} disableTopPadding />}
+    <div className={classes.productContainer}>
+      <ProductHero product={product}  />
+
       <Blocks
         disableTopPadding
         blocks={[
@@ -112,7 +114,9 @@ export default async function Product({ params: { slug } }) {
           },
         ]}
       />
+      </div>
     </>
+    
   )
 }}
 

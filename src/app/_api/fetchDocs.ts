@@ -5,6 +5,7 @@ import { CATEGORIES } from '../_graphql/categories'
 import { ORDERS } from '../_graphql/orders'
 import { PAGES } from '../_graphql/pages'
 import { PRODUCTS } from '../_graphql/products'
+import { COLORS } from '../_graphql/colors'
 import { GRAPHQL_API_URL } from './shared'
 import { payloadToken } from './token'
 
@@ -25,12 +26,18 @@ const queryMap = {
     query: CATEGORIES,
     key: 'Categories',
   },
+  colors: {
+    query: COLORS,
+    key: 'Colors',
+  },
 }
 
 export const fetchDocs = async <T>(
   collection: keyof Config['collections'],
   draft?: boolean,
 ): Promise<T[]> => {
+
+  //console.log(queryMap[collection])
   if (!queryMap[collection]) throw new Error(`Collection ${collection} not found`)
 
   let token: RequestCookie | undefined
