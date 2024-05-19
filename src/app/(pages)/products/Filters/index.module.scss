@@ -1,63 +1,131 @@
-@import '../../../_css/common';
-
-.filters {
-  margin-top: 50px;
+.filterMenu {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  @include large-break {
-    flex-direction: row;
-    gap: 40px;
-  }
-  
-  @include small-break {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  @include small-break {
-    margin-top: 16px;
-  }
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #fff;
+  padding: 1px 1px;
+  flex-wrap: wrap;
+  font-size: 15px;
 }
 
-.categories {
+.filterDropdown {
+  position: relative;
+  padding: 5px 10px;
+  border: 0px solid #ccc; /* Remove bordas */
+  cursor: pointer;
+  width: 150px; /* Ajuste a largura conforme necessário */
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 20px;
-
-  @include large-break {
-    flex-direction: row;
-  }
-
-  @include small-break {
-    flex-direction: column;
-  }
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.3s ease; /* Adiciona transição suave */
 }
 
-.title {
-  white-space: nowrap;
+.filterDropdown:first-child {
+  margin-left: 0; /* Remove margem esquerda do primeiro botão */
 }
 
-.priceSlider {
+.filterDropdown + .filterDropdown {
+  margin-left: 20px; /* Adiciona espaçamento entre os botões */
+}
+
+.filterDropdown:hover {
+  background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+}
+
+.filterDropdown::after {
+  content: '▾'; /* Caractere Unicode para seta */
+  margin-left: 10px; /* Espaço entre o texto e a seta */
+  font-size: 12px; /* Ajuste o tamanho conforme necessário */
+  color: #000; /* Cor da seta */
+}
+
+.filterDropdown span {
+  display: block;
+}
+
+.dropdownList {
+  display: none; /* Inicialmente escondido */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 0px solid #ccc; /* Remove bordas */
+  z-index: 1000;
+}
+
+.filterDropdown:hover .dropdownList {
+  display: block; /* Mostra o dropdown quando o mouse está sobre o elemento */
+}
+
+.dropdownList li {
+  padding: 10px 15px;
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
+  align-items: center;
 }
 
-.sliderWrapper {
+.dropdownList li:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdownList input {
+  margin-right: 10px;
+}
+
+.sortContainer {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  p {
-    white-space: nowrap;
-  }
+  align-items: center;
+  cursor: pointer;
+  margin-left: auto; /* Move a seção "Classificar por" para a direita */
 }
 
-.hr {
-  margin: 20px 0;
+.sortLabel {
+  margin-right: 10px;
+  font-weight: bold;
 }
 
+.customDropdown {
+  position: relative;
+  padding: 10px;
+  border: 0px solid #ccc; /* Remove bordas */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.3s ease; /* Adiciona transição suave */
+}
+
+.customDropdown:hover {
+  background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+}
+
+.customDropdown::after {
+  content: '▾'; /* Caractere Unicode para seta */
+  margin-left: 10px; /* Espaço entre o texto e a seta */
+  font-size: 12px; /* Ajuste o tamanho conforme necessário */
+  color: #000; /* Cor da seta */
+}
+
+.customDropdown ul {
+  display: none;
+}
+
+.customDropdown:hover ul {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 0px solid #ccc; /* Remove bordas */
+  z-index: 1000;
+}
+
+.dropdownOption {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdownOption:hover {
+  background-color: #f5f5f5;
+}

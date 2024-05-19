@@ -22,7 +22,7 @@ export const hero: Field = {
           value: 'none',
         },
         {
-          label: 'High Impact',
+          label: 'Home Page',
           value: 'highImpact',
         },
         {
@@ -40,6 +40,7 @@ export const hero: Field = {
       ],
     },
     richText({
+      required: false,
       admin: {
         elements: ['h1', largeBody, label, 'link'],
         leaves: [],
@@ -51,10 +52,23 @@ export const hero: Field = {
       },
     }),
     {
+      name: 'medias',
+      label: "Imagens",
+      type: 'array',
+      fields: [
+        {
+          name: 'media',
+          label: "Media",
+          type: 'upload',
+          relationTo: 'media',
+        },
+      ],
+    },
+    {
       name: 'media',
       type: 'upload',
       relationTo: 'media',
-      required: true,
+      required: false,
       admin: {
         condition: (_, { type } = {}) =>
           ['highImpact', 'mediumImpact', 'customHero'].includes(type),

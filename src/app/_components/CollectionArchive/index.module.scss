@@ -39,9 +39,10 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(30%, 1fr));
-  gap: 30px;
+  gap: 20px;
   padding: 0;
   width: 100%;
+  
 
   @include mid-break {
     gap: 20px;
@@ -61,3 +62,14 @@
     margin-top: var(--base);
   }
 }
+
+.card {
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.card:hover {
+  border-image: linear-gradient(45deg, #fcfcfc, #efefef) 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+

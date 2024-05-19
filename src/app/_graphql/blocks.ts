@@ -1,7 +1,7 @@
 import { PRODUCT_CATEGORIES } from './categories'
 import { LINK_FIELDS } from './link'
 import { MEDIA } from './media'
-import { META } from './meta'
+import { MEDIA_FIELDS } from './media'
 
 export const CALL_TO_ACTION = `
 ...on Cta {
@@ -51,7 +51,8 @@ export const ARCHIVE_BLOCK = `
         id
         slug
         title
-        priceJSON
+        price
+
       }
     }
   }
@@ -62,9 +63,13 @@ export const ARCHIVE_BLOCK = `
         id
         slug
         title
-        priceJSON
+        price
         ${PRODUCT_CATEGORIES}
-        ${META}
+        photos {
+          photo{
+            ${MEDIA_FIELDS}
+          }}
+        description
       }
     }
   }

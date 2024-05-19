@@ -2,9 +2,11 @@
 
 .productHero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
   width: 100%;
+  background-color: #d3cfc4; /* Cor de fundo */
+  min-height: 800px; /* Aumentado para refletir a mudança */
 
   @include small-break {
     grid-template-columns: 1fr;
@@ -15,23 +17,28 @@
   position: relative;
   min-height: 400px;
   background-color: var(--color-dark-50);
+  padding: 20px;
+  margin: 10px;
 
   @include small-break {
-    min-height: 250px;
+    
   }
 }
 
 .image {
-  padding: 24px;
+  padding: 5px;
   object-fit: contain;
-  aspect-ratio: 1/1;
+  aspect-ratio: 3/4; /* Ajustado para dar mais altura */
   max-width: 100%;
+  height: auto; /* Garantir que a imagem ocupe toda a altura disponível */
 }
 
 .details {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin: 10px;
+  padding: 24px;
+  background-color: white; /* Cor de fundo */
 }
 
 .categoryWrapper {
@@ -39,10 +46,13 @@
   justify-content: flex-start;
   margin-bottom: 16px;
   margin-top: 8px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .category {
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .stock {
@@ -55,7 +65,13 @@
 }
 
 .description {
-  padding: 30px 0;
+  padding: 5px 0;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.descriptionTitle {
+  font-size: 20px;
 }
 
 .buttonGroup {
@@ -69,4 +85,12 @@
   height: 1px;
   background-color: #ccc; /* Ou use outra cor para combinar com o seu design */
   margin: 5px 0; /* Espaçamento acima e abaixo da barra */
+}
+
+.cartButton {
+  font-size: 30px; /* Aumenta o tamanho da fonte */
+  padding: 12px 24px; /* Aumenta o padding para fazer o botão maior */
+  margin: 0 auto; /* Centraliza o botão */
+  display: block; /* Torna o botão um bloco para permitir a centralização automática */
+  width: fit-content; /* Garante que a largura se ajuste ao conteúdo */
 }

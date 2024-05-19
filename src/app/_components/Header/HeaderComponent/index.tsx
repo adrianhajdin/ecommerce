@@ -13,14 +13,16 @@ const handleNavigation = (url) => {
 const organizeCategories = (categories) => {
   const catMap = {};
   categories.forEach(cat => {
-    if (cat.parent) {
-      if (!catMap[cat.parent.title]) {
-        catMap[cat.parent.title] = [];
+    if (cat.title) {
+      if (!catMap[cat.title]) {
+        catMap[cat.title] = [];
       }
-      catMap[cat.parent.title].push(cat);
-    } else {
-      // Se é uma macrocategoria e não está no mapa, adiciona sem subcategorias
-      catMap[cat.title] = catMap[cat.title] || [];
+      catMap[cat.title].push({
+        id: cat.id,
+        subtitle: cat.subtitle,
+        category: cat.category,
+        slug: cat.slug
+      });
     }
   });
   return catMap;
@@ -33,6 +35,7 @@ export  const  HeaderComponent = ({ categories}) => {
     sale: false,
     newIn: false,
   });
+  
 
   const categoriesMap = organizeCategories(categories)
 
@@ -65,7 +68,7 @@ export  const  HeaderComponent = ({ categories}) => {
             e.preventDefault();
             handleNavigation(`/products/${item.slug}`);
         }}>
-            {item.title.toUpperCase()}
+            {item.subtitle.toUpperCase()}
         </Link>
               ))}
             </div>

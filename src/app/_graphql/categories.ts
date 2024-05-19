@@ -1,10 +1,8 @@
 export const PRODUCT_CATEGORIES = `categories {
   title
+  subtitle
+  category
   id
-  breadcrumbs {
-    id
-    label
-  }
 }`
 
 export const CATEGORIES = `
@@ -13,17 +11,9 @@ export const CATEGORIES = `
       docs {
         id
         title
+        subtitle
+        category
         slug
-        parent{
-          id
-          title
-        }
-        media {
-          alt
-          width
-          height
-          url
-        }
       }
     }
   }

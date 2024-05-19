@@ -1,11 +1,12 @@
 import React from 'react'
 import { draftMode } from 'next/headers'
 
-import { Category, Page } from '../../../payload/payload-types'
+import { Category, Page, Color } from '../../../payload/payload-types'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
 import { Gutter } from '../../_components/Gutter'
+import { CollectionArchive } from '../../_components/CollectionArchive'
 import { HR } from '../../_components/HR'
 import Filters from './Filters'
 
@@ -16,6 +17,7 @@ const Products = async () => {
 
   let page: Page | null = null
   let categories: Category[] | null = null
+  let colors: Color[] | null = null
 
   try {
     page = await fetchDoc<Page>({
@@ -25,15 +27,24 @@ const Products = async () => {
     })
 
     categories = await fetchDocs<Category>('categories')
+    
+    colors = await fetchDocs<Color>('colors')
   } catch (error) {
     console.log(error)
   }
 
+  console.log('pagina', page?.layout)
+
+
   return (
     <div className={classes.container}>
       <Gutter className={classes.products}>
-        <Filters categories={categories} />
+        <div className={classes.filters}><Filters categories={categories} colors={colors} /></div>
+        <div className={classes.productList}>
+        <div className={classes.productView}>
         <Blocks blocks={page?.layout} disableTopPadding={true} />
+        </div>
+        </div>
       </Gutter>
       <HR />
     </div>

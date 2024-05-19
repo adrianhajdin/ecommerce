@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState } from 'react';
 import NextImage from 'next/image';
 
@@ -9,7 +10,7 @@ import classes from './index.module.scss';
 
 const { breakpoints } = cssVariables;
 
-export const Image: React.FC<MediaProps> = props => {
+export const DefaultImage: React.FC<MediaProps> = props => {
   const {
     imgClassName,
     onClick,
@@ -20,7 +21,6 @@ export const Image: React.FC<MediaProps> = props => {
   } = props;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [lastImageIndex, setLastImageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleLoad = () => {
@@ -31,12 +31,9 @@ export const Image: React.FC<MediaProps> = props => {
   };
 
   const handleImageChange = (index) => {
-    setLastImageIndex(currentImageIndex);
     setCurrentImageIndex(index);
     setIsLoading(true);
   };
-
-  const imageAnimationClass = currentImageIndex > lastImageIndex ? classes.imageEnterUp : classes.imageEnterDown;
 
   const sizes = Object.entries(breakpoints)
     .map(([, value]) => `(max-width: ${value}px) ${value}px`)
@@ -48,9 +45,9 @@ export const Image: React.FC<MediaProps> = props => {
   const src = filename ? `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${filename}` : '';
 
   return (
-    <div>
+    <div >
       <NextImage
-        className={[isLoading && classes.placeholder, classes.image, imgClassName, imageAnimationClass].filter(Boolean).join(' ')}
+        className={[isLoading && classes.placeholder, classes.image, imgClassName].filter(Boolean).join(' ')}
         src={src}
         alt={alt || ''}
         onClick={onClick}
@@ -61,13 +58,7 @@ export const Image: React.FC<MediaProps> = props => {
         sizes={sizes}
         priority={priority}
       />
-      <div className={classes.imageSelectorOverlay}>
-        {resources && resources.length > 1 && resources.map((item, index) => (
-          <button key={index} onClick={() => handleImageChange(index)} disabled={index === currentImageIndex}>
-            <img src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${item.filename}`} alt={`Preview ${index + 1}`} />
-          </button>
-        ))}
-      </div>
+
     </div>
   );
 };
