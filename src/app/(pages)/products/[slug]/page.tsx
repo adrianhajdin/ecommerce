@@ -81,6 +81,7 @@ export default async function Product({ params: { slug } }) {
     console.error(error) // eslint-disable-line no-console
   }
 
+
   if (!product) {
     notFound()
   }
@@ -89,7 +90,7 @@ export default async function Product({ params: { slug } }) {
 
   return (
     <>
-    
+    <div className={classes.productContainer}>
       <ProductHero product={product}  />
 
       <Blocks
@@ -113,7 +114,9 @@ export default async function Product({ params: { slug } }) {
           },
         ]}
       />
+      </div>
     </>
+    
   )
 }}
 

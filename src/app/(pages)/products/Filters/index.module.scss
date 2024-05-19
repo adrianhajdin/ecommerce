@@ -6,7 +6,6 @@
   padding: 1px 1px;
   flex-wrap: wrap;
   font-size: 15px;
-
 }
 
 .filterDropdown {
@@ -62,10 +61,16 @@
 .dropdownList li {
   padding: 10px 15px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .dropdownList li:hover {
   background-color: #f5f5f5;
+}
+
+.dropdownList input {
+  margin-right: 10px;
 }
 
 .sortContainer {

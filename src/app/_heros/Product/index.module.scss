@@ -6,7 +6,8 @@
   gap: 20px;
   width: 100%;
   background-color: #d3cfc4; /* Cor de fundo */
-  height: 80%;
+  min-height: 800px; /* Aumentado para refletir a mudança */
+
   @include small-break {
     grid-template-columns: 1fr;
   }
@@ -16,6 +17,8 @@
   position: relative;
   min-height: 400px;
   background-color: var(--color-dark-50);
+  padding: 20px;
+  margin: 10px;
 
   @include small-break {
     
@@ -25,8 +28,9 @@
 .image {
   padding: 5px;
   object-fit: contain;
-  aspect-ratio: 1/1;
+  aspect-ratio: 3/4; /* Ajustado para dar mais altura */
   max-width: 100%;
+  height: auto; /* Garantir que a imagem ocupe toda a altura disponível */
 }
 
 .details {
@@ -62,12 +66,12 @@
 
 .description {
   padding: 5px 0;
-  font-size: 13px;
+  font-size: 18px;
   margin-bottom: 20px;
 }
 
 .descriptionTitle {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .buttonGroup {
@@ -84,9 +88,9 @@
 }
 
 .cartButton {
-  font-size: 30px; // Aumenta o tamanho da fonte
-  padding: 12px 24px; // Aumenta o padding para fazer o botão maior
-  margin: 0 auto; // Centraliza o botão
-  display: block; // Torna o botão um bloco para permitir a centralização automática
-  width: fit-content; // Garante que a largura se ajuste ao conteúdo
+  font-size: 30px; /* Aumenta o tamanho da fonte */
+  padding: 12px 24px; /* Aumenta o padding para fazer o botão maior */
+  margin: 0 auto; /* Centraliza o botão */
+  display: block; /* Torna o botão um bloco para permitir a centralização automática */
+  width: fit-content; /* Garante que a largura se ajuste ao conteúdo */
 }

@@ -1,28 +1,61 @@
 'use client'
 
-import React from 'react'
-
-import { useEffect } from 'react'
-
-import { Category } from '../../../../payload/payload-types'
-import { Checkbox } from '../../../_components/Checkbox'
-import { HR } from '../../../_components/HR'
-import { RadioButton } from '../../../_components/Radio'
+import React, { useState } from 'react'
 import { useFilter } from '../../../_providers/Filter'
-
 import classes from './index.module.scss'
+const getTitlesAndSubtitles = (items) => {
+  const titles = new Set();
+  const subtitles = new Set();
 
-import { useState } from 'react'
+  items.forEach(item => {
+    titles.add(item.title);
+    subtitles.add(item.subtitle);
+  });
 
-const FilterMenu = () => {
-  const { sort, setSort } = useFilter();
+  return {
+    titles: Array.from(titles),
+    subtitles: Array.from(subtitles)
+  };
+};
+
+const getColors = (items) => {
+  const colorSet = new Set();
+  items.forEach(item => {
+    if (item.color) {
+      colorSet.add(item.color);
+    }
+  });
+  return Array.from(colorSet);
+};
+
+const FilterMenu = ({ categories, colors }) => {
+  const { categoryFilters, setCategoryFilters, subCategoryFilters, setSubCategoryFilters, colorFilters, setColorFilters, sizeFilters, setSizeFilters, sort, setSort } = useFilter();
   const [selectedSort, setSelectedSort] = useState(sort);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const sizes = ['GG', 'G', 'M', 'P', 'PP']
+  const { titles, subtitles } = getTitlesAndSubtitles(categories);
+  const availableColors = getColors(colors);
 
   const handleSortChange = (value) => {
     setSelectedSort(value);
     setSort(value);
     setIsDropdownOpen(false);
+  };
+
+  const handleCategoryFilterChange = (category) => {
+    setCategoryFilters(categoryFilters.includes(category) ? categoryFilters.filter(c => c !== category) : [...categoryFilters, category]);
+  };
+
+  const handleSubCategoryFilterChange = (subCategory) => {
+    setSubCategoryFilters(subCategoryFilters.includes(subCategory) ? subCategoryFilters.filter(s => s !== subCategory) : [...subCategoryFilters, subCategory]);
+  };
+
+  const handleColorFilterChange = (color) => {
+    setColorFilters(colorFilters.includes(color) ? colorFilters.filter(c => c !== color) : [...colorFilters, color]);
+  };
+
+  const handleSizeFilterChange = (size) => {
+    setSizeFilters(sizeFilters.includes(size) ? sizeFilters.filter(s => s !== size) : [...sizeFilters, size]);
   };
 
   const toggleDropdown = () => {
@@ -40,32 +73,45 @@ const FilterMenu = () => {
       <div className={classes.filterDropdown}>
         <span>Coleção</span>
         <ul className={classes.dropdownList}>
-          <li>Pequeno</li>
-          <li>Médio</li>
-          <li>Grande</li>
+          {titles.map((title, index) => (
+            <li key={index} onClick={() => handleCategoryFilterChange(title)}>
+              <input type="checkbox" checked={categoryFilters.includes(title)} readOnly />
+              {title}
+            </li>
+          ))}
         </ul>
       </div>
       <div className={classes.filterDropdown}>
-        <span>Categoria</span>
+        <span>Subcategoria</span>
         <ul className={classes.dropdownList}>
-          <li>Vermelho</li>
-          <li>Verde</li>
-          <li>Azul</li>
-        </ul>
-      </div>
-      <div className={classes.filterDropdown}>
-        <span>Tamanho</span>
-        <ul className={classes.dropdownList}>
-          <li>Masculino</li>
-          <li>Feminino</li>
-          <li>Unissex</li>
+          {subtitles.map((subtitle, index) => (
+            <li key={index} onClick={() => handleSubCategoryFilterChange(subtitle)}>
+              <input type="checkbox" checked={subCategoryFilters.includes(subtitle)} readOnly />
+              {subtitle}
+            </li>
+          ))}
         </ul>
       </div>
       <div className={classes.filterDropdown}>
         <span>Cores</span>
         <ul className={classes.dropdownList}>
-          <li>Jeans Feminino</li>
-          <li>Plus Size Feminino</li>
+          {availableColors.map((color, index) => (
+            <li key={index} onClick={() => handleColorFilterChange(color)}>
+              <input type="checkbox" checked={colorFilters.includes(color)} readOnly />
+              {color}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={classes.filterDropdown}>
+        <span>Tamanhos</span>
+        <ul className={classes.dropdownList}>
+          {sizes.map((size, index) => (
+            <li key={index} onClick={() => handleSizeFilterChange(size)}>
+              <input type="checkbox" checked={sizeFilters.includes(size)} readOnly />
+              {size}
+            </li>
+          ))}
         </ul>
       </div>
       <div className={classes.sortContainer}>
@@ -92,63 +138,3 @@ const FilterMenu = () => {
 };
 
 export default FilterMenu;
-
-// const Filters = ({ categories, preselectedCategory = null }) => {
-//   const { categoryFilters, sort, setCategoryFilters, setSort } = useFilter();
-//   const [selectedCategory, setSelectedCategory] = useState(preselectedCategory || '');
-//   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
-//   const [selectedSort, setSelectedSort] = useState(sort);
-
-//   const handleCategoryChange = (event) => {
-//     const value = event.target.value;
-//     setSelectedCategory(value);
-//     setCategoryFilters([value]);
-//   };
-
-//   const handleSortChange = (event) => {
-//     const value = event.target.value;
-//     setSelectedSort(value);
-//     setSort(value);
-//   };
-
-//   const toggleCategoryDropdown = () => setIsCategoryDropdownOpen(!isCategoryDropdownOpen);
-
-//   return (
-//     <div className={classes.filters}>
-//       <div className={classes.filterRow}>
-//         <div className={classes.dropdown}>
-//           <h6 className={classes.title} onClick={toggleCategoryDropdown}>
-//             Categoria <span>{isCategoryDropdownOpen ? '-' : '+'}</span>
-//           </h6>
-//           {isCategoryDropdownOpen && (
-//             <div className={classes.categories}>
-//               {categories.map(category => {
-//                 const isSelected = categoryFilters.includes(category.id);
-//                 return (
-//                   <Checkbox
-//                     key={category.id}
-//                     label={category.subtitle}
-//                     value={category.id}
-//                     isSelected={isSelected}
-//                     onClickHandler={() => handleCategoryChange({ target: { value: category.id } })}
-//                   />
-//                 );
-//               })}
-//             </div>
-//           )}
-//         </div>
-//         <div className={classes.sort}>
-//           <select value={selectedSort} onChange={handleSortChange} className={classes.sortDropdown}>
-//             <option value="" disabled selected>Ordene por</option>
-//             <option value="-createdAt">Ordene por: Mais Recente</option>
-//             <option value="createdAt">Ordene por: Mais Antigo</option>
-//           </select>
-//         </div>
-//       </div>
-//       <HR className={classes.hr} />
-//     </div>
-//   );
-// }
-
-// export default Filters;
-

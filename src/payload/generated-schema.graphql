@@ -1289,11 +1289,11 @@ type Color {
 }
 
 enum Product_sizes {
-  XS
-  S
+  GG
+  G
   M
-  L
-  XL
+  P
+  PP
 }
 
 type Product_Photos {
@@ -3386,11 +3386,11 @@ input Product_sizes_operator {
 }
 
 enum Product_sizes_Input {
-  XS
-  S
+  GG
+  G
   M
-  L
-  XL
+  P
+  PP
 }
 
 input Product_description_operator {
@@ -10795,11 +10795,11 @@ input mutationProductInput {
 }
 
 enum Product_sizes_MutationInput {
-  XS
-  S
+  GG
+  G
   M
-  L
-  XL
+  P
+  PP
 }
 
 input mutationProduct_PhotosInput {
@@ -10824,11 +10824,11 @@ input mutationProductUpdateInput {
 }
 
 enum ProductUpdate_sizes_MutationInput {
-  XS
-  S
+  GG
+  G
   M
-  L
-  XL
+  P
+  PP
 }
 
 input mutationProductUpdate_PhotosInput {

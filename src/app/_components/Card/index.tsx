@@ -36,6 +36,7 @@ export const Card: React.FC<{
     doc: { slug, title, categories, photos, description, price, discountPercentage } = {},
     className,
   } = props
+
   const metaImage = photos.map(item => item.photo);
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
