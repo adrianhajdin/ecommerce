@@ -12,74 +12,150 @@ import { useFilter } from '../../../_providers/Filter'
 
 import classes from './index.module.scss'
 
-const Filters = ({ categories, preselectedCategory=null }: { categories: Category[], preselectedCategory:string }) => {
-  const { categoryFilters, sort, setCategoryFilters, setSort } = useFilter()
+import { useState } from 'react'
 
-  if (preselectedCategory && !categoryFilters.includes(preselectedCategory) && categoryFilters.length === 0){
-    categoryFilters.push(preselectedCategory)
-  }
+const FilterMenu = () => {
+  const { sort, setSort } = useFilter();
+  const [selectedSort, setSelectedSort] = useState(sort);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleCategories = (categoryId: string) => {
-    if (categoryFilters.includes(categoryId)) {
-      const updatedCategories = categoryFilters.filter(id => id !== categoryId)
+  const handleSortChange = (value) => {
+    setSelectedSort(value);
+    setSort(value);
+    setIsDropdownOpen(false);
+  };
 
-      setCategoryFilters(updatedCategories)
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
-    } else {
-      setCategoryFilters([...categoryFilters, categoryId])
-    }
-  }
-
-  const handleSort = (value: string) => setSort(value)
-
-  // // Adiciona efeito para pré-selecionar a categoria
-  // useEffect(() => {
-  //   if (preselectedCategory && !categoryFilters.includes(preselectedCategory)) {
-  //     setCategoryFilters([preselectedCategory])
-  //   }
-  // }, [preselectedCategory, categoryFilters, setCategoryFilters])
-
+  const dropdownOptions = [
+    { value: "relevance", label: "Relevância" },
+    { value: "-createdAt", label: "Mais Recente" },
+    { value: "createdAt", label: "Mais Antigo" }
+  ];
 
   return (
-    <div className={classes.filters}>
-      <div>
-        <h6 className={classes.title}>Categorias</h6>
-        <div className={classes.categories}>
-          {categories.map(category => {
-            const isSelected = categoryFilters.includes(category.id)
-
-            return (
-              <Checkbox
-                key={category.id}
-                label={category.title}
-                value={category.id}
-                isSelected={isSelected}
-                onClickHandler={handleCategories}
-              />
-            )
-          })}
-        </div>
-        <HR className={classes.hr} />
-        <h6 className={classes.title}>Ordene por</h6>
-        <div className={classes.categories}>
-          <RadioButton
-            label="Mais Recente"
-            value="-createdAt"
-            isSelected={sort === '-createdAt'}
-            onRadioChange={handleSort}
-            groupName="sort"
-          />
-          <RadioButton
-            label="Mais Antigo"
-            value="createdAt"
-            isSelected={sort === 'createdAt'}
-            onRadioChange={handleSort}
-            groupName="sort"
-          />
+    <div className={classes.filterMenu}>
+      <div className={classes.filterDropdown}>
+        <span>Tamanho</span>
+        <ul className={classes.dropdownList}>
+          <li>Pequeno</li>
+          <li>Médio</li>
+          <li>Grande</li>
+        </ul>
+      </div>
+      <div className={classes.filterDropdown}>
+        <span>Cor</span>
+        <ul className={classes.dropdownList}>
+          <li>Vermelho</li>
+          <li>Verde</li>
+          <li>Azul</li>
+        </ul>
+      </div>
+      <div className={classes.filterDropdown}>
+        <span>Gênero</span>
+        <ul className={classes.dropdownList}>
+          <li>Masculino</li>
+          <li>Feminino</li>
+          <li>Unissex</li>
+        </ul>
+      </div>
+      <div className={classes.filterDropdown}>
+        <span>Categoria</span>
+        <ul className={classes.dropdownList}>
+          <li>Jeans Feminino</li>
+          <li>Plus Size Feminino</li>
+        </ul>
+      </div>
+      <div className={classes.filterDropdown}>
+        <span>Sub Categoria</span>
+        <ul className={classes.dropdownList}>
+          <li>Opção 1</li>
+          <li>Opção 2</li>
+        </ul>
+      </div>
+      <div className={classes.sortContainer}>
+        <label htmlFor="sortDropdown" className={classes.sortLabel}>Classificar por:</label>
+        <div className={classes.customDropdown} onClick={toggleDropdown}>
+          {dropdownOptions.find(option => option.value === selectedSort)?.label || 'Relevância'}
+          {isDropdownOpen && (
+            <ul className={classes.dropdownList}>
+              {dropdownOptions.map(option => (
+                <li
+                  key={option.value}
+                  className={classes.dropdownOption}
+                  onClick={() => handleSortChange(option.value)}
+                >
+                  {option.label}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Filters
+export default FilterMenu;
+
+// const Filters = ({ categories, preselectedCategory = null }) => {
+//   const { categoryFilters, sort, setCategoryFilters, setSort } = useFilter();
+//   const [selectedCategory, setSelectedCategory] = useState(preselectedCategory || '');
+//   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+//   const [selectedSort, setSelectedSort] = useState(sort);
+
+//   const handleCategoryChange = (event) => {
+//     const value = event.target.value;
+//     setSelectedCategory(value);
+//     setCategoryFilters([value]);
+//   };
+
+//   const handleSortChange = (event) => {
+//     const value = event.target.value;
+//     setSelectedSort(value);
+//     setSort(value);
+//   };
+
+//   const toggleCategoryDropdown = () => setIsCategoryDropdownOpen(!isCategoryDropdownOpen);
+
+//   return (
+//     <div className={classes.filters}>
+//       <div className={classes.filterRow}>
+//         <div className={classes.dropdown}>
+//           <h6 className={classes.title} onClick={toggleCategoryDropdown}>
+//             Categoria <span>{isCategoryDropdownOpen ? '-' : '+'}</span>
+//           </h6>
+//           {isCategoryDropdownOpen && (
+//             <div className={classes.categories}>
+//               {categories.map(category => {
+//                 const isSelected = categoryFilters.includes(category.id);
+//                 return (
+//                   <Checkbox
+//                     key={category.id}
+//                     label={category.subtitle}
+//                     value={category.id}
+//                     isSelected={isSelected}
+//                     onClickHandler={() => handleCategoryChange({ target: { value: category.id } })}
+//                   />
+//                 );
+//               })}
+//             </div>
+//           )}
+//         </div>
+//         <div className={classes.sort}>
+//           <select value={selectedSort} onChange={handleSortChange} className={classes.sortDropdown}>
+//             <option value="" disabled selected>Ordene por</option>
+//             <option value="-createdAt">Ordene por: Mais Recente</option>
+//             <option value="createdAt">Ordene por: Mais Antigo</option>
+//           </select>
+//         </div>
+//       </div>
+//       <HR className={classes.hr} />
+//     </div>
+//   );
+// }
+
+// export default Filters;
+
