@@ -70,6 +70,7 @@ export const CartProvider = props => {
       const syncCartFromLocalStorage = async () => {
         const localCart = localStorage.getItem('cart')
 
+
         const parsedCart = JSON.parse(localCart || '{}')
 
         if (parsedCart?.items && parsedCart?.items?.length > 0) {
@@ -79,6 +80,8 @@ export const CartProvider = props => {
                 `${process.env.NEXT_PUBLIC_SERVER_URL}/api/products/${product}`,
               )
               const data = await res.json()
+
+              console.log(data)
               return {
                 product: data,
                 quantity,
@@ -223,23 +226,23 @@ export const CartProvider = props => {
     })
   }, [])
 
-  // calculate the new cart total whenever the cart changes
   useEffect(() => {
     if (!hasInitialized) return
-
+  
     const newTotal =
       cart?.items?.reduce((acc, item) => {
+        const discount = item.product.discountPercentage || 0
+        const discountedPrice = item.product.price * (1 - discount / 100)
         return (
           acc +
           (typeof item.product === 'object'
-            ? JSON.parse(item?.product?.priceJSON || '{}')?.data?.[0]?.unit_amount *
-              (typeof item?.quantity === 'number' ? item?.quantity : 0)
+            ? discountedPrice * (typeof item?.quantity === 'number' ? item?.quantity : 0)
             : 0)
         )
       }, 0) || 0
-
+  
     setTotal({
-      formatted: (newTotal / 100).toLocaleString('pt-BR', {
+      formatted: (newTotal).toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL',
       }),

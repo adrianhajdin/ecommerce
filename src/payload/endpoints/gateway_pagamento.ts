@@ -17,8 +17,7 @@ router.post('/process-payment', async (req, res) => {
   // Step 3: Initialize the API object
   const payment = new Payment(client);
 
-  
-  console.log('requisicao', req.body)
+
   const paymentData = { body: req.body.paymentData } 
 
   try {

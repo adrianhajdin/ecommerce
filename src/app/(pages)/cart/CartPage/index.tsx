@@ -38,19 +38,19 @@ export const CartPage: React.FC<{
         <Fragment>
           {cartIsEmpty ? (
             <div className={classes.empty}>
-              Your cart is empty.
+              Seu Carrinho está vazio
               {typeof productsPage === 'object' && productsPage?.slug && (
                 <Fragment>
                   {' '}
-                  <Link href={`/${productsPage.slug}`}>Click here</Link>
-                  {` to shop.`}
+                  <Link href={`/${productsPage.slug}`}>Clique Aqui</Link>
+                  {` para comprar.`}
                 </Fragment>
               )}
               {!user && (
                 <Fragment>
                   {' '}
                   <Link href={`/login?redirect=%2Fcart`}>Log in</Link>
-                  {` to view a saved cart.`}
+                  {` para ver o carrinho.`}
                 </Fragment>
               )}
             </div>
@@ -59,11 +59,11 @@ export const CartPage: React.FC<{
               <div>
                 {/* CART LIST HEADER */}
                 <div className={classes.header}>
-                  <p>Products</p>
+                  <p>Produtos</p>
                   <div className={classes.headerItemDetails}>
                     <p></p>
                     <p></p>
-                    <p>Quantity</p>
+                    <p>Quantidade</p>
                   </div>
                   <p className={classes.headersubtotal}>Subtotal</p>
                 </div>
@@ -74,18 +74,15 @@ export const CartPage: React.FC<{
                       const {
                         quantity,
                         product,
-                        product: { id, title, meta, stripeProductID },
+                        product: { id, title },
                       } = item
 
                       const isLast = index === (cart?.items?.length || 0) - 1
-
-                      const metaImage = meta?.image
 
                       return (
                         <CartItem
                           product={product}
                           title={title}
-                          metaImage={metaImage}
                           qty={quantity}
                           addItemToCart={addItemToCart}
                         />
@@ -98,16 +95,11 @@ export const CartPage: React.FC<{
 
               <div className={classes.summary}>
                 <div className={classes.row}>
-                  <h6 className={classes.cartTotal}>Summary</h6>
+                  <h6 className={classes.cartTotal}>Resumo</h6>
                 </div>
 
                 <div className={classes.row}>
-                  <p className={classes.cartTotal}>Delivery Charge</p>
-                  <p className={classes.cartTotal}>$0</p>
-                </div>
-
-                <div className={classes.row}>
-                  <p className={classes.cartTotal}>Grand Total</p>
+                  <p className={classes.cartTotal}>Total sem frete</p>
                   <p className={classes.cartTotal}>{cartTotal.formatted}</p>
                 </div>
 

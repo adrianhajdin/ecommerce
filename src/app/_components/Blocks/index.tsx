@@ -25,8 +25,7 @@ export const Blocks: React.FC<{
 }> = props => {
   const { disableTopPadding, disableBottomPadding, blocks } = props
 
-  console.log(blocks)
-
+ 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 
   if (hasBlocks) {
