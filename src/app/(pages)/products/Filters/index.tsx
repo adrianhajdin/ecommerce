@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useFilter } from '../../../_providers/Filter'
 import classes from './index.module.scss'
 const getTitlesAndSubtitles = (items) => {
@@ -28,13 +28,25 @@ const getColors = (items) => {
   return Array.from(colorSet);
 };
 
-const FilterMenu = ({ categories, colors }) => {
+const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
   const { categoryFilters, setCategoryFilters, subCategoryFilters, setSubCategoryFilters, colorFilters, setColorFilters, sizeFilters, setSizeFilters, sort, setSort } = useFilter();
   const [selectedSort, setSelectedSort] = useState(sort);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const sizes = ['GG', 'G', 'M', 'P', 'PP']
   const { titles, subtitles } = getTitlesAndSubtitles(categories);
   const availableColors = getColors(colors);
+
+  useEffect(() => {
+    if (preselectedCategory && !categoryFilters.includes(preselectedCategory.title)) {
+      setCategoryFilters([...categoryFilters, preselectedCategory.title]);
+    }
+  }, [preselectedCategory]);
+
+  useEffect(() => {
+    if (preselectedCategory && !subCategoryFilters.includes(preselectedCategory.subtitle)) {
+      setSubCategoryFilters([...subCategoryFilters, preselectedCategory.subtitle]);
+    }
+  }, [preselectedCategory]);
 
   const handleSortChange = (value) => {
     setSelectedSort(value);
@@ -67,6 +79,15 @@ const FilterMenu = ({ categories, colors }) => {
     { value: "-createdAt", label: "Mais Recente" },
     { value: "createdAt", label: "Mais Antigo" }
   ];
+
+  // console.log(preselectedCategory)
+  // if (preselectedCategory && !categoryFilters.includes(preselectedCategory.title)&& categoryFilters.length === 0) {
+  //   handleCategoryFilterChange(preselectedCategory.title);
+  // }
+
+  // if (preselectedCategory && !subCategoryFilters.includes(preselectedCategory.subtitle)&& subCategoryFilters.length === 0) {
+  //   handleSubCategoryFilterChange(preselectedCategory.subtitle);
+  // }
 
   return (
     <div className={classes.filterMenu}>

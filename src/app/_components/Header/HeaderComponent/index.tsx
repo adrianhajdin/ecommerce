@@ -51,12 +51,12 @@ export  const  HeaderComponent = ({ categories}) => {
       {/* Use Link correctly without <a> */}
       <div className={classes.headerButtons}>
         {/* New in */}
-        <Link href="/products" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
+        <Link href="/products/new" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
           <span>New in</span>
         </Link>
 
         {/* Peças */}
-        <Link href="#" onMouseEnter={() => toggleDropdown('peças')} onMouseLeave={() => toggleDropdown('peças')} className={classes.buttonLink}>
+        <Link href="/products" onMouseEnter={() => toggleDropdown('peças')} onMouseLeave={() => toggleDropdown('peças')} className={classes.buttonLink}>
         <span>Peças</span>
         {dropdownStates.peças && (
         <div className={classes.dropdownMenuVertical}>
@@ -77,11 +77,11 @@ export  const  HeaderComponent = ({ categories}) => {
       )}
       </Link>
         {/* Em Alta */}
-        <Link href="/products" onMouseEnter={() => toggleDropdown('emAlta')} onMouseLeave={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
+        <Link href="/products/hot" onMouseEnter={() => toggleDropdown('emAlta')} onMouseLeave={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
           <span>Em Alta</span>
         </Link>
         {/* Sale */}
-        <Link href="/products" onMouseEnter={() => toggleDropdown('sale')} onMouseLeave={() => toggleDropdown('sale')} className={classes.buttonLink}>
+        <Link href="/products/sale" onMouseEnter={() => toggleDropdown('sale')} onMouseLeave={() => toggleDropdown('sale')} className={classes.buttonLink}>
           <span>Sale</span>
         </Link>
       </div>

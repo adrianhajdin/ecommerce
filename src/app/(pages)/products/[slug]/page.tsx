@@ -13,7 +13,7 @@ import { generateMeta } from '../../../_utilities/generateMeta'
 import { Gutter } from '../../../_components/Gutter'
 import { HR } from '../../../_components/HR'
 import Filters from '.././Filters'
-import { Category, Page } from '../../../../payload/payload-types'
+import { Category, Page, Color } from '../../../../payload/payload-types'
 
 import classes from '../index.module.scss'
 
@@ -27,6 +27,7 @@ export default async function Product({ params: { slug } }) {
 
   let page: Page | null = null
   let categories: Category[] | null = null
+  let colors: Color[] | null = null
 
   try {
     categories = await fetchDocs<Category>('categories')
@@ -36,15 +37,17 @@ export default async function Product({ params: { slug } }) {
   }
 
   // Função para encontrar o ID de uma categoria cujo título contém a string slug, ignorando maiúsculas e minúsculas
-  const findCategoryIdBySlug = (categories: Category[], slug: string): string | undefined => {
+  const findCategoryIdBySlug = (categories: Category[], slug: string): Category | undefined => {
     const category = categories.find(category => category.slug.toLowerCase().includes(slug.toLowerCase()));
-    return category ? category.id : undefined;
+    return category;
   };
 
   // Testando a função
-  const categoryId = findCategoryIdBySlug(categories, slug);
+  const category = findCategoryIdBySlug(categories, slug);
 
-  if (categoryId){
+  console.log(category)
+
+  if (category){
 
   
   try {
@@ -53,6 +56,8 @@ export default async function Product({ params: { slug } }) {
       slug: 'products',
       draft: isDraftMode,
     })
+
+    colors = await fetchDocs<Color>('colors')
   } catch (error) {
     console.log(error)
   }
@@ -60,8 +65,12 @@ export default async function Product({ params: { slug } }) {
   return (
     <div className={classes.container}>
       <Gutter className={classes.products}>
-        <Filters categories={categories} preselectedCategory={categoryId}/>
+        <div className={classes.filters}><Filters categories={categories} colors={colors} preselectedCategory={category}/></div>
+        <div className={classes.productList}>
+        <div className={classes.productView}>
         <Blocks blocks={page?.layout} disableTopPadding={true} />
+        </div>
+        </div>
       </Gutter>
       <HR />
     </div>
