@@ -6,7 +6,7 @@
 
 .header {
   display: grid;
-  grid-template-columns: 80px 5fr 1fr;
+  grid-template-columns: 4fr 1fr;
   gap: 24px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--color-dark-50);
@@ -18,7 +18,7 @@
 
 .headerItemDetails {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .headersubtotal {

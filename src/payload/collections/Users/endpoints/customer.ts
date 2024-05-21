@@ -19,8 +19,8 @@ export const customerProxy: PayloadHandler = async (req: PayloadRequest, res) =>
   const { userID } = req.params
 
   if (!req.user) {
-    if (logs) req.payload.logger.error({ err: `You are not authorized to access this customer` })
-    res.status(401).json({ error: 'You are not authorized to access this customer' })
+    if (logs) req.payload.logger.error({ err: `Você não está autorizado a acessar esse cliente` })
+    res.status(401).json({ error: 'Você não está autorizado a acessar esse cliente' })
     return
   }
 

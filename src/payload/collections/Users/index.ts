@@ -25,7 +25,7 @@ const Users: CollectionConfig = {
     admin: ({ req: { user } }) => checkRole(['admin'], user),
   },
   hooks: {
-    beforeChange: [createStripeCustomer],
+    beforeChange: [],
     afterChange: [loginAfterCreate],
   },
   auth: true,
@@ -44,11 +44,49 @@ const Users: CollectionConfig = {
   fields: [
     {
       name: 'name',
+      label: 'Nome',
+      type: 'text',
+      required: true
+    },
+    {
+      name: 'social_id',
+      label: 'CPF',
+      type: 'number',
+    },
+    {
+      name: 'address',
+      label: 'Endereço',
       type: 'text',
     },
     {
-      name: 'teste',
+      name: 'house_number',
+      label: 'Número',
+      type: 'number',
+    },
+    {
+      name: 'complement',
+      label: 'Complemento',
       type: 'text',
+    },
+    {
+      name: 'neighborhood',
+      label: 'Bairro',
+      type: 'text',
+    },
+    {
+      name: 'city',
+      label: 'Cidade',
+      type: 'text',
+    },
+    {
+      name: 'state',
+      label: 'Estado',
+      type: 'text',
+    },
+    {
+      name: 'zip_code',
+      label: 'CEP',
+      type: 'number',
     },
     {
       name: 'roles',
@@ -82,20 +120,6 @@ const Users: CollectionConfig = {
       hasMany: true,
       hooks: {
         beforeChange: [resolveDuplicatePurchases],
-      },
-    },
-    {
-      name: 'stripeCustomerID',
-      label: 'Stripe Customer',
-      type: 'text',
-      access: {
-        read: ({ req: { user } }) => checkRole(['admin'], user),
-      },
-      admin: {
-        position: 'sidebar',
-        components: {
-          Field: CustomerSelect,
-        },
       },
     },
     {

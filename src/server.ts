@@ -39,6 +39,8 @@ app.use('/api', CancelFreightRouter);
 app.use('/api', EmailRouter);
 app.use('/api', EmailRouterCad);
 
+app.use('/api', processPayment);
+
 
 const start = async (): Promise<void> => {
   await payload.init({

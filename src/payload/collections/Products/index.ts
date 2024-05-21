@@ -122,6 +122,21 @@ const Products: CollectionConfig = {
         position: 'sidebar',
       },
     },
+    {
+      name: 'new',
+      label: "New In",
+      type: 'checkbox'
+    },
+    {
+      name: 'sale',
+      label: "Sale",
+      type: 'checkbox'
+    },
+    {
+      name: 'hot',
+      label: "Em Alta",
+      type: 'checkbox'
+    },
     slugField(),
   ],
 }

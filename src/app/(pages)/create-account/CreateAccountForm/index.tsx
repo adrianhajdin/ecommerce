@@ -9,19 +9,15 @@ import { Button } from '../../../_components/Button'
 import { Input } from '../../../_components/Input'
 import { Message } from '../../../_components/Message'
 import { useAuth } from '../../../_providers/Auth'
-import { useEmailSender } from '../../../_components/email';
 
 import classes from './index.module.scss'
 
 type FormData = {
-  name: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
-  address: string;
-  address2: string;
-  zipcode: string;
-  cpf: string;
+  name: string
+  email: string
+  password: string
+  passwordConfirm: string
+  social_id: number
 }
 
 const CreateAccountForm: React.FC = () => {
@@ -31,7 +27,7 @@ const CreateAccountForm: React.FC = () => {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const { sendEmailCadastro } = useEmailSender()
+
   const {
     register,
     handleSubmit,
@@ -53,7 +49,7 @@ const CreateAccountForm: React.FC = () => {
       })
 
       if (!response.ok) {
-        const message = response.statusText || 'Houve um erro ao criar a conta.'
+        const message = response.statusText || 'There was an error creating the account.'
         setError(message)
         return
       }
@@ -65,18 +61,17 @@ const CreateAccountForm: React.FC = () => {
       }, 1000)
 
       try {
-        await login({ email: data.email, password: data.password })
-        await sendEmailCadastro(data.email, data.name)
+        await login(data)
         clearTimeout(timer)
         if (redirect) router.push(redirect as string)
         else router.push(`/`)
         window.location.href = '/'
       } catch (_) {
         clearTimeout(timer)
-        setError('Houve um erro com as credenciais fornecidas. Por favor, tente novamente.')
+        setError('There was an error with the credentials provided. Please try again.')
       }
     },
-    [login, router, searchParams, sendEmailCadastro],
+    [login, router, searchParams],
   )
 
   return (
@@ -99,36 +94,12 @@ const CreateAccountForm: React.FC = () => {
         type="text"
       />
       <Input
-        name="cpf"
+        name="social_id"
         label="CPF"
         required
         register={register}
-        error={errors.cpf}
-        type="text"
-      />
-      <Input
-        name="zipcode"
-        label="CEP"
-        required
-        register={register}
-        error={errors.zipcode}
-        type="text"
-      />
-      <Input
-        name="address"
-        label="Endereço"
-        required
-        register={register}
-        error={errors.address}
-        type="text"
-      />
-      <Input
-        name="address2"
-        label="Complemento"
-        required
-        register={register}
-        error={errors.address2}
-        type="text"
+        error={errors.name}
+        type="social_id"
       />
       <Input
         name="password"
@@ -141,22 +112,22 @@ const CreateAccountForm: React.FC = () => {
       <Input
         name="passwordConfirm"
         type="password"
-        label="Confirme sua senha"
+        label="Confirmar senha"
         required
         register={register}
-        validate={value => value === password.current || 'As senhas não correspondem'}
+        validate={value => value === password.current || 'The passwords do not match'}
         error={errors.passwordConfirm}
       />
       <Button
         type="submit"
-        label={loading ? 'Processando' : 'Criar conta'}
+        label={loading ? 'Processing' : 'Criar conta'}
         disabled={loading}
         appearance="primary"
         className={classes.submit}
       />
       <div>
         {'Já tem uma conta? '}
-        <Link href={`/login${allParams}`}>Faça Login</Link>
+        <Link href={`/login${allParams}`}>Login</Link>
       </div>
     </form>
   )

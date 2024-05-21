@@ -30,7 +30,7 @@ export default async function Logout() {
 
 export const metadata: Metadata = {
   title: 'Logout',
-  description: 'You have been logged out.',
+  description: 'Você escolheu sair.',
   openGraph: mergeOpenGraph({
     title: 'Logout',
     url: '/logout',

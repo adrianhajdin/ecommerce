@@ -205,6 +205,9 @@ export interface Product {
   publishedOn?: string | null;
   relatedProducts?: (string | Product)[] | null;
   categories?: (string | Category)[] | null;
+  new?: boolean | null;
+  sale?: boolean | null;
+  hot?: boolean | null;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -235,11 +238,17 @@ export interface Order {
 }
 export interface User {
   id: string;
-  name?: string | null;
-  teste?: string | null;
+  name: string;
+  social_id?: number | null;
+  address?: string | null;
+  house_number?: number | null;
+  complement?: string | null;
+  neighborhood?: string | null;
+  city?: string | null;
+  state?: string | null;
+  zip_code?: number | null;
   roles?: ('admin' | 'customer')[] | null;
   purchases?: (string | Product)[] | null;
-  stripeCustomerID?: string | null;
   cart?: {
     items?: CartItems;
   };

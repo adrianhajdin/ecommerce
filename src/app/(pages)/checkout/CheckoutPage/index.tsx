@@ -18,12 +18,10 @@ import cssVariables from '../../../cssVariables';
 import { CheckoutForm } from '../CheckoutForm';
 import { CheckoutItem } from '../CheckoutItem';
 import {CancelShipmentComponent } from '../../../_components/FreightCancel';
-import { FreightCalculator,completeFreightPurchase} from '../../../_components/FreightSend';
+import { FreightCalculator} from '../../../_components/FreightSend';
 import classes from './index.module.scss';
 
 
-const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`;
-const stripePromise = loadStripe(apiKey);
 
 export const CheckoutPage = ({ settings }) => {
   const { productsPage } = settings;
@@ -79,7 +77,7 @@ export const CheckoutPage = ({ settings }) => {
         <Fragment>
           <h3 className={classes.payment}>Detalhes do pagamento</h3>
           {error && <p>{`Error: ${error}`}</p>}
-          <PaymentGateway amount={cartTotal.raw} />
+          <PaymentGateway amount={totalWithFreight} />
         </Fragment>
       )}
     </Fragment>
