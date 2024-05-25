@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useFilter } from '../../../_providers/Filter'
 import classes from './index.module.scss'
+
 const getTitlesAndSubtitles = (items) => {
   const titles = new Set();
   const subtitles = new Set();
@@ -80,23 +81,18 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
     { value: "createdAt", label: "Mais Antigo" }
   ];
 
-  // console.log(preselectedCategory)
-  // if (preselectedCategory && !categoryFilters.includes(preselectedCategory.title)&& categoryFilters.length === 0) {
-  //   handleCategoryFilterChange(preselectedCategory.title);
-  // }
-
-  // if (preselectedCategory && !subCategoryFilters.includes(preselectedCategory.subtitle)&& subCategoryFilters.length === 0) {
-  //   handleSubCategoryFilterChange(preselectedCategory.subtitle);
-  // }
-
   return (
     <div className={classes.filterMenu}>
       <div className={classes.filterDropdown}>
         <span>Coleção</span>
         <ul className={classes.dropdownList}>
           {titles.map((title, index) => (
-            <li key={index} onClick={() => handleCategoryFilterChange(title)}>
-              <input type="checkbox" checked={categoryFilters.includes(title)} readOnly />
+            <li key={index}>
+              <input 
+                type="checkbox" 
+                checked={categoryFilters.includes(title)} 
+                onChange={() => handleCategoryFilterChange(title)} 
+              />
               {title}
             </li>
           ))}
@@ -106,8 +102,12 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
         <span>Subcategoria</span>
         <ul className={classes.dropdownList}>
           {subtitles.map((subtitle, index) => (
-            <li key={index} onClick={() => handleSubCategoryFilterChange(subtitle)}>
-              <input type="checkbox" checked={subCategoryFilters.includes(subtitle)} readOnly />
+            <li key={index}>
+              <input 
+                type="checkbox" 
+                checked={subCategoryFilters.includes(subtitle)} 
+                onChange={() => handleSubCategoryFilterChange(subtitle)} 
+              />
               {subtitle}
             </li>
           ))}
@@ -117,8 +117,12 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
         <span>Cores</span>
         <ul className={classes.dropdownList}>
           {availableColors.map((color, index) => (
-            <li key={index} onClick={() => handleColorFilterChange(color)}>
-              <input type="checkbox" checked={colorFilters.includes(color)} readOnly />
+            <li key={index}>
+              <input 
+                type="checkbox" 
+                checked={colorFilters.includes(color)} 
+                onChange={() => handleColorFilterChange(color)} 
+              />
               {color}
             </li>
           ))}
@@ -128,8 +132,12 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
         <span>Tamanhos</span>
         <ul className={classes.dropdownList}>
           {sizes.map((size, index) => (
-            <li key={index} onClick={() => handleSizeFilterChange(size)}>
-              <input type="checkbox" checked={sizeFilters.includes(size)} readOnly />
+            <li key={index}>
+              <input 
+                type="checkbox" 
+                checked={sizeFilters.includes(size)} 
+                onChange={() => handleSizeFilterChange(size)} 
+              />
               {size}
             </li>
           ))}

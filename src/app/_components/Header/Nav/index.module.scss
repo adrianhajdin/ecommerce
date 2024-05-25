@@ -8,7 +8,7 @@
   opacity: 1;
   transition: opacity 100ms linear;
   visibility: visible;
-  padding: 8px;
+
 
   > * {
     text-decoration: none;
@@ -18,4 +18,14 @@
 .hide {
   opacity: 0;
   visibility: hidden;
+}
+
+.icon {
+  max-width: 75px;
+  max-height: 75px;
+}
+
+.socialIcon {
+  max-width: 40px;
+  max-height: 75px;
 }

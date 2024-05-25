@@ -17,7 +17,7 @@ export default async function Purchases() {
 
   return (
     <div>
-      <h5>Purchased Products</h5>
+      <h5>Minhas compras</h5>
       <div>
         {user?.purchases?.length || 0 > 0 ? (
           <ul className={classes.purchases}>
@@ -25,7 +25,7 @@ export default async function Purchases() {
               return (
                 <li key={index} className={classes.purchase}>
                   {typeof purchase === 'string' ? (
-                    <p>{purchase} Test</p>
+                    <p>{purchase}</p>
                   ) : (
                     <Link href={`/products/${purchase.slug}`} className={classes.item}>
                       <div className={classes.mediaWrapper}>

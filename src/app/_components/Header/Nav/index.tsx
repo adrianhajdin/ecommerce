@@ -19,7 +19,7 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
       className={[
         classes.nav,
         // fade the nav in on user load to avoid flash of content and layout shift
-        // Vercel also does this in their own website header, see https://vercel.com
+        // Vercel também faz isso em seu próprio cabeçalho de site, veja https://vercel.com
         user === undefined && classes.hide,
       ]
         .filter(Boolean)
@@ -28,14 +28,35 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="none" />
       })}
-      <CartLink />
-      {user && <Link href="/account">Minha Conta</Link>}
+      <Link href="https://www.instagram.com" target="_blank">
+        <img src="/instagram.png" alt="Instagram" className={classes.socialIcon} />
+      </Link>
+      <Link href="https://www.tiktok.com" target="_blank">
+        <img src="/tiktok.png" alt="TikTok" className={classes.socialIcon} />
+      </Link>
+
+      {user && (
+        <Link href="/account">
+            <img
+              className={classes.socialIcon}
+              alt="Minha Conta"
+              src="/user_profile.png"
+            />
+        </Link>
+      )}
       {!user && (
         <React.Fragment>
-          <Link href="/login">Login</Link>
-          <Link href="/create-account">Criar conta</Link>
+          <Link href="/login">
+            <img src="/login.png" alt="Login" className={classes.socialIcon} />
+          </Link>
+          {/* <Link href="/create-account">
+            <img src="/create-account.svg" alt="Criar conta" className={classes.icon} />
+          </Link> */}
         </React.Fragment>
       )}
+      <CartLink />
+
+
     </nav>
   )
 }

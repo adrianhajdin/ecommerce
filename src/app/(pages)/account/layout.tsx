@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={classes.container}>
       <Gutter>
-        <h3>My Profile</h3>
+        <h3>Minha Conta</h3>
         <div className={classes.account}>
           <div className={classes.nav}>
             <UserInfo />
