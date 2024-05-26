@@ -50,7 +50,7 @@ export async function Header() {
             */}
             <img
               className={classes.logo}
-              alt="Payload Logo"
+              alt="Minimo 1"
               src="/minimo_1_small.jpeg"
             />
           </Link>

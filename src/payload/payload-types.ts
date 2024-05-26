@@ -152,6 +152,9 @@ export interface Page {
             }[]
           | null;
         populatedDocsTotal?: number | null;
+        new?: boolean | null;
+        hot?: boolean | null;
+        sale?: boolean | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'archive';

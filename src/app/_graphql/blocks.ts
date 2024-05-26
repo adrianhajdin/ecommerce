@@ -42,6 +42,9 @@ export const ARCHIVE_BLOCK = `
   introContent
   populateBy
   relationTo
+  new
+  hot
+  sale
   ${PRODUCT_CATEGORIES}
   limit
   selectedDocs {

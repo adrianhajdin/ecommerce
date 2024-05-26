@@ -96,5 +96,33 @@ export const Archive: Block = {
         condition: (_, siblingData) => siblingData.populateBy === 'collection',
       },
     },
+    // Novo campo para filtro "new in"
+    {
+      type: 'checkbox',
+      name: 'new',
+      label: 'New In',
+      defaultValue: false,
+      admin: {
+        condition: (_, siblingData) => siblingData.populateBy === 'collection',
+      },
+    },
+    {
+      type: 'checkbox',
+      name: 'hot',
+      label: 'Em Alta',
+      defaultValue: false,
+      admin: {
+        condition: (_, siblingData) => siblingData.populateBy === 'collection',
+      },
+    },
+    {
+      type: 'checkbox',
+      name: 'sale',
+      label: 'Sale',
+      defaultValue: false,
+      admin: {
+        condition: (_, siblingData) => siblingData.populateBy === 'collection',
+      },
+    },
   ],
 }

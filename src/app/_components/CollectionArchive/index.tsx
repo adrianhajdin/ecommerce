@@ -1,4 +1,5 @@
 'use client'
+'use client'
 
 import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import qs from 'qs'
@@ -33,6 +34,9 @@ export type Props = {
   populatedDocs?: ArchiveBlockProps['populatedDocs']
   populatedDocsTotal?: ArchiveBlockProps['populatedDocsTotal']
   categories?: ArchiveBlockProps['categories']
+  new?: ArchiveBlockProps['new']
+  sale?: ArchiveBlockProps['sale']
+  hot?: ArchiveBlockProps['hot']
 }
 
 export const CollectionArchive: React.FC<Props> = props => {
@@ -46,8 +50,11 @@ export const CollectionArchive: React.FC<Props> = props => {
     limit = 10,
     populatedDocs,
     populatedDocsTotal,
+    new: newFilter,
+    sale: saleFilter,
+    hot: hotFilter,
   } = props
-  
+
   const [results, setResults] = useState<Result>({
     totalDocs: typeof populatedDocsTotal === 'number' ? populatedDocsTotal : 0,
     docs: (populatedDocs?.map(doc => doc.value) || []) as [],
@@ -87,10 +94,23 @@ export const CollectionArchive: React.FC<Props> = props => {
       }
     }, 500)
 
+    const whereConditions: any[] = []
+
+    if (newFilter === true) {
+      whereConditions.push({ new: { equals: newFilter } })
+    }
+    if (saleFilter === true) {
+      whereConditions.push({ sale: { equals: saleFilter } })
+    }
+    if (hotFilter === true) {
+      whereConditions.push({ hot: { equals: hotFilter } })
+    }
+
     const searchQuery = qs.stringify(
       {
         sort,
         where: {
+          or: whereConditions.length > 0 ? whereConditions : undefined,
           ...(categoryFilters && categoryFilters.length > 0 ? {
             'categories.title': {
               in: categoryFilters
@@ -110,7 +130,7 @@ export const CollectionArchive: React.FC<Props> = props => {
             sizes: {
               in: sizeFilters
             }
-          } : {})
+          } : {}),
         },
         limit,
         page,
@@ -118,6 +138,8 @@ export const CollectionArchive: React.FC<Props> = props => {
       },
       { encode: false }
     )
+
+    console.log(searchQuery)
 
     const makeRequest = async () => {
       try {
@@ -149,7 +171,9 @@ export const CollectionArchive: React.FC<Props> = props => {
     return () => {
       if (timer) clearTimeout(timer)
     }
-  }, [page, categoryFilters, subCategoryFilters, colorFilters, sizeFilters, relationTo, onResultChange, sort, limit])
+  }, [page, categoryFilters, subCategoryFilters, colorFilters, sizeFilters, relationTo, onResultChange, sort, limit, newFilter, saleFilter, hotFilter])
+
+  console.log(results)
 
   return (
     <div className={[classes.collectionArchive, className].filter(Boolean).join(' ')}>

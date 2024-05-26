@@ -51,7 +51,7 @@ export  const  HeaderComponent = ({ categories}) => {
       {/* Use Link correctly without <a> */}
       <div className={classes.headerButtons}>
         {/* New in */}
-        <Link href="/products/new" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
+        <Link href="/new" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
           <span>New in</span>
         </Link>
 
@@ -77,11 +77,11 @@ export  const  HeaderComponent = ({ categories}) => {
       )}
       </Link>
         {/* Em Alta */}
-        <Link href="/products/hot" onMouseEnter={() => toggleDropdown('emAlta')} onMouseLeave={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
+        <Link href="/hot" onMouseEnter={() => toggleDropdown('emAlta')} onMouseLeave={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
           <span>Em Alta</span>
         </Link>
         {/* Sale */}
-        <Link href="/products/sale" onMouseEnter={() => toggleDropdown('sale')} onMouseLeave={() => toggleDropdown('sale')} className={classes.buttonLink}>
+        <Link href="/sale" onMouseEnter={() => toggleDropdown('sale')} onMouseLeave={() => toggleDropdown('sale')} className={classes.buttonLink}>
           <span>Sale</span>
         </Link>
       </div>

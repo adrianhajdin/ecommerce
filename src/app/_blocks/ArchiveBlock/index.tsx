@@ -21,6 +21,9 @@ export const ArchiveBlock: React.FC<
     populatedDocs,
     populatedDocsTotal,
     categories,
+    new: newFlag,
+    hot: hotFlag,
+    sale: saleFlag,
   } = props
 
 
@@ -35,6 +38,9 @@ export const ArchiveBlock: React.FC<
         categories={categories}
         limit={limit}
         sort="-publishedOn"
+        new={newFlag}
+        hot={hotFlag}
+        sale={saleFlag}
       />
     </div>
   )

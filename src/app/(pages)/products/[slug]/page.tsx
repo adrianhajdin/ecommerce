@@ -45,8 +45,6 @@ export default async function Product({ params: { slug } }) {
   // Testando a função
   const category = findCategoryIdBySlug(categories, slug);
 
-  console.log(category)
-
   if (category){
 
   
