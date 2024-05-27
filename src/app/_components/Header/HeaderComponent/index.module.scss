@@ -11,7 +11,14 @@
 .separator {
   margin: 0 0px; /* Ajuste o espaço em torno dos traços conforme necessário */
 }
-
+.separatorV {
+  height: 50px; /* Ajuste a altura conforme necessário para alinhar com "MÍNIMO 1" */
+  width: 1.8px; /* Largura do separador */
+  background-color: rgba(0, 0, 0, 0.842); /* Cor do separador, ajuste conforme necessário */
+  margin-right: 2px; /* Espaço à direita do separador */
+  margin-left: -85px;  /* Margem negativa à esquerda para mover mais para a esquerda */
+  box-shadow: 0px 0px 4px gray; /* Adiciona uma sombra branca de 5px */
+}
 .iconsContainer {
   display: flex;
   justify-content: flex-end; /* Alinha os ícones à direita */

@@ -50,6 +50,7 @@ export  const  HeaderComponent = ({ categories}) => {
     <header className={classes.header}>
       {/* Use Link correctly without <a> */}
       <div className={classes.headerButtons}>
+      <div className={classes.separatorV}></div> {/* Separador vertical */}
         {/* New in */}
         <Link href="/new" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
           <span>New In</span>
