@@ -1,12 +1,15 @@
 
 .headerButtons {
   display: flex;
-  gap: 100px;
+  gap: 60px;
   position: absolute; /* Posicionamento absoluto dentro do iconsContainer */
   padding: 8px;
   left: 28%; /* Alinha os ícones à direita */
   font-size: 25px; /* Aumenta o tamanho da fonte */
 
+}
+.separator {
+  margin: 0 0px; /* Ajuste o espaço em torno dos traços conforme necessário */
 }
 
 .iconsContainer {
