@@ -39,7 +39,9 @@ const AccountForm: React.FC = () => {
 
   const onSubmit = useCallback(
     async (data: FormData) => {
+      console.log(JSON.stringify(data), data)
       if (user) {
+
         const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
           // Make sure to include cookies with fetch
           credentials: 'include',
@@ -104,6 +106,7 @@ const AccountForm: React.FC = () => {
             type="email"
           />
           <Input name="name" label="Name" register={register} error={errors.name} />
+          <Input name="zip_code" label="CEP" register={register} error={errors.name} />
 
           <p>
             {'Change your account details below, or '}

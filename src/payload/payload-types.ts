@@ -27,8 +27,6 @@ export interface Config {
     'payload-migrations': PayloadMigration;
   };
   globals: {
-    settings: Settings;
-    header: Header;
     footer: Footer;
   };
 }
@@ -242,14 +240,16 @@ export interface Order {
 export interface User {
   id: string;
   name: string;
-  social_id?: number | null;
+  socialId?: number | null;
+  birthdate?: number | null;
+  phoneNumber?: number | null;
   address?: string | null;
-  house_number?: number | null;
+  houseNumber?: number | null;
   complement?: string | null;
   neighborhood?: string | null;
   city?: string | null;
   state?: string | null;
-  zip_code?: number | null;
+  zipCode?: number | null;
   roles?: ('admin' | 'customer')[] | null;
   purchases?: (string | Product)[] | null;
   cart?: {
@@ -292,33 +292,6 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
-}
-export interface Settings {
-  id: string;
-  productsPage?: (string | null) | Page;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-export interface Header {
-  id: string;
-  navItems?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: string | Page;
-          } | null;
-          url?: string | null;
-          label: string;
-          icon?: string | Media | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
 }
 export interface Footer {
   id: string;

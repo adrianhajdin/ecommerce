@@ -139,7 +139,6 @@ export const CollectionArchive: React.FC<Props> = props => {
       { encode: false }
     )
 
-    console.log(searchQuery)
 
     const makeRequest = async () => {
       try {
@@ -173,7 +172,7 @@ export const CollectionArchive: React.FC<Props> = props => {
     }
   }, [page, categoryFilters, subCategoryFilters, colorFilters, sizeFilters, relationTo, onResultChange, sort, limit, newFilter, saleFilter, hotFilter])
 
-  console.log(results)
+
 
   return (
     <div className={[classes.collectionArchive, className].filter(Boolean).join(' ')}>

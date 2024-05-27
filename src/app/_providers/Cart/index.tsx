@@ -81,7 +81,7 @@ export const CartProvider = props => {
               )
               const data = await res.json()
 
-              console.log(data)
+             
               return {
                 product: data,
                 quantity,

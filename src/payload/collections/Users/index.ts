@@ -49,8 +49,18 @@ const Users: CollectionConfig = {
       required: true
     },
     {
-      name: 'social_id',
+      name: 'socialId',
       label: 'CPF',
+      type: 'number',
+    },
+    {
+      name: 'birthdate',
+      label: 'Data de Nascimento',
+      type: 'number',
+    },
+    {
+      name: 'phoneNumber',
+      label: 'Data de Nascimento',
       type: 'number',
     },
     {
@@ -59,7 +69,7 @@ const Users: CollectionConfig = {
       type: 'text',
     },
     {
-      name: 'house_number',
+      name: 'houseNumber',
       label: 'Número',
       type: 'number',
     },
@@ -84,7 +94,7 @@ const Users: CollectionConfig = {
       type: 'text',
     },
     {
-      name: 'zip_code',
+      name: 'zipCode',
       label: 'CEP',
       type: 'number',
     },

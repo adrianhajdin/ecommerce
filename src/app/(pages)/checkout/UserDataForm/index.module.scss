@@ -1,0 +1,47 @@
+@import "../../../_css/common";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--base);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--base);
+}
+
+
+.inlineFields {
+  display: flex;
+  gap: 20px; // Ajuste o espaço entre os campos conforme necessário
+}
+
+.message {
+  margin-bottom: 16px; // Espaçamento inferior para a mensagem de erro/sucesso
+}
+
+.submit {
+  margin-top: 16px; // Espaçamento superior para o botão de submit
+  width: 500px; // Ajuste o tamanho do botão conforme necessário
+  margin: 10px auto; // Centraliza o botão horizontalmente
+  border-radius: 0px;
+}
+
+.personalData {
+  border: 1px solid #ccc; // Cor da borda
+  padding: 16px; // Espaçamento interno
+  border-radius: 8px; // Bordas arredondadas, se desejado
+  margin-bottom: 24px; // Espaçamento inferior entre seções
+  flex: 1; // Permite que os blocos cresçam igualmente
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+}
+
+.personalData.fadeIn {
+  opacity: 1;
+  max-height: 1000px; // Ajuste conforme necessário
+}

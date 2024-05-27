@@ -1,0 +1,41 @@
+@import "../../../_css/common";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--base);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--base);
+}
+
+.inlineFields {
+  display: flex;
+  gap: 20px; // Ajuste o espaço entre os campos conforme necessário
+}
+
+.flex1 {
+  flex: 0.3;
+}
+
+.flex2 {
+  flex: 2;
+}
+
+.flex0_5 {
+  flex: 0.14;
+}
+
+.message {
+  margin-bottom: 16px; // Espaçamento inferior para a mensagem de erro/sucesso
+}
+
+.submit {
+  margin-top: 16px; // Espaçamento superior para o botão de submit
+  width: 500px; // Ajuste o tamanho do botão conforme necessário
+  margin: 10px auto; // Centraliza o botão horizontalmente
+  border-radius: 0px;
+}

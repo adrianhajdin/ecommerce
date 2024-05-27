@@ -50,3 +50,26 @@
 .error {
   margin-top: calc(var(--block-padding) - var(--base));
 }
+
+.formContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; // Ajuste o espaço entre os dois blocos conforme necessário
+}
+
+.personalData {
+  border: 1px solid #ccc; // Cor da borda
+  padding: 16px; // Espaçamento interno
+  border-radius: 8px; // Bordas arredondadas, se desejado
+  margin-bottom: 24px; // Espaçamento inferior entre seções
+  flex: 1; // Permite que os blocos cresçam igualmente
+  transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.personalData.fadeIn {
+  opacity: 1;
+  max-height: 10000px; // Ajuste conforme necessário
+}

@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios'; // Certifique-se de ter o axios instalado
 
-import { Settings } from '../../../../payload/payload-types';
 import { Button } from '../../../_components/Button';
 import { PaymentGateway } from '../../../_components/PaymentGateway';
 import { LoadingShimmer } from '../../../_components/LoadingShimmer';
@@ -17,19 +16,21 @@ import { useTheme } from '../../../_providers/Theme';
 import cssVariables from '../../../cssVariables';
 import { CheckoutForm } from '../CheckoutForm';
 import { CheckoutItem } from '../CheckoutItem';
-import {CancelShipmentComponent } from '../../../_components/FreightCancel';
-import { FreightCalculator} from '../../../_components/FreightSend';
+import { PersonalDataForm } from '../UserDataForm';
+import { ShippingDataForm } from '../ShippingDataForm';
+import { CancelShipmentComponent } from '../../../_components/FreightCancel';
+import { FreightCalculator } from '../../../_components/FreightSend';
 import classes from './index.module.scss';
 
-
-
-export const CheckoutPage = ({ settings }) => {
-  const { productsPage } = settings;
+export const CheckoutPage = () => {
   const { user } = useAuth();
   const router = useRouter();
   const [error, setError] = useState(null);
   const [clientSecret, setClientSecret] = useState(null);
   const [freightPrice, setFreightPrice] = useState(0);
+  const [showPersonalData, setShowPersonalData] = useState(false);
+  const [showShippingData, setShowShippingData] = useState(false);
+  const [showPaymentGateway, setShowPaymentGateway] = useState(false);
   const { cart, cartIsEmpty, cartTotal } = useCart();
   const { theme } = useTheme();
 
@@ -41,6 +42,18 @@ export const CheckoutPage = ({ settings }) => {
 
   // Corrigindo a lógica de cálculo do total
   const totalWithFreight = cartTotal.raw + freightPrice;
+
+  const handleFreightCalculation = () => {
+    setShowPersonalData(true);
+  };
+
+  const handleShowShippingData = () => {
+    setShowShippingData(true);
+  };
+
+  const handleShowPaymentGateway = () => {
+    setShowPaymentGateway(true);
+  };
 
   if (!user) return null;
 
@@ -59,7 +72,7 @@ export const CheckoutPage = ({ settings }) => {
             {cart.items.map((item, index) => (
               <CheckoutItem key={index} product={item.product} title={item.product.title}  quantity={item.quantity} index={index} />
             ))}
-            <FreightCalculator onFreightPriceSet={setFreightPrice} />
+            <FreightCalculator onFreightPriceSet={setFreightPrice} zipCode={user?.zipCode} onFreightCalculation={handleFreightCalculation}/>
             <div className={classes.orderTotal}>
               <p>Total do pedido</p>
               <p>R$ {totalWithFreight.toFixed(2)}</p>
@@ -73,13 +86,29 @@ export const CheckoutPage = ({ settings }) => {
         </div>
       )}
 
-      {(
-        <Fragment>
-          <h3 className={classes.payment}>Detalhes do pagamento</h3>
+      {showPersonalData && (
+        <div className={`${classes.personalData} ${classes.fadeIn}`}>
+          <h3>1) Dados Pessoais</h3>
+          <PersonalDataForm onNext={handleShowShippingData} />
+        </div>
+      )}
+      
+      {showShippingData && (
+        <div className={`${classes.personalData} ${classes.fadeIn}`}>
+          <h3>2) Entrega</h3>
+          <ShippingDataForm onNext={handleShowPaymentGateway} />
+        </div>
+      )}
+      
+      {showPaymentGateway && (
+        <div className={`${classes.personalData} ${classes.fadeIn}`}>
+          <h3>3) Detalhes do pagamento</h3>
           {error && <p>{`Error: ${error}`}</p>}
           <PaymentGateway amount={totalWithFreight} />
-        </Fragment>
+        </div>
       )}
     </Fragment>
   );
 };
+
+export default CheckoutPage;
