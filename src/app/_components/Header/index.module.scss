@@ -2,6 +2,18 @@
 
 .header {
   padding: var(--base) 0;
+
+  @include mid-break {
+    padding: var(--medium-base) 0;
+  }
+
+  @include small-break {
+    padding: var(--small-base) 0;
+  }
+
+  @include extra-small-break {
+    padding: var(--extra-small-base) 0;
+  }
 }
 
 .wrap {
@@ -9,15 +21,62 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: calc(var(--base) / 2) var(--base);
+
+  @include mid-break {
+    gap: calc(var(--medium-base) / 2) var(--medium-base);
+  }
+
+  @include small-break {
+    flex-direction: column;
+    gap: calc(var(--small-base) / 2) var (--small-base);
+  }
+
+  @include extra-small-break {
+    gap: calc(var(--extra-small-base) / 2) var(--extra-small-base);
+  }
 }
 
 .logo {
   width: 330px;
   position: absolute;
   left: 0;
-  margin-left: 20px; /* ajuste a margem conforme necessário */
+  margin-left: 20px;
+
+  @include mid-break {
+    width: 280px;
+  }
+
+  @include small-break {
+    width: 100%;
+    position: static;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  @include extra-small-break {
+    width: 200px;
+  }
 }
 
-:global([data-theme="light"]) {
+.iconLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
 
+  @include mid-break {
+    width: 22px;
+    height: 22px;
+  }
+
+  @include small-break {
+    width: 20px;
+    height: 20px;
+  }
+
+  @include extra-small-break {
+    width: 18px;
+    height: 18px;
+  }
 }
