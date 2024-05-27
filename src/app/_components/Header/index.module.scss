@@ -12,8 +12,10 @@
 }
 
 .logo {
-  width: 400px;
-  
+  width: 280px;
+  position: absolute;
+  left: 0;
+  margin-left: 20px; /* ajuste a margem conforme necessário */
 }
 
 :global([data-theme="light"]) {
