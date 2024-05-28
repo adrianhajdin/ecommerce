@@ -139,8 +139,9 @@
   position: fixed; /* Fixa o menu na tela */
   padding-top: 30px;
   left: 27%; /* Inicia próximo, mas não exatamente na borda esquerda */
-  height: 150px; /* Define a altura do dropdown */
   overflow-y: auto; /* Permite rolagem vertical se o conteúdo exceder a altura */
+  flex-wrap: wrap; /* Permite que o conteúdo se quebre em múltiplas linhas, se necessário */
+  height: auto; /* Ajusta automaticamente a altura */
 }
 
 .dropdownColumn {
