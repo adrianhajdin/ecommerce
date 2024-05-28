@@ -5,8 +5,9 @@
   gap: 40px;
   position: absolute;
   padding: 8px;
-  left: 28%;
+  left: 25%;
   font-size: 25px;
+  margin-top:5px; // Adicionar margem superior para mover os itens para baixo
 
   @include large-break {
     font-size: 30px;

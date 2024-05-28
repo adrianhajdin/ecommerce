@@ -1,0 +1,68 @@
+@use '../../_css/queries.scss' as *;
+
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.searchInput {
+  flex-grow: 1;
+  padding: 5px;
+  font-size: 15px;
+  outline: none;
+  border: none; // Remove a borda
+  background: none; // Remove o fundo cinza
+  -webkit-appearance: none; // Para remover estilos padrão em alguns navegadores
+  appearance: none; // Para remover estilos padrão em alguns navegadores
+
+  @include large-break {
+    font-size: 14px;
+  }
+
+  @include mid-break {
+    font-size: 12px;
+  }
+
+  @include small-break {
+    font-size: 10px;
+  }
+
+  @include extra-small-break {
+    font-size: 8px;
+  }
+}
+
+.searchButton {
+  background: none; // Remove o fundo cinza
+  border: none; // Remove a borda
+  padding: 0px;
+  margin-top: 1px; // Ajusta a margem superior para diminuir o tamanho do botão
+  cursor: pointer;
+
+  .searchIcon {
+    max-width: 24px;
+    max-height: 24px;
+
+    @include large-break {
+      max-width: 20px;
+      max-height: 20px;
+    }
+
+    @include mid-break {
+      max-width: 16px;
+      max-height: 16px;
+    }
+
+    @include small-break {
+      max-width: 12px;
+      max-height: 12px;
+    }
+
+    @include extra-small-break {
+      max-width: 8px;
+      max-height: 8px;
+    }
+  }
+}

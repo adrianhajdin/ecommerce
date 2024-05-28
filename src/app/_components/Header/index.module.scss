@@ -1,7 +1,7 @@
 @use '../../_css/queries.scss' as *;
 
 .header {
-  padding: var(--base) 0;
+  padding: 3px; // Aumente o padding vertical
 
   @include large-break {
     padding: var(--medium-base) 0;
@@ -24,23 +24,23 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: calc(var(--base) / 2) var(--base);
+  gap: calc(var(--base) / 4) var(--base);
 
   @include large-break {
-    gap: calc(var(--medium-base) / 3) var(--medium-base);
+    gap: calc(var(--medium-base) / 4) var(--medium-base);
   }
 
   @include mid-break {
-    gap: calc(var(--medium-base) / 2) var(--medium-base);
+    gap: calc(var(--medium-base) / 4) var(--medium-base);
   }
 
   @include small-break {
     flex-direction: column;
-    gap: calc(var(--small-base) / 2) var(--small-base);
+    gap: calc(var(--small-base) /4) var(--small-base);
   }
 
   @include extra-small-break {
-    gap: calc(var(--extra-small-base) / 2) var(--extra-small-base);
+    gap: calc(var(--extra-small-base) / 4) var(--extra-small-base);
   }
 }
 
@@ -50,6 +50,7 @@
   left: 0; // Fixa à esquerda com margem de 20px
   margin-left: 20px;
   z-index: 1000; // Garante que esteja no topo
+  margin-top:3px; 
 
   @include large-break {
     width: 330px;
@@ -76,7 +77,7 @@
   background-color: rgba(0, 0, 0, 0.842);
   position: absolute;
   left: calc(400px); // 20px (margin-left) + 300px (logo width) + 80px (extra spacing)
-
+  margin-top:3px; 
   box-shadow: 0px 0px 4px gray;
 
   @include large-break {
