@@ -9,9 +9,24 @@
   transition: opacity 100ms linear;
   visibility: visible;
 
-
   > * {
     text-decoration: none;
+  }
+
+  @include large-break {
+    gap: calc(var(--medium-base) / 4) var(--medium-base);
+  }
+
+  @include mid-break {
+    gap: calc(var(--medium-base) / 4) var(--medium-base);
+  }
+
+  @include small-break {
+    gap: calc(var(--small-base) / 4) var(--small-base);
+  }
+
+  @include extra-small-break {
+    gap: calc(var(--extra-small-base) / 4) var(--extra-small-base);
   }
 }
 
@@ -23,9 +38,109 @@
 .icon {
   max-width: 75px;
   max-height: 75px;
+
+  @include large-break {
+    max-width: 65px;
+    max-height: 65px;
+  }
+
+  @include mid-break {
+    max-width: 45px;
+    max-height: 45px;
+  }
+
+  @include small-break {
+    max-width: 35px;
+    max-height: 35px;
+  }
+
+  @include extra-small-break {
+    max-width: 25px;
+    max-height: 25px;
+  }
 }
 
 .socialIcon {
   max-width: 40px;
-  max-height: 75px;
+  max-height: 40px;
+
+  @include large-break {
+    max-width: 35px;
+    max-height: 35px;
+  }
+
+  @include mid-break {
+    max-width: 20px;
+    max-height: 20px;
+  }
+
+  @include small-break {
+    max-width: 15px;
+    max-height: 15px;
+  }
+
+  @include extra-small-break {
+    max-width: 10px;
+    max-height: 10px;
+  }
+}
+
+.cartLink {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .icon {
+    max-width: 38px;
+    max-height: 50px;
+
+    @include large-break {
+      max-width: 33px;
+      max-height: 45px;
+      gap: 8px;
+    }
+
+    @include mid-break {
+      max-width: 28px;
+      max-height: 40px;
+      gap: 6px;
+    }
+
+    @include small-break {
+      max-width: 23px;
+      max-height: 35px;
+      gap: 4px;
+    }
+
+    @include extra-small-break {
+      max-width: 18px;
+      max-height: 30px;
+      gap: 2px;
+    }
+  }
+}
+
+.quantity {
+  margin-left: 2px;
+
+  @include large-break {
+    font-size: 14px;
+    margin-left: 1.5px;
+  }
+
+  @include mid-break {
+    font-size: 12px;
+    margin-left: 1px;
+  }
+
+  @include small-break {
+    font-size: 10px;
+    margin-left: 0.5px;
+  }
+
+  @include extra-small-break {
+    font-size: 8px;
+    margin-left: 0.25px;
+  }
 }

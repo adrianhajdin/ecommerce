@@ -1,15 +1,51 @@
+@use '../../_css/queries.scss' as *;
 .cartLink {
   cursor: pointer;
   display: flex;
   align-items: center;
+
+  .icon {
+    max-width: 38px;
+    max-height: 50px;
+
+    @include large-break {
+      max-width: 33px;
+      max-height: 45px;
+    }
+
+    @include mid-break {
+      max-width: 24px;
+      max-height: 35px;
+    }
+
+    @include small-break {
+      max-width: 23px;
+      max-height: 35px;
+    }
+
+    @include extra-small-break {
+      max-width: 10px;
+      max-height: 15px;
+    }
+  }
 }
 
 .quantity {
   margin-left: 2px;
-}
+  
+  @include large-break {
+    font-size: 14px;
+  }
 
+  @include mid-break {
+    font-size: 10px;
+  }
 
-.icon {
-  max-width: 38px;
-  max-height: 50x;
+  @include small-break {
+    font-size: 8px;
+  }
+
+  @include extra-small-break {
+    font-size: 6px;
+  }
 }

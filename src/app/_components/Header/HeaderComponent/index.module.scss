@@ -9,13 +9,13 @@
   font-size: 25px;
 
   @include large-break {
-    font-size: 26px;
-    gap: 50px;
+    font-size: 30px;
+    gap: 60px;
   }
 
   @include mid-break {
-    font-size: 22px;
-    gap: 40px;
+    font-size: 16px;
+    gap: 35px;
   }
 
   @include small-break {
@@ -23,7 +23,7 @@
     gap: 20px;
     position: static;
     left: 0;
-    font-size: 18px;
+    font-size: 10px;
   }
 
   @include extra-small-break {
@@ -40,7 +40,7 @@
   }
 
   @include mid-break {
-    margin: 0 4px;
+    margin: 0 3px;
   }
 
   @include small-break {
