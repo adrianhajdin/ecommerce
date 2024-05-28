@@ -2,14 +2,20 @@
 
 .headerButtons {
   display: flex;
-  gap: 60px;
+  gap: 40px;
   position: absolute;
   padding: 8px;
   left: 28%;
   font-size: 25px;
 
+  @include large-break {
+    font-size: 26px;
+    gap: 50px;
+  }
+
   @include mid-break {
     font-size: 22px;
+    gap: 40px;
   }
 
   @include small-break {
@@ -22,24 +28,20 @@
 
   @include extra-small-break {
     font-size: 16px;
+    gap: 15px;
   }
 }
 
 .separator {
-  margin: 0 0px;
+  margin: 0 5px;
 
-  @include small-break {
-    display: none;
+  @include large-break {
+    margin: 0 6px;
   }
-}
 
-.separatorV {
-  height: 50px;
-  width: 1.8px;
-  background-color: rgba(0, 0, 0, 0.842);
-  margin-right: 2px;
-  margin-left: -85px;
-  box-shadow: 0px 0px 4px gray;
+  @include mid-break {
+    margin: 0 4px;
+  }
 
   @include small-break {
     display: none;
@@ -52,6 +54,14 @@
   align-items: flex-start;
   width: 100%;
   position: relative;
+
+  @include large-break {
+    justify-content: space-between;
+  }
+
+  @include mid-break {
+    justify-content: flex-end;
+  }
 
   @include small-break {
     flex-direction: column;
@@ -66,6 +76,10 @@
   position: absolute;
   top: 39px;
   left: 89.3%;
+
+  @include large-break {
+    top: 45px;
+  }
 
   @include mid-break {
     top: 35px;
@@ -86,6 +100,11 @@
   width: 24px;
   height: 24px;
 
+  @include large-break {
+    width: 26px;
+    height: 26px;
+  }
+
   @include mid-break {
     width: 22px;
     height: 22px;
@@ -100,97 +119,4 @@
     width: 18px;
     height: 18px;
   }
-}
-
-.buttonLink {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  font-weight: normal;
-  background-color: white;
-  z-index: 1000;
-}
-
-.dropdownMenuVertical {
-  display: flex;
-  background-color: white;
-  z-index: 1000;
-  position: fixed;
-  padding-top: 30px;
-  left: 0px;
-  right: 0px;
-  width: 100%;
-}
-
-.dropdownColumn {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 4%;
-}
-
-.dropdownColumn:last-child {
-  border-right: none;
-}
-
-.dropdownItem {
-  text-align: left;
-  font-weight: normal;
-  font-size: 15px;
-  color: #333;
-  text-decoration: none;
-  margin-bottom: 5px;
-
-  @include small-break {
-    font-size: 14px;
-  }
-
-  @include extra-small-break {
-    font-size: 13px;
-  }
-}
-
-.dropdownItem:last-child {
-  margin-bottom: 0;
-}
-
-.dropdownItem:hover {
-  background-color: white;
-}
-
-.boldUnderlineDropdownItem {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: left;
-  text-underline-offset: 10px;
-  text-decoration: underline;
-
-  @include small-break {
-    font-size: 16px;
-  }
-
-  @include extra-small-break {
-    font-size: 14px;
-  }
-}
-
-.headerButtons a:active,
-.headerButtons a:focus,
-.headerSocialIcons a:active,
-.headerSocialIcons a:focus,
-.headerIcons a:active,
-.headerIcons a:focus,
-.iconLink:active,
-.iconLink:focus,
-.buttonLink:active,
-.buttonLink:focus,
-.dropdownItem:active,
-.dropdownItem:focus {
-  background-color: inherit;
-  opacity: 1;
-  outline: none;
-}
-
-.blockContainer {
-  position: relative;
 }

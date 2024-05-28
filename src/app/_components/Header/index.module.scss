@@ -3,6 +3,10 @@
 .header {
   padding: var(--base) 0;
 
+  @include large-break {
+    padding: var(--medium-base) 0;
+  }
+
   @include mid-break {
     padding: var(--medium-base) 0;
   }
@@ -22,13 +26,17 @@
   flex-wrap: wrap;
   gap: calc(var(--base) / 2) var(--base);
 
+  @include large-break {
+    gap: calc(var(--medium-base) / 3) var(--medium-base);
+  }
+
   @include mid-break {
     gap: calc(var(--medium-base) / 2) var(--medium-base);
   }
 
   @include small-break {
     flex-direction: column;
-    gap: calc(var(--small-base) / 2) var (--small-base);
+    gap: calc(var(--small-base) / 2) var(--small-base);
   }
 
   @include extra-small-break {
@@ -39,22 +47,51 @@
 .logo {
   width: 330px;
   position: absolute;
-  left: 0;
+  left: 0; // Fixa à esquerda com margem de 20px
   margin-left: 20px;
 
+  @include large-break {
+    width: 330px;
+  }
+
   @include mid-break {
-    width: 280px;
+    width: 200px;
   }
 
   @include small-break {
-    width: 100%;
-    position: static;
-    margin-left: 0;
-    text-align: center;
+    width: 150px;
+    left: 50%; // Centraliza horizontalmente para telas pequenas
+    transform: translate(-50%, -50%);
   }
 
   @include extra-small-break {
-    width: 200px;
+    width: 100px;
+  }
+}
+
+.separatorV {
+  height: 55px;
+  width: 1.85px;
+  background-color: rgba(0, 0, 0, 0.842);
+  position: absolute;
+  left: calc(400px); // 20px (margin-left) + 300px (logo width) + 80px (extra spacing)
+
+  box-shadow: 0px 0px 4px gray;
+
+  @include large-break {
+    height: 55px;
+    width: 1.85px;
+    left: calc(270px); // 20px (margin-left) + 250px (logo width) + 10px (extra spacing)
+  }
+
+  @include mid-break {
+    height: 40px;
+    width: 1.85px;
+    left: calc(230px); // 20px (margin-left) + 200px (logo width) + 10px (extra spacing)
+  }
+
+  @include small-break {
+    display: none;
   }
 }
 
@@ -64,6 +101,11 @@
   justify-content: center;
   width: 24px;
   height: 24px;
+
+  @include large-break {
+    width: 26px;
+    height: 26px;
+  }
 
   @include mid-break {
     width: 22px;
