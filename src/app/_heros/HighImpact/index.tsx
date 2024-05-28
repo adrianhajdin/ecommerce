@@ -1,5 +1,5 @@
 'use client'
-import React, { Fragment, useState, useEffect} from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { Page } from '../../../payload/payload-types'
 import { Gutter } from '../../_components/Gutter'
 import { CMSLink } from '../../_components/Link'
@@ -10,14 +10,19 @@ import SplashScreen from '../../_components/SplashScreen/SplashScreen'
 import classes from './index.module.scss'
 
 export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links }) => {
-  const [showSplashScreen, setShowSplashScreen] = useState(true);
+  const [showSplashScreen, setShowSplashScreen] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplashScreen(false);
-    }, 5000); // 5000ms = 5 seconds
+    const firstVisitOrReload = sessionStorage.getItem('firstVisitOrReload');
+    if (!firstVisitOrReload) {
+      setShowSplashScreen(true);
+      const timer = setTimeout(() => {
+        setShowSplashScreen(false);
+        sessionStorage.setItem('firstVisitOrReload', 'true');
+      }, 5000); // 5000ms = 5 seconds
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const metaImage = medias.map(item => item.media);
