@@ -49,6 +49,7 @@
   position: absolute;
   left: 0; // Fixa à esquerda com margem de 20px
   margin-left: 20px;
+  z-index: 10000; // Garante que esteja no topo
 
   @include large-break {
     width: 330px;
