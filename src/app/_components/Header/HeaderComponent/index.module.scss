@@ -127,7 +127,8 @@
   cursor: pointer;
   font-weight: normal;
   background-color: white;
-  z-index: 1000
+  z-index: 1000;
+  left: 0;
 }
 
 .dropdownMenuVertical {
@@ -136,18 +137,17 @@
   z-index: 1000; /* Garante que fique acima de outros conteúdos */
   position: fixed; /* Fixa o menu na tela */
   padding-top: 30px;
-  left: 0px; /* Inicia próximo, mas não exatamente na borda esquerda */
-  right: 0px; /* Inicia próximo, mas não exatamente na borda esquerda */
-  width: 100%; /* Ajusta a largura para compensar o espaço à esquerda */
-  // border-bottom: 0.01px ; /* Borda inferior sutil */
+  left: 27%; /* Inicia próximo, mas não exatamente na borda esquerda */
+  height: 150px; /* Define a altura do dropdown */
+  overflow-y: auto; /* Permite rolagem vertical se o conteúdo exceder a altura */
 }
 
 .dropdownColumn {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Alinha os itens à esquerda, você pode mudar para 'center' se necessário */
-  padding-left: 4%; /* Ajuste o preenchimento à esquerda conforme necessário para mover o texto para a direita */
-  /* Outros estilos permanecem */
+  display: flex; /* Display children in a flex layout */
+  flex-direction: column; /* Stack items vertically */
+  min-width: 200px; /* Minimum width for each column, adjust as needed */
+  padding: 5px; /* Reduz o padding interno */
+  flex: 1;
 }
 
 .dropdownColumn:last-child {
@@ -176,23 +176,7 @@
   font-weight: bold; /* Make the text bold */
   text-align: left; /* Center the text if needed */
   text-underline-offset: 10px; /* Adjust the space between the text and the underline */
-  text-decoration: underline;
-
-  @include large-break {
-    font-size: 16px;
-  }
-
-  @include mid-break {
-    font-size: 14px;
-  }
-
-  @include small-break {
-    font-size: 12px;
-  }
-
-  @include extra-small-break {
-    font-size: 10px;
-  }
+  text-decoration: underline
 }
 
 /* Sobrescreve qualquer configuração de transparência/foco nos links do cabeçalho */
@@ -205,7 +189,4 @@
   background-color: inherit; /* Usa a cor de fundo do elemento pai */
   opacity: 1; /* Define a opacidade para 1, evitando transparência */
   outline: none; /* Remove qualquer contorno que possa aparecer ao focar */
-}
-.blockContainer {
-  position: relative;
 }
