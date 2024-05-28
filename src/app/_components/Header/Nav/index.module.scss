@@ -62,8 +62,8 @@
 }
 
 .socialIcon {
-  max-width: 40px;
-  max-height: 40px;
+  max-width: 35px;
+  max-height: 35px;
 
   @include large-break {
     max-width: 35px;
@@ -93,12 +93,12 @@
   gap: 6px; // Reduzir o gap entre os ícones do carrinho
 
   .icon {
-    max-width: 38px;
-    max-height: 50px;
+    max-width: 35px;
+    max-height: 45px;
 
     @include large-break {
-      max-width: 33px;
-      max-height: 45px;
+      max-width: 35px;
+      max-height: 50px;
       gap: 6px; // Reduzir o gap entre os ícones do carrinho
     }
 

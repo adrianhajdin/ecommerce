@@ -52,7 +52,7 @@
   left: 0; // Fixa à esquerda com margem de 20px
   margin-left: 15px;
   z-index: 1000; // Garante que esteja no topo
-  margin-top: 0px; 
+  margin-top: -1px; 
   @include large-break {
     width: 300px;
   }
@@ -73,11 +73,11 @@
 }
 
 .separatorV {
-  height: 45px;
-  width: 1.85px;
+  height: 43px;
+  width: 1.87px;
   background-color: rgba(0, 0, 0, 0.842);
   position: absolute;
-  left: calc(380px); // 20px (margin-left) + 300px (logo width) + 80px (extra spacing)
+  left: calc(375px); // 20px (margin-left) + 300px (logo width) + 80px (extra spacing)
   margin-top:3px; 
   box-shadow: 0px 0px 4px gray;
 
