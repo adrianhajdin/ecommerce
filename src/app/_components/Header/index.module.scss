@@ -2,6 +2,8 @@
 
 .header {
   padding: 3px; // Aumente o padding vertical
+  background-color: white; // Garante que o fundo seja branco
+  position: relative; // Garante que o z-index funcione corretamente
 
   @include large-break {
     padding: var(--medium-base) 0;
@@ -45,15 +47,15 @@
 }
 
 .logo {
-  width: 330px;
+  width: 300px;
   position: absolute;
   left: 0; // Fixa à esquerda com margem de 20px
-  margin-left: 20px;
+  margin-left: 15px;
   z-index: 1000; // Garante que esteja no topo
-  margin-top:3px; 
+  margin-top:1px; 
 
   @include large-break {
-    width: 330px;
+    width: 300px;
   }
 
   @include mid-break {
@@ -72,16 +74,16 @@
 }
 
 .separatorV {
-  height: 55px;
+  height: 45px;
   width: 1.85px;
   background-color: rgba(0, 0, 0, 0.842);
   position: absolute;
-  left: calc(400px); // 20px (margin-left) + 300px (logo width) + 80px (extra spacing)
+  left: calc(380px); // 20px (margin-left) + 300px (logo width) + 80px (extra spacing)
   margin-top:3px; 
   box-shadow: 0px 0px 4px gray;
 
   @include large-break {
-    height: 55px;
+    height: 45px;
     width: 1.85px;
     left: calc(270px); // 20px (margin-left) + 250px (logo width) + 10px (extra spacing)
   }
