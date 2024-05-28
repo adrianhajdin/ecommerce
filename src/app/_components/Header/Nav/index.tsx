@@ -46,9 +46,9 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
         <Link href="https://www.tiktok.com" target="_blank">
           <img src="/tiktok.png" alt="TikTok" className={classes.socialIcon} />
         </Link>
-        <button className={classes.searchToggle} onClick={toggleSearchBar}>
+        <Link href="/products">
           <img src="/search.png" alt="Search" className={classes.socialIcon} />
-        </button>
+        </Link>
         {user && (
           <Link href="/account">
             <img
@@ -67,11 +67,6 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
         )}
         <CartLink />
       </nav>
-      {isSearchVisible && (
-        <div className={classes.searchBarWrapper}>
-          <SearchBar onSearch={handleSearch} />
-        </div>
-      )}
     </div>
   )
 }
