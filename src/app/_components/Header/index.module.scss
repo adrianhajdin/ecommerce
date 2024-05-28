@@ -52,8 +52,7 @@
   left: 0; // Fixa à esquerda com margem de 20px
   margin-left: 15px;
   z-index: 1000; // Garante que esteja no topo
-  margin-top:1px; 
-
+  margin-top: 0px; 
   @include large-break {
     width: 300px;
   }
