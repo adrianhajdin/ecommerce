@@ -57,3 +57,16 @@
 .content {
   position: relative;
 }
+
+.showMedia {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  // background: white; // ou qualquer cor de fundo que você desejar
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
