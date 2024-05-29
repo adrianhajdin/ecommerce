@@ -25,7 +25,7 @@ export default async function RecoverPassword() {
             <p>Back</p>
           </Link>
           <div className={classes.formTitle}>
-            <h3>Forgot Password</h3>
+            <h3>Redefinir Senha</h3>
           </div>
           <RecoverPasswordForm />
         </div>
