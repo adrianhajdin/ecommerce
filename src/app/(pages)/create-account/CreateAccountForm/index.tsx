@@ -18,6 +18,7 @@ type FormData = {
   email: string
   password: string
   passwordConfirm: string
+  token: string
 }
 
 const CreateAccountForm: React.FC = () => {
@@ -27,52 +28,88 @@ const CreateAccountForm: React.FC = () => {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const { sendEmail, sendEmailCadastro,loading: loadingEmail, error: emailError, success: emailSuccess } = useEmailSender();
+  const [showTokenInput, setShowTokenInput] = useState(false)
+  const [generatedToken, setGeneratedToken] = useState('')
+  const { sendEmailCadastro } = useEmailSender();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
+    setValue
   } = useForm<FormData>()
 
   const password = useRef({})
   password.current = watch('password', '')
 
+  const resendEmail = async (email: string, name: string) => {
+    const newToken = Math.floor(1000 + Math.random() * 9000).toString();
+    setGeneratedToken(newToken)
+    try {
+      await sendEmailCadastro(email, name, newToken);
+      setError(null)
+    } catch (err) {
+      setError('Houve um erro ao reenviar o e-mail. Por favor, tente novamente.')
+    }
+  }
+
   const onSubmit = useCallback(
     async (data: FormData) => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users`, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+      if (showTokenInput) {
+        // Verifica se o token digitado pelo usuário corresponde ao token gerado
+        if (data.token === generatedToken) {
+          const timer = setTimeout(() => {
+            setLoading(true)
+          }, 1000)
 
-      if (!response.ok) {
-        const message = response.statusText || 'There was an error creating the account.'
-        setError(message)
-        return
-      }
+          try {
+            await login({ email: data.email, password: data.password })
+            clearTimeout(timer)
+            const redirect = searchParams.get('redirect')
+            if (redirect) router.push(redirect as string)
+            else router.push(`/`)
+            window.location.href = '/'
+          } catch (_) {
+            clearTimeout(timer)
+            setError('Houve um erro com as credenciais fornecidas. Por favor, tente novamente.')
+          }
+        } else {
+          setError('Token incorreto. Por favor, verifique o código enviado ao seu e-mail.')
+        }
+      } else {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users`, {
+          method: 'POST',
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            password: data.password
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
 
-      const redirect = searchParams.get('redirect')
+        if (!response.ok) {
+          const message = response.statusText || 'Houve um erro ao criar a conta.'
+          setError(message)
+          return
+        }
 
-      const timer = setTimeout(() => {
-        setLoading(true)
-      }, 1000)
+        // Gera um token de verificação de 4 dígitos
+        const token = Math.floor(1000 + Math.random() * 9000).toString();
+        setGeneratedToken(token)
 
-      try {
-        await login(data)
-        await sendEmailCadastro(data.email, data.name);
-        clearTimeout(timer)
-        if (redirect) router.push(redirect as string)
-        else router.push(`/`)
-        window.location.href = '/'
-      } catch (_) {
-        clearTimeout(timer)
-        setError('There was an error with the credentials provided. Please try again.')
+        try {
+          await sendEmailCadastro(data.email, data.name, token);
+          setShowTokenInput(true) // Mostra o campo de entrada do token
+          setError(null) // Limpa qualquer erro anterior
+        } catch (err) {
+          setError('Houve um erro ao enviar o e-mail de verificação. Por favor, tente novamente.')
+        }
       }
     },
-    [login, router, searchParams,sendEmailCadastro],
+    [login, router, searchParams, sendEmailCadastro, showTokenInput, generatedToken],
   )
 
   return (
@@ -108,12 +145,31 @@ const CreateAccountForm: React.FC = () => {
         label="Confirme sua senha"
         required
         register={register}
-        validate={value => value === password.current || 'The passwords do not match'}
+        validate={value => value === password.current || 'As senhas não correspondem'}
         error={errors.passwordConfirm}
       />
+      {showTokenInput && (
+        <div className={classes.tokenContainer}>
+          <Input
+            name="token"
+            type="text"
+            label="Código de Verificação (enviado por e-mail)"
+            required
+            register={register}
+            error={errors.token}
+          />
+          <Button
+            type="button"
+            label="Reenviar E-mail"
+            onClick={() => resendEmail(watch('email'), watch('name'))}
+            appearance="secondary"
+            className={classes.resendButton}
+          />
+        </div>
+      )}
       <Button
         type="submit"
-        label={loading ? 'Processando' : 'Criar conta'}
+        label={loading ? 'Processando' : showTokenInput ? 'Verificar Token' : 'Criar conta'}
         disabled={loading}
         appearance="primary"
         className={classes.submit}

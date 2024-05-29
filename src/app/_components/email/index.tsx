@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import crypto from 'crypto';
 
 export const useEmailSender = () => {
   const [loading, setLoading] = useState(false); // Adiciona estado de carregamento
@@ -27,15 +26,12 @@ export const useEmailSender = () => {
     }
   };
 
-  const sendEmailCadastro = async (to_email, to_name) => {
+  const sendEmailCadastro = async (to_email, to_name,token) => {
     setLoading(true);    // Inicia o estado de carregamento
     setError('');        // Limpa o estado de erro anterior
     setSuccess('');      // Limpa o estado de sucesso anterior
 
     try {
-      // Gera um token de verificação de 4 digitos
-      const token = Math.floor(1000 + Math.random() * 9000).toString();
-
       const response = await axios.post('/api/send-email-cadastro', 
       {
         from_name: "",
