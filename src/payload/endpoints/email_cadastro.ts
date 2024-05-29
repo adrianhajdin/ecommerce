@@ -6,7 +6,7 @@ const router = Router();
 // Rota para enviar e-mails usando EmailJS
 router.post('/send-email-cadastro', async (req, res) => {
   // Desestruture os parâmetros do corpo da requisição
-  const { from_name, to_email, to_name} = req.body;
+  const { from_name, to_email, to_name,token } = req.body;
 
   // Envia o e-mail usando EmailJS
   try {
@@ -19,7 +19,8 @@ router.post('/send-email-cadastro', async (req, res) => {
         template_params: {
           from_name: from_name,
           to_email: to_email,
-          to_name: to_name
+          to_name: to_name,
+          token: token // Adiciona o token aos parâmetros do template
         }
       }, 
       {

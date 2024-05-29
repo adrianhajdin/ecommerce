@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import crypto from 'crypto';
 
 export const useEmailSender = () => {
   const [loading, setLoading] = useState(false); // Adiciona estado de carregamento
@@ -32,11 +33,15 @@ export const useEmailSender = () => {
     setSuccess('');      // Limpa o estado de sucesso anterior
 
     try {
+      // Gera um token de verificação
+      const token = crypto.randomBytes(32).toString('hex');
+
       const response = await axios.post('/api/send-email-cadastro', 
       {
         from_name: "",
         to_email: to_email,
-        to_name: to_name
+        to_name: to_name,
+        token: token
       });
       setSuccess('Email enviado com sucesso!'); // Define o estado de sucesso
     } catch (err) {
