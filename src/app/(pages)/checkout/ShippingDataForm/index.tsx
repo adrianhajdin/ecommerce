@@ -12,16 +12,17 @@ import classes from './index.module.scss';
 
 type FormData = {
   address: string;
-  house_number: string;
+  houseNumber: string;
   complement: string;
   neighborhood: string;
   city: string;
   state: string;
 };
 
-export const ShippingDataForm = ({ onNext }) => {
+export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [isEditable, setIsEditable] = useState(true);
   const { user, setUser } = useAuth();
 
   const {
@@ -33,7 +34,7 @@ export const ShippingDataForm = ({ onNext }) => {
 
   const updateShippingData = useCallback(
     async (data) => {
-      if (user) {
+      if (user && isEditable) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
           credentials: 'include',
           method: 'PATCH',
@@ -47,13 +48,18 @@ export const ShippingDataForm = ({ onNext }) => {
           const json = await response.json();
           setUser(json.doc);
           setError('');
+          onShippingDataChange(data); // Passa os dados do formulário para o componente pai
+          setIsEditable(false); // Desabilita os campos após submissão
           onNext();
         } else {
           setError('There was a problem updating your account.');
         }
       }
+      else{
+        setIsEditable(true);
+      }
     },
-    [user, setUser, onNext]
+    [user, setUser, onNext, onShippingDataChange, isEditable]
   );
 
   return (
@@ -67,17 +73,21 @@ export const ShippingDataForm = ({ onNext }) => {
               label="Endereço"
               register={register}
               type="text"
+              disabled={!isEditable}
+              className={!isEditable ? classes.noBackground : ''}
             />
             {errors.address && <Message error={errors.address.message} />}
           </div>
           <div className={classes.flex1}>
             <Input
-              name="house_number"
+              name="houseNumber"
               label="Número"
               register={register}
               type="text"
+              disabled={!isEditable}
+              className={!isEditable ? classes.noBackground : ''}
             />
-            {errors.house_number && <Message error={errors.house_number.message} />}
+            {errors.houseNumber && <Message error={errors.houseNumber.message} />}
           </div>
         </div>
         <div className={classes.inlineFields}>
@@ -87,6 +97,8 @@ export const ShippingDataForm = ({ onNext }) => {
               label="Complemento"
               register={register}
               type="text"
+              disabled={!isEditable}
+              className={!isEditable ? classes.noBackground : ''}
             />
             {errors.complement && <Message error={errors.complement.message} />}
           </div>
@@ -96,6 +108,8 @@ export const ShippingDataForm = ({ onNext }) => {
               label="Bairro"
               register={register}
               type="text"
+              disabled={!isEditable}
+              className={!isEditable ? classes.noBackground : ''}
             />
             {errors.neighborhood && <Message error={errors.neighborhood.message} />}
           </div>
@@ -105,6 +119,8 @@ export const ShippingDataForm = ({ onNext }) => {
               label="Cidade"
               register={register}
               type="text"
+              disabled={!isEditable}
+              className={!isEditable ? classes.noBackground : ''}
             />
             {errors.city && <Message error={errors.city.message} />}
           </div>
@@ -114,17 +130,19 @@ export const ShippingDataForm = ({ onNext }) => {
               label="Estado"
               register={register}
               type="text"
+              disabled={!isEditable}
+              className={!isEditable ? classes.noBackground : ''}
             />
             {errors.state && <Message error={errors.state.message} />}
           </div>
         </div>
-        <Button
-          type="submit"
-          label={isLoading ? 'Processando...' : 'Ir para pagamento'}
-          disabled={isLoading}
-          appearance="primary"
-          className={classes.submit}
-        />
+       <Button
+            type="submit"
+            label={isLoading ? 'Processando...' : isEditable ? 'Ir para entrega' : 'Editar'}
+            disabled={isLoading}
+            appearance="primary"
+            className={classes.submit}
+          />
       </Fragment>
     </form>
   );

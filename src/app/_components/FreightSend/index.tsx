@@ -14,7 +14,7 @@ type FormData = {
   zipCode: string;
 };
 
-export const FreightCalculator = ({ onFreightPriceSet, zipCode, onFreightCalculation }) => {
+export const FreightCalculator = ({ onFreightPriceSet, zipCode, onFreightCalculation, onServiceId }) => {
   const [freightInfo, setFreightInfo] = useState(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -64,6 +64,7 @@ export const FreightCalculator = ({ onFreightPriceSet, zipCode, onFreightCalcula
 
       setFreightInfo(formattedFreightInfo);
       onFreightPriceSet(formattedFreightInfo.price);
+      onServiceId(formattedFreightInfo.serviceId)
       onFreightCalculation();
       if (!user.zipCode) {
         await updateUserCep(zipCode);
@@ -100,67 +101,7 @@ export const FreightCalculator = ({ onFreightPriceSet, zipCode, onFreightCalcula
     [user, setUser]
   );
 
-  const completeFreightPurchase = async () => {
-    setError('');
 
-    try {
-      const addToCartResponse = await axios.post('/api/add-to-cart', {
-        service: freightInfo.serviceId,
-        agency: '',
-        from: {
-          postal_code: '96020360',
-          name: 'cliente_name2',
-          address: 'cliente_address',
-          city: 'cliente_city',
-          document: '18548537086',
-        },
-        to: {
-          postal_code: watch('zipCode'),
-          name: 'Ale',
-          address: '456 Elm Street',
-          city: 'Big City',
-          document: '44810439895',
-        },
-        products: [
-          {
-            name: 'T-Shirt',
-          },
-        ],
-        volumes: [
-          {
-            height: 10,
-            width: 10,
-            length: 10,
-            weight: 1,
-          },
-        ],
-        options: {},
-      });
-
-      let localOrderIds;
-      if (addToCartResponse.data && addToCartResponse.data.id) {
-        localOrderIds = [addToCartResponse.data.id];
-        setOrderIds(localOrderIds);
-      } else {
-        console.error('No valid ID returned from the API');
-        setError('Failed to retrieve order ID from the response.');
-        return;
-      }
-
-      await axios.post('/api/purchase-labels', { orderIds: localOrderIds });
-      await axios.post('/api/generate-labels', { orderIds: localOrderIds });
-      await axios.post('/api/print-labels', {
-        mode: 'public',
-        orders: localOrderIds,
-      });
-
-      // Sending email
-      await sendEmail(user?.email, user?.name);
-    } catch (err) {
-      console.error('Erro durante o processo de compra de frete:', err);
-      setError(`Falha durante o processo de compra de frete: ${err.message || err}`);
-    }
-  };
 
   return (
     <form onSubmit={handleSubmit(calculateFreight)} className={classes.form}>

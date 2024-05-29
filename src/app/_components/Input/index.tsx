@@ -13,6 +13,7 @@ type Props = {
   validate?: (value: string) => boolean | string
   disabled?: boolean
   emailErrorMessage?: string
+  className?: string
 }
 
 function isValidSocialID(social_id: string): boolean {
@@ -46,6 +47,7 @@ export const Input: React.FC<Props> = ({
   validate,
   disabled,
   emailErrorMessage = 'Por favor, insira um email válido',
+  className,
 }) => {
   return (
     <div className={classes.inputWrap}>
@@ -59,15 +61,19 @@ export const Input: React.FC<Props> = ({
           {...register(name, {
             required: required ? 'Este campo é obrigatório' : false,
             validate,
-
           })}
           disabled={disabled}
         >
-          {(inputProps) => <input {...inputProps} className={[classes.input, error ? classes.error : ''].filter(Boolean).join(' ')} />}
+          {(inputProps) => (
+            <input
+              {...inputProps}
+              className={[classes.input, error ? classes.error : '', className].filter(Boolean).join(' ')}
+            />
+          )}
         </InputMask>
       ) : (
         <input
-          className={[classes.input, error ? classes.error : ''].filter(Boolean).join(' ')}
+          className={[classes.input, error ? classes.error : '', className].filter(Boolean).join(' ')}
           type={type}
           {...register(name, {
             required: required ? 'Este campo é obrigatório' : false,
@@ -89,7 +95,6 @@ export const Input: React.FC<Props> = ({
           {error.message || (error.type === 'required' && 'Este campo é obrigatório')}
         </div>
       )}
-
     </div>
   )
 }

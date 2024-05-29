@@ -34,17 +34,6 @@ export const Orders: CollectionConfig = {
       },
     },
     {
-      name: 'stripePaymentIntentID',
-      label: 'Stripe Payment Intent ID',
-      type: 'text',
-      admin: {
-        position: 'sidebar',
-        components: {
-          Field: LinkToPaymentIntent,
-        },
-      },
-    },
-    {
       name: 'total',
       type: 'number',
       required: true,
@@ -71,6 +60,42 @@ export const Orders: CollectionConfig = {
           min: 0,
         },
       ],
+    },
+    {
+      name: 'shippingTicket',
+      label: 'Etiqueta de Envio',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'shippingZipCode',
+      label: 'CEP',
+      type: 'number',
+      required: true,
+    },
+    {
+      name: 'shippingHouseNumber',
+      label: 'Número',
+      type: 'number',
+      required: true,
+    },
+    {
+      name: 'shippingComplement',
+      label: 'Complemento',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'userSocialId',
+      label: 'CPF',
+      type: 'number',
+      required: true,
+    },
+    {
+      name: 'userPhoneNumber',
+      label: 'Telefone',
+      type: 'number',
+      required: true,
     },
   ],
 }
