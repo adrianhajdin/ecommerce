@@ -106,19 +106,16 @@ const CreateAccountForm: React.FC = () => {
           setError('Token incorreto. Por favor, verifique o código enviado ao seu e-mail.')
         }
       } else {
-        const token = Math.floor(1000 + Math.random() * 9000).toString()
-        setGeneratedToken(token)
-
-        try {
-          await sendEmailCadastro(data.email, data.name, token)
-          setShowTokenInput(true)
-          setError(null)
-        } catch (err) {
-          setError('Houve um erro ao enviar o e-mail de verificação. Por favor, tente novamente.')
+        if (data.password !== data.passwordConfirm) {
+          setError('As senhas não correspondem. Por favor, verifique novamente.')
+          return
         }
+        else {
+        resendEmail(watch('email'), watch('name'))
+        setShowTokenInput(true)}
       }
     },
-    [login, router, searchParams, sendEmailCadastro, showTokenInput, generatedToken],
+    [login, router, searchParams, sendEmailCadastro, showTokenInput, generatedToken, watch],
   )
 
   return (
