@@ -238,7 +238,7 @@ export interface Order {
   shippingHouseNumber: number;
   shippingComplement: string;
   userSocialId: number;
-  userPhoneNumber: number;
+  userPhoneNumber: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -246,8 +246,8 @@ export interface User {
   id: string;
   name: string;
   socialId?: number | null;
-  birthdate?: number | null;
-  phoneNumber?: number | null;
+  birthdate?: string | null;
+  phoneNumber?: string | null;
   address?: string | null;
   houseNumber?: number | null;
   complement?: string | null;

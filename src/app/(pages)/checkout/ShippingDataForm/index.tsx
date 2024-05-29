@@ -12,7 +12,7 @@ import classes from './index.module.scss';
 
 type FormData = {
   address: string;
-  houseNumber: string;
+  houseNumber: number;
   complement: string;
   neighborhood: string;
   city: string;
@@ -62,6 +62,7 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
     [user, setUser, onNext, onShippingDataChange, isEditable]
   );
 
+
   return (
     <form onSubmit={handleSubmit(updateShippingData)} className={classes.form}>
       <Message error={error} success={success} className={classes.message} />
@@ -73,6 +74,8 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
               label="Endereço"
               register={register}
               type="text"
+              required={true}
+              error={errors.address}
               disabled={!isEditable}
               className={!isEditable ? classes.noBackground : ''}
             />
@@ -83,7 +86,9 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
               name="houseNumber"
               label="Número"
               register={register}
-              type="text"
+              required={true}
+              error={errors.houseNumber}
+              type="number"
               disabled={!isEditable}
               className={!isEditable ? classes.noBackground : ''}
             />
@@ -96,6 +101,7 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
               name="complement"
               label="Complemento"
               register={register}
+              error={errors.complement}
               type="text"
               disabled={!isEditable}
               className={!isEditable ? classes.noBackground : ''}
@@ -107,6 +113,8 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
               name="neighborhood"
               label="Bairro"
               register={register}
+              required={true}
+              error={errors.neighborhood}
               type="text"
               disabled={!isEditable}
               className={!isEditable ? classes.noBackground : ''}
@@ -118,6 +126,8 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
               name="city"
               label="Cidade"
               register={register}
+              error={errors.city}
+              required={true}
               type="text"
               disabled={!isEditable}
               className={!isEditable ? classes.noBackground : ''}
@@ -129,7 +139,14 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
               name="state"
               label="Estado"
               register={register}
-              type="text"
+              required={true}
+              error={errors.state}
+              type="select"
+              options={[
+                'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 
+                'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 
+                'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
+              ]}
               disabled={!isEditable}
               className={!isEditable ? classes.noBackground : ''}
             />

@@ -94,7 +94,7 @@ export const Orders: CollectionConfig = {
     {
       name: 'userPhoneNumber',
       label: 'Telefone',
-      type: 'number',
+      type: 'text',
       required: true,
     },
   ],

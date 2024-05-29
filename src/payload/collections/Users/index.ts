@@ -56,12 +56,12 @@ const Users: CollectionConfig = {
     {
       name: 'birthdate',
       label: 'Data de Nascimento',
-      type: 'number',
+      type: 'text',
     },
     {
       name: 'phoneNumber',
       label: 'Data de Nascimento',
-      type: 'number',
+      type: 'text',
     },
     {
       name: 'address',
