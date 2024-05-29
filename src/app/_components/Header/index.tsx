@@ -54,6 +54,7 @@ export async function Header() {
               src="/minimo_1_small.jpeg"
             />
           </Link>
+          <div className={classes.separatorV}></div> {/* Separador vertical */}
           <HeaderComponent categories={categories}/>
           <HeaderNav header={header} />
         </Gutter>

@@ -26,7 +26,7 @@ export const useEmailSender = () => {
     }
   };
 
-  const sendEmailCadastro = async (to_email, to_name) => {
+  const sendEmailCadastro = async (to_email, to_name,token) => {
     setLoading(true);    // Inicia o estado de carregamento
     setError('');        // Limpa o estado de erro anterior
     setSuccess('');      // Limpa o estado de sucesso anterior
@@ -36,7 +36,8 @@ export const useEmailSender = () => {
       {
         from_name: "",
         to_email: to_email,
-        to_name: to_name
+        to_name: to_name,
+        token: token
       });
       setSuccess('Email enviado com sucesso!'); // Define o estado de sucesso
     } catch (err) {

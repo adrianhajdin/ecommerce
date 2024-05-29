@@ -52,9 +52,9 @@ export  const  HeaderComponent = ({ categories}) => {
       <div className={classes.headerButtons}>
         {/* New in */}
         <Link href="/new" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
-          <span>New in</span>
+          <span>New In</span>
         </Link>
-
+        <span className={classes.separator}>-</span>
         {/* Peças */}
         <Link href="/products" onMouseEnter={() => toggleDropdown('peças')} onMouseLeave={() => toggleDropdown('peças')} className={classes.buttonLink}>
         <span>Peças</span>
@@ -76,10 +76,12 @@ export  const  HeaderComponent = ({ categories}) => {
         </div>
       )}
       </Link>
+      <span className={classes.separator}>-</span>
         {/* Em Alta */}
         <Link href="/hot" onMouseEnter={() => toggleDropdown('emAlta')} onMouseLeave={() => toggleDropdown('emAlta')} className={classes.buttonLink}>
           <span>Em Alta</span>
         </Link>
+        <span className={classes.separator}>-</span>
         {/* Sale */}
         <Link href="/sale" onMouseEnter={() => toggleDropdown('sale')} onMouseLeave={() => toggleDropdown('sale')} className={classes.buttonLink}>
           <span>Sale</span>

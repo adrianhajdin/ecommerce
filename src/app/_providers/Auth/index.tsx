@@ -13,16 +13,7 @@ type ResetPassword = (args: {
 
 type ForgotPassword = (args: { email: string }) => Promise<void> // eslint-disable-line no-unused-vars
 
-type Create = (args: { 
-  email: string; 
-  password: string; 
-  passwordConfirm: string;
-  address: string;     // Novo campo
-  address2: string;    // Novo campo
-  zipcode: string;     // Novo campo
-  cpf: string;         // Novo campo
-}) => Promise<void> // eslint-disable-line no-unused-vars
-
+type Create = (args: { email: string; password: string; passwordConfirm: string }) => Promise<void> // eslint-disable-line no-unused-vars
 
 type Login = (args: { email: string; password: string }) => Promise<User> // eslint-disable-line no-unused-vars
 
@@ -59,10 +50,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           email: args.email,
           password: args.password,
           passwordConfirm: args.passwordConfirm,
-          address: args.address,      // Novo campo
-          address2: args.address2,    // Novo campo
-          zipcode: args.zipcode,      // Novo campo
-          cpf: args.cpf,              // Novo campo
         }),
       })
 

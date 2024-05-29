@@ -17,3 +17,11 @@
 .message {
   margin-bottom: var(--base);
 }
+.tokenContainer {
+  display: flex;
+  align-items: center;
+
+  .resendButton {
+    margin-left: 5px; // Ajuste conforme necessário para o espaçamento
+  }
+}

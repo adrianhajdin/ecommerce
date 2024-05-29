@@ -1,21 +1,127 @@
 @use '../../_css/queries.scss' as *;
 
 .header {
-  padding: var(--base) 0;
+  padding: 3px; // Aumente o padding vertical
+  background-color: white; // Garante que o fundo seja branco
+  position: relative; // Garante que o z-index funcione corretamente
+
+  @include large-break {
+    padding: var(--medium-base) 0;
+  }
+
+  @include mid-break {
+    padding: var(--medium-base) 0;
+  }
+
+  @include small-break {
+    padding: var(--small-base) 0;
+  }
+
+  @include extra-small-break {
+    padding: var(--extra-small-base) 0;
+  }
 }
 
 .wrap {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: calc(var(--base) / 2) var(--base);
+  gap: calc(var(--base) / 4) var(--base);
+
+  @include large-break {
+    gap: calc(var(--medium-base) / 4) var(--medium-base);
+  }
+
+  @include mid-break {
+    gap: calc(var(--medium-base) / 4) var(--medium-base);
+  }
+
+  @include small-break {
+    flex-direction: column;
+    gap: calc(var(--small-base) /4) var(--small-base);
+  }
+
+  @include extra-small-break {
+    gap: calc(var(--extra-small-base) / 4) var(--extra-small-base);
+  }
 }
 
 .logo {
-  width: 400px;
-  
+  width: 300px;
+  position: absolute;
+  left: 0; // Fixa à esquerda com margem de 20px
+  margin-left: 15px;
+  z-index: 1000; // Garante que esteja no topo
+  margin-top: -1px; 
+  @include large-break {
+    width: 300px;
+  }
+
+  @include mid-break {
+    width: 190px;
+  }
+
+  @include small-break {
+    width: 150px;
+    left: 50%; // Centraliza horizontalmente para telas pequenas
+    transform: translate(-50%, -50%);
+  }
+
+  @include extra-small-break {
+    width: 100px;
+  }
 }
 
-:global([data-theme="light"]) {
+.separatorV {
+  height: 43px;
+  width: 1.87px;
+  background-color: rgba(0, 0, 0, 0.842);
+  position: absolute;
+  left: calc(375px); // 20px (margin-left) + 300px (logo width) + 80px (extra spacing)
+  margin-top:3px; 
+  box-shadow: 0px 0px 4px gray;
 
+  @include large-break {
+    height: 45px;
+    width: 1.85px;
+    left: calc(270px); // 20px (margin-left) + 250px (logo width) + 10px (extra spacing)
+  }
+
+  @include mid-break {
+    height: 40px;
+    width: 1.85px;
+    left: calc(230px); // 20px (margin-left) + 200px (logo width) + 10px (extra spacing)
+  }
+
+  @include small-break {
+    display: none;
+  }
+}
+
+.iconLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+
+  @include large-break {
+    width: 26px;
+    height: 26px;
+  }
+
+  @include mid-break {
+    width: 22px;
+    height: 22px;
+  }
+
+  @include small-break {
+    width: 20px;
+    height: 20px;
+  }
+
+  @include extra-small-break {
+    width: 18px;
+    height: 18px;
+  }
 }
