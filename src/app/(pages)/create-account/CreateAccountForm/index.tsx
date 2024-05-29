@@ -106,13 +106,8 @@ const CreateAccountForm: React.FC = () => {
           setError('Token incorreto. Por favor, verifique o código enviado ao seu e-mail.')
         }
       } else {
-        if (data.password !== data.passwordConfirm) {
-          setError('As senhas não correspondem. Por favor, verifique novamente.')
-          return
-        }
-        else {
         resendEmail(watch('email'), watch('name'))
-        setShowTokenInput(true)}
+        setShowTokenInput(true)
       }
     },
     [login, router, searchParams, sendEmailCadastro, showTokenInput, generatedToken, watch],
