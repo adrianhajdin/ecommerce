@@ -58,20 +58,16 @@ const CreateAccountForm: React.FC = () => {
     async (data: FormData) => {
       if (showTokenInput) {
         // Verifica se o token digitado pelo usuário corresponde ao token gerado
-        if (data.token === generatedToken) {
-          const timer = setTimeout(() => {
-            setLoading(true)
-          }, 1000)
-
+        if (data.token !== '' && data.token === generatedToken) {
+          setLoading(true)
           try {
             await login({ email: data.email, password: data.password })
-            clearTimeout(timer)
             const redirect = searchParams.get('redirect')
             if (redirect) router.push(redirect as string)
             else router.push(`/`)
             window.location.href = '/'
           } catch (_) {
-            clearTimeout(timer)
+            setLoading(false)
             setError('Houve um erro com as credenciais fornecidas. Por favor, tente novamente.')
           }
         } else {
@@ -91,6 +87,10 @@ const CreateAccountForm: React.FC = () => {
         })
 
         if (!response.ok) {
+          if (response.status === 409) {
+            setError('Conta já existente. Tente fazer login ou resetar a senha.')
+            return
+          }
           const message = response.statusText || 'Houve um erro ao criar a conta.'
           setError(message)
           return
