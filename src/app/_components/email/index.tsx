@@ -33,8 +33,8 @@ export const useEmailSender = () => {
     setSuccess('');      // Limpa o estado de sucesso anterior
 
     try {
-      // Gera um token de verificação
-      const token = crypto.randomBytes(32).toString('hex');
+      // Gera um token de verificação de 4 digitos
+      const token = Math.floor(1000 + Math.random() * 9000).toString();
 
       const response = await axios.post('/api/send-email-cadastro', 
       {
