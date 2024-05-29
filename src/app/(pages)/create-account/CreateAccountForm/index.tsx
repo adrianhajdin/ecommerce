@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useRef, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -9,7 +9,7 @@ import { Button } from '../../../_components/Button'
 import { Input } from '../../../_components/Input'
 import { Message } from '../../../_components/Message'
 import { useAuth } from '../../../_providers/Auth'
-import { useEmailSender } from '../../../_components/email';
+import { useEmailSender } from '../../../_components/email'
 
 import classes from './index.module.scss'
 
@@ -30,24 +30,35 @@ const CreateAccountForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null)
   const [showTokenInput, setShowTokenInput] = useState(false)
   const [generatedToken, setGeneratedToken] = useState('')
-  const { sendEmailCadastro } = useEmailSender();
+  const { sendEmailCadastro } = useEmailSender()
 
   const {
     register,
     handleSubmit,
+    reset, // Método para resetar os campos do formulário
     formState: { errors },
     watch,
-    setValue
   } = useForm<FormData>()
 
   const password = useRef({})
   password.current = watch('password', '')
 
+  useEffect(() => {
+    // Limpa todos os estados ao sair do componente
+    return () => {
+      setLoading(false)
+      setError(null)
+      setShowTokenInput(false)
+      setGeneratedToken('')
+      reset() // Reset the form fields
+    }
+  }, [reset])
+
   const resendEmail = async (email: string, name: string) => {
-    const newToken = Math.floor(1000 + Math.random() * 9000).toString();
+    const newToken = Math.floor(1000 + Math.random() * 9000).toString()
     setGeneratedToken(newToken)
     try {
-      await sendEmailCadastro(email, name, newToken);
+      await sendEmailCadastro(email, name, newToken)
       setError(null)
     } catch (err) {
       setError('Houve um erro ao reenviar o e-mail. Por favor, tente novamente.')
@@ -57,10 +68,31 @@ const CreateAccountForm: React.FC = () => {
   const onSubmit = useCallback(
     async (data: FormData) => {
       if (showTokenInput) {
-        // Verifica se o token digitado pelo usuário corresponde ao token gerado
         if (data.token !== '' && data.token === generatedToken) {
           setLoading(true)
           try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users`, {
+              method: 'POST',
+              body: JSON.stringify({
+                name: data.name,
+                email: data.email,
+                password: data.password,
+              }),
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            })
+
+            if (!response.ok) {
+              setLoading(false)
+              if (response.status === 409) {
+                setError('Conta já existente. Tente fazer login ou resetar a senha.')
+                return
+              }
+              setError(response.statusText || 'Houve um erro ao criar a conta.')
+              return
+            }
+
             await login({ email: data.email, password: data.password })
             const redirect = searchParams.get('redirect')
             if (redirect) router.push(redirect as string)
@@ -74,36 +106,13 @@ const CreateAccountForm: React.FC = () => {
           setError('Token incorreto. Por favor, verifique o código enviado ao seu e-mail.')
         }
       } else {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users`, {
-          method: 'POST',
-          body: JSON.stringify({
-            name: data.name,
-            email: data.email,
-            password: data.password
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-
-        if (!response.ok) {
-          if (response.status === 409) {
-            setError('Conta já existente. Tente fazer login ou resetar a senha.')
-            return
-          }
-          const message = response.statusText || 'Houve um erro ao criar a conta.'
-          setError(message)
-          return
-        }
-
-        // Gera um token de verificação de 4 dígitos
-        const token = Math.floor(1000 + Math.random() * 9000).toString();
+        const token = Math.floor(1000 + Math.random() * 9000).toString()
         setGeneratedToken(token)
 
         try {
-          await sendEmailCadastro(data.email, data.name, token);
-          setShowTokenInput(true) // Mostra o campo de entrada do token
-          setError(null) // Limpa qualquer erro anterior
+          await sendEmailCadastro(data.email, data.name, token)
+          setShowTokenInput(true)
+          setError(null)
         } catch (err) {
           setError('Houve um erro ao enviar o e-mail de verificação. Por favor, tente novamente.')
         }
@@ -145,7 +154,7 @@ const CreateAccountForm: React.FC = () => {
         label="Confirme sua senha"
         required
         register={register}
-        validate={value => value === password.current || 'As senhas não correspondem'}
+        validate={(value) => value === password.current || 'As senhas não correspondem'}
         error={errors.passwordConfirm}
       />
       {showTokenInput && (
@@ -176,7 +185,9 @@ const CreateAccountForm: React.FC = () => {
       />
       <div>
         {'Já tem uma conta? '}
-        <Link href={`/login${allParams}`}>Faça Login</Link>
+        <Link href={`/login${allParams}`}>
+          Faça Login
+        </Link>
       </div>
     </form>
   )
