@@ -45,3 +45,8 @@
   opacity: 1;
   max-height: 1000px; // Ajuste conforme necessário
 }
+
+/* index.module.scss */
+.noBackground {
+  background-color: var(--theme-elevation-200) !important;
+}

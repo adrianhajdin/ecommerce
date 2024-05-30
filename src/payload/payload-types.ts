@@ -224,7 +224,6 @@ export interface Color {
 export interface Order {
   id: string;
   orderedBy?: (string | null) | User;
-  stripePaymentIntentID?: string | null;
   total: number;
   items?:
     | {
@@ -234,6 +233,12 @@ export interface Order {
         id?: string | null;
       }[]
     | null;
+  shippingTicket: string;
+  shippingZipCode: number;
+  shippingHouseNumber: number;
+  shippingComplement: string;
+  userSocialId: number;
+  userPhoneNumber: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -241,8 +246,8 @@ export interface User {
   id: string;
   name: string;
   socialId?: number | null;
-  birthdate?: number | null;
-  phoneNumber?: number | null;
+  birthdate?: string | null;
+  phoneNumber?: string | null;
   address?: string | null;
   houseNumber?: number | null;
   complement?: string | null;

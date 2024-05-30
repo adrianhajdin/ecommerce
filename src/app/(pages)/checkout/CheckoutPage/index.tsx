@@ -34,6 +34,13 @@ export const CheckoutPage = () => {
   const { cart, cartIsEmpty, cartTotal } = useCart();
   const { theme } = useTheme();
 
+  const [shippingData, setShippingData] = useState({}); // Estado para armazenar os dados de envio
+
+  const handleShippingDataChange = (data) => {
+    setShippingData(data);
+  };
+  const [onServiceId, setServiceId] = useState(null);
+
   useEffect(() => {
     if (user === null || cartIsEmpty) {
       router.push(cartIsEmpty ? '/cart' : '/login');
@@ -72,7 +79,7 @@ export const CheckoutPage = () => {
             {cart.items.map((item, index) => (
               <CheckoutItem key={index} product={item.product} title={item.product.title}  quantity={item.quantity} index={index} />
             ))}
-            <FreightCalculator onFreightPriceSet={setFreightPrice} zipCode={user?.zipCode} onFreightCalculation={handleFreightCalculation}/>
+            <FreightCalculator onFreightPriceSet={setFreightPrice} zipCode={user?.zipCode} onFreightCalculation={handleFreightCalculation} onServiceId={setServiceId}/>
             <div className={classes.orderTotal}>
               <p>Total do pedido</p>
               <p>R$ {totalWithFreight.toFixed(2)}</p>
@@ -96,7 +103,7 @@ export const CheckoutPage = () => {
       {showShippingData && (
         <div className={`${classes.personalData} ${classes.fadeIn}`}>
           <h3>2) Entrega</h3>
-          <ShippingDataForm onNext={handleShowPaymentGateway} />
+          <ShippingDataForm onNext={handleShowPaymentGateway} onShippingDataChange={handleShippingDataChange} />
         </div>
       )}
       
@@ -104,7 +111,7 @@ export const CheckoutPage = () => {
         <div className={`${classes.personalData} ${classes.fadeIn}`}>
           <h3>3) Detalhes do pagamento</h3>
           {error && <p>{`Error: ${error}`}</p>}
-          <PaymentGateway amount={totalWithFreight} />
+          <PaymentGateway amount={totalWithFreight} serviceId={onServiceId} shippingData={shippingData} /> {/* Passa os dados de envio para o PaymentGateway */}
         </div>
       )}
     </Fragment>

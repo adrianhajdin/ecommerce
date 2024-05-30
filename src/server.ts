@@ -49,6 +49,20 @@ const start = async (): Promise<void> => {
     onInit: () => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
     },
+    email: {
+      transportOptions: {
+        host: 'smtp.ethereal.email', // Host fornecido
+        auth: {
+          user: 'kirk.kris94@ethereal.email', // Usuário fornecido
+          pass: '5x8RfaR4pYWRGr5FSv', // Senha fornecida
+        },
+        port: 587, // Porta fornecida
+        secure: false, // false para STARTTLS na porta 587
+        requireTLS: true,
+      },
+      fromName: 'Nicolas',
+      fromAddress: 'nicolas@minimo1.com',
+    },
   })
 
   if (process.env.PAYLOAD_SEED === 'true') {

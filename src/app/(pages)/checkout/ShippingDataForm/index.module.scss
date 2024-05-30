@@ -39,3 +39,8 @@
   margin: 10px auto; // Centraliza o botão horizontalmente
   border-radius: 0px;
 }
+
+/* index.module.scss */
+.noBackground {
+  background-color: var(--theme-elevation-200) !important;
+}
