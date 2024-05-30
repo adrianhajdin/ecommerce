@@ -22,8 +22,6 @@ import processPayment from './payload/endpoints/gateway_pagamento';
 
 import payload from 'payload'
 
-import { seed } from './payload/seed'
-
 const app = express()
 const PORT = process.env.PORT || 3000
 
@@ -64,11 +62,6 @@ const start = async (): Promise<void> => {
       fromAddress: 'nicolas@minimo1.com',
     },
   })
-
-  if (process.env.PAYLOAD_SEED === 'true') {
-    await seed(payload)
-    process.exit()
-  }
 
   if (process.env.NEXT_BUILD) {
     app.listen(PORT, async () => {
