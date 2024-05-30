@@ -49,12 +49,12 @@ const start = async (): Promise<void> => {
     },
     email: {
       transportOptions: {
-        host: process.env.HOST, // Host fornecido
+        host: process.env.EMAIL_HOST, // Host fornecido
         auth: {
-          user: process.env.USER, // Usuário fornecido
-          pass: process.env.PASS, // Senha fornecida
+          user: process.env.EMAIL_USER, // Usuário fornecido
+          pass: process.env.EMAIL_PASS, // Senha fornecida
         },
-        port: process.env.PORT, // Porta fornecida
+        port: process.env.EMAIL_PORT, // Porta fornecida
         secure: false, // false para STARTTLS na porta 587
         requireTLS: true,
       },
