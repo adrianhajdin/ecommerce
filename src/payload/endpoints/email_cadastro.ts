@@ -2,38 +2,32 @@ import { Router } from 'express';
 import axios from 'axios';
 
 const router = Router();
+import payload from 'payload'
+
 
 // Rota para enviar e-mails usando EmailJS
 router.post('/send-email-cadastro', async (req, res) => {
-  // Desestruture os parâmetros do corpo da requisição
-  const { from_name, to_email, to_name,token } = req.body;
 
-  // Envia o e-mail usando EmailJS
-  try {
-    const response = await axios.post("https://api.emailjs.com/api/v1.0/email/send", 
-      {
-        service_id: process.env.EMAIL_SERVICE_ID,
-        template_id: process.env.EMAIL_TEMPLATE_ID_CADASTRO,
-        user_id: process.env.EMAIL_PUBLIC_KEY,
-        accessToken: process.env.EMAIL_PRIVATE_ID,
-        template_params: {
-          from_name: from_name,
-          to_email: to_email,
-          to_name: to_name,
-          token: token // Adiciona o token aos parâmetros do template
-        }
-      }, 
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      }
-    );
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).send('Failed to send email. Please try again.');
-  }
+
+  // Desestruture os parâmetros do corpo da requisição
+  const { from_name, to_email, to_name, token } = req.body;
+  const emailTemplate = `
+  <p>Olá, ${to_name}!</p>
+  <p>Para finalizar seu cadastro, insira este token no nosso site: <span style="font-size: 14pt;"><strong>${token}</strong></span></p>
+  <p>Estamos felizes por tê-lo conosco! Após validar seu e-mail, você terá acesso aos benefícios da Minimo 1.</p>
+  <p>Se precisar de ajuda, nossa equipe está à disposição.</p>
+  <p>Obrigado por escolher a Minimo 1!</p>
+  <p>Equipe Minimo 1</p>
+  `;
+
+  payload.sendEmail({
+    from: from_name,
+    to: to_email,
+    subject: 'Bem-vindo à Minimo 1! Seu cadastro foi um sucesso!',
+    html: emailTemplate,
+  })
+
+
 });
 
 export default router;
