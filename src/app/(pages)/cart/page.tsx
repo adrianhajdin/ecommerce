@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { Page, Settings } from '../../../payload/payload-types'
-import { staticCart } from '../../../payload/seed/cart-static'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchSettings } from '../../_api/fetchGlobals'
 import { Blocks } from '../../_components/Blocks'
