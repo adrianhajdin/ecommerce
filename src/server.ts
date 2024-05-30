@@ -49,12 +49,12 @@ const start = async (): Promise<void> => {
     },
     email: {
       transportOptions: {
-        host: 'smtp.ethereal.email', // Host fornecido
+        host: process.env.HOST, // Host fornecido
         auth: {
-          user: 'kirk.kris94@ethereal.email', // Usuário fornecido
-          pass: '5x8RfaR4pYWRGr5FSv', // Senha fornecida
+          user: process.env.USER, // Usuário fornecido
+          pass: process.env.PASS, // Senha fornecida
         },
-        port: 587, // Porta fornecida
+        port: process.env.PORT, // Porta fornecida
         secure: false, // false para STARTTLS na porta 587
         requireTLS: true,
       },
