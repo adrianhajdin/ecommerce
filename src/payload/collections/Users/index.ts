@@ -11,6 +11,12 @@ import { loginAfterCreate } from './hooks/loginAfterCreate'
 import { resolveDuplicatePurchases } from './hooks/resolveDuplicatePurchases'
 import { CustomerSelect } from './ui/CustomerSelect'
 
+// Define the type for the user
+interface User {
+  email: string;
+  // other properties
+}
+
 const Users: CollectionConfig = {
   slug: 'users',
   admin: {
@@ -30,7 +36,7 @@ const Users: CollectionConfig = {
   },
   auth: {
     forgotPassword: {
-      generateEmailHTML: ({ req, token, user }) => {
+      generateEmailHTML: ({ req, token, user }: { req: any, token: string, user: User }) => {
         // Use the token provided to allow your user to reset their password
         const resetPasswordURL = `localhost:3000/reset-password?token=${token}`
 
@@ -48,7 +54,8 @@ const Users: CollectionConfig = {
           </html>
         `
       },
-    }, },
+    },
+  },
   endpoints: [
     {
       path: '/:teamID/customer',
@@ -80,7 +87,7 @@ const Users: CollectionConfig = {
     },
     {
       name: 'phoneNumber',
-      label: 'Data de Nascimento',
+      label: 'Telefone',
       type: 'text',
     },
     {
@@ -178,25 +185,6 @@ const Users: CollectionConfig = {
             },
           ],
         },
-        // If you wanted to maintain a 'created on'
-        // or 'last modified' date for the cart
-        // you could do so here:
-        // {
-        //   name: 'createdOn',
-        //   label: 'Created On',
-        //   type: 'date',
-        //   admin: {
-        //     readOnly: true
-        //   }
-        // },
-        // {
-        //   name: 'lastModified',
-        //   label: 'Last Modified',
-        //   type: 'date',
-        //   admin: {
-        //     readOnly: true
-        //   }
-        // },
       ],
     },
     {
