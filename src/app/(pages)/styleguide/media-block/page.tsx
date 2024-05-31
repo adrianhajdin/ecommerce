@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
-
-import { Gutter } from '../../../_components/Gutter'
-import Link from 'next/link'
-import { MediaBlock } from '../../../_blocks/MediaBlock'
 import { Metadata } from 'next'
+import Link from 'next/link'
+
+import staticImage from '../../../../../public/static-image.jpg'
+import { MediaBlock } from '../../../_blocks/MediaBlock'
+import { Gutter } from '../../../_components/Gutter'
 import { VerticalPadding } from '../../../_components/VerticalPadding'
 import { mergeOpenGraph } from '../../../_utilities/mergeOpenGraph'
-import staticImage from '../../../../../public/static-image.jpg'
 
 export default function MediaBlockPage() { // Removi o "async" pois não parece necessário aqui
   return (
