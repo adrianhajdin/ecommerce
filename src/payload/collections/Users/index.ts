@@ -183,6 +183,14 @@ const Users: CollectionConfig = {
                 step: 1,
               },
             },
+            {
+              name: 'color',
+              type: 'text',
+            },
+            {
+              name: 'size',
+              type: 'text',
+            },
           ],
         },
       ],
