@@ -3,34 +3,29 @@
 import React, { useState } from 'react';
 import classes from './index.module.scss';
 
-
 export const ColorSelectButton = ({ title = "Cor", colors }) => {
-
-  const hexaColors = colors.map(cor => "#" + cor);
-  const colorNames = ["Jeans Vintage", "Azul Petróleo", "Mais Um Nome"]; // Substitua pelos nomes das cores apropriados
 
   const handleColorSelection = (color) => {
     // Aqui você pode lidar com a mudança de cor, talvez atualizar o estado do produto
   };
 
-  const [selectedColor, setSelectedColor] = useState(hexaColors[0]);
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   return (
     <div className={classes.colorSelectWrapper}>
-      <span className={classes.colorLabel}>Cor</span>
+      <span className={classes.colorLabel}>{title}: {selectedColor.color}</span>
       <div className={classes.colorsContainer}>
-        {hexaColors.map((color, index) => (
+        {colors.map((colorObj, index) => (
           <button
-            key={color}
-            className={`${classes.colorButton} ${selectedColor === color ? classes.selected : ''}`}
+            key={colorObj.id}
+            className={`${classes.colorButton} ${selectedColor.colorHex === colorObj.colorHex ? classes.selected : ''}`}
             onClick={() => {
-              setSelectedColor(color);
-              handleColorSelection(color);
+              setSelectedColor(colorObj);
+              handleColorSelection(colorObj.colorHex);
             }}
-            aria-label={`Select ${color}`}
+            aria-label={`Select ${colorObj.color}`}
           >
-            <div className={`${classes.circle}`} style={{ backgroundColor: color }}></div>
-            <span className={classes.colorName}>{colorNames[index]}</span>
+            <div className={`${classes.circle}`} style={{ backgroundColor: colorObj.colorHex }}></div>
           </button>
         ))}
       </div>
