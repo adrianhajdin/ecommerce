@@ -8,7 +8,18 @@ import { Gutter } from '../../../_components/Gutter'
 import { VerticalPadding } from '../../../_components/VerticalPadding'
 import { mergeOpenGraph } from '../../../_utilities/mergeOpenGraph'
 
-export default async function MediaBlockPage() {
+export async function getStaticProps() {
+  const res = await fetch('https://api.exemplo.com/media');
+  const media = await res.json();
+
+  return {
+    props: {
+      media,
+    },
+  };
+}
+
+export default async function MediaBlockPage( media ) {
   return (
     <Fragment>
       <Gutter>
