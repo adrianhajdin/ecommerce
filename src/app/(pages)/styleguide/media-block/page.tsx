@@ -27,7 +27,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function MediaBlockPage({ media }) {
+const MediaBlockPage = ({ media }) => {
   return (
     <Fragment>
       <Gutter>
@@ -39,7 +39,12 @@ export default function MediaBlockPage({ media }) {
         <h1>Media Block</h1>
       </Gutter>
       <VerticalPadding bottom="large" top="none">
-        <MediaBlock position="default" blockType="mediaBlock" media={media} staticImage={staticImage} />
+        <MediaBlock 
+          position="default" 
+          blockType="mediaBlock" 
+          media={media} 
+          staticImage={staticImage} 
+        />
         <br />
         <br />
         <MediaBlock
@@ -52,6 +57,8 @@ export default function MediaBlockPage({ media }) {
     </Fragment>
   );
 }
+
+export default MediaBlockPage;
 
 export const metadata: Metadata = {
   title: 'Media Block',
