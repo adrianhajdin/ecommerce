@@ -1,7 +1,6 @@
 import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK } from './blocks'
 import { LINK_FIELDS } from './link'
 import { MEDIA, MEDIA_FIELDS } from './media'
-import { META } from './meta'
 export const PAGES = `
   query Pages {
     Pages(limit: 300, where: { slug: { not_equals: "cart" } })  {

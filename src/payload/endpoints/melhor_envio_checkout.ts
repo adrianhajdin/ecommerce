@@ -23,7 +23,7 @@ router.post('/purchase-labels', async (req, res) => {
       },
     )
     res.json(response.data)
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error purchasing labels:', error)
     res.status(500).send('Failed to purchase labels. Please try again.')
   }
@@ -45,7 +45,7 @@ router.post('/purchase-labels', async (req, res) => {
 //       }
 //     });
 //     res.json(response.data);
-//   } catch (error) {
+//   } catch (error: unknown) {
 //     console.error('Error previewing labels:', error);
 //     res.status(500).send('Failed to preview labels. Please try again.');
 //   }
@@ -71,7 +71,7 @@ router.post('/purchase-labels', async (req, res) => {
 //       }
 //     });
 //     res.json(response.data);
-//   } catch (error) {
+//   } catch (error: unknown) {
 //     console.error('Error canceling label:', error);
 //     res.status(500).send('Failed to cancel label. Please try again.');
 //   }
@@ -93,7 +93,7 @@ router.post('/purchase-labels', async (req, res) => {
 //       }
 //     });
 //     res.json(response.data);
-//   } catch (error) {
+//   } catch (error: unknown) {
 //     console.error('Error tracking shipment:', error);
 //     res.status(500).send('Failed to track shipment. Please try again.');
 //   }

@@ -39,7 +39,7 @@ export default async function Orders() {
         return json
       })
       ?.then(json => json.docs)
-  } catch (error) {
+  } catch (error: unknown) {
     // Ao implantar esse template no Payload Cloud, essa página precisa ser construída antes das APIs estarem ativas
     // então ignore o erro aqui e simplesmente renderize a página com dados de fallback quando necessário
     // na produção, você pode querer redirecionar para uma página 404 ou pelo menos registrar o erro em algum lugar

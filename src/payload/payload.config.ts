@@ -3,7 +3,6 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-imp
 import { payloadCloud } from '@payloadcms/plugin-cloud'
 // import formBuilder from '@payloadcms/plugin-form-builder'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
-import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
 import { slateEditor } from '@payloadcms/richtext-slate' // editor-import
 import dotenv from 'dotenv'
 import path from 'path'
@@ -21,10 +20,6 @@ import BeforeLogin from './components/BeforeLogin'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
-
-const generateTitle: GenerateTitle = () => {
-  return 'My Store'
-}
 
 const mockModulePath = path.resolve(__dirname, './emptyModuleMock.js')
 
@@ -73,7 +68,7 @@ export default buildConfig({
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Pages, Products, Categories, Colors, Orders, Media, Users],
-  globals: [Footer],
+  globals: [Footer, Settings,Header],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

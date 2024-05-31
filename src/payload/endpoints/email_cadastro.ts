@@ -31,7 +31,7 @@ router.post('/send-email-cadastro', async (req, res) => {
       },
     )
     res.json(response.data)
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error sending email:', error)
     res.status(500).send('Failed to send email. Please try again.')
   }

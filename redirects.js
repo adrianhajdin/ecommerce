@@ -71,7 +71,7 @@ module.exports = async () => {
     const redirects = [internetExplorerRedirect, ...dynamicRedirects]
 
     return redirects
-  } catch (error) {
+  } catch (error: unknown) {
     if (process.env.NODE_ENV === 'production') {
       console.error(`Error configuring redirects: ${error}`) // eslint-disable-line no-console
     }

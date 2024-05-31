@@ -30,7 +30,7 @@ router.post('/cancel-labels', async (req, res) => {
     // Log da resposta em caso de sucesso
     console.log('Label cancel successfully:', response.data)
     res.json(response.data)
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error canceling label:', error)
     res.status(500).send('Failed to cancel label. Please try again.')
   }

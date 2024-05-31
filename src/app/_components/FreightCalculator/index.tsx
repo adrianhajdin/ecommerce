@@ -21,7 +21,7 @@ export const FreightCalculator = ({ onFreightPriceSet }) => {
         details: 'Obrigado por nos escolher',
       })
       console.log('Detalhes do frete enviados por e-mail com sucesso.')
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Erro ao enviar e-mail com detalhes do frete:', error)
     }
   }

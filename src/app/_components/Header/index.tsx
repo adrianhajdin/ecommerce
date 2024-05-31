@@ -22,13 +22,13 @@ export async function Header() {
     categories = await fetchDocs<Category>('categories')
 
     // console.log(categories)
-  } catch (error) {
+  } catch (error: unknown) {
     console.log(error)
   }
 
   try {
     header = await fetchHeader()
-  } catch (error) {
+  } catch (error: unknown) {
     // When deploying this template on Payload Cloud, this page needs to build before the APIs are live
     // So swallow the error here and simply render the header without nav items if one occurs
     // in production you may want to redirect to a 404  page or at least log the error somewhere

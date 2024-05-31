@@ -1,7 +1,6 @@
 import type { CollectionConfig } from 'payload/types'
 
 import { admins } from '../../access/admins'
-import { MediaBlock } from '../../blocks/MediaBlock'
 import { slugField } from '../../fields/slug'
 
 const Products: CollectionConfig = {

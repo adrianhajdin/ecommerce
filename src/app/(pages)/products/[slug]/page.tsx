@@ -35,7 +35,7 @@ export default async function Product({ params: { slug } }) {
 
   try {
     categories = await fetchDocs<Category>('categories')
-  } catch (error) {
+  } catch (error: unknown) {
     console.log(error)
   }
 
@@ -59,7 +59,7 @@ export default async function Product({ params: { slug } }) {
       })
 
       colors = await fetchDocs<Color>('colors')
-    } catch (error) {
+    } catch (error: unknown) {
       console.log(error)
     }
 
@@ -89,7 +89,7 @@ export default async function Product({ params: { slug } }) {
         slug,
         draft: isDraftMode,
       })
-    } catch (error) {
+    } catch (error: unknown) {
       console.error(error) // eslint-disable-line no-console
     }
 
@@ -135,7 +135,7 @@ export async function generateStaticParams() {
   try {
     const products = await fetchDocs<ProductType>('products')
     return products?.map(({ slug }) => slug)
-  } catch (error) {
+  } catch (error: unknown) {
     return []
   }
 }
@@ -151,7 +151,7 @@ export async function generateMetadata({ params: { slug } }): Promise<Metadata> 
       slug,
       draft: isDraftMode,
     })
-  } catch (error) {}
+  } catch (error: unknown) {}
 
   return generateMeta({ doc: product })
 }

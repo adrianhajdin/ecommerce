@@ -24,7 +24,7 @@ router.post('/print-labels', async (req, res) => {
       },
     )
     res.json(response.data)
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error printing labels:', error)
     res.status(500).send('Failed to print labels. Please try again.')
   }
