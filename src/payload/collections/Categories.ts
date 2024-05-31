@@ -1,11 +1,11 @@
-import type { CollectionConfig } from 'payload/types';
-import { slugField } from '../fields/slug';
+import type { CollectionConfig } from 'payload/types'
+
+import { slugField } from '../fields/slug'
 
 const Categories: CollectionConfig = {
   slug: 'categories',
   admin: {
     useAsTitle: 'category',
-
   },
   access: {
     read: () => true,
@@ -13,13 +13,13 @@ const Categories: CollectionConfig = {
   fields: [
     {
       name: 'title',
-      label: "Título",
+      label: 'Título',
       type: 'text',
       required: true,
     },
     {
       name: 'subtitle',
-      label: "Sub Título",
+      label: 'Sub Título',
       type: 'text',
       required: true,
     },
@@ -30,26 +30,26 @@ const Categories: CollectionConfig = {
       type: 'text',
       admin: {
         condition: (data, siblingData, { user }) => {
-            return false
+          return false
         },
       },
     },
-    slugField('category')
+    slugField('category'),
   ],
   hooks: {
     beforeChange: [
       ({ data, originalDoc }) => {
         if (data.title || data.subtitle) {
-          data.category = `${data.title} - ${data.subtitle}`;
-          data.slug = slugify(data.category);
+          data.category = `${data.title} - ${data.subtitle}`
+          data.slug = slugify(data.category)
         }
-        return data;
+        return data
       },
     ],
   },
-};
+}
 
-const slugify = (string) => {
+const slugify = string => {
   return string
     .toString()
     .toLowerCase()
@@ -57,7 +57,7 @@ const slugify = (string) => {
     .replace(/[^\w\-]+/g, '') // Remove all non-word chars
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
     .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, ''); // Trim - from end of text
-};
+    .replace(/-+$/, '') // Trim - from end of text
+}
 
-export default Categories;
+export default Categories

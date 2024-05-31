@@ -1,8 +1,8 @@
 import React, { ElementType, Fragment } from 'react'
 
-import { Image } from './Image'
-import { HighImpactImage } from './HighImpactImage'
 import { DefaultImage } from './DefaultImage'
+import { HighImpactImage } from './HighImpactImage'
+import { Image } from './Image'
 import { Props } from './types'
 import { Video } from './Video'
 
@@ -43,7 +43,6 @@ export const HighImpactMedia: React.FC<Props> = props => {
     </Tag>
   )
 }
-
 
 export const DefaultMedia: React.FC<Props> = props => {
   const { className, resources, htmlElement = 'div' } = props

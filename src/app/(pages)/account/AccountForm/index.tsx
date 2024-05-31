@@ -41,7 +41,6 @@ const AccountForm: React.FC = () => {
     async (data: FormData) => {
       console.log(JSON.stringify(data), data)
       if (user) {
-
         const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
           // Make sure to include cookies with fetch
           credentials: 'include',

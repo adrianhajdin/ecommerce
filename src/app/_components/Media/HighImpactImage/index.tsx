@@ -1,35 +1,28 @@
 'use client'
 
-import React, { useState } from 'react';
-import NextImage from 'next/image';
+import React, { useState } from 'react'
+import NextImage from 'next/image'
 
-import cssVariables from '../../../cssVariables';
-import { Props as MediaProps } from '../types';
+import cssVariables from '../../../cssVariables'
+import { Props as MediaProps } from '../types'
 
-import classes from './index.module.scss';
+import classes from './index.module.scss'
 
-const { breakpoints } = cssVariables;
+const { breakpoints } = cssVariables
 
 export const HighImpactImage: React.FC<MediaProps> = props => {
-  const {
-    imgClassName,
-    onClick,
-    onLoad: onLoadFromProps,
-    resources,
-    priority,
-    fill,
-  } = props;
+  const { imgClassName, onClick, onLoad: onLoadFromProps, resources, priority, fill } = props
 
   // Função para manipular o evento onLoad
   const handleLoad = () => {
     if (typeof onLoadFromProps === 'function') {
-      onLoadFromProps();
+      onLoadFromProps()
     }
-  };
+  }
 
   const sizes = Object.entries(breakpoints)
     .map(([, value]) => `(max-width: ${value}px) ${value}px`)
-    .join(', ');
+    .join(', ')
   return (
     <div className={classes.highImpactImageContainer}>
       {resources?.map((resource, index) => (
@@ -48,5 +41,5 @@ export const HighImpactImage: React.FC<MediaProps> = props => {
         />
       ))}
     </div>
-  );
-};
+  )
+}

@@ -95,7 +95,9 @@ export default async function Order({ params: { id } }) {
                   <div className={classes.rowContent}>
                     {!stripeProductID && (
                       <p className={classes.warning}>
-                        {'Este produto ainda não está conectado ao Stripe. Para vincular este produto, '}
+                        {
+                          'Este produto ainda não está conectado ao Stripe. Para vincular este produto, '
+                        }
                         <Link
                           href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/products/${id}`}
                         >
@@ -130,4 +132,4 @@ export default async function Order({ params: { id } }) {
   )
 }
 
-export async function generateMetadata({ params: { id } }): Promise<Metadata> 
+export async function generateMetadata({ params: { id } }): Promise<Metadata>

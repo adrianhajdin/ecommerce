@@ -18,7 +18,6 @@ export type RelatedProductsProps = {
 export const RelatedProducts: React.FC<RelatedProductsProps> = props => {
   const { docs, relationTo } = props
 
-
   return (
     <div className={classes.relatedProducts}>
       <Gutter>

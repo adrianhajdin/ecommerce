@@ -3,19 +3,17 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-imp
 import { payloadCloud } from '@payloadcms/plugin-cloud'
 // import formBuilder from '@payloadcms/plugin-form-builder'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
-
 import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
-
 import { slateEditor } from '@payloadcms/richtext-slate' // editor-import
 import dotenv from 'dotenv'
 import path from 'path'
 import { buildConfig } from 'payload/config'
 
 import Categories from './collections/Categories'
+import Colors from './collections/Colors'
 import { Media } from './collections/Media'
 import { Orders } from './collections/Orders'
 import { Pages } from './collections/Pages'
-import  Colors  from './collections/Colors'
 import Products from './collections/Products'
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
@@ -23,7 +21,6 @@ import BeforeLogin from './components/BeforeLogin'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
-
 
 const generateTitle: GenerateTitle = () => {
   return 'My Store'
@@ -75,7 +72,7 @@ export default buildConfig({
   }),
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Products,Categories, Colors, Orders, Media, Users],
+  collections: [Pages, Products, Categories, Colors, Orders, Media, Users],
   globals: [Footer],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

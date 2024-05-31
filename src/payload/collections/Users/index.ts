@@ -13,7 +13,7 @@ import { CustomerSelect } from './ui/CustomerSelect'
 
 // Define the type for the user
 interface User {
-  email: string;
+  email: string
   // other properties
 }
 
@@ -36,7 +36,15 @@ const Users: CollectionConfig = {
   },
   auth: {
     forgotPassword: {
-      generateEmailHTML: ({ req, token, user }: { req: any; token: string; user: { email: string } }) => {
+      generateEmailHTML: ({
+        req,
+        token,
+        user,
+      }: {
+        req: any
+        token: string
+        user: { email: string }
+      }) => {
         // Use the token provided to allow your user to reset their password
         const resetPasswordURL = `localhost:3000/reset-password?token=${token}`
 
@@ -73,7 +81,7 @@ const Users: CollectionConfig = {
       name: 'name',
       label: 'Nome',
       type: 'text',
-      required: true
+      required: true,
     },
     {
       name: 'socialId',
