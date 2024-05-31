@@ -29,7 +29,7 @@ const Categories: CollectionConfig = {
       label: 'Categoria',
       type: 'text',
       admin: {
-        condition: (data, siblingData, { user }) => {
+        condition: () => {
           return false
         },
       },
@@ -38,7 +38,7 @@ const Categories: CollectionConfig = {
   ],
   hooks: {
     beforeChange: [
-      ({ data, originalDoc }) => {
+      ({ data }) => {
         if (data.title || data.subtitle) {
           data.category = `${data.title} - ${data.subtitle}`
           data.slug = slugify(data.category)
@@ -49,7 +49,7 @@ const Categories: CollectionConfig = {
   },
 }
 
-const slugify = string => {
+const slugify = (string: string): string => {
   return string
     .toString()
     .toLowerCase()

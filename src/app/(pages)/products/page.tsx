@@ -27,7 +27,6 @@ const Products = async () => {
     })
 
     categories = await fetchDocs<Category>('categories')
-
     colors = await fetchDocs<Color>('colors')
   } catch (error: unknown) {
     console.log(error)

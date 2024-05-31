@@ -68,7 +68,7 @@ export default buildConfig({
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Pages, Products, Categories, Colors, Orders, Media, Users],
-  globals: [Footer, Settings,Header],
+  globals: [Footer, Settings, Header],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
