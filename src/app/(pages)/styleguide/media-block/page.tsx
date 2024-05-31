@@ -8,7 +8,7 @@ import { Gutter } from '../../../_components/Gutter'
 import { VerticalPadding } from '../../../_components/VerticalPadding'
 import { mergeOpenGraph } from '../../../_utilities/mergeOpenGraph'
 
-export default function MediaBlockPage() { // Removi o "async" pois não parece necessário aqui
+export default async function MediaBlockPage() {
   return (
     <Fragment>
       <Gutter>
@@ -31,7 +31,7 @@ export default function MediaBlockPage() { // Removi o "async" pois não parece 
         />
       </VerticalPadding>
     </Fragment>
-  );
+  )
 }
 
 export const metadata: Metadata = {
@@ -41,4 +41,4 @@ export const metadata: Metadata = {
     title: 'Media Block',
     url: '/styleguide/media-block',
   }),
-};
+}
