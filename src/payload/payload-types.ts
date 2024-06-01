@@ -232,13 +232,15 @@ export interface Order {
         product: string | Product;
         price?: number | null;
         quantity?: number | null;
+        selectedSize: string;
+        selectedColor: string;
         id?: string | null;
       }[]
     | null;
   shippingTicket: string;
   shippingZipCode: number;
   shippingHouseNumber: number;
-  shippingComplement: string;
+  shippingComplement?: string | null;
   userSocialId: number;
   userPhoneNumber: string;
   updatedAt: string;
