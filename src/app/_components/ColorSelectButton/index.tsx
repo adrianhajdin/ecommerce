@@ -13,6 +13,7 @@ export const ColorSelectButton = ({ title = "Cor", colors, onColorSelect }) => {
     setSelectedColor(color.colorHex);
     setSelectedColorName(color.color)
     onColorSelect(color);
+
   };
 
   return (

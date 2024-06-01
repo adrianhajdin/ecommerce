@@ -18,7 +18,7 @@ export const PaymentGateway = ({ amount, serviceId, shippingData}) => {
   const [error, setError] = useState('');
 
   const [loading, setLoading] = useState(false);
-  const { sendEmail, sendEmailCadastro,loading: loadingEmail, error: emailError, success: emailSuccess } = useEmailSender();
+  const { sendEmail, sendEmailCadastro, loading: loadingEmail, error: emailError, success: emailSuccess } = useEmailSender();
   const { user } = useAuth()
 
   const [paymentId, setPaymentId] = useState(null);
@@ -172,6 +172,8 @@ export const PaymentGateway = ({ amount, serviceId, shippingData}) => {
     } = await orderReq.json()
 
     if (errorFromRes) throw new Error(errorFromRes)
+
+    sendEmail(user.email, user.name)
 
     router.push(`/order-confirmation?order_id=${doc.id}`)
   } catch (err) {

@@ -34,7 +34,7 @@ export const useEmailSender = () => {
     try {
       const response = await axios.post('/api/send-email-cadastro', 
       {
-        from_name: "",
+        from_name: "admin@minimo.com",
         to_email: to_email,
         to_name: to_name,
         token: token

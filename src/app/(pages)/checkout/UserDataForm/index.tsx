@@ -84,7 +84,7 @@ export const PersonalDataForm = ({ onNext }) => {
     if (user) {
       reset({
         name: user.name,
-        socialId: user.socialId.toString(),
+        socialId: user.socialId ? user.socialId.toString() : '',
         phoneNumber: user.phoneNumber,
         birthdate: user.birthdate,
       });

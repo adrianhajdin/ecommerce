@@ -2,12 +2,10 @@
 
 .headerButtons {
   display: flex;
-  gap: 40px;
+  gap: 80px;
   position: absolute;
-  padding: 8px;
   left: 25%;
   font-size: 23px;
-  margin-top:5px; // Adicionar margem superior para mover os itens para baixo
 
   @include large-break {
     font-size: 23px;
