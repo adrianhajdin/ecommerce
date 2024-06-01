@@ -107,10 +107,5 @@ export async function generateMetadata({ params: { slug = 'home' } }): Promise<M
     // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
     // in production you may want to redirect to a 404  page or at least log the error somewhere
   }
-
-  if (!page && slug === 'home') {
-    page = staticHome
-  }
-
   return generateMeta({ doc: page })
 }
