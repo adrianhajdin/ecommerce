@@ -13,8 +13,7 @@ import classes from './index.module.scss'
 export default async function RecoverPassword() {
   return (
     <section className={classes.recoverPassword}>
-      <div className={classes.heroImg}>
-      </div>
+      <div className={classes.heroImg}></div>
 
       <div className={classes.formWrapper}>
         <div className={classes.formContainer}>

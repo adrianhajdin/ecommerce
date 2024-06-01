@@ -16,8 +16,6 @@ export default async function Typography() {
         <h2>Blocks</h2>
         <Link href="/styleguide/content-block">Content Block</Link>
         <br />
-        <Link href="/styleguide/media-block">Media Block</Link>
-        <br />
         <Link href="/styleguide/call-to-action">Call To Action Block</Link>
         <br />
         <h2>Components</h2>

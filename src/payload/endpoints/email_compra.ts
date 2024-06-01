@@ -1,16 +1,17 @@
-import { Router } from 'express';
-import axios from 'axios';
+import axios from 'axios'
+import { Router } from 'express'
 
-const router = Router();
+const router = Router()
 
 // Rota para enviar e-mails usando EmailJS
 router.post('/send-email', async (req, res) => {
   // Desestruture os parâmetros do corpo da requisição
-  const { from_name, to_email, to_name} = req.body;
+  const { from_name, to_email, to_name } = req.body
 
   // Envia o e-mail usando EmailJS
   try {
-    const response = await axios.post("https://api.emailjs.com/api/v1.0/email/send", 
+    const response = await axios.post(
+      'https://api.emailjs.com/api/v1.0/email/send',
       {
         service_id: process.env.EMAIL_SERVICE_ID,
         template_id: process.env.EMAIL_TEMPLATE_ID_COMPRA,
@@ -19,20 +20,20 @@ router.post('/send-email', async (req, res) => {
         template_params: {
           from_name: from_name,
           to_email: to_email,
-          to_name: to_name
-        }
-      }, 
+          to_name: to_name,
+        },
+      },
       {
         headers: {
           'Content-Type': 'application/json',
-        }
-      }
-    );
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).send('Failed to send email. Please try again.');
+        },
+      },
+    )
+    res.json(response.data)
+  } catch (error: unknown) {
+    console.error('Error sending email:', error)
+    res.status(500).send('Failed to send email. Please try again.')
   }
-});
+})
 
-export default router;
+export default router

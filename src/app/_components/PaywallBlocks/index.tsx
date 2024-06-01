@@ -63,7 +63,7 @@ export const PaywallBlocks: React.FC<{
         }
 
         setIsLoading(false)
-      } catch (error) {
+      } catch (error: unknown) {
         console.error(error) // eslint-disable-line no-console
         setIsLoading(false)
       }

@@ -1,7 +1,7 @@
-import type { CollectionConfig } from 'payload/types';
-import { admins } from '../../access/admins';
-import { MediaBlock } from '../../blocks/MediaBlock';
-import { slugField } from '../../fields/slug';
+import type { CollectionConfig } from 'payload/types'
+
+import { admins } from '../../access/admins'
+import { slugField } from '../../fields/slug'
 
 const Products: CollectionConfig = {
   slug: 'products',
@@ -10,7 +10,7 @@ const Products: CollectionConfig = {
     defaultColumns: ['title', 'price', 'discountPercentage', '_status'],
     preview: doc => {
       return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/preview?url=${encodeURIComponent(
-        `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/products/${doc.slug}`
+        `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/products/${doc.slug}`,
       )}&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`
     },
   },
@@ -29,10 +29,10 @@ const Products: CollectionConfig = {
     },
     {
       name: 'colors',
-      label: "Cores disponíveis",
+      label: 'Cores disponíveis',
       type: 'relationship',
       relationTo: 'colors',
-      hasMany: true
+      hasMany: true,
     },
     {
       name: 'sizes',
@@ -71,17 +71,17 @@ const Products: CollectionConfig = {
       label: 'Percentual de Desconto',
       type: 'number',
       admin: {
-        step: 1.00,
+        step: 1.0,
       },
     },
     {
       name: 'photos',
-      label: "Imagens",
+      label: 'Imagens',
       type: 'array',
       fields: [
         {
           name: 'photo',
-          label: "Imagem",
+          label: 'Imagem',
           type: 'upload',
           relationTo: 'media',
         },
@@ -89,7 +89,7 @@ const Products: CollectionConfig = {
     },
     {
       name: 'publishedOn',
-      label: "Publicar em",
+      label: 'Publicar em',
       type: 'date',
       admin: {
         position: 'sidebar',
@@ -101,7 +101,7 @@ const Products: CollectionConfig = {
     {
       name: 'relatedProducts',
       type: 'relationship',
-      label: "Produtos Relacionados",
+      label: 'Produtos Relacionados',
       relationTo: 'products',
       hasMany: true,
       filterOptions: ({ id }) => {
@@ -114,7 +114,7 @@ const Products: CollectionConfig = {
     },
     {
       name: 'categories',
-      label: "Categorias",
+      label: 'Categorias',
       type: 'relationship',
       relationTo: 'categories',
       hasMany: true,
@@ -124,21 +124,21 @@ const Products: CollectionConfig = {
     },
     {
       name: 'new',
-      label: "New In",
-      type: 'checkbox'
+      label: 'New In',
+      type: 'checkbox',
     },
     {
       name: 'sale',
-      label: "Sale",
-      type: 'checkbox'
+      label: 'Sale',
+      type: 'checkbox',
     },
     {
       name: 'hot',
-      label: "Em Alta",
-      type: 'checkbox'
+      label: 'Em Alta',
+      type: 'checkbox',
     },
     slugField(),
   ],
 }
 
-export default Products;
+export default Products

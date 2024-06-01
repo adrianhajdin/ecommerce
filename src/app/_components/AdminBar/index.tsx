@@ -49,7 +49,7 @@ export const AdminBar: React.FC<{
             logo: classes.logo,
             controls: classes.controls,
           }}
-          logo={<Title />} 
+          logo={<Title />}
           style={{
             position: 'relative',
             zIndex: 'unset',

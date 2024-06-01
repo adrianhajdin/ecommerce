@@ -28,6 +28,8 @@ export interface Config {
   };
   globals: {
     footer: Footer;
+    settings: Settings;
+    header: Header;
   };
 }
 export interface Page {
@@ -301,6 +303,33 @@ export interface PayloadMigration {
 export interface Footer {
   id: string;
   copyright?: string | null;
+  navItems?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: string | Page;
+          } | null;
+          url?: string | null;
+          label: string;
+          icon?: string | Media | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+export interface Settings {
+  id: string;
+  productsPage?: (string | null) | Page;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+export interface Header {
+  id: string;
   navItems?:
     | {
         link: {

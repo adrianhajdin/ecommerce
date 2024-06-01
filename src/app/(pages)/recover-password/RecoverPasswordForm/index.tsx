@@ -1,14 +1,15 @@
 'use client'
 
-import React, { useCallback, Fragment, useState } from 'react'
+import React, { Fragment, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 
 import { Button } from '../../../_components/Button'
+import { useEmailSender } from '../../../_components/email'
 import { Input } from '../../../_components/Input'
 import { Message } from '../../../_components/Message'
-import { useEmailSender } from '../../../_components/email'
 import { useAuth } from '../../../_providers/Auth'
+
 import classes from './index.module.scss'
 
 type FormData = {
@@ -46,60 +47,82 @@ export const RecoverPasswordForm: React.FC = () => {
     }
   }
 
-  const onSubmitEmail = useCallback(async (data: FormData) => {
-    const token = Math.floor(1000 + Math.random() * 9000).toString()
-    setGeneratedToken(token)
-    try {
-      await sendEmailCadastro(data.email, 'Usuário', token)
-      setStage('emailSent')
-      setError('')
-    } catch (err) {
-      setError('Houve um problema ao tentar enviar o e-mail de redefinição de senha. Por favor, tente novamente.')
-    }
-  }, [sendEmailCadastro])
+  const onSubmitEmail = useCallback(
+    async (data: FormData) => {
+      const token = Math.floor(1000 + Math.random() * 9000).toString()
+      setGeneratedToken(token)
+      try {
+        await sendEmailCadastro(data.email, 'Usuário', token)
+        setStage('emailSent')
+        setError('')
+      } catch (err) {
+        setError(
+          'Houve um problema ao tentar enviar o e-mail de redefinição de senha. Por favor, tente novamente.',
+        )
+      }
+    },
+    [sendEmailCadastro],
+  )
 
-  const onSubmitToken = useCallback(async (data: FormData) => {
-    if (data.token === generatedToken) {
-      setStage('resetPassword')
-      setError('')
-    } else {
-      setError('Token inválido. Por favor, verifique o código enviado ao seu e-mail.')
-    }
-  }, [generatedToken])
+  const onSubmitToken = useCallback(
+    async (data: FormData) => {
+      if (data.token === generatedToken) {
+        setStage('resetPassword')
+        setError('')
+      } else {
+        setError('Token inválido. Por favor, verifique o código enviado ao seu e-mail.')
+      }
+    },
+    [generatedToken],
+  )
 
-  const onSubmitPassword = useCallback(async (data: FormData) => {
-    if (data.password !== data.passwordConfirm) {
-      setError('As senhas não correspondem. Por favor, verifique novamente.')
-      return
-    }
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/reset-password`,
-      {
-        method: 'POST',
-        body: JSON.stringify({ token: data.token, password: data.password }),
-        headers: {
-          'Content-Type': 'application/json',
+  const onSubmitPassword = useCallback(
+    async (data: FormData) => {
+      if (data.password !== data.passwordConfirm) {
+        setError('As senhas não correspondem. Por favor, verifique novamente.')
+        return
+      }
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/reset-password`,
+        {
+          method: 'POST',
+          body: JSON.stringify({ token: data.token, password: data.password }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-      },
-    )
+      )
 
-    if (response.ok) {
-      const json = await response.json()
-      await login({ email: data.email, password: data.password })
+      if (response.ok) {
+        const json = await response.json()
+        await login({ email: data.email, password: data.password })
+        reset()
+        setStage('initial')
+        router.push('/account?success=Password reset successfully.')
+      } else {
+        setError('Houve um problema ao redefinir sua senha. Por favor, tente novamente mais tarde.')
+      }
       reset()
       setStage('initial')
-      router.push('/account?success=Password reset successfully.')
-    } else {
-      setError('Houve um problema ao redefinir sua senha. Por favor, tente novamente mais tarde.')
-    }
-    reset()
-    setStage('initial')
-  }, [login, reset, router])
+    },
+    [login, reset, router],
+  )
 
   return (
     <Fragment>
-      <form onSubmit={handleSubmit(stage === 'initial' ? onSubmitEmail : stage === 'emailSent' ? onSubmitToken : onSubmitPassword)} className={classes.form}>
-        <p>Digite o seu endereço de e-mail registrado. Enviaremos um token para redefinir sua senha.</p>
+      <form
+        onSubmit={handleSubmit(
+          stage === 'initial'
+            ? onSubmitEmail
+            : stage === 'emailSent'
+            ? onSubmitToken
+            : onSubmitPassword,
+        )}
+        className={classes.form}
+      >
+        <p>
+          Digite o seu endereço de e-mail registrado. Enviaremos um token para redefinir sua senha.
+        </p>
         <Input
           name="email"
           label="Endereço de E-mail"
@@ -110,7 +133,10 @@ export const RecoverPasswordForm: React.FC = () => {
         />
         {stage !== 'initial' && (
           <Fragment>
-            <p>Verifique seu e-mail e insira o token abaixo para continuar com a redefinição de sua senha.</p>
+            <p>
+              Verifique seu e-mail e insira o token abaixo para continuar com a redefinição de sua
+              senha.
+            </p>
             <Input
               name="token"
               label="Insira o Token"
@@ -145,28 +171,24 @@ export const RecoverPasswordForm: React.FC = () => {
               label="Confirme a Nova Senha"
               required
               register={register}
-              validate={(value) => value === watch('password') || 'As senhas não correspondem'}
+              validate={value => value === watch('password') || 'As senhas não correspondem'}
               error={errors.passwordConfirm}
             />
-            <Input
-              name="token"
-              type="hidden"
-              value={watch('token')}
-              register={register}
-            />
-            <Input
-              name="email"
-              type="hidden"
-              value={watch('email')}
-              register={register}
-            />
+            <Input name="token" type="hidden" value={watch('token')} register={register} />
+            <Input name="email" type="hidden" value={watch('email')} register={register} />
           </Fragment>
         )}
         <Message error={error} className={classes.message} />
         <Button
           type="submit"
           appearance="primary"
-          label={stage === 'initial' ? "Recuperar Senha" : stage === 'emailSent' ? "Enviar Token" : "Redefinir Senha"}
+          label={
+            stage === 'initial'
+              ? 'Recuperar Senha'
+              : stage === 'emailSent'
+              ? 'Enviar Token'
+              : 'Redefinir Senha'
+          }
           className={classes.submit}
         />
       </form>
