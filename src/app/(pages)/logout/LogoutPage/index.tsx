@@ -3,7 +3,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { Settings } from '../../../../payload/payload-types'
+// import { Settings } from '../../../../payload/payload-types'
 import { useAuth } from '../../../_providers/Auth'
 
 export const LogoutPage: React.FC<{

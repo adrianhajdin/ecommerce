@@ -1,7 +1,6 @@
 import { PRODUCT_CATEGORIES } from './categories'
 import { LINK_FIELDS } from './link'
-import { MEDIA } from './media'
-import { MEDIA_FIELDS } from './media'
+import { MEDIA, MEDIA_FIELDS } from './media'
 
 export const CALL_TO_ACTION = `
 ...on Cta {

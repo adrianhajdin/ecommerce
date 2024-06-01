@@ -1,14 +1,15 @@
-import { Router } from 'express';
-import axios from 'axios';
+import axios from 'axios'
+import { Router } from 'express'
 
-const router = Router();
+const router = Router()
 
 import payload from 'payload'
 
 // Rota para enviar e-mails usando EmailJS
 router.post('/send-email', async (req, res) => {
   // Desestruture os parâmetros do corpo da requisição
-  const { from_name, to_email, to_name} = req.body;
+  const { from_name, to_email, to_name } = req.body
+
 
   const emailTemplate = `
   <p>Olá ${to_name},</p>
@@ -24,4 +25,5 @@ router.post('/send-email', async (req, res) => {
   })
 });
 
-export default router;
+
+export default router

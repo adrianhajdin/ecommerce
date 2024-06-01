@@ -35,7 +35,7 @@ export default async function Order({ params: { id } }) {
       if ('errors' in json && json.errors) notFound()
       return json
     })
-  } catch (error) {
+  } catch (error: unknown) {
     console.error(error) // eslint-disable-line no-console
   }
 

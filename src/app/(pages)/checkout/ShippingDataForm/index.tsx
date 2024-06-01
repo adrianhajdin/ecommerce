@@ -1,39 +1,40 @@
-'use client';
+'use client'
 
-import React, { useEffect, useState, useCallback, Fragment } from 'react';
-import { useForm } from 'react-hook-form';
-import axios from 'axios';
-import { useAuth } from '../../../_providers/Auth';
-import { Button } from '../../../_components/Button';
-import { Input } from '../../../_components/Input';
-import { Message } from '../../../_components/Message';
+import React, { Fragment, useCallback, useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
-import classes from './index.module.scss';
+import { Button } from '../../../_components/Button'
+import { Input } from '../../../_components/Input'
+import { Message } from '../../../_components/Message'
+import { useAuth } from '../../../_providers/Auth'
+
+import classes from './index.module.scss'
 
 type FormData = {
-  address: string;
-  houseNumber: number;
-  complement: string;
-  neighborhood: string;
-  city: string;
-  state: string;
-};
+  address: string
+  houseNumber: number
+  complement: string
+  neighborhood: string
+  city: string
+  state: string
+}
 
 export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const [isEditable, setIsEditable] = useState(true);
-  const { user, setUser } = useAuth();
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+  const [isEditable, setIsEditable] = useState(true)
+  const { user, setUser } = useAuth()
 
   const {
     register,
     handleSubmit,
     formState: { errors, isLoading },
     reset,
-  } = useForm<FormData>();
+  } = useForm<FormData>()
 
   const updateShippingData = useCallback(
-    async (data) => {
+    async data => {
       if (user && isEditable) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
           credentials: 'include',
@@ -42,26 +43,24 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
           headers: {
             'Content-Type': 'application/json',
           },
-        });
+        })
 
         if (response.ok) {
-          const json = await response.json();
-          setUser(json.doc);
-          setError('');
-          onShippingDataChange(data); // Passa os dados do formulário para o componente pai
-          setIsEditable(false); // Desabilita os campos após submissão
-          onNext();
+          const json = await response.json()
+          setUser(json.doc)
+          setError('')
+          onShippingDataChange(data) // Passa os dados do formulário para o componente pai
+          setIsEditable(false) // Desabilita os campos após submissão
+          onNext()
         } else {
-          setError('There was a problem updating your account.');
+          setError('There was a problem updating your account.')
         }
-      }
-      else{
-        setIsEditable(true);
+      } else {
+        setIsEditable(true)
       }
     },
-    [user, setUser, onNext, onShippingDataChange, isEditable]
-  );
-
+    [user, setUser, onNext, onShippingDataChange, isEditable],
+  )
 
   return (
     <form onSubmit={handleSubmit(updateShippingData)} className={classes.form}>
@@ -143,9 +142,33 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
               error={errors.state}
               type="select"
               options={[
-                'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 
-                'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 
-                'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
+                'AC',
+                'AL',
+                'AP',
+                'AM',
+                'BA',
+                'CE',
+                'DF',
+                'ES',
+                'GO',
+                'MA',
+                'MT',
+                'MS',
+                'MG',
+                'PA',
+                'PB',
+                'PR',
+                'PE',
+                'PI',
+                'RJ',
+                'RN',
+                'RS',
+                'RO',
+                'RR',
+                'SC',
+                'SP',
+                'SE',
+                'TO',
               ]}
               disabled={!isEditable}
               className={!isEditable ? classes.noBackground : ''}
@@ -153,16 +176,16 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
             {errors.state && <Message error={errors.state.message} />}
           </div>
         </div>
-       <Button
-            type="submit"
-            label={isLoading ? 'Processando...' : isEditable ? 'Ir para entrega' : 'Editar'}
-            disabled={isLoading}
-            appearance="primary"
-            className={classes.submit}
-          />
+        <Button
+          type="submit"
+          label={isLoading ? 'Processando...' : isEditable ? 'Ir para entrega' : 'Editar'}
+          disabled={isLoading}
+          appearance="primary"
+          className={classes.submit}
+        />
       </Fragment>
     </form>
-  );
-};
+  )
+}
 
-export default ShippingDataForm;
+export default ShippingDataForm

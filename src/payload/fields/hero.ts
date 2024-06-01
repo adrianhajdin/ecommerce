@@ -53,12 +53,12 @@ export const hero: Field = {
     }),
     {
       name: 'medias',
-      label: "Imagens",
+      label: 'Imagens',
       type: 'array',
       fields: [
         {
           name: 'media',
-          label: "Media",
+          label: 'Media',
           type: 'upload',
           relationTo: 'media',
         },

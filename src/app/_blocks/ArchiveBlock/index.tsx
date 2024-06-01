@@ -26,10 +26,8 @@ export const ArchiveBlock: React.FC<
     sale: saleFlag,
   } = props
 
-
   return (
     <div id={`block-${id}`} className={classes.archiveBlock}>
-  
       <CollectionArchive
         populateBy={populateBy}
         relationTo={relationTo}

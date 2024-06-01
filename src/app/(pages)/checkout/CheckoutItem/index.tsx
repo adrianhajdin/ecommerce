@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
+import { FreightCalculator } from '../../../_components/FreightCalculator'
 import { DefaultMedia } from '../../../_components/Media'
 import { Price } from '../../../_components/Price'
 
 import classes from './index.module.scss'
-import { FreightCalculator } from '../../../_components/FreightCalculator'
 
 const DiscountedPrice = ({ price, discountPercentage }) => {
   // Calcula o preço com desconto, considerando desconto nulo como zero
@@ -21,14 +21,18 @@ const DiscountedPrice = ({ price, discountPercentage }) => {
 }
 
 export const CheckoutItem = ({ product, title, quantity, index }) => {
-
-  const metaImage = product.photos.map(item => item.photo);
+  const metaImage = product.photos.map(item => item.photo)
   return (
     <li className={classes.item} key={index}>
       <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
         {!metaImage && <span>Sem imagem</span>}
         {metaImage && typeof metaImage !== 'string' && (
-          <DefaultMedia className={classes.media} imgClassName={classes.image} resources={metaImage} fill />
+          <DefaultMedia
+            className={classes.media}
+            imgClassName={classes.image}
+            resources={metaImage}
+            fill
+          />
         )}
       </Link>
 
@@ -41,7 +45,10 @@ export const CheckoutItem = ({ product, title, quantity, index }) => {
       </div>
 
       <div className={classes.subtotal}>
-      <DiscountedPrice price={quantity * product.price} discountPercentage={product.discountPercentage} />
+        <DiscountedPrice
+          price={quantity * product.price}
+          discountPercentage={product.discountPercentage}
+        />
       </div>
     </li>
   )

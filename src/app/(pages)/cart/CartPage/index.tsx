@@ -1,9 +1,8 @@
 'use client'
 
-import React, { Fragment } from 'react'
 import Link from 'next/link'
 
-import { Page, Settings } from '../../../../payload/payload-types'
+import { Page } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
 import { HR } from '../../../_components/HR'
 import { LoadingShimmer } from '../../../_components/LoadingShimmer'
@@ -15,6 +14,8 @@ import { useCart } from '../../../_providers/Cart'
 import CartItem from '../CartItem'
 
 import classes from './index.module.scss'
+
+// import { Page, Settings } from '../../../../payload/payload-types'
 
 export const CartPage: React.FC<{
   settings: Settings

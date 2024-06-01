@@ -1,11 +1,19 @@
-import React from 'react';
-import Link from 'next/link';
-import { Header as HeaderType } from '../../../payload/payload-types';
-import { fetchHeader } from '../../_api/fetchGlobals';
-import { HeaderNav } from './Nav';
-import { HeaderComponent } from './HeaderComponent';
+{
+  /* eslint-disable @next/next/no-img-element */
+}
+
+import React from 'react'
+import Link from 'next/link'
+
+import { Category } from '../../../payload/payload-types'
+import { fetchDocs } from '../../_api/fetchDocs'
+import { fetchHeader } from '../../_api/fetchGlobals'
+import { Gutter } from '../Gutter'
+import { HeaderComponent } from './HeaderComponent'
+import { HeaderNav } from './Nav'
 
 import classes from './index.module.scss';
+
 
 import { fetchDocs } from '../../_api/fetchDocs';
 import { Category } from '../../../payload/payload-types';
@@ -40,4 +48,5 @@ export async function Header() {
       <HeaderNav header={header} />
     </header>
   );
+
 }

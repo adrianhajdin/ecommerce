@@ -1,5 +1,6 @@
 'use client'
 
+
 import React, { useState } from 'react';
 import { Category, Color, Product } from '../../../payload/payload-types';
 import { AddToCartButton } from '../../_components/AddToCartButton';
@@ -34,6 +35,7 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
     setSelectedSize(size);
   };
 
+
   return (
     <Gutter className={classes.productHero}>
       <div className={classes.mediaWrapper}>
@@ -56,6 +58,7 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
           <p>Composição</p>
         </div>
         
+
         <div className={classes.description}>
           <p>{description}</p>
         </div>
@@ -64,6 +67,7 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
           <p>Descrição</p>
         </div>
         
+
         <div className={classes.description}>
           <p>{description}</p>
         </div>
@@ -82,3 +86,4 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
     </Gutter>
   );
 };
+
