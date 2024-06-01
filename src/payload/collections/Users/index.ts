@@ -184,11 +184,11 @@ const Users: CollectionConfig = {
               },
             },
             {
-              name: 'color',
+              name: 'selectedColor',
               type: 'text',
             },
             {
-              name: 'size',
+              name: 'selectedSize',
               type: 'text',
             },
           ],
