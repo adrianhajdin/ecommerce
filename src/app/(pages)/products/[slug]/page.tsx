@@ -41,9 +41,10 @@ export default async function Product({ params: { slug } }) {
 
   // Função para encontrar o ID de uma categoria cujo título contém a string slug, ignorando maiúsculas e minúsculas
   const findCategoryIdBySlug = (categories: Category[], slug: string): Category | undefined => {
-    const category = categories.find(category =>
-      category.slug.toLowerCase().includes(slug.toLowerCase()),
+    const category = categories.find(
+      category => category.slug.toLowerCase().includes(slug.toLowerCase()),
     )
+
     return category
   }
 
