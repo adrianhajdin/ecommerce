@@ -6,19 +6,20 @@
 }
 
 .colorLabel {
-  font-size: 15;
+  font-size: 17;
   margin-bottom: 0.5rem; /* Espaço entre a label e os botões */
 }
 
 .colorsContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(20%, 1.5fr));
   flex-wrap: wrap; /* Permite que os botões de cor quebrem para a próxima linha, se necessário */
+  gap: 1px;
 }
 
 .colorButton {
   display: flex;
   align-items: center;
-  margin-right: 1rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
   background: none;
@@ -34,27 +35,16 @@
     width: 24px;
     height: 24px;
     border: 2px solid #ccc; /* Borda cinza clara */
-    border-radius: 50%; /* Tornar o botão circular */
+    /* Remover border-radius para tornar o botão quadrado */
     background-color: transparent; /* Fundo transparente */
     margin-right: 0.5rem;
     position: relative;
   }
 
   &.selected .circle {
-    border: 2px solid #333; /* Borda mais escura para o botão selecionado */
+    border: 3px solid #333; /* Borda mais escura para o botão selecionado */
 
-    &:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 12px;
-      height: 12px;
-      background-color: #333; /* Cor do círculo interno */
-      border-radius: 50%; /* Tornar o círculo interno */
-      z-index: 1;
-    }
+
   }
 
   .colorName {

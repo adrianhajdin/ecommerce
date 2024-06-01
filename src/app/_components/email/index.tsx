@@ -32,8 +32,9 @@ export const useEmailSender = () => {
     setSuccess('') // Limpa o estado de sucesso anterior
 
     try {
-      const response = await axios.post('/api/send-email-cadastro', {
-        from_name: '',
+      const response = await axios.post('/api/send-email-cadastro', 
+      {
+        from_name: "admin@minimo.com",
         to_email: to_email,
         to_name: to_name,
         token: token,

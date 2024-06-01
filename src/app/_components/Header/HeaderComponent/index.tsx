@@ -46,19 +46,13 @@ export const HeaderComponent = ({ categories }) => {
   }
 
   return (
-    <header className={classes.header}>
-      {/* Use Link correctly without <a> */}
+
       <div className={classes.headerButtons}>
         {/* New in */}
-        <Link
-          href="/new"
-          onMouseEnter={() => toggleDropdown('newIn')}
-          onMouseLeave={() => toggleDropdown('newIn')}
-          className={classes.buttonLink}
-        >
-          <span>New In</span>
+        <Link href="/new" onMouseEnter={() => toggleDropdown('newIn')} onMouseLeave={() => toggleDropdown('newIn')} className={classes.buttonLink}>
+          <span>New in</span>
         </Link>
-        <span className={classes.separator}>-</span>
+
         {/* Peças */}
         <Link
           href="/products"
@@ -93,9 +87,10 @@ export const HeaderComponent = ({ categories }) => {
                 </div>
               ))}
             </div>
-          )}
-        </Link>
-        <span className={classes.separator}>-</span>
+          ))}
+        </div>
+      )}
+      </Link>
         {/* Em Alta */}
         <Link
           href="/hot"
@@ -105,7 +100,6 @@ export const HeaderComponent = ({ categories }) => {
         >
           <span>Em Alta</span>
         </Link>
-        <span className={classes.separator}>-</span>
         {/* Sale */}
         <Link
           href="/sale"
@@ -115,7 +109,7 @@ export const HeaderComponent = ({ categories }) => {
         >
           <span>Sale</span>
         </Link>
-      </div>
-    </header>
-  )
-}
+      </div>   
+  );
+};
+

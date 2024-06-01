@@ -185,6 +185,14 @@ const Users: CollectionConfig = {
                 step: 1,
               },
             },
+            {
+              name: 'selectedColor',
+              type: 'text',
+            },
+            {
+              name: 'selectedSize',
+              type: 'text',
+            },
           ],
         },
       ],
