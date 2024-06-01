@@ -1,16 +1,16 @@
 .highImpactImageContainer {
   display: grid; /* Alinha as imagens lado a lado por padrão */
-  grid-template-columns:repeat(3, minmax(20%, 1fr));
+  grid-template-columns: repeat(3, minmax(20%, 1fr));
   align-items: center; /* Centraliza as imagens verticalmente */
   justify-content: center; /* Centraliza as imagens horizontalmente na viewport */
   gap: 1px; /* Adiciona espaço entre as imagens */
   overflow-x: auto; /* Permite rolagem horizontal se as imagens ultrapassarem a largura da viewport */
+}
 
-  @media (max-width: 600px) { /* Ajuste conforme o breakpoint desejado para dispositivos móveis */
-    flex-direction: column; /* Muda a disposição para uma coluna em telas pequenas */
+@media (max-width: 600px) { /* Ajuste conforme o breakpoint desejado para dispositivos móveis */
+  .highImpactImageContainer {
+    grid-template-columns: 1fr; /* Muda a disposição para uma coluna em telas pequenas */
     overflow-x: hidden; /* Remove a rolagem horizontal em dispositivos móveis */
     overflow-y: auto; /* Adiciona rolagem vertical se necessário */
   }
 }
-
-

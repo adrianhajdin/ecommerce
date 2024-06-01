@@ -1,11 +1,11 @@
 @use '../../_css/queries.scss' as *;
 
 .header {
-  padding: 10px;
+  padding: 15px;
   background-color: white;
-  display: flex; // Usar flexbox para alinhar os itens
-  align-items: center; // Alinhar verticalmente os itens
-  justify-content: space-between; // Distribuir espaço entre os itens
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
 
   @include large-break {
@@ -18,17 +18,17 @@
 
   @include small-break {
     padding: var(--small-base) 0;
-    flex-direction: column; // Para telas pequenas, empilhar os itens verticalmente
+    flex-direction: row; // Manter flex-direction como row para alinhar logo e hamburger horizontalmente
     align-items: center;
   }
 
   @include extra-small-break {
-    padding: var(--extra-small-base) 0;
+    padding: 10px;
   }
 }
 
 .logo {
-  max-height: 100%; // Garantir que o logo preencha a altura da header
+  max-height: 100%;
   margin-left: 15px;
   width: 300px;
 
@@ -45,25 +45,25 @@
   }
 
   @include extra-small-break {
-    width: 100px;
+    width: 150px;
   }
 }
 
 .menu {
-  margin-right: auto; // Empurrar a nav para a direita
+  margin-right: auto;
 
   @include small-break {
     margin-right: 0;
-    margin-bottom: 10px; // Espaçamento adicional para telas pequenas
+    margin-bottom: 10px;
   }
 }
 
 .nav {
   display: flex;
-  gap: 10px; // Espaçamento entre os botões
+  gap: 10px;
 
   @include small-break {
-    flex-direction: row; // Empilhar horizontalmente para telas pequenas
+    flex-direction: row;
     justify-content: center;
   }
 }
@@ -96,25 +96,43 @@
   }
 }
 
-
 .separatorV {
   height: 43px;
   width: 1.87px;
   background-color: rgba(0, 0, 0, 0.842);
   position: absolute;
-  left: calc(375px); // 20px (margin-left) + 300px (logo width) + 80px (extra spacing)
-  margin-top:3px; 
+  left: calc(375px);
+  margin-top: 3px;
   box-shadow: 0px 0px 4px gray;
 
   @include large-break {
     height: 45px;
     width: 1.85px;
-    left: calc(270px); // 20px (margin-left) + 250px (logo width) + 10px (extra spacing)
+    left: calc(270px);
   }
 
   @include mid-break {
     height: 40px;
     width: 1.85px;
-    left: calc(230px); // 20px (margin-left) + 200px (logo width) + 10px (extra spacing)
+    left: calc(230px);
+  }
+}
+
+.hideOnMobile {
+  display: block;
+
+  @include small-break {
+    display: none;
+  }
+}
+
+.hamburgerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+
+  @include small-break {
+    justify-content: flex-end;
   }
 }

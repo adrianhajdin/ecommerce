@@ -1,14 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import { Header as HeaderType } from '../../../payload/payload-types';
 import { fetchHeader } from '../../_api/fetchGlobals';
 import { HeaderNav } from './Nav';
 import { HeaderComponent } from './HeaderComponent';
+import HamburgerMenu from './HamburgerComponent';
 
 import classes from './index.module.scss';
 
 import { fetchDocs } from '../../_api/fetchDocs';
-import { Category } from '../../../payload/payload-types';
 
 export async function Header() {
   let header = null;
@@ -35,9 +34,12 @@ export async function Header() {
           src="/minimo_1_small.jpeg"
         />
       </Link>
-      <div className={classes.separatorV}></div>
+      <div className={`${classes.separatorV} ${classes.hideOnMobile}`}></div>
+      <div className={classes.hideOnMobile}>
       <HeaderComponent categories={categories} />
-      <HeaderNav header={header} />
+      <HeaderNav header={header}  />
+      </div>
+      <HamburgerMenu categories={categories} />
     </header>
   );
 }
