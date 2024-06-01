@@ -15,9 +15,6 @@ import { HeaderNav } from './Nav'
 import classes from './index.module.scss';
 
 
-import { fetchDocs } from '../../_api/fetchDocs';
-import { Category } from '../../../payload/payload-types';
-
 export async function Header() {
   let header = null;
   let categories = null;
