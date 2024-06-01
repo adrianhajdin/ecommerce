@@ -1,40 +1,45 @@
 'use client'
 
+import React from 'react'
 
-import React, { useState } from 'react';
-import { Category, Color, Product } from '../../../payload/payload-types';
-import { AddToCartButton } from '../../_components/AddToCartButton';
-import { ColorSelectButton } from '../../_components/ColorSelectButton';
-import { SizePicker } from '../../_components/SizePicker';
-import { FavButton } from '../../_components/FavButton';
-import { FreightCalculator } from '../../_components/FreightCalculator';
-import { PaymentGateway } from '../../_components/PaymentGateway';
-import { Gutter } from '../../_components/Gutter';
-import { Media } from '../../_components/Media';
-import { Price } from '../../_components/Price';
-import classes from './index.module.scss';
+import { Product } from '../../../payload/payload-types'
+import { AddToCartButton } from '../../_components/AddToCartButton'
+import { ColorSelectButton } from '../../_components/ColorSelectButton'
+import { Gutter } from '../../_components/Gutter'
+import { Media } from '../../_components/Media'
+import { SizePicker } from '../../_components/SizePicker'
+
+import classes from './index.module.scss'
 
 export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
-  const { title, price, photos, categories, colors, sizes, description, discountPercentage = {} } = product;
+  const {
+    title,
+    price,
+    photos,
+    categories,
+    colors,
+    sizes,
+    description,
+    discountPercentage = {},
+  } = product
 
-  const metaImage = photos.map(item => item.photo);
+  const metaImage = photos.map(item => item.photo)
 
   const priceValue = price.toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL', // TODO: use `parsed.currency`
-  });
+  })
 
-  const [selectedColor, setSelectedColor] =  useState<Color>(colors[0] as Color);
-  const [selectedSize, setSelectedSize] = useState(sizes[0]);
+  const [selectedColor, setSelectedColor] = useState<Color>(colors[0] as Color)
+  const [selectedSize, setSelectedSize] = useState(sizes[0])
 
   const handleColorSelection = (color: Color) => {
-    setSelectedColor(color);
-  };
+    setSelectedColor(color)
+  }
 
-  const handleSizeSelection = (size) => {
-    setSelectedSize(size);
-  };
-
+  const handleSizeSelection = size => {
+    setSelectedSize(size)
+  }
 
   return (
     <Gutter className={classes.productHero}>
@@ -51,39 +56,36 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
         <div className={classes.categoryWrapper}>
           <p className={classes.categories}>{priceValue}</p>
         </div>
-        
+
         <ColorSelectButton colors={colors} onColorSelect={handleColorSelection} />
-        
+
         <div className={classes.descriptionTitle}>
           <p>Composição</p>
         </div>
-        
 
         <div className={classes.description}>
           <p>{description}</p>
         </div>
-        
+
         <div className={classes.descriptionTitle}>
           <p>Descrição</p>
         </div>
-        
 
         <div className={classes.description}>
           <p>{description}</p>
         </div>
 
         <SizePicker sizes={sizes} onSizeSelect={handleSizeSelection} />
-        
+
         <div className={classes.cartButton}>
-          <AddToCartButton 
-            product={product} 
-            className={classes.addToCartButton} 
-            selectedColor={selectedColor.color} 
-            selectedSize={selectedSize} 
+          <AddToCartButton
+            product={product}
+            className={classes.addToCartButton}
+            selectedColor={selectedColor.color}
+            selectedSize={selectedSize}
           />
         </div>
       </div>
     </Gutter>
-  );
-};
-
+  )
+}

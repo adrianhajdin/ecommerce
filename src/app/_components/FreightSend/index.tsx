@@ -37,9 +37,9 @@ export const FreightCalculator = ({
   useEffect(() => {
     if (zipCode) {
       console.log(zipCode)
-      const formattedZipCode = zipCode.toString().padStart(8, '0');
-      reset({ zipCode: formattedZipCode });
-      calculateFreight({ zipCode: formattedZipCode });
+      const formattedZipCode = zipCode.toString().padStart(8, '0')
+      reset({ zipCode: formattedZipCode })
+      calculateFreight({ zipCode: formattedZipCode })
     } else if (user.zipCode) {
       const formattedZipCode = user.zipCode.toString().padStart(8, '0')
       reset({ zipCode: formattedZipCode })

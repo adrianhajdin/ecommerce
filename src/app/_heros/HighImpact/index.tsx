@@ -27,22 +27,20 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links
     <>
       {showSplashScreen && <SplashScreen />} {/* Adicionando o SplashScreen */}
       {!showSplashScreen && (
-       
-          <div className={classes.content}>
-            <RichText content={richText} />
-            {Array.isArray(links) && links.length > 0 && (
-              <ul className={classes.links}>
-                {links.map(({ link }, i) => {
-                  return (
-                    <li key={i}>
-                      <CMSLink {...link} />
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-          </div>
-
+        <div className={classes.content}>
+          <RichText content={richText} />
+          {Array.isArray(links) && links.length > 0 && (
+            <ul className={classes.links}>
+              {links.map(({ link }, i) => {
+                return (
+                  <li key={i}>
+                    <CMSLink {...link} />
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+        </div>
       )}
       {!showSplashScreen && (
         <div className={classes.media}>

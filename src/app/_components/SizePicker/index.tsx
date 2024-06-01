@@ -1,15 +1,15 @@
 'use client'
+
 import React, { useState } from 'react'
+
 import classes from './index.module.scss'
 
-
 export const SizePicker = ({ sizes, onSizeSelect }) => {
-
-  const [selectedSize, setSelectedSize] = useState(sizes[0]);
-  const handleSizeSelection = (size) => {
-    setSelectedSize(size);
-    onSizeSelect(size);
-  };
+  const [selectedSize, setSelectedSize] = useState(sizes[0])
+  const handleSizeSelection = size => {
+    setSelectedSize(size)
+    onSizeSelect(size)
+  }
 
   return (
     <div>
@@ -25,7 +25,5 @@ export const SizePicker = ({ sizes, onSizeSelect }) => {
         ))}
       </div>
     </div>
-
   )
 }
-

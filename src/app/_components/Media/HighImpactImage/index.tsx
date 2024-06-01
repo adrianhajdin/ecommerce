@@ -18,9 +18,7 @@ export const HighImpactImage: React.FC<MediaProps> = props => {
     if (typeof onLoadFromProps === 'function') {
       onLoadFromProps()
     }
-
   }
-
 
   const sizes = Object.entries(breakpoints)
     .map(([, value]) => `(max-width: ${value}px) ${value}px`)
