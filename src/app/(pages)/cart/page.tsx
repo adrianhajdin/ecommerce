@@ -33,13 +33,6 @@ export default async function Cart() {
     // console.error(error)
   }
 
-  // if no `cart` page exists, render a static one using dummy content
-  // you should delete this code once you have a cart page in the CMS
-  // this is really only useful for those who are demoing this template
-  if (!page) {
-    page = staticCart
-  }
-
   if (!page) {
     return notFound()
   }

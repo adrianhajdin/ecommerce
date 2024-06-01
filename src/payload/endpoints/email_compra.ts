@@ -7,7 +7,6 @@ import payload from 'payload'
 // Rota para enviar e-mails usando EmailJS
 /* eslint-disable @typescript-eslint/no-unused-vars */
 router.post('/send-email', async (req, res) => {
-
   // Desestruture os parâmetros do corpo da requisição
   const { from_name, to_email, to_name } = req.body
 
