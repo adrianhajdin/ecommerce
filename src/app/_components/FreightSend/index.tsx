@@ -29,7 +29,8 @@ export const FreightCalculator = ({ onFreightPriceSet, zipCode, onFreightCalcula
   } = useForm<FormData>();
 
   useEffect(() => {
-    if (zipCode !== undefined) {
+    if (zipCode) {
+      console.log(zipCode)
       const formattedZipCode = zipCode.toString().padStart(8, '0');
       reset({ zipCode: formattedZipCode });
       calculateFreight({ zipCode: formattedZipCode });

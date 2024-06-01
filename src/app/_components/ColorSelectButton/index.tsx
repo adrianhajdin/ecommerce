@@ -10,7 +10,7 @@ export const ColorSelectButton = ({ title = "Cor", colors }) => {
   const colorNames = ["Jeans Vintage", "Azul Petróleo", "Mais Um Nome"]; // Substitua pelos nomes das cores apropriados
 
   const handleColorSelection = (color) => {
-    // Aqui você pode lidar com a mudança de cor, talvez atualizar o estado do produto
+    console.log(colors)
   };
 
   const [selectedColor, setSelectedColor] = useState(hexaColors[0]);
