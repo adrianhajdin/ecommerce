@@ -12,10 +12,12 @@ import classes from './index.module.scss'
 export const AddToCartButton: React.FC<{
   product: Product
   quantity?: number
+  selectedColor: string
+  selectedSize: string
   className?: string
   appearance?: Props['appearance']
 }> = props => {
-  const { product, quantity = 1, className, appearance = 'primary' } = props
+  const { product, quantity = 1, selectedColor, selectedSize, className, appearance = 'primary' } = props
 
   const { cart, addItemToCart, isProductInCart, hasInitializedCart } = useCart()
 
@@ -47,6 +49,8 @@ export const AddToCartButton: React.FC<{
               addItemToCart({
                 product,
                 quantity,
+                selectedColor,
+                selectedSize
               })
 
               router.push('/cart')

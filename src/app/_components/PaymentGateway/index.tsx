@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation'
 
 initMercadoPago("TEST-e4e31358-531f-4c4d-bd5c-3e77edc4ee3f", {locale: 'pt-BR'});
 
-export const PaymentGateway = ({ amount, serviceId}) => {
+export const PaymentGateway = ({ amount, serviceId, shippingData}) => {
   const router = useRouter()
   const [orderIds, setOrderIds] = useState([]);  // Initialize orderIds state
   const [error, setError] = useState('');
@@ -140,13 +140,16 @@ export const PaymentGateway = ({ amount, serviceId}) => {
       body: JSON.stringify({
 
         total: cartTotal.raw,
-        items: (cart?.items || [])?.map(({ product, quantity }) => ({
+        items: (cart?.items || [])?.map(({ product, quantity, selectedColor, selectedSize }) => ({
           product: typeof product === 'string' ? product : product.id,
           quantity,
+          selectedSize,
+          selectedColor,
           price:
             typeof product === 'object'
               ? product.price
               : undefined,
+          
         })),
         shippingTicket: shippingTicketUrl,
         shippingZipCode: user.zipCode,

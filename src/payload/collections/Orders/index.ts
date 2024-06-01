@@ -59,8 +59,21 @@ export const Orders: CollectionConfig = {
           type: 'number',
           min: 0,
         },
+        {
+          name: 'selectedSize',
+          label: 'Tamanho',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'selectedColor',
+          label: 'Cor',
+          type: 'text',
+          required: true,
+        },
       ],
     },
+
     {
       name: 'shippingTicket',
       label: 'Etiqueta de Envio',
@@ -83,7 +96,7 @@ export const Orders: CollectionConfig = {
       name: 'shippingComplement',
       label: 'Complemento',
       type: 'text',
-      required: true,
+      required: false,
     },
     {
       name: 'userSocialId',

@@ -159,6 +159,8 @@ export const CartProvider = props => {
     if (user) {
       try {
         const syncCartToPayload = async () => {
+
+          console.log("passou")
           const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
             // Make sure to include cookies with fetch
             credentials: 'include',
@@ -197,6 +199,7 @@ export const CartProvider = props => {
             typeof product === 'string'
               ? product === incomingProduct.id
               : product?.id === incomingProduct.id,
+              
           ), // eslint-disable-line function-paren-newline
         )
       }

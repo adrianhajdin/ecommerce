@@ -27,7 +27,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links
       {showSplashScreen && <SplashScreen />} {/* Adicionando o SplashScreen */}
       
       {!showSplashScreen && (
-        <Gutter className={classes.hero}>
+       
           <div className={classes.content}>
             <RichText content={richText} /> 
             {Array.isArray(links) && links.length > 0 && (
@@ -42,7 +42,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links
               </ul>
             )}
           </div>
-        </Gutter>
+
       )}
 
       {!showSplashScreen && (
