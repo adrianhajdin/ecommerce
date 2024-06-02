@@ -1,7 +1,6 @@
-import * as XLSX from 'xlsx' // Import for working with Excel files
-
-import { Pill } from 'payload/components' // Assuming Pill component is from payload/components
 import React from 'react'
+import { Pill } from 'payload/components' 
+import * as XLSX from 'xlsx'
 
 const ExportButton = ({ data }) => {
   console.log(data); // Log data for debugging or inspection
