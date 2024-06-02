@@ -4,7 +4,6 @@ import NextImage from 'next/image'
 
 import cssVariables from '../../../cssVariables'
 import { Props as MediaProps } from '../types'
-import { useSwipeable } from 'react-swipeable'
 
 import classes from './index.module.scss'
 
@@ -45,7 +44,7 @@ export const Image: React.FC<MediaProps> = props => {
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true
+    trackMouse: true,
   })
   const imageAnimationClass =
     currentImageIndex > lastImageIndex ? classes.imageEnterUp : classes.imageEnterDown
