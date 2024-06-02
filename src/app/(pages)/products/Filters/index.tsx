@@ -49,6 +49,8 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
   const sizes = ['GG', 'G', 'M', 'P', 'PP']
   const { titles, subtitles } = getTitlesAndSubtitles(categories)
   const availableColors = getColors(colors)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false) // Add this line
+  const [selectedFilter, setSelectedFilter] = useState(null);
 
   useEffect(() => {
     if (preselectedCategory && !categoryFilters.includes(preselectedCategory.title)) {
@@ -102,14 +104,115 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
     setIsDropdownOpen(!isDropdownOpen)
   }
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen) // Add this function
+  }
+
   const dropdownOptions = [
     { value: 'relevance', label: 'Relevância' },
     { value: '-createdAt', label: 'Mais Recente' },
     { value: 'createdAt', label: 'Mais Antigo' },
   ]
 
+  const filters = [
+    'Coleção',
+    'Categoria',
+    'Cor',
+    'Tamanho'
+  ]
+
+  const handleSelectedFilter = (filter) => {
+    setSelectedFilter(filter);
+  };
   return (
     <div className={classes.filterMenu}>
+      <button className={classes.mobileFilterButton} onClick={toggleMobileMenu}>Filtrar</button>
+      
+      <nav className={`${classes.navMenu} ${isMobileMenuOpen ? classes.open : ''}`}>
+        <div className={classes.navHeader}>
+          <h2>FILTRAR</h2>
+          {selectedFilter ? (
+            <button className={classes.backButton} onClick={() => setSelectedFilter(null)}>
+              Voltar
+            </button>
+          ) : (
+            <button className={classes.backButton} onClick={toggleMobileMenu}>
+              Voltar
+            </button>
+          )}
+          
+        </div>
+        {selectedFilter ? (
+          selectedFilter === 'Coleção' ? (
+            <div>
+              {titles.map((title) => (
+                <div className={classes.filterOption}>
+                  {title}
+                  <input
+                    type="checkbox"
+                    checked={categoryFilters.includes(title)}
+                    onChange={() => handleCategoryFilterChange(title)}
+                  />
+                  
+                  </div>
+              ))}
+            </div>
+          ) : 
+          selectedFilter === 'Categoria' ? (
+            <div>
+              {subtitles.map((subtitle) => (
+                <div className={classes.filterOption}>
+                  <input
+                    type="checkbox"
+                    checked={subCategoryFilters.includes(subtitle)}
+                    onChange={() => handleSubCategoryFilterChange(subtitle)}
+                  />
+                  {subtitle}
+                  </div>
+              ))}
+            </div>
+          ) : 
+          selectedFilter === 'Cor' ? (
+            <div>
+              {availableColors.map((color) => (
+                <div className={classes.filterOption}>
+                  <input
+                    type="checkbox"
+                    checked={colorFilters.includes(color)}
+                    onChange={() => handleColorFilterChange(color)}
+                  />
+                  {color}
+                  </div>
+              ))}
+            </div>
+          ) : 
+          selectedFilter === 'Tamanho' ? (
+            <div>
+              {sizes.map((size) => (
+                <div className={classes.filterOption}>
+                  <input
+                    type="checkbox"
+                    checked={sizeFilters.includes(size)}
+                    onChange={() => handleSizeFilterChange(size)}
+                  />
+                  {size}
+                  </div>
+              ))}
+            </div>
+          ) :(
+            <p>teste</p>
+          )
+        ) : (
+          filters.map((filter, index) => (
+            <button key={index} onClick={() => handleSelectedFilter(filter)}>
+              {filter.toUpperCase()}
+            </button>
+          ))
+        )}
+
+
+
+      </nav>
       <div className={classes.filterDropdown}>
         <span>Coleção</span>
         <ul className={classes.dropdownList}>
@@ -126,7 +229,7 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
         </ul>
       </div>
       <div className={classes.filterDropdown}>
-        <span>Subcategoria</span>
+        <span>Categoria</span>
         <ul className={classes.dropdownList}>
           {subtitles.map((subtitle, index) => (
             <li key={index}>

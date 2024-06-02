@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 import Image from 'next/image';
 
+
 // import { HeaderNav } from '../Nav';
 import classes from './index.module.scss'// Garanta que o caminho está correto
 
