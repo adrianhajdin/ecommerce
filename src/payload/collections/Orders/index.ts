@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload/types'
+
 import ExportButton from '../../../app/_components/ExportButton'
 import { admins } from '../../access/admins'
 import { adminsOrLoggedIn } from '../../access/adminsOrLoggedIn'
