@@ -1,11 +1,11 @@
-@use '../../../_css/queries.scss' as *;
 // styles/HamburgerMenu.module.scss
+@use '../../../_css/queries.scss' as *;
+
 .hamburgerMenu {
   display: none;
   @include mid-break {
     display: block;
   }
-
 }
 
 .hamburgerButton {
@@ -19,10 +19,81 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  position: absolute;
-  top: 50px;
-  right: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navMenu.open {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  position: fixed;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transform: translateX(0%);
+  transition: transform 0.3s ease-in-out;
+}
+.navMenu button {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: none;
+  line-height: 24px;
+
+  cursor: pointer;
+  text-align: left;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+.navHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.navHeader h2 {
+  margin: 0;
+}
+
+.accountSection a {
+  font-size: 18px;
+  font-weight: bold!important;
+  display: block ;
+  color: black!important ;
+  background-color: #f9f9f9!important ;
+  border: none!important;
+  padding-top: 20px!important; // Add margin to create space
+
+}
+
+.extraLinks a {
+  font-size: 18px;
+  display: block ;
+  color: black!important ;
+  border: none!important;
+  padding-top: 20px!important; // Add margin to create space
+
+}
+
+.backButton {
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
 }
 
 .navMenu a {
@@ -34,4 +105,8 @@
   &:last-child {
     border-bottom: none;
   }
+}
+
+.saleLink {
+  color: red!important;
 }
