@@ -35,7 +35,7 @@
 
 .submit {
   margin-top: 16px; // Espaçamento superior para o botão de submit
-  width: 500px; // Ajuste o tamanho do botão conforme necessário
+  width: 50%; // Ajuste o tamanho do botão conforme necessário
   margin: 10px auto; // Centraliza o botão horizontalmente
   border-radius: 0px;
 }
@@ -43,4 +43,15 @@
 /* index.module.scss */
 .noBackground {
   background-color: var(--theme-elevation-200) !important;
+}
+
+@media (max-width: 768px) {
+  .inlineFields {
+    flex-direction: column;
+    gap: 16px; // Ajuste o espaço entre os campos conforme necessário
+  }
+
+  .submit {
+    width: 100%; // Ajuste o tamanho do botão conforme necessário
+  }
 }

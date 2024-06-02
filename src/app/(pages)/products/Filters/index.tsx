@@ -145,8 +145,8 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
         {selectedFilter ? (
           selectedFilter === 'Coleção' ? (
             <div>
-              {titles.map((title) => (
-                <div className={classes.filterOption}>
+              {titles.map((title, index) => (
+                <div key={index} className={classes.filterOption}>
                   {title}
                   <input
                     type="checkbox"
@@ -160,8 +160,8 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
           ) : 
           selectedFilter === 'Categoria' ? (
             <div>
-              {subtitles.map((subtitle) => (
-                <div className={classes.filterOption}>
+              {subtitles.map((subtitle, index) => (
+                <div key={index} className={classes.filterOption}>
                   <input
                     type="checkbox"
                     checked={subCategoryFilters.includes(subtitle)}
@@ -174,8 +174,8 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
           ) : 
           selectedFilter === 'Cor' ? (
             <div>
-              {availableColors.map((color) => (
-                <div className={classes.filterOption}>
+              {availableColors.map((color, index) => (
+                <div key={index} className={classes.filterOption}>
                   <input
                     type="checkbox"
                     checked={colorFilters.includes(color)}
@@ -188,8 +188,8 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
           ) : 
           selectedFilter === 'Tamanho' ? (
             <div>
-              {sizes.map((size) => (
-                <div className={classes.filterOption}>
+              {sizes.map((size, index) => (
+                <div key={index} className={classes.filterOption}>
                   <input
                     type="checkbox"
                     checked={sizeFilters.includes(size)}

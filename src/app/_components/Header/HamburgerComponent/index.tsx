@@ -85,7 +85,7 @@ const HamburgerMenu = ({ categories }) => {
               </Link>
             </React.Fragment>
           )}
-          <Link key={'orders'} href={`/orders`} onClick={toggleMenu}>
+          <Link key={'orders'} href={`/cart`} onClick={toggleMenu}>
             Carrinho
           </Link>
  

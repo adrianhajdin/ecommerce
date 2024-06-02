@@ -4,6 +4,7 @@ import NextImage from 'next/image'
 
 import cssVariables from '../../../cssVariables'
 import { Props as MediaProps } from '../types'
+import { useSwipeable } from 'react-swipeable'
 
 import classes from './index.module.scss'
 
@@ -29,6 +30,23 @@ export const Image: React.FC<MediaProps> = props => {
     setIsLoading(true)
   }
 
+  const handleSwipeLeft = () => {
+    if (currentImageIndex < resources.length - 1) {
+      handleImageChange(currentImageIndex + 1)
+    }
+  }
+
+  const handleSwipeRight = () => {
+    if (currentImageIndex > 0) {
+      handleImageChange(currentImageIndex - 1)
+    }
+  }
+  const handlers = useSwipeable({
+    onSwipedLeft: handleSwipeLeft,
+    onSwipedRight: handleSwipeRight,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  })
   const imageAnimationClass =
     currentImageIndex > lastImageIndex ? classes.imageEnterUp : classes.imageEnterDown
 
@@ -42,7 +60,7 @@ export const Image: React.FC<MediaProps> = props => {
   const src = filename ? `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${filename}` : ''
 
   return (
-    <div>
+    <div {...handlers}>
       <NextImage
         className={[
           isLoading && classes.placeholder,
