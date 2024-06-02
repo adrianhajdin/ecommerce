@@ -1,0 +1,37 @@
+@use '../../../_css/queries.scss' as *;
+// styles/HamburgerMenu.module.scss
+.hamburgerMenu {
+  display: none;
+  @include mid-break {
+    display: block;
+  }
+
+}
+
+.hamburgerButton {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navMenu a {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid #ddd;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

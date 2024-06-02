@@ -1,14 +1,12 @@
 {
   /* eslint-disable @next/next/no-img-element */
 }
-
 import React from 'react'
 import Link from 'next/link'
 
-import { Category } from '../../../payload/payload-types'
 import { fetchDocs } from '../../_api/fetchDocs'
 import { fetchHeader } from '../../_api/fetchGlobals'
-import { Gutter } from '../Gutter'
+import HamburgerMenu from './HamburgerComponent'
 import { HeaderComponent } from './HeaderComponent'
 import { HeaderNav } from './Nav'
 
@@ -35,9 +33,12 @@ export async function Header() {
       <Link href="/">
         <img className={classes.logo} alt="Minimo 1" src="/minimo_1_small.jpeg" />
       </Link>
-      <div className={classes.separatorV}></div>
-      <HeaderComponent categories={categories} />
-      <HeaderNav header={header} />
+      <div className={`${classes.separatorV} ${classes.hideOnMobile}`}></div>
+      <div className={classes.hideOnMobile}>
+        <HeaderComponent categories={categories} />
+        <HeaderNav header={header} />
+      </div>
+      <HamburgerMenu categories={categories} />
     </header>
   )
 }

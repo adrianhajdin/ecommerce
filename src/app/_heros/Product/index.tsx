@@ -1,8 +1,8 @@
 'use client'
 
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-import { Product, Color } from '../../../payload/payload-types'
+import { Color, Product } from '../../../payload/payload-types'
 import { AddToCartButton } from '../../_components/AddToCartButton'
 import { ColorSelectButton } from '../../_components/ColorSelectButton'
 import { Gutter } from '../../_components/Gutter'
