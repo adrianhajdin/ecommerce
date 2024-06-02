@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload/types'
 
+import ExportButton from '../../../app/_components/ExportButton'
 import { admins } from '../../access/admins'
 import { adminsOrLoggedIn } from '../../access/adminsOrLoggedIn'
 import { adminsOrOrderedBy } from './access/adminsOrOrderedBy'
@@ -13,6 +14,9 @@ export const Orders: CollectionConfig = {
     useAsTitle: 'createdAt',
     defaultColumns: ['createdAt', 'orderedBy'],
     preview: doc => `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/orders/${doc.id}`,
+    components: {
+      BeforeListTable: [ExportButton], // Adicione o componente aqui
+    },
   },
   hooks: {
     afterChange: [updateUserPurchases, clearUserCart],

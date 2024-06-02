@@ -54,6 +54,12 @@ export const Card: React.FC<{
         {metaImage[0] && typeof metaImage[0] !== 'string' && (
           <DefaultMedia imgClassName={classes.image} resources={metaImage} fill />
         )}
+        {/* Renderizando a caixa de desconto */}
+        {discount > 0 && (
+          <div className={classes.discountTag}>
+            {`-${discount}%`}
+          </div>
+        )}
       </div>
 
       <div className={classes.content}>
