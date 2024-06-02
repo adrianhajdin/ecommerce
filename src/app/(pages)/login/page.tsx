@@ -18,15 +18,12 @@ export default async function Login() {
 
   return (
     <section className={classes.login}>
-
-
       <div className={classes.formWrapper}>
         <div className={classes.formContainer}>
           <RenderParams className={classes.params} />
 
           <div className={classes.formTitle}>
             <h3>Bem-vindo!</h3>
-          
           </div>
 
           <p>Faça seu login</p>

@@ -3,13 +3,14 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 
-import { Header as HeaderType, User } from '../../../../payload/payload-types'
+import { User } from '../../../../payload/payload-types'
 import { useAuth } from '../../../_providers/Auth'
 import { CartLink } from '../../CartLink'
 import { CMSLink } from '../../Link'
+
 import classes from './index.module.scss'
 
-export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
+export const HeaderNav: React.FC<{ header }> = ({ header }) => {
   const navItems = header?.navItems || []
   const { user } = useAuth()
   const [isSearchVisible, setIsSearchVisible] = useState(false)
@@ -50,11 +51,7 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
         </Link>
         {user && (
           <Link href="/account">
-            <img
-              className={classes.socialIcon}
-              alt="Minha Conta"
-              src="/user_profile.png"
-            />
+            <img className={classes.socialIcon} alt="Minha Conta" src="/user_profile.png" />
           </Link>
         )}
         {!user && (

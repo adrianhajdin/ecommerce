@@ -3,17 +3,22 @@ import { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import { Product, Product as ProductType } from '../../../../payload/payload-types'
+import {
+  Category,
+  Color,
+  Page,
+  Product,
+  Product as ProductType,
+} from '../../../../payload/payload-types'
 import { fetchDoc } from '../../../_api/fetchDoc'
 import { fetchDocs } from '../../../_api/fetchDocs'
 import { Blocks } from '../../../_components/Blocks'
+import { Gutter } from '../../../_components/Gutter'
+import { HR } from '../../../_components/HR'
 import { PaywallBlocks } from '../../../_components/PaywallBlocks'
 import { ProductHero } from '../../../_heros/Product'
 import { generateMeta } from '../../../_utilities/generateMeta'
-import { Gutter } from '../../../_components/Gutter'
-import { HR } from '../../../_components/HR'
 import Filters from '.././Filters'
-import { Category, Page, Color } from '../../../../payload/payload-types'
 
 import classes from '../index.module.scss'
 
@@ -22,7 +27,6 @@ import classes from '../index.module.scss'
 export const dynamic = 'force-dynamic'
 
 export default async function Product({ params: { slug } }) {
-
   const { isEnabled: isDraftMode } = draftMode()
 
   let page: Page | null = null
@@ -31,107 +35,107 @@ export default async function Product({ params: { slug } }) {
 
   try {
     categories = await fetchDocs<Category>('categories')
-
-  } catch (error) {
+  } catch (error: unknown) {
     console.log(error)
   }
 
   // Função para encontrar o ID de uma categoria cujo título contém a string slug, ignorando maiúsculas e minúsculas
   const findCategoryIdBySlug = (categories: Category[], slug: string): Category | undefined => {
-    const category = categories.find(category => category.slug.toLowerCase().includes(slug.toLowerCase()));
-    return category;
-  };
+    const category = categories.find(category =>
+      category.slug.toLowerCase().includes(slug.toLowerCase()),)
+
+    return category
+  }
 
   // Testando a função
-  const category = findCategoryIdBySlug(categories, slug);
+  const category = findCategoryIdBySlug(categories, slug)
 
-  if (category){
+  if (category) {
+    try {
+      page = await fetchDoc<Page>({
+        collection: 'pages',
+        slug: 'products',
+        draft: isDraftMode,
+      })
 
-  
-  try {
-    page = await fetchDoc<Page>({
-      collection: 'pages',
-      slug: 'products',
-      draft: isDraftMode,
-    })
+      colors = await fetchDocs<Color>('colors')
+    } catch (error: unknown) {
+      console.log(error)
+    }
 
-    colors = await fetchDocs<Color>('colors')
-  } catch (error) {
-    console.log(error)
-  }
+    return (
+      <div className={classes.container}>
+        <Gutter className={classes.products}>
+          <div className={classes.filters}>
+            <Filters categories={categories} colors={colors} preselectedCategory={category} />
+          </div>
+          <div className={classes.productList}>
+            <div className={classes.productView}>
+              <Blocks blocks={page?.layout} disableTopPadding={true} />
+            </div>
+          </div>
+        </Gutter>
+        <HR />
+      </div>
+    )
+  } else {
+    //const { isEnabled: isDraftMode } = draftMode()
 
-  return (
-    <div className={classes.container}>
-      <Gutter className={classes.products}>
-        <div className={classes.filters}><Filters categories={categories} colors={colors} preselectedCategory={category}/></div>
-        <div className={classes.productList}>
-        <div className={classes.productView}>
-        <Blocks blocks={page?.layout} disableTopPadding={true} />
-        </div>
-        </div>
-      </Gutter>
-      <HR />
-    </div>
-  )
- } else {
-  //const { isEnabled: isDraftMode } = draftMode()
+    let product: Product | null = null
 
-  let product: Product | null = null
+    try {
+      product = await fetchDoc<Product>({
+        collection: 'products',
+        slug,
+        draft: isDraftMode,
+      })
+    } catch (error: unknown) {
+      console.error(error) // eslint-disable-line no-console
+    }
 
-  try {
-    product = await fetchDoc<Product>({
-      collection: 'products',
-      slug,
-      draft: isDraftMode,
-    })
-  } catch (error) {
-    console.error(error) // eslint-disable-line no-console
-  }
+    if (!product) {
+      notFound()
+    }
 
+    const { relatedProducts } = product
 
-  if (!product) {
-    notFound()
-  }
+    return (
+      <>
+        <div className={classes.productContainer}>
+          <ProductHero product={product} />
 
-  const { relatedProducts } = product
-
-  return (
-    <>
-    <div className={classes.productContainer}>
-      <ProductHero product={product}  />
-
-      <Blocks
-        disableTopPadding
-        blocks={[
-          {
-            blockType: 'relatedProducts',
-            blockName: 'Produtos Relacionados',
-            relationTo: 'products',
-            introContent: [
+          <Blocks
+            disableTopPadding
+            blocks={[
               {
-                type: 'h3',
-                children: [
+                blockType: 'relatedProducts',
+                blockName: 'Produtos Relacionados',
+                relationTo: 'products',
+                introContent: [
                   {
-                    text: 'Produtos Relacionados',
+                    type: 'h3',
+                    children: [
+                      {
+                        text: 'Produtos Relacionados',
+                      },
+                    ],
                   },
                 ],
+                docs: relatedProducts,
               },
-            ],
-            docs: relatedProducts,
-          },
-        ]}
-      />
-      </div>
-    </>
-    
-  )
-}}
+            ]}
+          />
+        </div>
+      </>
+    )
+  }
+}
 
 export async function generateStaticParams() {
   try {
     const products = await fetchDocs<ProductType>('products')
     return products?.map(({ slug }) => slug)
-  } catch (error) {
+  } catch (error: unknown) {
     return []
   }
 }
@@ -147,7 +151,7 @@ export async function generateMetadata({ params: { slug } }): Promise<Metadata> 
       slug,
       draft: isDraftMode,
     })
-  } catch (error) {}
+  } catch (error: unknown) {}
 
   return generateMeta({ doc: product })
 }

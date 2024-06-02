@@ -4,12 +4,11 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { DefaultMedia  } from '../../../_components/Media'
+import { DefaultMedia } from '../../../_components/Media'
 import { Price } from '../../../_components/Price'
 import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
 
 import classes from './index.module.scss'
-
 
 const DiscountedPrice = ({ price, discountPercentage }) => {
   // Calcula o preço com desconto, considerando desconto nulo como zero
@@ -26,8 +25,7 @@ const DiscountedPrice = ({ price, discountPercentage }) => {
 }
 
 const CartItem = ({ product, title, qty, addItemToCart }) => {
-
-  const metaImage = product.photos.map(item => item.photo);
+  const metaImage = product.photos.map(item => item.photo)
   const [quantity, setQuantity] = useState(qty)
 
   const decrementQty = () => {
@@ -56,7 +54,12 @@ const CartItem = ({ product, title, qty, addItemToCart }) => {
       <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
         {!metaImage && <span>Sem foto</span>}
         {metaImage && typeof metaImage !== 'string' && (
-          <DefaultMedia className={classes.media} imgClassName={classes.image} resources={metaImage} fill />
+          <DefaultMedia
+            className={classes.media}
+            imgClassName={classes.image}
+            resources={metaImage}
+            fill
+          />
         )}
       </Link>
 
@@ -97,7 +100,10 @@ const CartItem = ({ product, title, qty, addItemToCart }) => {
       </div>
 
       <div className={classes.subtotalWrapper}>
-      <DiscountedPrice price={quantity * product.price} discountPercentage={product.discountPercentage} />
+        <DiscountedPrice
+          price={quantity * product.price}
+          discountPercentage={product.discountPercentage}
+        />
         <RemoveFromCartButton product={product} />
       </div>
     </li>

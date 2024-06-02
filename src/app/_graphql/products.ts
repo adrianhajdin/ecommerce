@@ -1,9 +1,7 @@
 import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK } from './blocks'
 import { PRODUCT_CATEGORIES } from './categories'
 import { PRODUCT_COLORS } from './colors'
-import { META } from './meta'
 import { MEDIA_FIELDS } from './media'
-
 
 export const PRODUCTS = `
   query Products {

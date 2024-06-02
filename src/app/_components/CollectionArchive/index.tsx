@@ -111,34 +111,41 @@ export const CollectionArchive: React.FC<Props> = props => {
         sort,
         where: {
           or: whereConditions.length > 0 ? whereConditions : undefined,
-          ...(categoryFilters && categoryFilters.length > 0 ? {
-            'categories.title': {
-              in: categoryFilters
-            }
-          } : {}),
-          ...(subCategoryFilters && subCategoryFilters.length > 0 ? {
-            'categories.subtitle': {
-              in: subCategoryFilters
-            }
-          } : {}),
-          ...(colorFilters && colorFilters.length > 0 ? {
-            'colors.color': {
-              in: colorFilters
-            }
-          } : {}),
-          ...(sizeFilters && sizeFilters.length > 0 ? {
-            sizes: {
-              in: sizeFilters
-            }
-          } : {}),
+          ...(categoryFilters && categoryFilters.length > 0
+            ? {
+                'categories.title': {
+                  in: categoryFilters,
+                },
+              }
+            : {}),
+          ...(subCategoryFilters && subCategoryFilters.length > 0
+            ? {
+                'categories.subtitle': {
+                  in: subCategoryFilters,
+                },
+              }
+            : {}),
+          ...(colorFilters && colorFilters.length > 0
+            ? {
+                'colors.color': {
+                  in: colorFilters,
+                },
+              }
+            : {}),
+          ...(sizeFilters && sizeFilters.length > 0
+            ? {
+                sizes: {
+                  in: sizeFilters,
+                },
+              }
+            : {}),
         },
         limit,
         page,
         depth: 1,
       },
-      { encode: false }
+      { encode: false },
     )
-
 
     const makeRequest = async () => {
       try {
@@ -170,9 +177,20 @@ export const CollectionArchive: React.FC<Props> = props => {
     return () => {
       if (timer) clearTimeout(timer)
     }
-  }, [page, categoryFilters, subCategoryFilters, colorFilters, sizeFilters, relationTo, onResultChange, sort, limit, newFilter, saleFilter, hotFilter])
-
-
+  }, [
+    page,
+    categoryFilters,
+    subCategoryFilters,
+    colorFilters,
+    sizeFilters,
+    relationTo,
+    onResultChange,
+    sort,
+    limit,
+    newFilter,
+    saleFilter,
+    hotFilter,
+  ])
 
   return (
     <div className={[classes.collectionArchive, className].filter(Boolean).join(' ')}>
@@ -192,7 +210,15 @@ export const CollectionArchive: React.FC<Props> = props => {
 
         <div className={classes.grid}>
           {results.docs?.map((result, index) => {
-            return <Card className={classes.card} key={index} relationTo="products" doc={result} showCategories />
+            return (
+              <Card
+                className={classes.card}
+                key={index}
+                relationTo="products"
+                doc={result}
+                showCategories
+              />
+            )
           })}
         </div>
 

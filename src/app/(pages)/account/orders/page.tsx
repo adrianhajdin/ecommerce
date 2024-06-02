@@ -37,7 +37,7 @@ export default async function Orders() {
         return json
       })
       ?.then(json => json.docs)
-  } catch (error) {
+  } catch (error: unknown) {
     console.error(error)
   }
 

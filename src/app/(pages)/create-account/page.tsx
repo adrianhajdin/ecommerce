@@ -20,19 +20,17 @@ export default async function CreateAccount() {
 
   return (
     <section className={classes.createAccount}>
-
       <Gutter>
+        <div className={classes.formWrapper}>
+          <div className={classes.formContainer}>
+            <RenderParams className={classes.params} />
 
-      <div className={classes.formWrapper}>
-        <div className={classes.formContainer}>
-          <RenderParams className={classes.params} />
-
-          <div className={classes.formTitle}>
-            <h3>Crie a sua conta</h3>
+            <div className={classes.formTitle}>
+              <h3>Crie a sua conta</h3>
+            </div>
+            <CreateAccountForm />
           </div>
-          <CreateAccountForm />
         </div>
-      </div>
       </Gutter>
     </section>
   )

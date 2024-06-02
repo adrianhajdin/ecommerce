@@ -17,7 +17,14 @@ export const AddToCartButton: React.FC<{
   className?: string
   appearance?: Props['appearance']
 }> = props => {
-  const { product, quantity = 1, selectedColor, selectedSize, className, appearance = 'primary' } = props
+  const {
+    product,
+    quantity = 1,
+    selectedColor,
+    selectedSize,
+    className,
+    appearance = 'primary',
+  } = props
 
   const { cart, addItemToCart, isProductInCart, hasInitializedCart } = useCart()
 
@@ -50,7 +57,7 @@ export const AddToCartButton: React.FC<{
                 product,
                 quantity,
                 selectedColor,
-                selectedSize
+                selectedSize,
               })
 
               router.push('/cart')

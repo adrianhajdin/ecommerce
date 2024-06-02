@@ -8,11 +8,18 @@ const policies = {
     'https://js.stripe.com',
     'https://maps.googleapis.com',
     'https://*.mercadopago.com/',
-    'https://*.mercadolibre.com/'
+    'https://*.mercadolibre.com/',
   ],
   'child-src': ["'self'"],
   'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-  'img-src': ["'self'", 'https://*.stripe.com', 'https://raw.githubusercontent.com', 'https://*.mercadolivre.com/', 'https://*.mercadopago.com/', 'https://*.mercadolibre.com/'],
+  'img-src': [
+    "'self'",
+    'https://*.stripe.com',
+    'https://raw.githubusercontent.com',
+    'https://*.mercadolivre.com/',
+    'https://*.mercadopago.com/',
+    'https://*.mercadolibre.com/',
+  ],
   'font-src': ["'self'"],
   'frame-src': [
     "'self'",
@@ -20,7 +27,7 @@ const policies = {
     'https://js.stripe.com',
     'https://hooks.stripe.com',
     'https://*.mercadopago.com/',
-    'https://*.mercadolibre.com/'
+    'https://*.mercadolibre.com/',
   ],
   'connect-src': [
     "'self'",
@@ -29,8 +36,7 @@ const policies = {
     'https://maps.googleapis.com',
     'https://*.mercadopago.com/',
     'https://api.mercadolibre.com/',
-    'https://*.mercadolibre.com/'
-
+    'https://*.mercadolibre.com/',
   ],
 }
 

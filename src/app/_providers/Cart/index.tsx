@@ -70,7 +70,6 @@ export const CartProvider = props => {
       const syncCartFromLocalStorage = async () => {
         const localCart = localStorage.getItem('cart')
 
-
         const parsedCart = JSON.parse(localCart || '{}')
 
         if (parsedCart?.items && parsedCart?.items?.length > 0) {
@@ -81,7 +80,6 @@ export const CartProvider = props => {
               )
               const data = await res.json()
 
-             
               return {
                 product: data,
                 quantity,
@@ -159,8 +157,7 @@ export const CartProvider = props => {
     if (user) {
       try {
         const syncCartToPayload = async () => {
-
-          console.log("passou")
+          console.log('passou')
           const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
             // Make sure to include cookies with fetch
             credentials: 'include',
@@ -199,7 +196,6 @@ export const CartProvider = props => {
             typeof product === 'string'
               ? product === incomingProduct.id
               : product?.id === incomingProduct.id,
-              
           ), // eslint-disable-line function-paren-newline
         )
       }
@@ -231,7 +227,7 @@ export const CartProvider = props => {
 
   useEffect(() => {
     if (!hasInitialized) return
-  
+
     const newTotal =
       cart?.items?.reduce((acc, item) => {
         const discount = item.product.discountPercentage || 0
@@ -243,9 +239,9 @@ export const CartProvider = props => {
             : 0)
         )
       }, 0) || 0
-  
+
     setTotal({
-      formatted: (newTotal).toLocaleString('pt-BR', {
+      formatted: newTotal.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL',
       }),

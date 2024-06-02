@@ -43,7 +43,8 @@ export const PageRange: React.FC<{
 
   return (
     <div className={[className, classes.pageRange].filter(Boolean).join(' ')}>
-      {(typeof totalDocs === 'undefined' || totalDocs === 0) && 'Nenhum resultado encontrado na busca.'}
+      {(typeof totalDocs === 'undefined' || totalDocs === 0) &&
+        'Nenhum resultado encontrado na busca.'}
       {typeof totalDocs !== 'undefined' &&
         totalDocs > 0 &&
         `Exibindo ${indexStart} - ${indexEnd} de ${totalDocs} ${totalDocs > 1 ? plural : singular}`}
