@@ -1,15 +1,16 @@
 'use client'
 // components/HamburgerMenu.js
-import React, { useState } from 'react';
-import Link from 'next/link';
-import classes from './index.module.scss';
+import React, { useState } from 'react'
+import Link from 'next/link'
+
+import classes from './index.module.scss'
 
 const HamburgerMenu = ({ categories }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   return (
     <div className={classes.hamburgerMenu}>
@@ -26,7 +27,7 @@ const HamburgerMenu = ({ categories }) => {
         </nav>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default HamburgerMenu;
+export default HamburgerMenu

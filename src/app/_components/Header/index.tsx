@@ -1,14 +1,14 @@
 {
   /* eslint-disable @next/next/no-img-element */
 }
-import React from 'react';
-import Link from 'next/link';
-import { fetchHeader } from '../../_api/fetchGlobals';
-import { HeaderNav } from './Nav';
-import { HeaderComponent } from './HeaderComponent';
-import HamburgerMenu from './HamburgerComponent';
-import { fetchDocs } from '../../_api/fetchDocs';
+import React from 'react'
+import Link from 'next/link'
 
+import { fetchDocs } from '../../_api/fetchDocs'
+import { fetchHeader } from '../../_api/fetchGlobals'
+import HamburgerMenu from './HamburgerComponent'
+import { HeaderComponent } from './HeaderComponent'
+import { HeaderNav } from './Nav'
 
 import classes from './index.module.scss'
 
@@ -35,8 +35,8 @@ export async function Header() {
       </Link>
       <div className={`${classes.separatorV} ${classes.hideOnMobile}`}></div>
       <div className={classes.hideOnMobile}>
-      <HeaderComponent categories={categories} />
-      <HeaderNav header={header}  />
+        <HeaderComponent categories={categories} />
+        <HeaderNav header={header} />
       </div>
       <HamburgerMenu categories={categories} />
     </header>
