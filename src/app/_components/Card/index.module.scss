@@ -110,3 +110,14 @@
   font-size: 20px; // Tamanho grande da fonte
   font-weight: normal; // Fonte sem negrito
 }
+.discountTag {
+  position: absolute;
+  top: 7px; // Ajuste conforme necessário
+  left: 7px; // Ajuste conforme necessário
+  background-color: black; // Vermelho vívido para destaque
+  color: white;
+  padding: 1px 7px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  z-index: 10; // Certifique-se que esteja sobre a imagem
+}
