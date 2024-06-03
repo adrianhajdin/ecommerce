@@ -10,7 +10,7 @@ import { updateUserPurchases } from './hooks/updateUserPurchases'
 
 export const Orders: CollectionConfig = {
   slug: 'orders',
-  labels: {plural: "Pedidos", singular: 'Pedido'},
+  labels: { plural: 'Pedidos', singular: 'Pedido' },
   admin: {
     useAsTitle: 'createdAt',
     description: 'Pedidos',

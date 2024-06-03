@@ -1,11 +1,11 @@
 // src/components/SplashScreen.tsx
 'use client'
 
-import React from 'react';
+import React from 'react'
 
 type SplashScreenProps = {
-  videoPath: string;
-};
+  videoPath: string
+}
 
 const SplashScreen: React.FC<SplashScreenProps> = ({ videoPath }) => {
   return (
@@ -27,7 +27,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ videoPath }) => {
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       />
     </div>
-  );
+  )
 }
 
-export default SplashScreen;
+export default SplashScreen

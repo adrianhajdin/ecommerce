@@ -5,7 +5,7 @@ import { slugField } from '../../fields/slug'
 
 const Products: CollectionConfig = {
   slug: 'products',
-  labels: {plural: "Produtos", singular: 'Produto'},
+  labels: { plural: 'Produtos', singular: 'Produto' },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'price', 'discountPercentage', '_status'],

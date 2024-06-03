@@ -71,8 +71,7 @@ export const hero: Field = {
       relationTo: 'media',
       required: false,
       admin: {
-        condition: (_, { type } = {}) =>
-          ['highImpact'].includes(type),
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),
       },
     },
   ],

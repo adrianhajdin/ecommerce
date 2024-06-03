@@ -5,8 +5,7 @@ import { notFound } from 'next/navigation'
 
 import { Order } from '../../../../../payload/payload-types'
 import { HR } from '../../../../_components/HR'
-import { Media } from '../../../../_components/Media'
-import { DefaultMedia } from '../../../../_components/Media'
+import { DefaultMedia, Media } from '../../../../_components/Media'
 import { Price } from '../../../../_components/Price'
 import { formatDateTime } from '../../../../_utilities/formatDateTime'
 import { getMeUser } from '../../../../_utilities/getMeUser'
@@ -44,7 +43,6 @@ export default async function Order({ params: { id } }) {
     notFound()
   }
 
-
   return (
     <div>
       <h5>
@@ -73,7 +71,6 @@ export default async function Order({ params: { id } }) {
             } = item
 
             const metaImage = product.photos.map(item => item.photo)
-
 
             return (
               <Fragment key={index}>

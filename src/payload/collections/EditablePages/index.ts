@@ -13,7 +13,7 @@ import { revalidatePage } from './hooks/revalidatePage'
 
 export const EditablePages: CollectionConfig = {
   slug: 'editablepages',
-  labels: {plural: "Páginas", singular: 'Página'},
+  labels: { plural: 'Páginas', singular: 'Página' },
   admin: {
     hidden: false,
     useAsTitle: 'title',
