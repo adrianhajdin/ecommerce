@@ -11,6 +11,9 @@ export const Settings: GlobalConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    hidden: true,
+  },
   fields: [
     {
       name: 'productsPage',

@@ -4,6 +4,7 @@ import { slugField } from '../fields/slug'
 
 const Categories: CollectionConfig = {
   slug: 'categories',
+  labels: {plural: "Categorias", singular: 'Categoria'},
   admin: {
     useAsTitle: 'category',
   },

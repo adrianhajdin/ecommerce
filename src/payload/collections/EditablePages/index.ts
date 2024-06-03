@@ -11,11 +11,13 @@ import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
 import { adminsOrPublished } from './access/adminsOrPublished'
 import { revalidatePage } from './hooks/revalidatePage'
 
-export const Pages: CollectionConfig = {
-  slug: 'pages',
+export const EditablePages: CollectionConfig = {
+  slug: 'editablepages',
+  labels: {plural: "Páginas", singular: 'Página'},
   admin: {
-    hidden: true,
+    hidden: false,
     useAsTitle: 'title',
+    description: 'Páginas',
     defaultColumns: ['title', 'slug', 'updatedAt'],
     preview: doc => {
       return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/preview?url=${encodeURIComponent(
@@ -62,25 +64,13 @@ export const Pages: CollectionConfig = {
         ],
       },
     },
+    hero,
     {
-      type: 'tabs',
-      tabs: [
-        {
-          label: 'Hero',
-          fields: [hero],
-        },
-        {
-          label: 'Content',
-          fields: [
-            {
-              name: 'layout',
-              type: 'blocks',
-              required: true,
-              blocks: [CallToAction, Content, MediaBlock, Archive],
-            },
-          ],
-        },
-      ],
+      name: 'layout',
+      type: 'blocks',
+      defaultValue:Content, 
+      required: false,
+      blocks: [CallToAction, Content, MediaBlock, Archive],
     },
     slugField(),
   ],

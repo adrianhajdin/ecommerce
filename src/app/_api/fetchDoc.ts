@@ -2,7 +2,7 @@ import type { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 
 import type { Config } from '../../payload/payload-types'
 import { ORDER } from '../_graphql/orders'
-import { PAGE } from '../_graphql/pages'
+import { EDITABLE_PAGE, PAGE } from '../_graphql/pages'
 import { PRODUCT } from '../_graphql/products'
 import { GRAPHQL_API_URL } from './shared'
 import { payloadToken } from './token'
@@ -11,6 +11,10 @@ const queryMap = {
   pages: {
     query: PAGE,
     key: 'Pages',
+  },
+  editablepages: {
+    query: EDITABLE_PAGE,
+    key: 'Editablepages',
   },
   products: {
     query: PRODUCT,
@@ -29,7 +33,7 @@ export const fetchDoc = async <T>(args: {
   draft?: boolean
 }): Promise<T> => {
   const { collection, slug, draft } = args || {}
-
+ 
   if (!queryMap[collection]) throw new Error(`Collection ${collection} not found`)
 
   let token: RequestCookie | undefined

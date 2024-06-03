@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+
 import classes from './index.module.scss' // Garanta que o caminho está correto
 
 const handleNavigation = url => {
@@ -62,10 +63,7 @@ export const HeaderComponent = ({ categories }) => {
   return (
     <div className={classes.headerButtons}>
       {/* New in */}
-      <Link
-        href="/new"
-        className={classes.buttonLink}
-      >
+      <Link href="/new" className={classes.buttonLink}>
         <span>New in</span>
       </Link>
 

@@ -13,6 +13,7 @@ import Colors from './collections/Colors'
 import { Media } from './collections/Media'
 import { Orders } from './collections/Orders'
 import { Pages } from './collections/Pages'
+import { EditablePages } from './collections/EditablePages'
 import Products from './collections/Products'
 import Users from './collections/Users'
 import BeforeLogin from './components/BeforeLogin'
@@ -63,7 +64,7 @@ export default buildConfig({
   }),
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Products, Categories, Colors, Orders, Media, Users],
+  collections: [Pages, EditablePages, Products, Categories, Colors, Orders, Media, Users],
   globals: [Footer, Settings, Header],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

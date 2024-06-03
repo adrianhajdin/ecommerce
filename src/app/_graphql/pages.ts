@@ -42,3 +42,44 @@ export const PAGE = `
     }
   }
 `
+
+export const EDITABLE_PAGES = `
+  query EditablePages {
+    Editablepages(limit: 300, where: { slug: { not_equals: "cart" } })  {
+      docs {
+        slug
+      }
+    }
+  }
+`
+export const EDITABLE_PAGE = `
+  query EditablePage($slug: String, $draft: Boolean) {
+    Editablepages(where: { AND: [{ slug: { equals: $slug }}] }, limit: 1, draft: $draft) {
+      docs {
+        id
+        title
+        layout {
+          ${CONTENT}
+          ${CALL_TO_ACTION}
+          ${CONTENT}
+          ${MEDIA_BLOCK}
+          ${ARCHIVE_BLOCK}
+        }
+        hero {
+          type
+          richText
+          links {
+            link ${LINK_FIELDS()}
+          }
+          medias {
+            media {
+              ${MEDIA_FIELDS}
+            }
+          }
+  
+          ${MEDIA}
+        }
+      }
+    }
+  }
+`
