@@ -23,6 +23,7 @@ export const PRODUCT = `
         price
         discountPercentage
         description
+        slug
         relatedProducts {
           id
           slug

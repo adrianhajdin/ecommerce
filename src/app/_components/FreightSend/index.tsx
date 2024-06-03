@@ -36,7 +36,6 @@ export const FreightCalculator = ({
 
   useEffect(() => {
     if (zipCode) {
-      console.log(zipCode)
       const formattedZipCode = zipCode.toString().padStart(8, '0')
       reset({ zipCode: formattedZipCode })
       calculateFreight({ zipCode: formattedZipCode })
@@ -88,7 +87,6 @@ export const FreightCalculator = ({
 
   const updateUserCep = useCallback(
     async zipCode => {
-      console.log(JSON.stringify({ zipCode }))
       if (!user.zipCode && user.zipCode !== zipCode) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
           credentials: 'include',
