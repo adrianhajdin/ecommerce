@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import { Order } from '../../../../../payload/payload-types'
 import { HR } from '../../../../_components/HR'
 import { Media } from '../../../../_components/Media'
+import { DefaultMedia } from '../../../../_components/Media'
 import { Price } from '../../../../_components/Price'
 import { formatDateTime } from '../../../../_utilities/formatDateTime'
 import { getMeUser } from '../../../../_utilities/getMeUser'
@@ -16,7 +17,7 @@ import classes from './index.module.scss'
 export default async function Order({ params: { id } }) {
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to view this order.',
+      'Você deve estar logado para visualizar este pedido.',
     )}&redirect=${encodeURIComponent(`/order/${id}`)}`,
   })
 
@@ -43,22 +44,22 @@ export default async function Order({ params: { id } }) {
     notFound()
   }
 
+
   return (
     <div>
       <h5>
-        {`Order`}
+        {`Pedido`}
         <span className={classes.id}>{` ${order.id}`}</span>
       </h5>
       <div className={classes.itemMeta}>
         <p>{`ID: ${order.id}`}</p>
-        <p>{`Payment Intent: ${order.stripePaymentIntentID}`}</p>
-        <p>{`Ordered On: ${formatDateTime(order.createdAt)}`}</p>
+        <p>{`Comprado em: ${formatDateTime(order.createdAt)}`}</p>
         <p className={classes.total}>
           {'Total: '}
           {new Intl.NumberFormat('pt-BR', {
             style: 'currency',
             currency: 'brl',
-          }).format(order.total / 100)}
+          }).format(order.total)}
         </p>
       </div>
 
@@ -68,10 +69,11 @@ export default async function Order({ params: { id } }) {
             const {
               quantity,
               product,
-              product: { id, title, meta, stripeProductID },
+              product: { id, title },
             } = item
 
-            const metaImage = meta?.image
+            const metaImage = product.photos.map(item => item.photo)
+
 
             return (
               <Fragment key={index}>
@@ -79,33 +81,21 @@ export default async function Order({ params: { id } }) {
                   <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
                     {!metaImage && <span className={classes.placeholder}>No image</span>}
                     {metaImage && typeof metaImage !== 'string' && (
-                      <Media
+                      <DefaultMedia
                         className={classes.media}
                         imgClassName={classes.image}
-                        resource={metaImage}
+                        resources={metaImage}
                         fill
                       />
                     )}
                   </Link>
                   <div className={classes.rowContent}>
-                    {!stripeProductID && (
-                      <p className={classes.warning}>
-                        {'This product is not yet connected to Stripe. To link this product, '}
-                        <Link
-                          href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/products/${id}`}
-                        >
-                          edit this product in the admin panel
-                        </Link>
-                        {'.'}
-                      </p>
-                    )}
                     <h6 className={classes.title}>
                       <Link href={`/products/${product.slug}`} className={classes.titleLink}>
                         {title}
                       </Link>
                     </h6>
                     <p>{`Quantity: ${quantity}`}</p>
-                    <Price product={product} button={false} quantity={quantity} />
                   </div>
                 </div>
               </Fragment>
