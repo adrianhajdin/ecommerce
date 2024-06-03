@@ -11,10 +11,10 @@ import { SizePicker } from '../../_components/SizePicker'
 
 import classes from './index.module.scss'
 
-const orderSizes = (sizes) => {
-  const sizeOrder = ["PP", "P", "M", "G", "GG"];
-  return sizes.sort((a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b));
-};
+const orderSizes = sizes => {
+  const sizeOrder = ['PP', 'P', 'M', 'G', 'GG']
+  return sizes.sort((a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b))
+}
 
 const parsePrice = (price, discountPercentage) => {
   if (price) {
@@ -71,13 +71,13 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
 
         <div className={classes.categoryWrapper}>
           {discount > 0 ? (
-                  <>
-                    <s className={classes.strikethrough}>R$ {price.toFixed(2)}</s>    R${' '}
-                    {adjustedPrice.toFixed(2)}
-                  </>
-                ) : (
-                  `R$ ${adjustedPrice.toFixed(2)}`
-                )}
+            <>
+              <s className={classes.strikethrough}>R$ {price.toFixed(2)}</s> R${' '}
+              {adjustedPrice.toFixed(2)}
+            </>
+          ) : (
+            `R$ ${adjustedPrice.toFixed(2)}`
+          )}
         </div>
 
         <ColorSelectButton colors={colors} onColorSelect={handleColorSelection} />

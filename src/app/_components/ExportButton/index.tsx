@@ -3,7 +3,6 @@ import { Pill } from 'payload/components'
 import * as XLSX from 'xlsx'
 
 const ExportButton = ({ data }) => {
-
   const handleClick = () => {
     const worksheet = XLSX.utils.json_to_sheet(data.docs)
     const workbook = XLSX.utils.book_new()
