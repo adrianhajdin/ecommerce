@@ -11,6 +11,11 @@ import { SizePicker } from '../../_components/SizePicker'
 
 import classes from './index.module.scss'
 
+const orderSizes = (sizes) => {
+  const sizeOrder = ["PP", "P", "M", "G", "GG"];
+  return sizes.sort((a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b));
+};
+
 const parsePrice = (price, discountPercentage) => {
   if (price) {
     if (discountPercentage > 0) {
@@ -93,7 +98,7 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
           <p>{description}</p>
         </div>
 
-        <SizePicker sizes={sizes} onSizeSelect={handleSizeSelection} />
+        <SizePicker sizes={orderSizes(sizes)} onSizeSelect={handleSizeSelection} />
 
         <div className={classes.cartButton}>
           <AddToCartButton
