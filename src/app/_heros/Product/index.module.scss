@@ -48,6 +48,8 @@
   margin-top: 8px;
   font-weight: bold;
   font-size: 18px;
+  row-gap: 10px; /* Espaço entre as linhas, se houver múltiplas linhas */
+  column-gap: 10px; /* Espaço entre os elementos na mesma linha */
 }
 
 .category {
@@ -93,4 +95,8 @@
   margin: 0 auto; /* Centraliza o botão */
   display: block; /* Torna o botão um bloco para permitir a centralização automática */
   width: fit-content; /* Garante que a largura se ajuste ao conteúdo */
+}
+
+.strikethrough {
+  color: #cccccc; // Cinza claro
 }
