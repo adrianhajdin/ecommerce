@@ -14,7 +14,7 @@ import { revalidatePage } from './hooks/revalidatePage'
 export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
-    hidden: true,
+    hidden: false,
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
     preview: doc => {
