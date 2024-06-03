@@ -7,7 +7,7 @@ import { Order } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
 import { Gutter } from '../../../_components/Gutter'
 import { HR } from '../../../_components/HR'
-import { Media } from '../../../_components/Media'
+import { DefaultMedia } from '../../../_components/Media'
 import { Price } from '../../../_components/Price'
 import { formatDateTime } from '../../../_utilities/formatDateTime'
 import { getMeUser } from '../../../_utilities/getMeUser'
@@ -53,14 +53,13 @@ export default async function Order({ params: { id } }) {
       </h1>
       <div className={classes.itemMeta}>
         <p>{`ID: ${order.id}`}</p>
-        <p>{`Intenção de Pagamento: ${order.stripePaymentIntentID}`}</p>
         <p>{`Data do Pedido: ${formatDateTime(order.createdAt)}`}</p>
         <p className={classes.total}>
           {'Total: '}
           {new Intl.NumberFormat('pt-BR', {
             style: 'currency',
             currency: 'BRL',
-          }).format(order.total / 100)}
+          }).format(order.total)}
         </p>
       </div>
       <HR />
@@ -71,12 +70,12 @@ export default async function Order({ params: { id } }) {
             const {
               quantity,
               product,
-              product: { id, title, meta, stripeProductID },
+              product: { id, title },
             } = item
 
             const isLast = index === (order?.items?.length || 0) - 1
 
-            const metaImage = meta?.image
+            const metaImage = product.photos.map(item => item.photo)
 
             return (
               <Fragment key={index}>
@@ -84,28 +83,15 @@ export default async function Order({ params: { id } }) {
                   <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
                     {!metaImage && <span className={classes.placeholder}>Sem imagem</span>}
                     {metaImage && typeof metaImage !== 'string' && (
-                      <Media
+                      <DefaultMedia
                         className={classes.media}
                         imgClassName={classes.image}
-                        resource={metaImage}
+                        resources={metaImage}
                         fill
                       />
                     )}
                   </Link>
                   <div className={classes.rowContent}>
-                    {!stripeProductID && (
-                      <p className={classes.warning}>
-                        {
-                          'Este produto ainda não está conectado ao Stripe. Para vincular este produto, '
-                        }
-                        <Link
-                          href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/products/${id}`}
-                        >
-                          edite este produto no painel administrativo
-                        </Link>
-                        {'.'}
-                      </p>
-                    )}
                     <h5 className={classes.title}>
                       <Link href={`/products/${product.slug}`} className={classes.titleLink}>
                         {title}
