@@ -7,7 +7,7 @@ import largeBody from './richText/largeBody'
 
 export const hero: Field = {
   name: 'hero',
-  label: false,
+  label: 'Layout',
   type: 'group',
   fields: [
     {
@@ -25,18 +25,18 @@ export const hero: Field = {
           label: 'Home Page',
           value: 'highImpact',
         },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
-        },
-        {
-          label: 'Custom Hero',
-          value: 'customHero',
-        },
+        // {
+        //   label: 'Medium Impact',
+        //   value: 'mediumImpact',
+        // },
+        // {
+        //   label: 'Low Impact',
+        //   value: 'lowImpact',
+        // },
+        // {
+        //   label: 'Custom Hero',
+        //   value: 'customHero',
+        // },
       ],
     },
     richText({
@@ -66,12 +66,12 @@ export const hero: Field = {
     },
     {
       name: 'media',
+      label: 'Welcome Vídeo',
       type: 'upload',
       relationTo: 'media',
       required: false,
       admin: {
-        condition: (_, { type } = {}) =>
-          ['highImpact', 'mediumImpact', 'customHero'].includes(type),
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),
       },
     },
   ],

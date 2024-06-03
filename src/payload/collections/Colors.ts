@@ -4,6 +4,7 @@ import { slugField } from '../fields/slug'
 
 const Colors: CollectionConfig = {
   slug: 'colors',
+  labels: { plural: 'Cores', singular: 'Cor' },
   admin: {
     useAsTitle: 'color',
   },

@@ -4,9 +4,13 @@ import link from '../fields/link'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
+  admin: {
+    hidden: true,
+  },
   access: {
     read: () => true,
   },
+
   fields: [
     {
       name: 'copyright',

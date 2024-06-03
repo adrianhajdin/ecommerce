@@ -35,6 +35,7 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
     colors,
     sizes,
     description,
+    composition,
     discountPercentage = 0,
   } = product
 
@@ -95,7 +96,7 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
         </div>
 
         <div className={classes.description}>
-          <p>{description}</p>
+          <p>{composition}</p>
         </div>
 
         <SizePicker sizes={orderSizes(sizes)} onSizeSelect={handleSizeSelection} />

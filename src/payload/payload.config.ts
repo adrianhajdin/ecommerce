@@ -10,6 +10,7 @@ import { buildConfig } from 'payload/config'
 
 import Categories from './collections/Categories'
 import Colors from './collections/Colors'
+import { EditablePages } from './collections/EditablePages'
 import { Media } from './collections/Media'
 import { Orders } from './collections/Orders'
 import { Pages } from './collections/Pages'
@@ -63,7 +64,7 @@ export default buildConfig({
   }),
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Products, Categories, Colors, Orders, Media, Users],
+  collections: [Pages, EditablePages, Products, Categories, Colors, Orders, Media, Users],
   globals: [Footer, Settings, Header],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

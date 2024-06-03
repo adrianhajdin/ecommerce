@@ -2,20 +2,22 @@ import type { CollectionConfig } from 'payload/types'
 
 import { admins } from '../../access/admins'
 import { Archive } from '../../blocks/ArchiveBlock'
-import { CallToAction } from '../../blocks/CallToAction'
-import { Content } from '../../blocks/Content'
-import { MediaBlock } from '../../blocks/MediaBlock'
+// import { CallToAction } from '../../blocks/CallToAction'
+// import { Content } from '../../blocks/Content'
+// import { MediaBlock } from '../../blocks/MediaBlock'
 import { hero } from '../../fields/hero'
 import { slugField } from '../../fields/slug'
 import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
 import { adminsOrPublished } from './access/adminsOrPublished'
 import { revalidatePage } from './hooks/revalidatePage'
 
-export const Pages: CollectionConfig = {
-  slug: 'pages',
+export const EditablePages: CollectionConfig = {
+  slug: 'editablepages',
+  labels: { plural: 'Páginas', singular: 'Página' },
   admin: {
-    hidden: true,
+    hidden: false,
     useAsTitle: 'title',
+    description: 'Páginas',
     defaultColumns: ['title', 'slug', 'updatedAt'],
     preview: doc => {
       return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/preview?url=${encodeURIComponent(
@@ -62,25 +64,14 @@ export const Pages: CollectionConfig = {
         ],
       },
     },
+    hero,
     {
-      type: 'tabs',
-      tabs: [
-        {
-          label: 'Hero',
-          fields: [hero],
-        },
-        {
-          label: 'Content',
-          fields: [
-            {
-              name: 'layout',
-              type: 'blocks',
-              required: true,
-              blocks: [CallToAction, Content, MediaBlock, Archive],
-            },
-          ],
-        },
-      ],
+      name: 'layout',
+      label: 'Produtos',
+      type: 'blocks',
+      required: false,
+      defaultValue: [],
+      blocks: [Archive],
     },
     slugField(),
   ],

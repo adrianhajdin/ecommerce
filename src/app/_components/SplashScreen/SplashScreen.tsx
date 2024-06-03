@@ -1,7 +1,13 @@
 // src/components/SplashScreen.tsx
 'use client'
 
-const SplashScreen: React.FC = () => {
+import React from 'react'
+
+type SplashScreenProps = {
+  videoPath: string
+}
+
+const SplashScreen: React.FC<SplashScreenProps> = ({ videoPath }) => {
   return (
     <div
       style={{
@@ -15,7 +21,7 @@ const SplashScreen: React.FC = () => {
       }}
     >
       <video
-        src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/intro.mp4`}
+        src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${videoPath}`}
         autoPlay
         muted
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}

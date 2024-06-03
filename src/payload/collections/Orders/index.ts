@@ -10,8 +10,10 @@ import { updateUserPurchases } from './hooks/updateUserPurchases'
 
 export const Orders: CollectionConfig = {
   slug: 'orders',
+  labels: { plural: 'Pedidos', singular: 'Pedido' },
   admin: {
     useAsTitle: 'createdAt',
+    description: 'Pedidos',
     defaultColumns: ['createdAt', 'orderedBy'],
     preview: doc => `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/orders/${doc.id}`,
     components: {

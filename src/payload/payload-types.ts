@@ -19,6 +19,7 @@ export type CartItems =
 export interface Config {
   collections: {
     pages: Page;
+    editablepages: Editablepage;
     products: Product;
     categories: Category;
     colors: Color;
@@ -39,7 +40,7 @@ export interface Page {
   title: string;
   publishedOn?: string | null;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'customHero';
+    type: 'none' | 'highImpact';
     richText?:
       | {
           [k: string]: unknown;
@@ -196,9 +197,11 @@ export interface Category {
 export interface Product {
   id: string;
   title: string;
+  categories?: (string | Category)[] | null;
   colors?: (string | Color)[] | null;
   sizes?: ('GG' | 'G' | 'M' | 'P' | 'PP')[] | null;
   description: string;
+  composition: string;
   price: number;
   discountPercentage?: number | null;
   photos?:
@@ -209,7 +212,6 @@ export interface Product {
     | null;
   publishedOn?: string | null;
   relatedProducts?: (string | Product)[] | null;
-  categories?: (string | Category)[] | null;
   new?: boolean | null;
   sale?: boolean | null;
   hot?: boolean | null;
@@ -224,6 +226,77 @@ export interface Color {
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
+}
+export interface Editablepage {
+  id: string;
+  title: string;
+  publishedOn?: string | null;
+  hero: {
+    type: 'none' | 'highImpact';
+    richText?:
+      | {
+          [k: string]: unknown;
+        }[]
+      | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?: {
+              relationTo: 'pages';
+              value: string | Page;
+            } | null;
+            url?: string | null;
+            label: string;
+            icon?: string | Media | null;
+            appearance?: ('default' | 'primary' | 'secondary') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+    medias?:
+      | {
+          media?: string | Media | null;
+          id?: string | null;
+        }[]
+      | null;
+    media?: string | Media | null;
+  };
+  layout?:
+    | {
+        introContent: {
+          [k: string]: unknown;
+        }[];
+        populateBy?: ('collection' | 'selection') | null;
+        relationTo?: 'products' | null;
+        categories?: (string | Category)[] | null;
+        limit?: number | null;
+        selectedDocs?:
+          | {
+              relationTo: 'products';
+              value: string | Product;
+            }[]
+          | null;
+        populatedDocs?:
+          | {
+              relationTo: 'products';
+              value: string | Product;
+            }[]
+          | null;
+        populatedDocsTotal?: number | null;
+        new?: boolean | null;
+        hot?: boolean | null;
+        sale?: boolean | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'archive';
+      }[]
+    | null;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 export interface Order {
   id: string;

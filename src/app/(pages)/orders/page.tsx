@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
@@ -67,7 +69,7 @@ export default async function Orders() {
                       {new Intl.NumberFormat('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
-                      }).format(order.total / 100)}
+                      }).format(order.total)}
                     </p>
                   </div>
                 </div>

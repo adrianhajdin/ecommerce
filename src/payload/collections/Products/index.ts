@@ -5,6 +5,7 @@ import { slugField } from '../../fields/slug'
 
 const Products: CollectionConfig = {
   slug: 'products',
+  labels: { plural: 'Produtos', singular: 'Produto' },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'price', 'discountPercentage', '_status'],
@@ -26,6 +27,13 @@ const Products: CollectionConfig = {
       label: 'Nome do Produto',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'categories',
+      label: 'Categorias',
+      type: 'relationship',
+      relationTo: 'categories',
+      hasMany: true,
     },
     {
       name: 'colors',
@@ -51,6 +59,15 @@ const Products: CollectionConfig = {
     {
       name: 'description',
       label: 'Descrição',
+      type: 'textarea',
+      required: true,
+      admin: {
+        rows: 4,
+      },
+    },
+    {
+      name: 'composition',
+      label: 'Composição',
       type: 'textarea',
       required: true,
       admin: {
@@ -110,16 +127,6 @@ const Products: CollectionConfig = {
             not_in: [id],
           },
         }
-      },
-    },
-    {
-      name: 'categories',
-      label: 'Categorias',
-      type: 'relationship',
-      relationTo: 'categories',
-      hasMany: true,
-      admin: {
-        position: 'sidebar',
       },
     },
     {

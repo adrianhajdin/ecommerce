@@ -13,6 +13,7 @@ import { resolveDuplicatePurchases } from './hooks/resolveDuplicatePurchases'
 
 const Users: CollectionConfig = {
   slug: 'users',
+  labels: { plural: 'Usuários', singular: 'Usuário' },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'email'],
