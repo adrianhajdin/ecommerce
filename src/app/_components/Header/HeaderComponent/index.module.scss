@@ -2,7 +2,7 @@
 
 .headerButtons {
   display: flex;
-  gap: 1rem;
+  gap: 60px;
   position: absolute;
   left: 20%;
   font-size: 23px;
@@ -139,7 +139,7 @@
   z-index: 1000; /* Garante que fique acima de outros conteúdos */
   position: fixed; /* Fixa o menu na tela */
   padding: 1rem;
-  left: 20%; /* Inicia próximo, mas não exatamente na borda esquerda */
+  left: 15%; /* Inicia próximo, mas não exatamente na borda esquerda */
   overflow-y: auto; /* Permite rolagem vertical se o conteúdo exceder a altura */
   flex-wrap: wrap; /* Permite que o conteúdo se quebre em múltiplas linhas, se necessário */
   height: auto; /* Ajusta automaticamente a altura */
