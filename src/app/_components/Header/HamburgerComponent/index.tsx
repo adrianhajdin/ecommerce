@@ -49,6 +49,11 @@ const HamburgerMenu = ({ categories }) => {
             NEW IN
           </Link>
         )}
+        {!selectedCategory && (
+          <Link key={'products'} href={`/products`} onClick={toggleMenu}>
+            VER TODOS
+          </Link>
+        )}
         {selectedCategory
           ? categories
               .filter(category => category.title === selectedCategory)
@@ -91,11 +96,11 @@ const HamburgerMenu = ({ categories }) => {
           </Link>
         </div>
         <div className={classes.extraLinks}>
-          <Link key={'TikTok'} href={`https://www.instagram.com`} onClick={toggleMenu}>
-            TikTok
+          <Link key={'TIKTOK'} href={`https://www.tiktok.com`} onClick={toggleMenu}>
+            TIKTOK
           </Link>
-          <Link key={'Instagram'} href={`https://www.tiktok.com`} onClick={toggleMenu}>
-            Instagram
+          <Link key={'INSTAGRAM'} href={`https://www.instagram.com`} onClick={toggleMenu}>
+            INSTAGRAM
           </Link>
         </div>
       </nav>
