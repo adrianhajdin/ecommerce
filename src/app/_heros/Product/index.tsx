@@ -11,6 +11,21 @@ import { SizePicker } from '../../_components/SizePicker'
 
 import classes from './index.module.scss'
 
+const orderSizes = sizes => {
+  const sizeOrder = ['PP', 'P', 'M', 'G', 'GG']
+  return sizes.sort((a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b))
+}
+
+const parsePrice = (price, discountPercentage) => {
+  if (price) {
+    if (discountPercentage > 0) {
+      return price * (1 - discountPercentage * 0.01)
+    }
+    return price
+  }
+  return 0
+}
+
 export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
   const {
     title,
@@ -20,7 +35,7 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
     colors,
     sizes,
     description,
-    discountPercentage = {},
+    discountPercentage = 0,
   } = product
 
   const metaImage = photos.map(item => item.photo)
@@ -40,7 +55,8 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
   const handleSizeSelection = size => {
     setSelectedSize(size)
   }
-
+  const discount = discountPercentage == null ? 0 : discountPercentage
+  const adjustedPrice = parsePrice(price, discount)
   return (
     <Gutter className={classes.productHero}>
       <div className={classes.mediaWrapper}>
@@ -54,7 +70,14 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
         <h4 className={classes.title}>{title}</h4>
 
         <div className={classes.categoryWrapper}>
-          <p className={classes.categories}>{priceValue}</p>
+          {discount > 0 ? (
+            <>
+              <s className={classes.strikethrough}>R$ {price.toFixed(2)}</s> R${' '}
+              {adjustedPrice.toFixed(2)}
+            </>
+          ) : (
+            `R$ ${adjustedPrice.toFixed(2)}`
+          )}
         </div>
 
         <ColorSelectButton colors={colors} onColorSelect={handleColorSelection} />
@@ -75,7 +98,7 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
           <p>{description}</p>
         </div>
 
-        <SizePicker sizes={sizes} onSizeSelect={handleSizeSelection} />
+        <SizePicker sizes={orderSizes(sizes)} onSizeSelect={handleSizeSelection} />
 
         <div className={classes.cartButton}>
           <AddToCartButton
