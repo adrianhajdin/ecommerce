@@ -40,7 +40,7 @@ export interface Page {
   title: string;
   publishedOn?: string | null;
   hero: {
-    type: 'none' | 'highImpact';
+    type: 'none' | 'highImpact' | 'lowImpact';
     richText?:
       | {
           [k: string]: unknown;
@@ -232,7 +232,7 @@ export interface Editablepage {
   title: string;
   publishedOn?: string | null;
   hero: {
-    type: 'none' | 'highImpact';
+    type: 'none' | 'highImpact' | 'lowImpact';
     richText?:
       | {
           [k: string]: unknown;

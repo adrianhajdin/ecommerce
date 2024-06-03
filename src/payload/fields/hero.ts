@@ -29,10 +29,10 @@ export const hero: Field = {
         //   label: 'Medium Impact',
         //   value: 'mediumImpact',
         // },
-        // {
-        //   label: 'Low Impact',
-        //   value: 'lowImpact',
-        // },
+        {
+          label: 'Produto',
+          value: 'lowImpact',
+        },
         // {
         //   label: 'Custom Hero',
         //   value: 'customHero',
