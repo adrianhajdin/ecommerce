@@ -10,7 +10,7 @@ import SplashScreen from '../../_components/SplashScreen/SplashScreen'
 
 import classes from './index.module.scss'
 
-export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links }) => {
+export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links, media }) => {
   const [showSplashScreen, setShowSplashScreen] = useState(true)
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links
 
   return (
     <>
-      {showSplashScreen && <SplashScreen />} {/* Adicionando o SplashScreen */}
+      {showSplashScreen && media && <SplashScreen videoPath={media.filename} />} {/* Adicionando o SplashScreen */}
       {!showSplashScreen && (
         <div className={classes.content}>
           <RichText content={richText} />
@@ -44,7 +44,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links
       )}
       {!showSplashScreen && (
         <div className={classes.media}>
-          {typeof metaImage === 'object' && (
+          {Array.isArray(metaImage) && metaImage.length > 0 && (
             <Fragment>
               <HighImpactMedia resources={metaImage} imgClassName={classes.image} priority />
               {metaImage[0]?.caption && (

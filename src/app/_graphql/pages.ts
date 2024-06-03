@@ -59,10 +59,7 @@ export const EDITABLE_PAGE = `
         id
         title
         layout {
-          ${CONTENT}
-          ${CALL_TO_ACTION}
-          ${CONTENT}
-          ${MEDIA_BLOCK}
+
           ${ARCHIVE_BLOCK}
         }
         hero {

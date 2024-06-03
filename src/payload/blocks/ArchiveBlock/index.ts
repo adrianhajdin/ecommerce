@@ -5,8 +5,8 @@ import richText from '../../fields/richText'
 export const Archive: Block = {
   slug: 'archive',
   labels: {
-    singular: 'Archive',
-    plural: 'Archives',
+    singular: 'Produto',
+    plural: 'Produtos',
   },
   fields: [
     richText({

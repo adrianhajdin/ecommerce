@@ -67,10 +67,11 @@ export const EditablePages: CollectionConfig = {
     hero,
     {
       name: 'layout',
+      label: 'Produtos',
       type: 'blocks',
-      defaultValue:Content, 
       required: false,
-      blocks: [CallToAction, Content, MediaBlock, Archive],
+      defaultValue: [],
+      blocks: [Archive],
     },
     slugField(),
   ],
