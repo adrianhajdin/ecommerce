@@ -17,7 +17,7 @@ export const HeaderNav: React.FC<{ header }> = ({ header }) => {
 
   // Handler for search action
   const handleSearch = (query: string) => {
-    console.log(`Search query: ${query}`)
+
     // Implement the search functionality here
   }
 
