@@ -30,14 +30,14 @@
 .logo {
   max-height: 100%;
   margin-left: 15px;
-  width: 300px;
+  width: 200px;
 
   @include large-break {
-    width: 300px;
+    width: 200px;
   }
 
   @include mid-break {
-    width: 190px;
+    width: 150px;
   }
 
   @include small-break {
@@ -101,7 +101,7 @@
   width: 1.87px;
   background-color: rgba(0, 0, 0, 0.842);
   position: absolute;
-  left: calc(375px);
+  left: calc(270px);
   margin-top: 5px;
   box-shadow: 0px 0px 4px gray;
 
