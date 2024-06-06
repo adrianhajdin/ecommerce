@@ -11,14 +11,19 @@ import SplashScreen from '../../_components/SplashScreen/SplashScreen'
 import classes from './index.module.scss'
 
 export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links, media }) => {
-  const [showSplashScreen, setShowSplashScreen] = useState(true)
+  const [showSplashScreen, setShowSplashScreen] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplashScreen(false)
-    }, 4000) // 4000ms = 4 seconds
+    const firstVisitOrReload = sessionStorage.getItem('firstVisitOrReload');
+    if (!firstVisitOrReload) {
+      setShowSplashScreen(true);
+      const timer = setTimeout(() => {
+        setShowSplashScreen(false);
+        sessionStorage.setItem('firstVisitOrReload', 'true');
+      }, 4000); // 4000ms = 4 seconds
 
-    return () => clearTimeout(timer)
+      return () => clearTimeout(timer);
+    }
   }, [])
 
   const metaImage = medias.map(item => item.media)
