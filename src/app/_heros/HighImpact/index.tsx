@@ -16,7 +16,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplashScreen(false)
-    }, 5000) // 5000ms = 5 seconds
+    }, 4000) // 4000ms = 4 seconds
 
     return () => clearTimeout(timer)
   }, [])
