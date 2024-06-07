@@ -105,7 +105,7 @@ const Products: CollectionConfig = {
         step: 1.0,
         condition: (_, siblingData) => siblingData?.sale === true,
       },
-      required: (formData, siblingData) => siblingData?.sale === true,
+      required: true,
     },
     {
       name: 'photos',
