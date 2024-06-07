@@ -6,7 +6,7 @@
   gap: 20px;
   width: 100%;
   background-color: white; /* Cor de fundo */
-  min-height: 550px; /* Aumentado para refletir a mudança */
+  min-height: 650px; /* Aumentado para refletir a mudança */
   @include small-break {
     grid-template-columns: 1fr;
   }
