@@ -103,7 +103,9 @@ const Products: CollectionConfig = {
       type: 'number',
       admin: {
         step: 1.0,
+        condition: (_, siblingData) => siblingData.sale === true,
       },
+      required: (_, siblingData) => siblingData.sale === true,
     },
     {
       name: 'photos',
