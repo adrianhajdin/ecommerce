@@ -5,7 +5,7 @@
   grid-template-columns: 2fr 1fr;
   gap: 20px;
   width: 100%;
-  background-color: #d3cfc4; /* Cor de fundo */
+  background-color: white; /* Cor de fundo */
   min-height: 800px; /* Aumentado para refletir a mudança */
 
   @include small-break {
