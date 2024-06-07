@@ -1,5 +1,4 @@
 import type { CollectionConfig } from 'payload/types'
-
 import { admins } from '../../access/admins'
 import { slugField } from '../../fields/slug'
 
@@ -27,6 +26,21 @@ const Products: CollectionConfig = {
       label: 'Nome do Produto',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'new',
+      label: 'New In',
+      type: 'checkbox',
+    },
+    {
+      name: 'sale',
+      label: 'Sale',
+      type: 'checkbox',
+    },
+    {
+      name: 'hot',
+      label: 'Em Alta',
+      type: 'checkbox',
     },
     {
       name: 'categories',
@@ -128,21 +142,6 @@ const Products: CollectionConfig = {
           },
         }
       },
-    },
-    {
-      name: 'new',
-      label: 'New In',
-      type: 'checkbox',
-    },
-    {
-      name: 'sale',
-      label: 'Sale',
-      type: 'checkbox',
-    },
-    {
-      name: 'hot',
-      label: 'Em Alta',
-      type: 'checkbox',
     },
     slugField(),
   ],
