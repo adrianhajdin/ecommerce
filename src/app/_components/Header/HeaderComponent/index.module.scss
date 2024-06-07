@@ -143,7 +143,7 @@
   overflow-y: auto; /* Permite rolagem vertical se o conteúdo exceder a altura */
   flex-wrap: wrap; /* Permite que o conteúdo se quebre em múltiplas linhas, se necessário */
   height: auto; /* Ajusta automaticamente a altura */
-  margin-top: 30px;
+  margin-top: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
 
@@ -175,7 +175,7 @@
 .dropdownColumn {
   display: flex; /* Display children in a flex layout */
   flex-direction: column; /* Stack items vertically */
-  min-width: 200px; /* Minimum width for each column, adjust as needed */
+  min-width: auto; /* Minimum width for each column, adjust as needed */
   padding: 5px; /* Reduz o padding interno */
   flex: 1;
 }
@@ -185,12 +185,12 @@
 }
 
 .dropdownItem {
-  text-align: center; /* Center the text if needed */
+  text-align: left; /* Center the text if needed */
   font-weight: normal; /* Peso da fonte normal */
   font-size: 15px; /* Tamanho da fonte */
   color: #333; /* Cor do texto */
   text-decoration: none; /* Sem sublinhado */
-  margin-bottom: 5px; /* Mantém o mesmo espaço vertical entre os itens */
+  margin-bottom: 7px; /* Mantém o mesmo espaço vertical entre os itens */
 }
 
 .dropdownItem:last-child {
@@ -204,7 +204,7 @@
 .boldUnderlineDropdownItem {
   font-size: 18px; /* Set the font size to match the design */
   font-weight: bold; /* Make the text bold */
-  text-align: center; /* Center the text if needed */
+  text-align: left; /* Center the text if needed */
   text-underline-offset: 5px; /* Adjust the space between the text and the underline */
   text-decoration: underline
 }
