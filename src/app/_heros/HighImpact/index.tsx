@@ -30,7 +30,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links
 
   return (
     <>
-      {showSplashScreen && media && <SplashScreen videoPath={media.filename} />}{' '}
+      {showSplashScreen && media?.filename && <SplashScreen videoPath={media.filename} />}{' '}
       {/* Adicionando o SplashScreen */}
       {!showSplashScreen && (
         <div className={classes.content}>
