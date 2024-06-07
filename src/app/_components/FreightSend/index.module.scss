@@ -71,6 +71,7 @@
 
 .forgotCep {
   margin-top: 12px;
+  margin-left: 10px;
   color: #0069d9;
   text-decoration: none;
   font-size: 14px;
@@ -78,5 +79,26 @@
 
   &:hover {
     text-decoration: underline;
+  }
+}
+.submit {
+  padding: 8px 10px;
+  background-color: #000000; /* cor de fundo azul */
+  color: #fff; /* cor do texto branco */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+
+  &:hover,
+  &:focus {
+    background-color: #000000; /* cor de fundo ao passar o mouse */
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
   }
 }
