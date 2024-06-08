@@ -14,11 +14,16 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links
   const [showSplashScreen, setShowSplashScreen] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplashScreen(false)
-    }, 4000) // 4000ms = 4 seconds
+    const firstVisitOrReload = sessionStorage.getItem('firstVisitOrReload')
+    if (!firstVisitOrReload) {
+      setShowSplashScreen(true)
+      const timer = setTimeout(() => {
+        setShowSplashScreen(false)
+        sessionStorage.setItem('firstVisitOrReload', 'true')
+      }, 4000) // 4000ms = 4 seconds
 
-    return () => clearTimeout(timer)
+      return () => clearTimeout(timer)
+    }
   }, [])
 
   const metaImage = medias.map(item => item.media)
