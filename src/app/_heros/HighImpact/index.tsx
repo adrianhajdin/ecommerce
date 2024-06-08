@@ -11,7 +11,7 @@ import SplashScreen from '../../_components/SplashScreen/SplashScreen'
 import classes from './index.module.scss'
 
 export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links, media }) => {
-  const [showSplashScreen, setShowSplashScreen] = useState(true)
+  const [showSplashScreen, setShowSplashScreen] = useState(false)
 
   useEffect(() => {
     const firstVisitOrReload = sessionStorage.getItem('firstVisitOrReload')
