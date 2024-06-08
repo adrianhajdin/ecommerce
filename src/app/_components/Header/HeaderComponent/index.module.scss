@@ -175,7 +175,7 @@
 .dropdownColumn {
   display: flex; /* Display children in a flex layout */
   flex-direction: column; /* Stack items vertically */
-  min-width: auto; /* Minimum width for each column, adjust as needed */
+  min-width: 200px; /* Minimum width for each column, adjust as needed */
   padding: 5px; /* Reduz o padding interno */
   flex: 1;
 }
