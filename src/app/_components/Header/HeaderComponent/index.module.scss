@@ -143,7 +143,7 @@
   overflow-y: auto; /* Permite rolagem vertical se o conteúdo exceder a altura */
   flex-wrap: wrap; /* Permite que o conteúdo se quebre em múltiplas linhas, se necessário */
   height: auto; /* Ajusta automaticamente a altura */
-  margin-top: 20px;
+  margin-top: 30px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
 
@@ -190,7 +190,7 @@
   font-size: 15px; /* Tamanho da fonte */
   color: #333; /* Cor do texto */
   text-decoration: none; /* Sem sublinhado */
-  margin-bottom: 7px; /* Mantém o mesmo espaço vertical entre os itens */
+  margin-bottom: 5px; /* Mantém o mesmo espaço vertical entre os itens */
 }
 
 .dropdownItem:last-child {
