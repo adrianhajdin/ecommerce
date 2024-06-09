@@ -8,16 +8,8 @@
   justify-content: space-between;
   position: relative;
 
-  @include large-break {
-    padding: var(--medium-base) 0;
-  }
-
-  @include mid-break {
-    padding: var(--medium-base) 0;
-  }
-
   @include small-break {
-    padding: var(--small-base) 0;
+    padding: 15px;
     flex-direction: row;
     align-items: center;
   }
