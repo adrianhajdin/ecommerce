@@ -33,7 +33,7 @@ export async function Header() {
       <Link href="/">
         <img className={classes.logo} alt="Minimo 1" src="/minimo_1_small.jpeg" />
       </Link>
-      <div className={`${classes.separatorV} ${classes.hideOnMobile}`}></div>
+      <div className={`${classes.hideOnMobile}`}></div>
       <div className={classes.hideOnMobile}>
         <HeaderComponent categories={categories} />
         <HeaderNav header={header} />
