@@ -4,7 +4,7 @@
   padding: 30px 0;
   background-color: var(--theme-elevation-1000);
   color: var(--theme-elevation-0);
-
+  text-align: center; // Adicione esta linha para centralizar o texto no footer
   @include small-break {
     padding: calc(var(--base) * 2) 0;
   }
@@ -41,6 +41,7 @@
   .footer {
     background-color: var(--theme-elevation-50);
     color: var(--theme-elevation-1000);
+    text-align: center; // Adicione esta linha para centralizar o texto no footer no tema escuro
   }
 }
 
