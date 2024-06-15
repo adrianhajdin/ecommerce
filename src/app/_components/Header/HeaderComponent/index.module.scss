@@ -185,7 +185,7 @@
 }
 
 .dropdownItem {
-  text-align: center; /* Center the text if needed */
+  text-align: left; /* Center the text if needed */
   font-weight: normal; /* Peso da fonte normal */
   font-size: 15px; /* Tamanho da fonte */
   color: #333; /* Cor do texto */
@@ -204,7 +204,7 @@
 .boldUnderlineDropdownItem {
   font-size: 18px; /* Set the font size to match the design */
   font-weight: bold; /* Make the text bold */
-  text-align: center; /* Center the text if needed */
+  text-align: left; /* Center the text if needed */
   text-underline-offset: 5px; /* Adjust the space between the text and the underline */
   text-decoration: underline
 }

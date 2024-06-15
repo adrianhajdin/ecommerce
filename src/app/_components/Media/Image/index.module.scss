@@ -1,72 +1,107 @@
-.imageSelectorOverlay {
-  position: absolute;
-  top: 10px;
-  left: 10px; /* Alterado de 'right' para 'left' */
-  z-index: 999;
+.container__slider {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: black;
 
-  button {
-    margin: 5px;
-    padding: 5px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    img {
-      display: block; // Garante que a imagem ocupe todo o botão
-      width: 75px; // Ajusta a largura da imagem para preencher o botão
-      height: 75px; // Mantém a proporção da imagem
-      border-radius: 5px; // Opcional: arredonda as bordas da imagem
-    }
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 1);
-    }
-
-    &:disabled {
-      cursor: default;
-      opacity: 0.5;
-    }
-  }
 }
 
-
-/* index.module.scss */
-.placeholder  {
-  width: 100%; /* Usa toda a largura em dispositivos móveis */
-  position: relative; /* Necessário para 'fill' funcionar com NextImage */
-  height: 100vh; /* Altura de 100% da tela, ajuste conforme necessário */
+.container__slider > button {
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  color: whitesmoke;
+  font-size: 24px;
 }
 
-@keyframes slideInUp {
-  from {
-    transform: translateY(10%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.container__slider > button:active {
+  color: black;
 }
 
-@keyframes slideInDown {
-  from {
-    transform: translateY(-10%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.slider__btn_next {
+
+  position: absolute;
+  right: 0;
 }
 
-.imageEnterUp {
-  animation: slideInUp 0.5s forwards;
+.slider__btn_prev {
+  position: absolute;
+  left: 0;
 }
 
-.imageEnterDown {
-  animation: slideInDown 0.5s forwards;
+.container__slider__links {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container__slider__links_small {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+  outline: none;
+  border: 0;
+  background-color: white;
+  border: 1px solid grey;
+  transition: background-color 1s ease;
+  margin: 0 2px;
+}
+
+.container__slider__links_small_active {
+  background-color: black;
+}
+
+/* Adicione ao seu CSS */
+.slider__item {
+  box-sizing: border-box;
+  min-width: 50%; /* Mudança de 100% para 50% */
+  height: auto;
+  overflow: hidden;
+  object-fit: cover;
+  transform: translateX(0);
+  transition: transform 1s ease;
+}
+
+.slider__item_active_1 {
+  transform: translateX(0);
+    background-color: white;
+}
+
+.slider__item_active_2 {
+  transform: translateX(-100%);
+}
+
+.slider__item_active_3 {
+  transform: translateX(-200%);
+}
+
+.slider__item_active_4 {
+  transform: translateX(-300%);
+}
+
+.slider__item_active_5 {
+  transform: translateX(-400%);
+}
+
+.slider__item_active_6 {
+  transform: translateX(-500%);
+}
+
+.slider__item_active_7 {
+  transform: translateX(-600%);
+}
+
+.slider__item img {
+  width: 100%;
+  height: auto;
+
 }

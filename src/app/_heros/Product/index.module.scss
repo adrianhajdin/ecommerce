@@ -2,12 +2,11 @@
 
 .productHero {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1.8fr 1fr;
   gap: 20px;
   width: 100%;
-  background-color: #d3cfc4; /* Cor de fundo */
-  min-height: 800px; /* Aumentado para refletir a mudança */
-
+  background-color: white; /* Cor de fundo */
+  min-height: 650px; /* Aumentado para refletir a mudança */
   @include small-break {
     grid-template-columns: 1fr;
   }
@@ -16,10 +15,10 @@
 .mediaWrapper {
   position: relative;
   min-height: 400px;
-  background-color: var(--color-dark-50);
+  background-color: rgba(252, 252, 252);
   padding: 20px;
   margin: 10px;
-
+  width: 100%;
   @include small-break {
     
   }

@@ -29,6 +29,21 @@ const Products: CollectionConfig = {
       required: true,
     },
     {
+      name: 'new',
+      label: 'New In',
+      type: 'checkbox',
+    },
+    {
+      name: 'sale',
+      label: 'Sale',
+      type: 'checkbox',
+    },
+    {
+      name: 'hot',
+      label: 'Em Alta',
+      type: 'checkbox',
+    },
+    {
       name: 'categories',
       label: 'Categorias',
       type: 'relationship',
@@ -89,7 +104,9 @@ const Products: CollectionConfig = {
       type: 'number',
       admin: {
         step: 1.0,
+        condition: (_, siblingData) => siblingData?.sale === true,
       },
+      required: true,
     },
     {
       name: 'photos',
@@ -128,21 +145,6 @@ const Products: CollectionConfig = {
           },
         }
       },
-    },
-    {
-      name: 'new',
-      label: 'New In',
-      type: 'checkbox',
-    },
-    {
-      name: 'sale',
-      label: 'Sale',
-      type: 'checkbox',
-    },
-    {
-      name: 'hot',
-      label: 'Em Alta',
-      type: 'checkbox',
     },
     slugField(),
   ],

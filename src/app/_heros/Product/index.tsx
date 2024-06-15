@@ -84,19 +84,19 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
         <ColorSelectButton colors={colors} onColorSelect={handleColorSelection} />
 
         <div className={classes.descriptionTitle}>
-          <p>Composição</p>
-        </div>
-
-        <div className={classes.description}>
-          <p>{description}</p>
-        </div>
-
-        <div className={classes.descriptionTitle}>
           <p>Descrição</p>
         </div>
 
         <div className={classes.description}>
           <p>{composition}</p>
+        </div>
+
+        <div className={classes.descriptionTitle}>
+          <p>Composição</p>
+        </div>
+
+        <div className={classes.description}>
+          <p>{description}</p>
         </div>
 
         <SizePicker sizes={orderSizes(sizes)} onSizeSelect={handleSizeSelection} />

@@ -1,23 +1,15 @@
 @use '../../_css/queries.scss' as *;
 
 .header {
-  padding: 15px;
+  padding: 20px;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
 
-  @include large-break {
-    padding: var(--medium-base) 0;
-  }
-
-  @include mid-break {
-    padding: var(--medium-base) 0;
-  }
-
   @include small-break {
-    padding: var(--small-base) 0;
+    padding: 15px;
     flex-direction: row;
     align-items: center;
   }
@@ -30,14 +22,14 @@
 .logo {
   max-height: 100%;
   margin-left: 15px;
-  width: 300px;
+  width: 200px;
 
   @include large-break {
-    width: 300px;
+    width: 200px;
   }
 
   @include mid-break {
-    width: 190px;
+    width: 150px;
   }
 
   @include small-break {
@@ -101,7 +93,7 @@
   width: 1.87px;
   background-color: rgba(0, 0, 0, 0.842);
   position: absolute;
-  left: calc(375px);
+  left: calc(270px);
   margin-top: 5px;
   box-shadow: 0px 0px 4px gray;
 

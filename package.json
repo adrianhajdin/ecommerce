@@ -50,7 +50,9 @@
     "react-input-mask": "2.0.4",
     "react-router-dom": "5.3.4",
     "stripe": "^10.2.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "react-slick": "0.30.2",
+    "slick-carousel": "1.8.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.1.6",

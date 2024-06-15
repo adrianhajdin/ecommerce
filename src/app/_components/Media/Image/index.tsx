@@ -1,83 +1,98 @@
 'use client'
-import React, { useState } from 'react'
-import NextImage from 'next/image'
 
-import cssVariables from '../../../cssVariables'
-import { Props as MediaProps } from '../types'
-
+import React, { useState, useEffect } from "react";
 import classes from './index.module.scss'
 
-const { breakpoints } = cssVariables
+export const Image = ({ resources }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [slideDone, setSlideDone] = useState(true);
+  const [timeID, setTimeID] = useState(null);
 
-export const Image: React.FC<MediaProps> = props => {
-  const { imgClassName, onClick, onLoad: onLoadFromProps, resources, priority, fill } = props
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [lastImageIndex, setLastImageIndex] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
-
-  const handleLoad = () => {
-    setIsLoading(false)
-    if (typeof onLoadFromProps === 'function') {
-      onLoadFromProps()
+  useEffect(() => {
+    if (slideDone) {
+      setSlideDone(false);
+      setTimeID(
+        setTimeout(() => {
+          slideNext();
+          setSlideDone(true);
+        }, 5000)
+      );
     }
-  }
+  }, [slideDone]);
 
-  const handleImageChange = index => {
-    setLastImageIndex(currentImageIndex)
-    setCurrentImageIndex(index)
-    setIsLoading(true)
-  }
+  const slideNext = () => {
+    setActiveIndex((val) => (val >= resources.length - 2 ? 0 : val + 1));
+  };
 
-  const imageAnimationClass =
-    currentImageIndex > lastImageIndex ? classes.imageEnterUp : classes.imageEnterDown
+  const slidePrev = () => {
+    setActiveIndex((val) => (val <= 0 ? resources.length - 2 : val - 1));
+  };
 
-  const sizes = Object.entries(breakpoints)
-    .map(([, value]) => `(max-width: ${value}px) ${value}px`)
-    .join(', ')
+  const AutoPlayStop = () => {
+    if (timeID) {
+      clearTimeout(timeID);
+      setSlideDone(false);
+    }
+  };
 
-  const imageResource = resources && resources[currentImageIndex]
-  const { mimeType, filename, width, height, alt } = imageResource || {}
-
-  const src = filename ? `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${filename}` : ''
+  const AutoPlayStart = () => {
+    if (!slideDone) {
+      setSlideDone(true);
+    }
+  };
 
   return (
-    <div>
-      <NextImage
-        className={[
-          isLoading && classes.placeholder,
-          classes.image,
-          imgClassName,
-          imageAnimationClass,
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        src={src}
-        alt={alt || ''}
-        onClick={onClick}
-        onLoad={handleLoad}
-        fill={fill}
-        width={!fill ? width : undefined}
-        height={!fill ? height : undefined}
-        sizes={sizes}
-        priority={priority}
-      />
-      <div className={classes.imageSelectorOverlay}>
-        {resources &&
-          resources.length > 1 &&
-          resources.map((item, index) => (
-            <button
-              key={index}
-              onClick={() => handleImageChange(index)}
-              disabled={index === currentImageIndex}
-            >
-              <img
-                src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${item.filename}`}
-                alt={`Preview ${index + 1}`}
-              />
-            </button>
-          ))}
+    <div
+      className={classes.container__slider}
+      onMouseEnter={AutoPlayStop}
+      onMouseLeave={AutoPlayStart}
+    >
+      {resources.map((item, index) => (
+        <div
+          className={`${classes.slider__item} ${
+            classes[`slider__item_active_${(activeIndex % resources.length) + 1}`]
+          }`}
+          key={index}
+        >
+          <img key={index} src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${item.filename}`} alt={item.alt} />
+        </div>
+      ))}
+
+      <div className={classes.container__slider__links}>
+        {resources.slice(0, -1).map((_, index) => (
+          <button
+            key={index}
+            className={
+              activeIndex === index
+                ? `${classes.container__slider__links_small} ${classes.container__slider__links_small_active}`
+                : classes.container__slider__links_small
+            }
+            onClick={(e) => {
+              e.preventDefault();
+              setActiveIndex(index);
+            }}
+          ></button>
+        ))}
       </div>
+
+      <button
+        className={classes.slider__btn_next}
+        onClick={(e) => {
+          e.preventDefault();
+          slideNext();
+        }}
+      >
+        {">"}
+      </button>
+      <button
+        className={classes.slider__btn_prev}
+        onClick={(e) => {
+          e.preventDefault();
+          slidePrev();
+        }}
+      >
+        {"<"}
+      </button>
     </div>
-  )
-}
+  );
+};
