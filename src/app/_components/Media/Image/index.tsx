@@ -1,45 +1,46 @@
 'use client'
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react'
+
 import classes from './index.module.scss'
 
 export const Image = ({ resources }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [slideDone, setSlideDone] = useState(true);
-  const [timeID, setTimeID] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [slideDone, setSlideDone] = useState(true)
+  const [timeID, setTimeID] = useState(null)
 
   useEffect(() => {
     if (slideDone) {
-      setSlideDone(false);
+      setSlideDone(false)
       setTimeID(
         setTimeout(() => {
-          slideNext();
-          setSlideDone(true);
-        }, 5000)
-      );
+          slideNext()
+          setSlideDone(true)
+        }, 5000),
+      )
     }
-  }, [slideDone]);
+  }, [slideDone])
 
   const slideNext = () => {
-    setActiveIndex((val) => (val >= resources.length - 2 ? 0 : val + 1));
-  };
+    setActiveIndex(val => (val >= resources.length - 2 ? 0 : val + 1))
+  }
 
   const slidePrev = () => {
-    setActiveIndex((val) => (val <= 0 ? resources.length - 2 : val - 1));
-  };
+    setActiveIndex(val => (val <= 0 ? resources.length - 2 : val - 1))
+  }
 
   const AutoPlayStop = () => {
     if (timeID) {
-      clearTimeout(timeID);
-      setSlideDone(false);
+      clearTimeout(timeID)
+      setSlideDone(false)
     }
-  };
+  }
 
   const AutoPlayStart = () => {
     if (!slideDone) {
-      setSlideDone(true);
+      setSlideDone(true)
     }
-  };
+  }
 
   return (
     <div
@@ -54,7 +55,11 @@ export const Image = ({ resources }) => {
           }`}
           key={index}
         >
-          <img key={index} src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${item.filename}`} alt={item.alt} />
+          <img
+            key={index}
+            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${item.filename}`}
+            alt={item.alt}
+          />
         </div>
       ))}
 
@@ -67,9 +72,9 @@ export const Image = ({ resources }) => {
                 ? `${classes.container__slider__links_small} ${classes.container__slider__links_small_active}`
                 : classes.container__slider__links_small
             }
-            onClick={(e) => {
-              e.preventDefault();
-              setActiveIndex(index);
+            onClick={e => {
+              e.preventDefault()
+              setActiveIndex(index)
             }}
           ></button>
         ))}
@@ -77,22 +82,22 @@ export const Image = ({ resources }) => {
 
       <button
         className={classes.slider__btn_next}
-        onClick={(e) => {
-          e.preventDefault();
-          slideNext();
+        onClick={e => {
+          e.preventDefault()
+          slideNext()
         }}
       >
-        {">"}
+        {'>'}
       </button>
       <button
         className={classes.slider__btn_prev}
-        onClick={(e) => {
-          e.preventDefault();
-          slidePrev();
+        onClick={e => {
+          e.preventDefault()
+          slidePrev()
         }}
       >
-        {"<"}
+        {'<'}
       </button>
     </div>
-  );
-};
+  )
+}
