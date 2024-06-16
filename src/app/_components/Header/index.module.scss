@@ -1,7 +1,8 @@
 @use '../../_css/queries.scss' as *;
 
 .header {
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: white;
   display: flex;
   align-items: center;
@@ -21,7 +22,6 @@
 
 .logo {
   max-height: 100%;
-  margin-left: 15px;
   width: 200px;
 
   @include large-break {

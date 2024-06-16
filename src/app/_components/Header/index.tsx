@@ -1,16 +1,16 @@
 {
   /* eslint-disable @next/next/no-img-element */
 }
-import React from 'react'
-import Link from 'next/link'
 
-import { fetchDocs } from '../../_api/fetchDocs'
-import { fetchHeader } from '../../_api/fetchGlobals'
+import { Gutter } from '../../_components/Gutter'
 import HamburgerMenu from './HamburgerComponent'
 import { HeaderComponent } from './HeaderComponent'
 import { HeaderNav } from './Nav'
-
+import Link from 'next/link'
+import React from 'react'
 import classes from './index.module.scss'
+import { fetchDocs } from '../../_api/fetchDocs'
+import { fetchHeader } from '../../_api/fetchGlobals'
 
 export async function Header() {
   let header = null
@@ -29,6 +29,7 @@ export async function Header() {
   }
 
   return (
+    <Gutter >
     <header className={classes.header}>
       <Link href="/">
         <img className={classes.logo} alt="Minimo 1" src="/minimo_1_small.jpeg" />
@@ -40,5 +41,6 @@ export async function Header() {
       </div>
       <HamburgerMenu categories={categories} />
     </header>
+    </Gutter>
   )
 }
