@@ -3,11 +3,12 @@
 .filterMenu {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   background-color: #fff;
-  padding: 1px 1px;
+  padding: 25px 0px;
   flex-wrap: wrap;
   font-size: 15px;
+  border-bottom: 1px solid rgb(236, 236, 236); /* Adiciona uma borda sólida na parte inferior */
 }
 
 .filterDropdown {
@@ -20,6 +21,7 @@
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.3s ease; /* Adiciona transição suave */
+  display: none;
 }
 
 @media (max-width: 1000px) { /* Ajuste a largura conforme necessário */
@@ -143,14 +145,14 @@
   flex-direction: column;
   background-color: white;
   position: fixed;
-  top: 0;
+  top: 50%;
   left: 0;
-  width: 80%;
+  width: 100%;
   height: 100%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
 }
 
 .navMenu.open {
@@ -160,7 +162,7 @@
   position: fixed;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  transform: translateX(0%);
+  transform: translateY(0%);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -218,22 +220,23 @@
 
 
 .mobileFilterButton {
-  background-color: black; /* Cor de fundo do botão */
-  color: white; /* Cor do texto */
-  padding: 10px 20px; /* Espaçamento interno do botão */
+  background-color: rgb(255, 255, 255); /* Cor de fundo do botão */
+  color: black; /* Cor do texto */
+  padding: 5px 15px; /* Espaçamento interno do botão */
   border: none; /* Remover bordas */
   border-radius: 1px; /* Bordas arredondadas */
   text-align: center; /* Centralizar texto */
   text-decoration: none; /* Remover sublinhado do texto */
   display: inline-block; /* Permitir que o botão seja exibido inline */
-  font-size: 16px; /* Tamanho da fonte */
+  font-size: 14px; /* Tamanho da fonte */
   cursor: pointer; /* Cursor de mão ao passar sobre o botão */
   transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
-  display: none;
-  @include mid-break {
-    display: inline-block;
-  }
+  margin-left: 15px;
+  border: 1px solid rgb(236, 236, 236); /* Adicionando borda preta fina */
+
 }
+
+
 
 .filterButton:hover {
   background-color: #333; /* Cor de fundo ao passar o mouse */

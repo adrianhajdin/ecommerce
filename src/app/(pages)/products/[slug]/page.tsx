@@ -19,6 +19,7 @@ import { PaywallBlocks } from '../../../_components/PaywallBlocks'
 import { ProductHero } from '../../../_heros/Product'
 import { generateMeta } from '../../../_utilities/generateMeta'
 import Filters from '.././Filters'
+import { Hero } from '../../../_components/Hero'
 
 import classes from '../index.module.scss'
 
@@ -47,7 +48,6 @@ export default async function Product({ params: { slug } }) {
     return category
   }
 
-  // Testando a função
   const category = findCategoryIdBySlug(categories, slug)
 
   if (category) {
@@ -63,12 +63,16 @@ export default async function Product({ params: { slug } }) {
       console.log(error)
     }
 
+    const { hero } = page
+
     return (
       <div className={classes.container}>
-        <Gutter className={classes.products}>
-          <div className={classes.filters}>
+         <Hero {...hero} />
+         <div className={classes.filters}>
             <Filters categories={categories} colors={colors} preselectedCategory={category} />
           </div>
+        <Gutter className={classes.products}>
+
           <div className={classes.productList}>
             <div className={classes.productView}>
               <Blocks blocks={page?.layout} disableTopPadding={true} />

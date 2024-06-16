@@ -61,7 +61,7 @@ export const HeaderComponent = ({ categories }) => {
   return (
     <div className={classes.headerButtons}>
       {/* New in */}
-      <span className={classes.buttonLink} onClick={() => handleNavigation('/new')}>
+      <span className={classes.buttonLink} onClick={() => handleNavigation('/new-in')}>
         New in
       </span>
 

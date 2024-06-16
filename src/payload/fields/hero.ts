@@ -35,17 +35,10 @@ export const hero: Field = {
       ],
     },
     {
-      name: 'medias',
-      label: 'Imagens',
-      type: 'array',
-      fields: [
-        {
-          name: 'media',
-          label: 'Media',
-          type: 'upload',
-          relationTo: 'media',
-        },
-      ],
+      name: 'media',
+      label: 'Media',
+      type: 'upload',
+      relationTo: 'media',
       admin: {
         condition: (_, { type } = {}) => !['highImpact'].includes(type),
       },

@@ -10,6 +10,7 @@ import { Blocks } from '../../_components/Blocks'
 import { Gutter } from '../../_components/Gutter'
 import { Hero } from '../../_components/Hero'
 import { generateMeta } from '../../_utilities/generateMeta'
+import Filters from '../products/Filters'
 
 // Payload Cloud caches all files through Cloudflare, so we don't need Next.js to cache them as well
 // This means that we can turn off Next.js data caching and instead rely solely on the Cloudflare CDN
@@ -70,15 +71,15 @@ export default async function Page({ params: { slug = 'home' } }) {
       {slug === 'home' ? (
         <section>
           <Hero {...hero} />
-          <Gutter className={classes.home}>
-            {/* <Categories categories={categories} /> */}
-            {/* <Promotion /> */}
-          </Gutter>
         </section>
       ) : (
         <>
           <Hero {...hero} />
+          <div className={classes.filters}>
+            <Filters categories={categories} colors={categories} preselectedCategory={categories} />
+          </div>
           <Gutter>
+
           <Blocks
             blocks={layout}
             disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}

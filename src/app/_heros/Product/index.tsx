@@ -41,10 +41,6 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
 
   const metaImage = photos.map(item => item.photo)
 
-  const priceValue = price.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL', // TODO: use `parsed.currency`
-  })
 
   const [selectedColor, setSelectedColor] = useState<Color>(colors[0] as Color)
   const [selectedSize, setSelectedSize] = useState(sizes[0])

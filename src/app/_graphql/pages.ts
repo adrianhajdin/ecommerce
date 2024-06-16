@@ -25,13 +25,17 @@ export const PAGE = `
         }
         hero {
           type
-          medias {
-            media{
+          media{
+              ${MEDIA_FIELDS}
+            }
+          ${MEDIA}
+                    carrossel{
+            medias {
+            media {
               ${MEDIA_FIELDS}
             }
           }
-  
-          ${MEDIA}
+          }
         }
       }
     }
@@ -59,11 +63,9 @@ export const EDITABLE_PAGE = `
         }
         hero {
           type
-          medias {
-            media {
+          media {
               ${MEDIA_FIELDS}
             }
-          }
           carrossel{
             medias {
             media {

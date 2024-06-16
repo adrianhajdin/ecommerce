@@ -41,12 +41,7 @@ export interface Page {
   publishedOn?: string | null;
   hero: {
     type: 'none' | 'highImpact' | 'lowImpact';
-    medias?:
-      | {
-          media?: string | Media | null;
-          id?: string | null;
-        }[]
-      | null;
+    media?: string | Media | null;
     carrossel?:
       | {
           medias?:
@@ -58,7 +53,6 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: string | Media | null;
   };
   layout: (
     | {
@@ -222,12 +216,7 @@ export interface Editablepage {
   publishedOn?: string | null;
   hero: {
     type: 'none' | 'highImpact' | 'lowImpact';
-    medias?:
-      | {
-          media?: string | Media | null;
-          id?: string | null;
-        }[]
-      | null;
+    media?: string | Media | null;
     carrossel?:
       | {
           medias?:
@@ -239,7 +228,6 @@ export interface Editablepage {
           id?: string | null;
         }[]
       | null;
-    media?: string | Media | null;
   };
   layout?:
     | {

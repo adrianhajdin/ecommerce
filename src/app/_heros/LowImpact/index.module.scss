@@ -1,4 +1,18 @@
 @use '../../_css/type.scss' as *;
 
-.lowImpactHero {
-}
+.content {
+    padding: 0 !important;
+    width: 100vw; // Largura de 100% da viewport
+    overflow: hidden; // Impede que qualquer conteúdo excedente interfira visualmente
+    padding-bottom: 5px !important;
+    border-bottom: 1px solid rgb(236, 236, 236); /* Adiciona uma borda sólida na parte inferior */
+
+  
+    img, video {
+      width: 100%;
+      height: auto;
+      object-fit: cover; // Faz a mídia cobrir o elemento, podendo cortar parte do conteúdo
+      position: relative;
+      display: block;
+    }
+  }

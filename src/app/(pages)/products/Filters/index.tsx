@@ -122,7 +122,10 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
   return (
     <div className={classes.filterMenu}>
       <button className={classes.mobileFilterButton} onClick={toggleMobileMenu}>
-        Filtrar
+        Filtros ▾
+      </button>
+      <button className={classes.mobileFilterButton} onClick={toggleMobileMenu}>
+        Ordenar ▾
       </button>
 
       <nav className={`${classes.navMenu} ${isMobileMenuOpen ? classes.open : ''}`}>
@@ -262,7 +265,7 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
           ))}
         </ul>
       </div>
-      <div className={classes.sortContainer}>
+      {/* <div className={classes.sortContainer}>
         <label htmlFor="sortDropdown" className={classes.sortLabel}>
           Classificar por:
         </label>
@@ -282,8 +285,10 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
             </ul>
           )}
         </div>
-      </div>
+      </div> */}
+
     </div>
+
   )
 }
 
