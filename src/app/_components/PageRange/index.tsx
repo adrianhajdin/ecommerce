@@ -47,7 +47,7 @@ export const PageRange: React.FC<{
         'Nenhum resultado encontrado na busca.'}
       {typeof totalDocs !== 'undefined' &&
         totalDocs > 0 &&
-        `Exibindo ${indexStart} - ${indexEnd} de ${totalDocs} ${totalDocs > 1 ? plural : singular}`}
+        `${indexStart} - ${indexEnd} de ${totalDocs} produtos`}
     </div>
   )
 }

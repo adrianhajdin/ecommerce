@@ -6,10 +6,49 @@
   justify-content: center;
   background-color: #fff;
   padding: 25px 0px;
-  flex-wrap: wrap;
   font-size: 15px;
+
+}
+
+.filterMenuButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.hbar {
   border-bottom: 1px solid rgb(236, 236, 236); /* Adiciona uma borda sólida na parte inferior */
 }
+
+.home {
+  margin-right: 8px;
+  color: gray;
+}
+
+.newIn {
+  margin: 0px 8px;
+  color: black;
+}
+
+.pageRangeContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 10px;
+  font-size: 13px;
+  color: rgb(117, 117, 117)
+}
+
+.pagePathContainer {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding-left: 10px;
+
+}
+
 
 .filterDropdown {
   position: relative;
@@ -233,6 +272,7 @@
   transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
   margin-left: 15px;
   border: 1px solid rgb(236, 236, 236); /* Adicionando borda preta fina */
+
 
 }
 
