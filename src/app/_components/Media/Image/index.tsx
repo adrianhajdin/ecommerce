@@ -9,17 +9,17 @@ export const Image = ({ resources }) => {
   const [slideDone, setSlideDone] = useState(true)
   const [timeID, setTimeID] = useState(null)
 
-  useEffect(() => {
-    if (slideDone) {
-      setSlideDone(false)
-      setTimeID(
-        setTimeout(() => {
-          slideNext()
-          setSlideDone(true)
-        }, 5000),
-      )
-    }
-  }, [slideDone])
+  // useEffect(() => {
+  //   if (slideDone) {
+  //     setSlideDone(false)
+  //     setTimeID(
+  //       setTimeout(() => {
+  //         slideNext()
+  //         setSlideDone(true)
+  //       }, 5000),
+  //     )
+  //   }
+  // }, [slideDone])
 
   const slideNext = () => {
     setActiveIndex(val => (val >= resources.length - 2 ? 0 : val + 1))
@@ -62,7 +62,7 @@ export const Image = ({ resources }) => {
           />
         </div>
       ))}
-
+{/* 
       <div className={classes.container__slider__links}>
         {resources.slice(0, -1).map((_, index) => (
           <button
@@ -78,7 +78,7 @@ export const Image = ({ resources }) => {
             }}
           ></button>
         ))}
-      </div>
+      </div> */}
 
       <button
         className={classes.slider__btn_next}
