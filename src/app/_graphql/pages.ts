@@ -26,10 +26,6 @@ export const PAGE = `
         }
         hero {
           type
-          richText
-          links {
-            link ${LINK_FIELDS()}
-          }
           medias {
             media{
               ${MEDIA_FIELDS}
