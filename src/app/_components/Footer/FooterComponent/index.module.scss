@@ -4,20 +4,22 @@
   padding: 30px 0;
   background-color: var(--theme-elevation-1000);
   color: var(--theme-elevation-0);
-  text-align: center; // Adicione esta linha para centralizar o texto no footer
+  text-align: center; // Centraliza o texto no footer
+  width: 100%; // Garante que o footer ocupe 100% da largura
   @include small-break {
     padding: calc(var(--base) * 2) 0;
   }
 }
 
-
 .inclusions {
   display: grid;
-  justify-content: center;
+  justify-content: center; // Centraliza o conteúdo no grid
+  text-align: center; // Centraliza o texto
   gap: 30px;
   padding: 0;
   grid-template-columns: repeat(4, 1fr);
   margin: 100px 0;
+  width: 100%; // Garante que o container ocupe 100% da largura
 
   @include large-break {
     grid-template-columns: repeat(2, 1fr);
@@ -36,45 +38,50 @@
   margin-bottom: 16px;
 }
 
-
 :global([data-theme='dark']) {
   .footer {
     background-color: var(--theme-elevation-50);
     color: var(--theme-elevation-1000);
-    text-align: center; // Adicione esta linha para centralizar o texto no footer no tema escuro
+    text-align: center; // Centraliza o texto no footer no tema escuro
+    width: 100%; // Garante que o footer ocupe 100% da largura no tema escuro
   }
 }
 
 .wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; // Centraliza o conteúdo no flex container
   align-items: center;
   flex-wrap: wrap;
   gap: calc(var(--base) / 2) var(--base);
+  width: 100%; // Garante que o container ocupe 100% da largura
 
   @include small-break {
     margin-top: 30px;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
   }
 }
 
 .logo {
   width: 170px;
+  margin: 0 auto; // Centraliza o logo
 }
 
 .hr {
   border-color: var(--color-white-500-20);
+  width: 100%; // Garante que o hr ocupe 100% da largura
 }
 
 .socialLinks {
   display: flex;
+  justify-content: center; // Centraliza os links sociais
   gap: 20px;
+  width: 100%; // Garante que o container ocupe 100% da largura
 }
 
 .socialLinkItem {
   width: 100%;
+  text-align: center; // Centraliza o texto dos itens sociais
 }
 
 .socialIcon {
@@ -85,4 +92,3 @@
 .hide {
   display: none;
 }
-
