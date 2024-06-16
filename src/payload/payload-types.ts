@@ -41,31 +41,20 @@ export interface Page {
   publishedOn?: string | null;
   hero: {
     type: 'none' | 'highImpact' | 'lowImpact';
-    richText?:
-      | {
-          [k: string]: unknown;
-        }[]
-      | null;
-    links?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?: {
-              relationTo: 'pages';
-              value: string | Page;
-            } | null;
-            url?: string | null;
-            label: string;
-            icon?: string | Media | null;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
-          };
-          id?: string | null;
-        }[]
-      | null;
     medias?:
       | {
           media?: string | Media | null;
+          id?: string | null;
+        }[]
+      | null;
+    carrossel?:
+      | {
+          medias?:
+            | {
+                media?: string | Media | null;
+                id?: string | null;
+              }[]
+            | null;
           id?: string | null;
         }[]
       | null;
@@ -197,6 +186,9 @@ export interface Category {
 export interface Product {
   id: string;
   title: string;
+  new?: boolean | null;
+  sale?: boolean | null;
+  hot?: boolean | null;
   categories?: (string | Category)[] | null;
   colors?: (string | Color)[] | null;
   sizes?: ('GG' | 'G' | 'M' | 'P' | 'PP')[] | null;
@@ -212,9 +204,6 @@ export interface Product {
     | null;
   publishedOn?: string | null;
   relatedProducts?: (string | Product)[] | null;
-  new?: boolean | null;
-  sale?: boolean | null;
-  hot?: boolean | null;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -233,31 +222,20 @@ export interface Editablepage {
   publishedOn?: string | null;
   hero: {
     type: 'none' | 'highImpact' | 'lowImpact';
-    richText?:
-      | {
-          [k: string]: unknown;
-        }[]
-      | null;
-    links?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?: {
-              relationTo: 'pages';
-              value: string | Page;
-            } | null;
-            url?: string | null;
-            label: string;
-            icon?: string | Media | null;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
-          };
-          id?: string | null;
-        }[]
-      | null;
     medias?:
       | {
           media?: string | Media | null;
+          id?: string | null;
+        }[]
+      | null;
+    carrossel?:
+      | {
+          medias?:
+            | {
+                media?: string | Media | null;
+                id?: string | null;
+              }[]
+            | null;
           id?: string | null;
         }[]
       | null;

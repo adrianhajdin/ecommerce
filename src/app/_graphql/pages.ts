@@ -64,14 +64,17 @@ export const EDITABLE_PAGE = `
         }
         hero {
           type
-          richText
-          links {
-            link ${LINK_FIELDS()}
-          }
           medias {
             media {
               ${MEDIA_FIELDS}
             }
+          }
+          carrossel{
+            medias {
+            media {
+              ${MEDIA_FIELDS}
+            }
+          }
           }
   
           ${MEDIA}

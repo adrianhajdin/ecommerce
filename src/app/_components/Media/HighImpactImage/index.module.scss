@@ -1,6 +1,5 @@
 .highImpactImageContainer {
   display: grid; /* Alinha as imagens lado a lado por padrão */
-  grid-template-columns: repeat(3, minmax(20%, 1fr));
   align-items: center; /* Centraliza as imagens verticalmente */
   justify-content: center; /* Centraliza as imagens horizontalmente na viewport */
   gap: 1px; /* Adiciona espaço entre as imagens */
@@ -13,4 +12,12 @@
     overflow-x: hidden; /* Remove a rolagem horizontal em dispositivos móveis */
     overflow-y: auto; /* Adiciona rolagem vertical se necessário */
   }
+}
+
+.image {
+  flex: 1 0 auto; /* Faz com que as imagens tenham tamanhos proporcionais e ocupem a mesma largura */
+  object-fit: cover; /* Garante que a imagem ocupe todo o espaço do contêiner sem distorção */
+  height: 100%!important;
+  width: 100%!important;
+  padding: 2px;
 }
