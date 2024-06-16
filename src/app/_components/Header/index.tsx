@@ -2,15 +2,17 @@
   /* eslint-disable @next/next/no-img-element */
 }
 
+import React from 'react'
+import Link from 'next/link'
+
+import { fetchDocs } from '../../_api/fetchDocs'
+import { fetchHeader } from '../../_api/fetchGlobals'
 import { Gutter } from '../../_components/Gutter'
 import HamburgerMenu from './HamburgerComponent'
 import { HeaderComponent } from './HeaderComponent'
 import { HeaderNav } from './Nav'
-import Link from 'next/link'
-import React from 'react'
+
 import classes from './index.module.scss'
-import { fetchDocs } from '../../_api/fetchDocs'
-import { fetchHeader } from '../../_api/fetchGlobals'
 
 export async function Header() {
   let header = null

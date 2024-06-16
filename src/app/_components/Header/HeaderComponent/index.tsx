@@ -1,6 +1,7 @@
 'use client'
 import React, { useRef, useState } from 'react'
 import Image from 'next/image'
+
 import classes from './index.module.scss'
 
 const handleNavigation = url => {
