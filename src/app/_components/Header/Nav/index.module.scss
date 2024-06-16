@@ -2,7 +2,7 @@
 
 .nav {
   display: flex;
-  gap: calc(var(--base) / 4) calc(var(--base) / 4); // Reduzir o gap entre os ícones
+  gap: 15px; // Reduzir o gap entre os ícones
   align-items: center;
   flex-wrap: wrap;
   opacity: 1;
@@ -63,8 +63,8 @@
 }
 
 .socialIcon {
-  max-width: 35px;
-  max-height: 35px;
+  max-width: 25px;
+  max-height: 25px;
 
   @include large-break {
     max-width: 35px;
@@ -94,8 +94,8 @@
   gap: 6px; // Reduzir o gap entre os ícones do carrinho
 
   .icon {
-    max-width: 35px;
-    max-height: 45px;
+    max-width: 25px;
+    max-height: 25px;
 
     @include large-break {
       max-width: 35px;
