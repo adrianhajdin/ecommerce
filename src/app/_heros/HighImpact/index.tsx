@@ -5,12 +5,11 @@ import { Page } from '../../../payload/payload-types'
 import { Gutter } from '../../_components/Gutter'
 import { CMSLink } from '../../_components/Link'
 import { HighImpactMedia, Media } from '../../_components/Media'
-import RichText from '../../_components/RichText'
 import SplashScreen from '../../_components/SplashScreen/SplashScreen'
 
 import classes from './index.module.scss'
 
-export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links, media }) => {
+export const HighImpactHero: React.FC<Page['hero']> = ({ carrossel, media }) => {
   const [showSplashScreen, setShowSplashScreen] = useState(false)
 
   useEffect(() => {
@@ -26,38 +25,22 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ richText, medias, links
     }
   }, [])
 
-  const metaImage = medias.map(item => item.media)
+  const metaImage = carrossel.map(group => group.medias.map(subItem => subItem.media))
+
+  console.log(metaImage)
 
   return (
     <>
       {showSplashScreen && media && <SplashScreen videoPath={media.filename} />}{' '}
       {/* Adicionando o SplashScreen */}
       {!showSplashScreen && (
-        <div className={classes.content}>
-          <RichText content={richText} />
-          {Array.isArray(links) && links.length > 0 && (
-            <ul className={classes.links}>
-              {links.map(({ link }, i) => {
-                return (
-                  <li key={i}>
-                    <CMSLink {...link} />
-                  </li>
-                )
-              })}
-            </ul>
-          )}
-        </div>
-      )}
-      {!showSplashScreen && (
         <div className={classes.media}>
-          {Array.isArray(metaImage) && metaImage.length > 0 && (
-            <Fragment>
-              <HighImpactMedia resources={metaImage} imgClassName={classes.image} priority />
-              {metaImage[0]?.caption && (
-                <RichText content={metaImage[0].caption} className={classes.caption} />
-              )}
-            </Fragment>
-          )}
+          {metaImage.length > 0 &&
+            metaImage.map((img, index) => (
+              <Fragment key={index}>
+                <HighImpactMedia resources={img} priority />
+              </Fragment>
+            ))}
         </div>
       )}
     </>

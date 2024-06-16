@@ -35,9 +35,14 @@
 .details {
   display: flex;
   flex-direction: column;
-  margin: 10px;
-  padding: 24px;
+  margin: 30px;
+  margin-left: 15%;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 60px;
+  padding-right: 60px;
   background-color: white; /* Cor de fundo */
+  border: 1px solid rgb(238, 238, 238); /* Cor de fundo */
 }
 
 .categoryWrapper {
@@ -89,11 +94,9 @@
 }
 
 .cartButton {
-  font-size: 30px; /* Aumenta o tamanho da fonte */
-  padding: 12px 24px; /* Aumenta o padding para fazer o botão maior */
-  margin: 0 auto; /* Centraliza o botão */
-  display: block; /* Torna o botão um bloco para permitir a centralização automática */
-  width: fit-content; /* Garante que a largura se ajuste ao conteúdo */
+  font-size: 30px; // Mantenha a fonte grande conforme seu design
+  width: 100%; // Faz o botão ocupar toda a largura do seu contêiner
+  display: block; // Mantenha como bloco para ocupar toda a largura
 }
 
 .strikethrough {

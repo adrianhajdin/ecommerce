@@ -1,10 +1,5 @@
 import type { Field } from 'payload/types'
 
-import linkGroup from './linkGroup'
-import richText from './richText'
-import label from './richText/label'
-import largeBody from './richText/largeBody'
-
 export const hero: Field = {
   name: 'hero',
   label: 'Layout',
@@ -39,18 +34,6 @@ export const hero: Field = {
         // },
       ],
     },
-    richText({
-      required: false,
-      admin: {
-        elements: ['h1', largeBody, label, 'link'],
-        leaves: [],
-      },
-    }),
-    linkGroup({
-      overrides: {
-        maxRows: 2,
-      },
-    }),
     {
       name: 'medias',
       label: 'Imagens',
@@ -63,6 +46,34 @@ export const hero: Field = {
           relationTo: 'media',
         },
       ],
+      admin: {
+        condition: (_, { type } = {}) => !['highImpact'].includes(type),
+      },
+    },
+    {
+      name: 'carrossel',
+      label: 'Carrosel',
+      type: 'array',
+      minRows: 1,
+      maxRows: 5,
+      fields: [
+        {
+          name: 'medias',
+          label: 'Imagens',
+          type: 'array',
+          fields: [
+            {
+              name: 'media',
+              label: 'Media',
+              type: 'upload',
+              relationTo: 'media',
+            },
+          ],
+        },
+      ],
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),
+      },
     },
     {
       name: 'media',

@@ -1,5 +1,4 @@
 import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK } from './blocks'
-import { LINK_FIELDS } from './link'
 import { MEDIA, MEDIA_FIELDS } from './media'
 export const PAGES = `
   query Pages {
@@ -26,10 +25,6 @@ export const PAGE = `
         }
         hero {
           type
-          richText
-          links {
-            link ${LINK_FIELDS()}
-          }
           medias {
             media{
               ${MEDIA_FIELDS}
@@ -64,14 +59,17 @@ export const EDITABLE_PAGE = `
         }
         hero {
           type
-          richText
-          links {
-            link ${LINK_FIELDS()}
-          }
           medias {
             media {
               ${MEDIA_FIELDS}
             }
+          }
+          carrossel{
+            medias {
+            media {
+              ${MEDIA_FIELDS}
+            }
+          }
           }
   
           ${MEDIA}
