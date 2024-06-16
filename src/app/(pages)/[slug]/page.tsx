@@ -79,11 +79,10 @@ export default async function Page({ params: { slug = 'home' } }) {
             <Filters categories={categories} colors={categories} preselectedCategory={categories} />
           </div>
           <Gutter>
-
-          <Blocks
-            blocks={layout}
-            disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
-          />
+            <Blocks
+              blocks={layout}
+              disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
+            />
           </Gutter>
         </>
       )}

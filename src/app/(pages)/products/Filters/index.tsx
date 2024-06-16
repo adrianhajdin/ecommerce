@@ -286,9 +286,7 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
           )}
         </div>
       </div> */}
-
     </div>
-
   )
 }
 

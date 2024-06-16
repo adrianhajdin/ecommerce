@@ -31,18 +31,18 @@ export async function Header() {
   }
 
   return (
-    <Gutter >
-    <header className={classes.header}>
-      <Link href="/">
-        <img className={classes.logo} alt="Minimo 1" src="/minimo_1_small.jpeg" />
-      </Link>
-      <div className={`${classes.hideOnMobile}`}></div>
-      <div className={classes.hideOnMobile}>
-        <HeaderComponent categories={categories} />
-        <HeaderNav header={header} />
-      </div>
-      <HamburgerMenu categories={categories} />
-    </header>
+    <Gutter>
+      <header className={classes.header}>
+        <Link href="/">
+          <img className={classes.logo} alt="Minimo 1" src="/minimo_1_small.jpeg" />
+        </Link>
+        <div className={`${classes.hideOnMobile}`}></div>
+        <div className={classes.hideOnMobile}>
+          <HeaderComponent categories={categories} />
+          <HeaderNav header={header} />
+        </div>
+        <HamburgerMenu categories={categories} />
+      </header>
     </Gutter>
   )
 }

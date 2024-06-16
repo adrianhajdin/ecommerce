@@ -41,7 +41,6 @@ export const ProductHero: React.FC<{ product: Product }> = ({ product }) => {
 
   const metaImage = photos.map(item => item.photo)
 
-
   const [selectedColor, setSelectedColor] = useState<Color>(colors[0] as Color)
   const [selectedSize, setSelectedSize] = useState(sizes[0])
 

@@ -14,12 +14,12 @@ import { fetchDoc } from '../../../_api/fetchDoc'
 import { fetchDocs } from '../../../_api/fetchDocs'
 import { Blocks } from '../../../_components/Blocks'
 import { Gutter } from '../../../_components/Gutter'
+import { Hero } from '../../../_components/Hero'
 import { HR } from '../../../_components/HR'
 import { PaywallBlocks } from '../../../_components/PaywallBlocks'
 import { ProductHero } from '../../../_heros/Product'
 import { generateMeta } from '../../../_utilities/generateMeta'
 import Filters from '.././Filters'
-import { Hero } from '../../../_components/Hero'
 
 import classes from '../index.module.scss'
 
@@ -67,12 +67,11 @@ export default async function Product({ params: { slug } }) {
 
     return (
       <div className={classes.container}>
-         <Hero {...hero} />
-         <div className={classes.filters}>
-            <Filters categories={categories} colors={colors} preselectedCategory={category} />
-          </div>
+        <Hero {...hero} />
+        <div className={classes.filters}>
+          <Filters categories={categories} colors={colors} preselectedCategory={category} />
+        </div>
         <Gutter className={classes.products}>
-
           <div className={classes.productList}>
             <div className={classes.productView}>
               <Blocks blocks={page?.layout} disableTopPadding={true} />
