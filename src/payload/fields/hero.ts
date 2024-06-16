@@ -1,10 +1,5 @@
 import type { Field } from 'payload/types'
 
-import linkGroup from './linkGroup'
-import richText from './richText'
-import label from './richText/label'
-import largeBody from './richText/largeBody'
-
 export const hero: Field = {
   name: 'hero',
   label: 'Layout',
@@ -54,7 +49,6 @@ export const hero: Field = {
       admin: {
         condition: (_, { type } = {}) => !['highImpact'].includes(type),
       },
-      
     },
     {
       name: 'carrossel',
@@ -74,13 +68,12 @@ export const hero: Field = {
               type: 'upload',
               relationTo: 'media',
             },
-          ]
-        }
+          ],
+        },
       ],
       admin: {
         condition: (_, { type } = {}) => ['highImpact'].includes(type),
       },
-      
     },
     {
       name: 'media',

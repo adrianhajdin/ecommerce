@@ -62,7 +62,7 @@ export const Image = ({ resources }) => {
           />
         </div>
       ))}
-{/* 
+      {/* 
       <div className={classes.container__slider__links}>
         {resources.slice(0, -1).map((_, index) => (
           <button

@@ -1,5 +1,4 @@
 import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK } from './blocks'
-import { LINK_FIELDS } from './link'
 import { MEDIA, MEDIA_FIELDS } from './media'
 export const PAGES = `
   query Pages {

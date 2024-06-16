@@ -23,7 +23,7 @@ export const HighImpactImage: React.FC<MediaProps> = props => {
   }
 
   // Calcula o número de colunas baseado no número de imagens
-  const gridColumns = resources ? `repeat(${resources.length}, 1fr)` : 'repeat(1, 1fr)';
+  const gridColumns = resources ? `repeat(${resources.length}, 1fr)` : 'repeat(1, 1fr)'
 
   const containerStyle = {
     display: 'grid',
@@ -31,8 +31,8 @@ export const HighImpactImage: React.FC<MediaProps> = props => {
     gap: '10px',
     width: '100%',
     padding: '0 10px',
-    margin: '0 auto'
-  };
+    margin: '0 auto',
+  }
   const sizes = Object.entries(breakpoints)
     .map(([, value]) => `(max-width: ${value}px) ${value}px`)
     .join(', ')
