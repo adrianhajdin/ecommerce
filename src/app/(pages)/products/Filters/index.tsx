@@ -1,12 +1,13 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 import { Gutter } from '../../../_components/Gutter'
-import Image from 'next/image'
 import { PageRange } from '../../../_components/PageRange'
-import classes from './index.module.scss'
 import { useFilter } from '../../../_providers/Filter'
+
+import classes from './index.module.scss'
 
 const getTitlesAndSubtitles = items => {
   const titles = new Set()
