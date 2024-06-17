@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, ReactNode, SetStateAction, useContext, useState } from 'react'
+import { ReactNode, SetStateAction, createContext, useContext, useState } from 'react'
 
 interface IContextType {
   categoryFilters: string[]
@@ -13,6 +13,8 @@ interface IContextType {
   setSizeFilters: React.Dispatch<SetStateAction<string[]>>
   sort: string
   setSort: React.Dispatch<SetStateAction<string>>
+  searchTerm: string // Adicionando o estado do termo de busca
+  setSearchTerm: React.Dispatch<SetStateAction<string>> // Adicionando a função para atualizar o termo de busca
 }
 
 export const INITIAL_FILTER_DATA = {
@@ -26,6 +28,8 @@ export const INITIAL_FILTER_DATA = {
   setSizeFilters: () => [],
   sort: '',
   setSort: () => '',
+  searchTerm: '', // Valor inicial para o termo de busca
+  setSearchTerm: () => {}, // Função inicial (placeholder)
 }
 
 const FilterContext = createContext<IContextType>(INITIAL_FILTER_DATA)
@@ -36,6 +40,7 @@ export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
   const [colorFilters, setColorFilters] = useState<string[]>([])
   const [sizeFilters, setSizeFilters] = useState<string[]>([])
   const [sort, setSort] = useState('-createdAt')
+  const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <FilterContext.Provider
@@ -50,6 +55,8 @@ export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
         setSizeFilters,
         sort,
         setSort,
+        searchTerm,
+        setSearchTerm,
       }}
     >
       {children}

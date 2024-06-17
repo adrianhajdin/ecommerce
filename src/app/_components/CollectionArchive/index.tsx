@@ -1,17 +1,16 @@
 'use client'
 'use client'
 
-import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
-import qs from 'qs'
-
 import { Category, Product } from '../../../payload/payload-types'
+import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
+
 import type { ArchiveBlockProps } from '../../_blocks/ArchiveBlock/types'
-import { useFilter } from '../../_providers/Filter'
 import { Card } from '../Card'
 import { PageRange } from '../PageRange'
 import { Pagination } from '../Pagination'
-
 import classes from './index.module.scss'
+import qs from 'qs'
+import { useFilter } from '../../_providers/Filter'
 
 type Result = {
   totalDocs: number
@@ -40,7 +39,8 @@ export type Props = {
 }
 
 export const CollectionArchive: React.FC<Props> = props => {
-  const { categoryFilters, subCategoryFilters, colorFilters, sizeFilters, sort } = useFilter()
+  const { categoryFilters, subCategoryFilters, colorFilters, sizeFilters, sort, searchTerm } =
+    useFilter()
 
   const {
     className,
@@ -139,6 +139,13 @@ export const CollectionArchive: React.FC<Props> = props => {
                 },
               }
             : {}),
+          ...(searchTerm.trim() !== ''
+            ? {
+                title: {
+                  like: `${searchTerm}`,
+                },
+              }
+            : {}),
         },
         limit,
         page,
@@ -146,7 +153,9 @@ export const CollectionArchive: React.FC<Props> = props => {
       },
       { encode: false },
     )
-
+    // Log the query to console
+    console.log("Query string being sent:", searchQuery)
+    
     const makeRequest = async () => {
       try {
         const req = await fetch(
@@ -190,6 +199,7 @@ export const CollectionArchive: React.FC<Props> = props => {
     newFilter,
     saleFilter,
     hotFilter,
+    searchTerm,
   ])
 
   return (

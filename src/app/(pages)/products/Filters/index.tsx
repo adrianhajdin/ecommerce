@@ -1,13 +1,12 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
 
 import { Gutter } from '../../../_components/Gutter'
+import Image from 'next/image'
 import { PageRange } from '../../../_components/PageRange'
-import { useFilter } from '../../../_providers/Filter'
-
 import classes from './index.module.scss'
+import { useFilter } from '../../../_providers/Filter'
 
 const getTitlesAndSubtitles = items => {
   const titles = new Set()
@@ -130,7 +129,7 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
 
   const handleSearchTermChange = e => {
     setSearchValue(e.target.value)
-    setSearchTerm(e.target.value)
+    setSearchTerm(e.target.value) // Atualiza o contexto global
   }
 
   const handleClearSearch = e => {
