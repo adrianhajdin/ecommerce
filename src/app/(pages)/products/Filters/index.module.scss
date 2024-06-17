@@ -297,3 +297,41 @@
   align-items: center; /* Alinha os itens verticalmente ao centro */
   margin-bottom: 10px; /* Espaçamento entre as opções */
 }
+.filterInputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  margin-top: 20px;
+  position: relative; /* Add this line */
+}
+
+.filterInputContainer input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  padding-left: 35px; /* Add padding to the left to make space for the search icon */
+}
+
+.filterInputContainer input::placeholder {
+  color: #ccc;
+}
+
+.searchIcon {
+  position: absolute; /* Position the search icon */
+  left: 10px; /* Adjust the position of the search icon */
+}
+
+.clearIcon {
+  position: absolute; /* Position the clear icon */
+  right: 10px; /* Adjust the position of the clear icon */
+  cursor: pointer; /* Add pointer cursor */
+}
