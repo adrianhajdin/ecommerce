@@ -1,12 +1,13 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 import { Gutter } from '../../../_components/Gutter'
-import Image from 'next/image'
 import { PageRange } from '../../../_components/PageRange'
-import classes from './index.module.scss'
 import { useFilter } from '../../../_providers/Filter'
+
+import classes from './index.module.scss'
 
 const getTitlesAndSubtitles = items => {
   const titles = new Set()
@@ -57,7 +58,6 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
   const availableColors = getColors(colors)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false) // Add this line
   const [selectedFilter, setSelectedFilter] = useState(null)
-  
 
   useEffect(() => {
     if (preselectedCategory && !categoryFilters.includes(preselectedCategory.title)) {
@@ -133,39 +133,46 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
     setSearchTerm(e.target.value)
   }
 
-  const handleClearSearch = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setSearchValue('');
-    setSearchTerm('');
+  const handleClearSearch = e => {
+    e.preventDefault()
+    e.stopPropagation()
+    setSearchValue('')
+    setSearchTerm('')
   }
 
   const handleSearchIconClick = () => {
-    setSearchTerm(searchValue); // Assume que setSearchTerm é o método para atualizar o termo de busca no contexto
+    setSearchTerm(searchValue) // Assume que setSearchTerm é o método para atualizar o termo de busca no contexto
   }
 
   return (
     <div className={classes.hbar}>
       <Gutter>
-      <div className={classes.filterInputContainer}>
-        <Image src="/search.png" alt="Search Icon" width={20} height={20} className={classes.searchIcon} onClick={handleSearchIconClick} />
-        <input 
-          type="text" 
-          value={searchValue} 
-          onChange={handleSearchTermChange} 
-          placeholder="Busca"
-        />
-        {searchValue && (
+        <div className={classes.filterInputContainer}>
           <Image
-            src="/x_image.png"
-            alt="Clear Icon"
-            width={30}
-            height={30}
-            className={classes.clearIcon}
-            onClick={handleClearSearch}
+            src="/search.png"
+            alt="Search Icon"
+            width={20}
+            height={20}
+            className={classes.searchIcon}
+            onClick={handleSearchIconClick}
           />
-        )}
-      </div>
+          <input
+            type="text"
+            value={searchValue}
+            onChange={handleSearchTermChange}
+            placeholder="Busca"
+          />
+          {searchValue && (
+            <Image
+              src="/x_image.png"
+              alt="Clear Icon"
+              width={30}
+              height={30}
+              className={classes.clearIcon}
+              onClick={handleClearSearch}
+            />
+          )}
+        </div>
         <div className={classes.filterMenu}>
           <div className={classes.pagePathContainer}>
             <span className={classes.home}>Home </span> &gt;{' '}
