@@ -28,7 +28,6 @@ export const HighImpactImage: React.FC<MediaProps> = props => {
   const containerStyle = {
     display: 'grid',
     gridTemplateColumns: gridColumns,
-    gap: '10px',
     width: '100%',
     padding: '0 10px',
     margin: '0 auto',
