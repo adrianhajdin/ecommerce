@@ -2,7 +2,6 @@
   display: grid; /* Alinha as imagens lado a lado por padrão */
   align-items: center; /* Centraliza as imagens verticalmente */
   justify-content: center; /* Centraliza as imagens horizontalmente na viewport */
-  gap: 1px; /* Adiciona espaço entre as imagens */
   overflow-x: auto; /* Permite rolagem horizontal se as imagens ultrapassarem a largura da viewport */
 }
 
