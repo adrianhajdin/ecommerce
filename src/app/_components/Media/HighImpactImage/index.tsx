@@ -29,7 +29,6 @@ export const HighImpactImage: React.FC<MediaProps> = props => {
     display: 'grid',
     gridTemplateColumns: gridColumns,
     width: '100%',
-    padding: '0 10px',
     margin: '0 auto',
   }
   const sizes = Object.entries(breakpoints)
