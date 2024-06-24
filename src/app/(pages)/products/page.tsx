@@ -34,7 +34,7 @@ const Products = async () => {
 
   return (
     <div className={classes.container}>
-      <Gutter className={classes.products}>
+      <Gutter>
         <div className={classes.filters}>
           <Filters categories={categories} colors={colors} />
         </div>

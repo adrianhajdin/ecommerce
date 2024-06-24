@@ -113,7 +113,13 @@ export const PersonalDataForm = ({ onNext }) => {
         } else {
           setError('Houve um problema ao atualizar sua conta.')
         }
-      } else {
+      }
+
+      else if (!user && isEditable) {
+          setError('')
+          setIsEditable(false) // Desabilita os campos após submissão
+          onNext()
+      } else if (!isEditable) {
         setIsEditable(true)
       }
     },
