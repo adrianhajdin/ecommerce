@@ -1,30 +1,26 @@
 'use client'
 
 import React, { Fragment, useEffect, useState } from 'react'
-import { Elements } from '@stripe/react-stripe-js'
-import { loadStripe } from '@stripe/stripe-js'
-import axios from 'axios' // Certifique-se de ter o axios instalado
+
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import { Button } from '../../../_components/Button'
-import { CancelShipmentComponent } from '../../../_components/FreightCancel'
+
 import { FreightCalculator } from '../../../_components/FreightSend'
-import { LoadingShimmer } from '../../../_components/LoadingShimmer'
 import { PaymentGateway } from '../../../_components/PaymentGateway'
 import { useAuth } from '../../../_providers/Auth'
 import { useCart } from '../../../_providers/Cart'
 import { useTheme } from '../../../_providers/Theme'
-import cssVariables from '../../../cssVariables'
-import { CheckoutForm } from '../CheckoutForm'
 import { CheckoutItem } from '../CheckoutItem'
 import { ShippingDataForm } from '../ShippingDataForm'
 import { PersonalDataForm } from '../UserDataForm'
 
+import { User } from '../../../../payload/payload-types'
+
 import classes from './index.module.scss'
 
 export const CheckoutPage = () => {
-  const { user } = useAuth()
+  // const { user } = useAuth()
   const router = useRouter()
   const [error, setError] = useState(null)
   const [clientSecret, setClientSecret] = useState(null)
@@ -42,11 +38,17 @@ export const CheckoutPage = () => {
   }
   const [onServiceId, setServiceId] = useState(null)
 
+  // useEffect(() => {
+  //   if (user === null || cartIsEmpty) {
+  //     router.push(cartIsEmpty ? '/cart' : '/login')
+  //   }
+  // }, [user, cartIsEmpty, router])
+
   useEffect(() => {
-    if (user === null || cartIsEmpty) {
-      router.push(cartIsEmpty ? '/cart' : '/login')
+    if (cartIsEmpty) {
+      router.push('/cart')
     }
-  }, [user, cartIsEmpty, router])
+  }, [ cartIsEmpty, router])
 
   // Corrigindo a lógica de cálculo do total
   const totalWithFreight = cartTotal.raw + freightPrice
@@ -63,7 +65,7 @@ export const CheckoutPage = () => {
     setShowPaymentGateway(true)
   }
 
-  if (!user) return null
+  // if (!user) return null
 
   return (
     <Fragment>
@@ -88,7 +90,6 @@ export const CheckoutPage = () => {
             ))}
             <FreightCalculator
               onFreightPriceSet={setFreightPrice}
-              zipCode={user?.zipCode}
               onFreightCalculation={handleFreightCalculation}
               onServiceId={setServiceId}
             />

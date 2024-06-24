@@ -12,11 +12,11 @@ import { CheckoutPage } from './CheckoutPage'
 import classes from './index.module.scss'
 
 export default async function Checkout() {
-  await getMeUser({
-    nullUserRedirect: `/login?error=${encodeURIComponent(
-      'Você precisa entrar para continuar',
-    )}&redirect=${encodeURIComponent('/checkout')}`,
-  })
+  // await getMeUser({
+  //   nullUserRedirect: `/login?error=${encodeURIComponent(
+  //     'Você precisa entrar para continuar',
+  //   )}&redirect=${encodeURIComponent('/checkout')}`,
+  // })
 
   return (
     <div className={classes.checkout}>

@@ -17,7 +17,6 @@ type FormData = {
 
 export const FreightCalculator = ({
   onFreightPriceSet,
-  zipCode,
   onFreightCalculation,
   onServiceId,
 }) => {
@@ -25,6 +24,8 @@ export const FreightCalculator = ({
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const { user, setUser } = useAuth()
+
+  const zipCode = user?.zipCode || null
 
   const {
     register,
@@ -39,12 +40,8 @@ export const FreightCalculator = ({
       const formattedZipCode = zipCode.toString().padStart(8, '0')
       reset({ zipCode: formattedZipCode })
       calculateFreight({ zipCode: formattedZipCode })
-    } else if (user.zipCode) {
-      const formattedZipCode = user.zipCode.toString().padStart(8, '0')
-      reset({ zipCode: formattedZipCode })
-      calculateFreight({ zipCode: formattedZipCode })
-    }
-  }, [zipCode, user.zipCode, reset])
+    } 
+  }, [zipCode, reset])
 
   const calculateFreight = useCallback(
     async data => {
@@ -73,7 +70,7 @@ export const FreightCalculator = ({
         onFreightPriceSet(formattedFreightInfo.price)
         onServiceId(formattedFreightInfo.serviceId)
         onFreightCalculation()
-        if (!user.zipCode) {
+        if (!zipCode) {
           await updateUserCep(zipCode)
         }
       } catch (err) {
@@ -82,12 +79,12 @@ export const FreightCalculator = ({
         onFreightPriceSet(0)
       }
     },
-    [onFreightPriceSet, user.zipCode, onFreightCalculation],
+    [onFreightPriceSet, zipCode, onFreightCalculation],
   )
 
   const updateUserCep = useCallback(
     async zipCode => {
-      if (!user.zipCode && user.zipCode !== zipCode) {
+      if (user && !zipCode && zipCode !== zipCode) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
           credentials: 'include',
           method: 'PATCH',
@@ -112,7 +109,7 @@ export const FreightCalculator = ({
   return (
     <form onSubmit={handleSubmit(calculateFreight)} className={classes.form}>
       <Message error={error} success={success} className={classes.message} />
-      {!user.zipCode && (
+      {!zipCode && (
         <Fragment>
           <Input name="zipCode" label="CEP" register={register} type="text" />
           <Button
@@ -132,7 +129,7 @@ export const FreightCalculator = ({
           </a>
         </Fragment>
       )}
-      {freightInfo && user.zipCode && (
+      {freightInfo && zipCode && (
         <div className={classes.result}>
           <b>
             <p>Frete: R$ {freightInfo.price}</p>
