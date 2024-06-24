@@ -57,7 +57,7 @@ const LoginForm: React.FC = () => {
 
   const handleBackToCodeForm = useCallback(() => {
     reset({ code: '' });  // Clear code field specifically
-    setCodeForm(true);
+    setCodeForm(false);
   }, [reset])
 
   if (codeForm) {
