@@ -24,3 +24,9 @@
   justify-content: space-between;
   width: 100%;
 }
+.separator {
+  width: 100%; // Ajuste a largura conforme necessário
+  height: 1px; // Espessura da linha
+  background-color: #ccc; // Cor da linha, ajuste conforme seu design
+  margin: 24px 0; // Espaçamento vertical antes e depois da linha
+}

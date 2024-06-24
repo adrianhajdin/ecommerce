@@ -1,16 +1,15 @@
 'use client'
 
 import React, { useCallback, useRef } from 'react'
-import { useForm } from 'react-hook-form'
-import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import { Button } from '../../../_components/Button'
 import { Input } from '../../../_components/Input'
+import Link from 'next/link'
 import { Message } from '../../../_components/Message'
-import { useAuth } from '../../../_providers/Auth'
-
 import classes from './index.module.scss'
+import { useAuth } from '../../../_providers/Auth'
+import { useForm } from 'react-hook-form'
 
 type FormData = {
   email: string
@@ -44,6 +43,10 @@ const LoginForm: React.FC = () => {
     },
     [login, router],
   )
+  const handleEmailLogin = useCallback(() => {
+    // Implementação do login apenas com e-mail
+    console.log("Login apenas com e-mail implementado!");
+  }, [])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
@@ -70,6 +73,14 @@ const LoginForm: React.FC = () => {
         label={isLoading ? 'Processando' : 'Login'}
         disabled={isLoading}
         className={classes.submit}
+      />
+      <div className={classes.separator}></div> 
+      <Button
+        type="button"
+        appearance="secondary"
+        label="Entrar apenas com e-mail"
+        onClick={handleEmailLogin}
+        className={classes.submit} // Utilize a classe já existente ou crie uma nova conforme necessário
       />
       <div className={classes.links}>
         <Link href={`/create-account${allParams}`}>Criar uma conta</Link>
