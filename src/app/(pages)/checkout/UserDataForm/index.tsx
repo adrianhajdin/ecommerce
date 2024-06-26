@@ -67,7 +67,7 @@ function parseSocialId(socialId) {
   }
 }
 
-export const PersonalDataForm = ({ onNext }) => {
+export const PersonalDataForm = ({ onNext, onUserDataChange}) => {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [isEditable, setIsEditable] = useState(true)
@@ -117,6 +117,7 @@ export const PersonalDataForm = ({ onNext }) => {
 
       else if (!user && isEditable) {
           setError('')
+          onUserDataChange(data) // Passa os dados do formulário para o componente pai
           setIsEditable(false) // Desabilita os campos após submissão
           onNext()
       } else if (!isEditable) {
@@ -133,6 +134,16 @@ export const PersonalDataForm = ({ onNext }) => {
         <Input
           name="name"
           label="Nome Completo"
+          required={true}
+          register={register}
+          error={errors.name}
+          type="text"
+          disabled={!isEditable}
+          className={!isEditable ? classes.noBackground : ''}
+        />
+          <Input
+          name="email"
+          label="E-mail"
           required={true}
           register={register}
           error={errors.name}

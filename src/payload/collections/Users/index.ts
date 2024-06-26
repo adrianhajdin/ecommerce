@@ -30,7 +30,6 @@ const Users: CollectionConfig = {
     afterChange: [loginAfterCreate],
   },
   auth: {
-
     forgotPassword: {
       generateEmailHTML: ({
         // req,

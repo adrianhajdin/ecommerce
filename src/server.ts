@@ -19,6 +19,7 @@ import GeraEtiquetaFreightRouter from './payload/endpoints/melhor_envio_add_etiq
 import CancelFreightRouter from './payload/endpoints/melhor_envio_cancelamento'
 import CheckoutFreightRouter from './payload/endpoints/melhor_envio_checkout'
 import PrintEtiquetaFreightRouter from './payload/endpoints/melhor_envio_print_etiqueta'
+import orderHandler from './payload/endpoints/order-handler'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -33,6 +34,7 @@ app.use('/api', CheckoutFreightRouter)
 app.use('/api', CancelFreightRouter)
 app.use('/api', EmailRouter)
 app.use('/api', EmailRouterCad)
+app.use('/api', orderHandler)
 
 app.use('/api', processPayment)
 

@@ -36,6 +36,19 @@ export const CheckoutPage = () => {
   const handleShippingDataChange = data => {
     setShippingData(data)
   }
+
+  
+  const [zipCode, setZipCode] = useState({}) // Estado para armazenar os dados de envio
+
+  const handleZipCodeChange = data => {
+    setZipCode(data)
+  }
+
+  const [userData, setUserData] = useState({}) // Estado para armazenar os dados de envio
+
+  const handleUserDataChange = data => {
+    setUserData(data)
+  } 
   const [onServiceId, setServiceId] = useState(null)
 
   // useEffect(() => {
@@ -67,6 +80,8 @@ export const CheckoutPage = () => {
 
   // if (!user) return null
 
+  console.log(cart.items)
+
   return (
     <Fragment>
       {!cartIsEmpty ? (
@@ -92,6 +107,7 @@ export const CheckoutPage = () => {
               onFreightPriceSet={setFreightPrice}
               onFreightCalculation={handleFreightCalculation}
               onServiceId={setServiceId}
+              onZipCodeChange={handleZipCodeChange}
             />
             <div className={classes.orderTotal}>
               <p>Total do pedido</p>
@@ -109,7 +125,9 @@ export const CheckoutPage = () => {
       {showPersonalData && (
         <div className={`${classes.personalData} ${classes.fadeIn}`}>
           <h3>1) Dados Pessoais</h3>
-          <PersonalDataForm onNext={handleShowShippingData} />
+          <PersonalDataForm 
+            onNext={handleShowShippingData}
+            onUserDataChange={handleUserDataChange} />
         </div>
       )}
 
@@ -131,6 +149,8 @@ export const CheckoutPage = () => {
             amount={totalWithFreight}
             serviceId={onServiceId}
             shippingData={shippingData}
+            userData={userData}
+            zipCode={zipCode}
           />{' '}
           {/* Passa os dados de envio para o PaymentGateway */}
         </div>

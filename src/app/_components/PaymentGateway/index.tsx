@@ -10,7 +10,7 @@ import { useCart } from '../../_providers/Cart'
 
 initMercadoPago('TEST-e4e31358-531f-4c4d-bd5c-3e77edc4ee3f', { locale: 'pt-BR' })
 
-export const PaymentGateway = ({ amount, serviceId, shippingData }) => {
+export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipCode }) => {
   const router = useRouter()
   const [orderIds, setOrderIds] = useState([]) // Initialize orderIds state
   const [error, setError] = useState('')
@@ -134,9 +134,8 @@ export const PaymentGateway = ({ amount, serviceId, shippingData }) => {
     try {
       const shippingTicketUrl = await completeFreightPurchase()
 
-      const orderReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/orders`, {
+      const orderReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/create-order`, {
         method: 'POST',
-        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -150,30 +149,23 @@ export const PaymentGateway = ({ amount, serviceId, shippingData }) => {
             price: typeof product === 'object' ? product.price : undefined,
           })),
           shippingTicket: shippingTicketUrl,
-          shippingZipCode: user.zipCode,
-          shippingHouseNumber: user.houseNumber,
-          shippingComplement: user.complement,
-          userSocialId: user.socialId,
-          userPhoneNumber: user.phoneNumber,
+          shippingZipCode: zipCode,
+          shippingHouseNumber: shippingData.houseNumber,
+          shippingComplement: shippingData.complement,
+          userName: userData.name,
+          userMail: userData.email,
+          userSocialId: userData.socialId,
+          userPhoneNumber: userData.phoneNumber,
         }),
       })
 
+
       if (!orderReq.ok) throw new Error(orderReq.statusText || 'Something went wrong.')
+      
+      const order = await orderReq.json();
+      sendEmail(userData.email, userData.name)
 
-      const {
-        error: errorFromRes,
-        doc,
-      }: {
-        message?: string
-        error?: string
-        doc: Order
-      } = await orderReq.json()
-
-      if (errorFromRes) throw new Error(errorFromRes)
-
-      sendEmail(user.email, user.name)
-
-      router.push(`/order-confirmation?order_id=${doc.id}`)
+      router.push(`/order-confirmation?order_id=${order.id}`)
     } catch (err) {
       // don't throw an error if the order was not created successfully
       // this is because payment _did_ in fact go through, and we don't want the user to pay twice
