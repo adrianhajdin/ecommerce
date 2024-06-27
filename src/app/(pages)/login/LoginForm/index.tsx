@@ -1,3 +1,5 @@
+// /path/to/LoginForm.tsx
+
 'use client'
 
 import React, { useCallback, useRef, useState } from 'react'
@@ -15,6 +17,8 @@ type FormData = {
   email: string
   password: string
   code: string
+  newPassword: string
+  confirmNewPassword: string
 }
 
 const LoginForm: React.FC = () => {
@@ -24,12 +28,16 @@ const LoginForm: React.FC = () => {
   const { login } = useAuth()
   const router = useRouter()
   const [error, setError] = React.useState<string | null>(null)
+  const [success, setSuccess] = React.useState<string | null>(null)
   const [emailOnlyForm, setEmailOnlyForm] = useState(false)
   const [codeForm, setCodeForm] = useState(false)
+  const [resetPasswordForm, setResetPasswordForm] = useState(false)
+  const [email, setEmail] = useState<string | null>(null)
 
   const { register, handleSubmit, reset, formState: { errors, isLoading } } = useForm<FormData>()
 
   const onSubmit = useCallback(async (data: FormData) => {
+    console.log('Login data:', data)
     try {
       await login(data)
       if (redirect?.current) router.push(redirect.current as string)
@@ -45,20 +53,77 @@ const LoginForm: React.FC = () => {
   }, [])
 
   const handleEmailSubmit = useCallback(async (email: string) => {
-    console.log("Código enviado para:", email);
-    reset();  // Reset form fields
+    console.log("Email submitted for code:", email)
+    setEmail(email)
+    reset()
     setCodeForm(true)
   }, [reset])
 
   const handleCodeSubmit = useCallback(async (code: string) => {
-    console.log("Código recebido para validação:", code);
-    router.push('/dashboard')
-  }, [router])
+    console.log("Code submitted:", code)
+    if (code === '9999') {
+      setResetPasswordForm(true)
+    } else {
+      setError('Código incorreto. Por favor, tente novamente.')
+    }
+  }, [])
 
   const handleBackToCodeForm = useCallback(() => {
-    reset({ code: '' });  // Clear code field specifically
-    setCodeForm(false);
+    reset({ code: '' })
+    setCodeForm(false)
   }, [reset])
+
+  const handleResetPasswordSubmit = useCallback(async () => {
+    console.log('Forgot password request for email:', email)
+    
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/forgot-password`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    })
+
+    const responseData = await response.json()
+    console.log('Response data:', responseData.token)
+
+    if (response.ok) {
+      setTimeout(() => router.push('/login?resetSuccess=true'), 3000)
+    } else {
+      setError('There was an error with the password reset request. Please try again.')
+    }
+  }, [email, router])
+
+  if (resetPasswordForm) {
+    return (
+      <form onSubmit={handleSubmit(handleResetPasswordSubmit)} className={classes.form}>
+        <Message error={error} success={success} className={classes.message} />
+        <Input
+          name="newPassword"
+          label="Nova senha"
+          required
+          register={register}
+          error={errors.newPassword}
+          type="password"
+        />
+        <Input
+          name="confirmNewPassword"
+          label="Confirme a nova senha"
+          required
+          register={register}
+          error={errors.confirmNewPassword}
+          type="password"
+        />
+        <Button
+          type="submit"
+          appearance="primary"
+          label="Reset Password"
+          disabled={isLoading}
+          className={classes.submit}
+        />
+      </form>
+    )
+  }
 
   if (codeForm) {
     return (
