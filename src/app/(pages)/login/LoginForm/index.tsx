@@ -1,5 +1,3 @@
-// /path/to/LoginForm.tsx
-
 'use client'
 
 import React, { useCallback, useRef, useState } from 'react'
@@ -11,6 +9,7 @@ import Link from 'next/link'
 import { Message } from '../../../_components/Message'
 import classes from './index.module.scss'
 import { useAuth } from '../../../_providers/Auth'
+import { useEmailSender } from '../../../_components/email'
 import { useForm } from 'react-hook-form'
 
 type FormData = {
@@ -33,7 +32,9 @@ const LoginForm: React.FC = () => {
   const [codeForm, setCodeForm] = useState(false)
   const [resetPasswordForm, setResetPasswordForm] = useState(false)
   const [email, setEmail] = useState<string | null>(null)
+  const [generatedCode, setGeneratedCode] = useState<string | null>(null)
 
+  const { sendEmailCadastro } = useEmailSender()
   const { register, handleSubmit, reset, formState: { errors, isLoading } } = useForm<FormData>()
 
   const onSubmit = useCallback(async (data: FormData) => {
@@ -53,20 +54,29 @@ const LoginForm: React.FC = () => {
   }, [])
 
   const handleEmailSubmit = useCallback(async (email: string) => {
-    console.log("Email submitted for code:", email)
+    const code = Math.floor(1000 + Math.random() * 9000).toString()
+    setGeneratedCode(code)
+    console.log(code)
     setEmail(email)
-    reset()
     setCodeForm(true)
-  }, [reset])
+    // try {
+    //   await sendEmailCadastro(email, 'Usuário', code)
+    //   setError(null)
+    //   setCodeForm(true)
+    // } catch (err) {
+    //   setError('Houve um problema ao enviar o código para seu e-mail. Por favor, tente novamente.')
+    // }
+    reset()
+  }, [sendEmailCadastro, reset])
 
   const handleCodeSubmit = useCallback(async (code: string) => {
     console.log("Code submitted:", code)
-    if (code === '9999') {
+    if (code === generatedCode) {
       setResetPasswordForm(true)
     } else {
-      setError('Código incorreto. Por favor, tente novamente.')
+      setError('Senha incorreta. Por favor, figite senhas iguais e tente novamente.')
     }
-  }, [])
+  }, [generatedCode])
 
   const handleBackToCodeForm = useCallback(() => {
     reset({ code: '' })
@@ -85,7 +95,7 @@ const LoginForm: React.FC = () => {
     })
 
     const responseData = await response.json()
-    console.log('Response data:', responseData.token)
+    console.log('Response data:', responseData)
 
     if (response.ok) {
       setTimeout(() => router.push('/login?resetSuccess=true'), 3000)
