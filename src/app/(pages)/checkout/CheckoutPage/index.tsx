@@ -1,11 +1,10 @@
 'use client'
 
 import React, { Fragment, useEffect, useState } from 'react'
-
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-
+import { User } from '../../../../payload/payload-types'
 import { FreightCalculator } from '../../../_components/FreightSend'
 import { PaymentGateway } from '../../../_components/PaymentGateway'
 import { useAuth } from '../../../_providers/Auth'
@@ -14,8 +13,6 @@ import { useTheme } from '../../../_providers/Theme'
 import { CheckoutItem } from '../CheckoutItem'
 import { ShippingDataForm } from '../ShippingDataForm'
 import { PersonalDataForm } from '../UserDataForm'
-
-import { User } from '../../../../payload/payload-types'
 
 import classes from './index.module.scss'
 
