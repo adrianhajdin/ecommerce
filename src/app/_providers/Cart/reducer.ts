@@ -38,18 +38,18 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
         ...(cart?.items || []),
         ...(incomingCart?.items || []),
       ].reduce((acc: CartItem[], item) => {
-        // remove duplicates
         const productId = typeof item.product === 'string' ? item.product : item?.product?.id
 
         const indexInAcc = acc.findIndex(({ product }) =>
           typeof product === 'string' ? product === productId : product?.id === productId,
-        ) // eslint-disable-line function-paren-newline
+        )
 
         if (indexInAcc > -1) {
           acc[indexInAcc] = {
             ...acc[indexInAcc],
-            // customize the merge logic here, e.g.:
-            // quantity: acc[indexInAcc].quantity + item.quantity
+            quantity: acc[indexInAcc].quantity + item.quantity,
+            selectedSize: item.selectedSize || acc[indexInAcc].selectedSize,
+            selectedColor: item.selectedColor || acc[indexInAcc].selectedColor,
           }
         } else {
           acc.push(item)
@@ -64,25 +64,24 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
     }
 
     case 'ADD_ITEM': {
-      // if the item is already in the cart, increase the quantity
       const { payload: incomingItem } = action
       const productId =
         typeof incomingItem.product === 'string' ? incomingItem.product : incomingItem?.product?.id
 
       const indexInCart = cart?.items?.findIndex(({ product }) =>
         typeof product === 'string' ? product === productId : product?.id === productId,
-      ) // eslint-disable-line function-paren-newline
+      )
 
       let withAddedItem = [...(cart?.items || [])]
 
       if (indexInCart === -1) {
         withAddedItem.push(incomingItem)
-      }
-
-      if (typeof indexInCart === 'number' && indexInCart > -1) {
+      } else {
         withAddedItem[indexInCart] = {
           ...withAddedItem[indexInCart],
-          quantity: (incomingItem.quantity || 0) > 0 ? incomingItem.quantity : undefined,
+          quantity: incomingItem.quantity,
+          selectedSize: incomingItem.selectedSize,
+          selectedColor: incomingItem.selectedColor,
         }
       }
 
@@ -100,7 +99,7 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
         typeof product === 'string'
           ? product === incomingProduct.id
           : product?.id === incomingProduct.id,
-      ) // eslint-disable-line function-paren-newline
+      )
 
       if (typeof indexInCart === 'number' && withDeletedItem.items && indexInCart > -1)
         withDeletedItem.items.splice(indexInCart, 1)
