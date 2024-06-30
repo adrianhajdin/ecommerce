@@ -104,7 +104,7 @@ export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipC
 
   const initialization = {
     amount: amount,
-    preferenceId: '<PREFERENCE_ID>',
+
   }
 
   const customization = {
@@ -115,6 +115,19 @@ export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipC
   }
 
   const onSubmit = async ({ formData }) => {
+
+      const paymentData = {
+        ...formData,
+        description: transactionDescription, // Inclui a descrição do produto, além do formulário
+        transaction_amount: parseFloat(amount.toFixed(2))
+    };
+      // Callback chamado ao clicar no botão de submissão dos dados
+      const response = await axios.post('/api/process-payment', { paymentData });
+      if (response.data && response.data.id) {
+        setPaymentId(response.data.id);
+        console.log('Payment processed', response);
+      }
+
     const errors = validateCartItems(cart?.items || [])
     if (errors.length > 0) {
       setValidationErrors(errors)
@@ -152,8 +165,8 @@ export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipC
       if (!orderReq.ok) throw new Error(orderReq.statusText || 'Something went wrong.')
       
       const order = await orderReq.json()
-      await sendEmail(userData.email, userData.name)
-
+      //sendEmail(userData.email, userData.name)
+ 
       router.push(`/order-confirmation?order_id=${order.id}`)
     } catch (err) {
       console.error(err.message) 
