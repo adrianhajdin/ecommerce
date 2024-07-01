@@ -45,7 +45,7 @@ export const CheckoutPage = () => {
     if (cartIsEmpty) {
       router.push('/cart')
     }
-  }, [ cartIsEmpty, router])
+  }, [cartIsEmpty, router])
 
   // Corrigindo a lógica de cálculo do total
   const totalWithFreight = cartTotal.raw + freightPrice

@@ -15,11 +15,7 @@ type FormData = {
   zipCode: string
 }
 
-export const FreightCalculator = ({
-  onFreightPriceSet,
-  onFreightCalculation,
-  onServiceId,
-}) => {
+export const FreightCalculator = ({ onFreightPriceSet, onFreightCalculation, onServiceId }) => {
   const [freightInfo, setFreightInfo] = useState(null)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -40,7 +36,7 @@ export const FreightCalculator = ({
       const formattedZipCode = zipCode.toString().padStart(8, '0')
       reset({ zipCode: formattedZipCode })
       calculateFreight({ zipCode: formattedZipCode })
-    } 
+    }
   }, [zipCode, reset])
 
   const calculateFreight = useCallback(

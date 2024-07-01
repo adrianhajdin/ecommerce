@@ -50,7 +50,10 @@ export const RecoverPasswordForm: React.FC = () => {
     <Fragment>
       {!success && (
         <React.Fragment>
-          <p>Digite seu endereço de e-mail registrado. Nós enviaremos um código para redefinir sua senha.</p>
+          <p>
+            Digite seu endereço de e-mail registrado. Nós enviaremos um código para redefinir sua
+            senha.
+          </p>
 
           <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
             <Message error={error} className={classes.message} />

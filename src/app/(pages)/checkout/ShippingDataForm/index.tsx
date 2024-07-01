@@ -55,14 +55,12 @@ export const ShippingDataForm = ({ onNext, onShippingDataChange }) => {
         } else {
           setError('There was a problem updating your account.')
         }
-      }
-      else if (!user && isEditable) {
-          setError('')
-          onShippingDataChange(data) // Passa os dados do formulário para o componente pai
-          setIsEditable(false) // Desabilita os campos após submissão
-          onNext()
-        }
-      else if  (!isEditable) {
+      } else if (!user && isEditable) {
+        setError('')
+        onShippingDataChange(data) // Passa os dados do formulário para o componente pai
+        setIsEditable(false) // Desabilita os campos após submissão
+        onNext()
+      } else if (!isEditable) {
         setIsEditable(true)
       }
     },

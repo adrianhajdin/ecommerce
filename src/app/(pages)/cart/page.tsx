@@ -53,7 +53,7 @@ export default async function Cart() {
       <Gutter>
         <h3>Carrinho</h3>
         <CartPage settings={settings} page={page} />
-       <Blocks blocks={page?.layout} disableBottomPadding />
+        <Blocks blocks={page?.layout} disableBottomPadding />
       </Gutter>
     </div>
   )

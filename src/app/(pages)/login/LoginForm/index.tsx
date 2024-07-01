@@ -62,28 +62,27 @@ const LoginForm: React.FC = () => {
     setEmailOnlyForm(true)
   }, [])
 
-
   const handleEmailSubmit = useCallback(async (data: FormData) => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/forgot-password`,
-        {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Content-Type': 'application/json',
-          },
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/forgot-password`,
+      {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
         },
+      },
+    )
+
+    if (response.ok) {
+      setSuccess(true)
+      setError('')
+    } else {
+      setError(
+        'There was a problem while attempting to send you a password reset email. Please try again.',
       )
-  
-      if (response.ok) {
-        setSuccess(true)
-        setError('')
-      } else {
-        setError(
-          'There was a problem while attempting to send you a password reset email. Please try again.',
-        )
-      }
-    }, [])
+    }
+  }, [])
 
   const handleCodeSubmit = useCallback(
     async (code: string) => {
@@ -190,36 +189,33 @@ const LoginForm: React.FC = () => {
   if (emailOnlyForm) {
     return (
       <Fragment>
-      {!success && (
-        <React.Fragment>
-
-
-          <form onSubmit={handleSubmit(handleEmailSubmit)} className={classes.form}>
-            <Message error={error} className={classes.message} />
-            <Input
-              name="email"
-              label="Digite seu e-mail"
-              required
-              register={register}
-              error={errors.email}
-              type="email"
-            />
-            <Button
-              type="submit"
-              appearance="primary"
-              label="Recuperar Senha"
-              className={classes.submit}
-            />
-          </form>
-        </React.Fragment>
-      )}
-      {success && (
-        <React.Fragment>
-
-          <p>Verifique seu e-mail para o link para redefinir sua senha com segurança.</p>
-        </React.Fragment>
-      )}
-    </Fragment>
+        {!success && (
+          <React.Fragment>
+            <form onSubmit={handleSubmit(handleEmailSubmit)} className={classes.form}>
+              <Message error={error} className={classes.message} />
+              <Input
+                name="email"
+                label="Digite seu e-mail"
+                required
+                register={register}
+                error={errors.email}
+                type="email"
+              />
+              <Button
+                type="submit"
+                appearance="primary"
+                label="Recuperar Senha"
+                className={classes.submit}
+              />
+            </form>
+          </React.Fragment>
+        )}
+        {success && (
+          <React.Fragment>
+            <p>Verifique seu e-mail para o link para redefinir sua senha com segurança.</p>
+          </React.Fragment>
+        )}
+      </Fragment>
     )
   }
 
