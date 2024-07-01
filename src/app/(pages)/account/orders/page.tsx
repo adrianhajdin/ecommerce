@@ -15,7 +15,7 @@ import classes from './index.module.scss'
 export default async function Orders() {
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to view your orders.',
+      'Você precisa ter feito login para poder acessar os pedidos.',
     )}&redirect=${encodeURIComponent('/orders')}`,
   })
 
@@ -54,7 +54,7 @@ export default async function Orders() {
             <li key={order.id} className={classes.order}>
               <Link className={classes.item} href={`/account/orders/${order.id}`}>
                 <div className={classes.itemContent}>
-                  <h6 className={classes.itemTitle}>{`Order ${order.id}`}</h6>
+                  <h6 className={classes.itemTitle}>{`Pedido ${order.id}`}</h6>
                   <div className={classes.itemMeta}>
                     <p>
                       {'Total: '}
@@ -63,14 +63,14 @@ export default async function Orders() {
                         currency: 'BRL',
                       }).format(order.total)}
                     </p>
-                    <p className={classes.orderDate}>{`Ordered On: ${formatDateTime(
+                    <p className={classes.orderDate}>{`Comprado em: ${formatDateTime(
                       order.createdAt,
                     )}`}</p>
                   </div>
                 </div>
                 <Button
                   appearance="default"
-                  label="View Order"
+                  label="Ver pedido"
                   className={classes.button}
                   el="link"
                   href={`/account/orders/${order.id}`}
