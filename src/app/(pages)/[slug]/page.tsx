@@ -66,6 +66,8 @@ export default async function Page({ params: { slug = 'home' } }) {
 
   const { hero, layout } = page
 
+  const pageTitle = page.title === 'hot' ? 'Em Alta' : page.title
+
   return (
     <React.Fragment>
       {slug === 'home' ? (
@@ -79,7 +81,7 @@ export default async function Page({ params: { slug = 'home' } }) {
             <Filters
               categories={categories}
               colors={categories}
-              page_name={page.title}
+              page_name={pageTitle}
               preselectedCategory={categories}
             />
           </div>
