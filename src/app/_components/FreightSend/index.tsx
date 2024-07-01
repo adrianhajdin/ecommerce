@@ -15,7 +15,12 @@ type FormData = {
   zipCode: string
 }
 
-export const FreightCalculator = ({ onFreightPriceSet, onFreightCalculation, onServiceId }) => {
+export const FreightCalculator = ({
+  onFreightPriceSet,
+  onFreightCalculation,
+  onServiceId,
+  onZipCodeChange
+}) => {
   const [freightInfo, setFreightInfo] = useState(null)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -42,6 +47,7 @@ export const FreightCalculator = ({ onFreightPriceSet, onFreightCalculation, onS
   const calculateFreight = useCallback(
     async data => {
       const { zipCode } = data
+      onZipCodeChange(zipCode)
 
       if (zipCode.length !== 8) {
         setError('O CEP deve conter 8 dígitos.')

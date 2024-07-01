@@ -48,8 +48,9 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
         if (indexInAcc > -1) {
           acc[indexInAcc] = {
             ...acc[indexInAcc],
-            // customize the merge logic here, e.g.:
-            // quantity: acc[indexInAcc].quantity + item.quantity
+            quantity: acc[indexInAcc].quantity + item.quantity,
+            selectedSize: item.selectedSize || acc[indexInAcc].selectedSize,
+            selectedColor: item.selectedColor || acc[indexInAcc].selectedColor,
           }
         } else {
           acc.push(item)
@@ -83,6 +84,8 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
         withAddedItem[indexInCart] = {
           ...withAddedItem[indexInCart],
           quantity: (incomingItem.quantity || 0) > 0 ? incomingItem.quantity : undefined,
+          selectedSize: incomingItem.selectedSize,
+          selectedColor: incomingItem.selectedColor,
         }
       }
 
