@@ -92,7 +92,7 @@ export default async function Order({ params: { id } }) {
                         {title}
                       </Link>
                     </h6>
-                    <p>{`Quantity: ${quantity}`}</p>
+                    <p>{`Quantidade: ${quantity}`}</p>
                   </div>
                 </div>
               </Fragment>

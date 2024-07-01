@@ -41,7 +41,7 @@ export const FreightCalculator = ({
       const formattedZipCode = zipCode.toString().padStart(8, '0')
       reset({ zipCode: formattedZipCode })
       calculateFreight({ zipCode: formattedZipCode })
-    } 
+    }
   }, [zipCode, reset])
 
   const calculateFreight = useCallback(

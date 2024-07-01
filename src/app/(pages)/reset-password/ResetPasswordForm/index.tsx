@@ -70,7 +70,7 @@ export const ResetPasswordForm: React.FC = () => {
       <Input
         name="password"
         type="password"
-        label="New Password"
+        label="Por favor, digite a sua nova senha abaixo."
         required
         register={register}
         error={errors.password}
@@ -79,7 +79,7 @@ export const ResetPasswordForm: React.FC = () => {
       <Button
         type="submit"
         appearance="primary"
-        label="Reset Password"
+        label="Criar nova senha"
         className={classes.submit}
       />
     </form>

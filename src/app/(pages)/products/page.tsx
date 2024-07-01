@@ -34,10 +34,10 @@ const Products = async () => {
 
   return (
     <div className={classes.container}>
+      <div className={classes.filters}>
+        <Filters categories={categories} colors={colors} />
+      </div>
       <Gutter>
-        <div className={classes.filters}>
-          <Filters categories={categories} colors={colors} />
-        </div>
         <div className={classes.productList}>
           <div className={classes.productView}>
             <Blocks blocks={page?.layout} disableTopPadding={true} />
