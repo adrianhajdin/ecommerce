@@ -65,11 +65,18 @@ export default async function Product({ params: { slug } }) {
 
     const { hero } = page
 
+    console.log('passou')
+
     return (
       <div className={classes.container}>
         <Hero {...hero} />
         <div className={classes.filters}>
-          <Filters categories={categories} colors={colors} preselectedCategory={category} />
+          <Filters
+            categories={categories}
+            colors={colors}
+            page_name={page.title}
+            preselectedCategory={category}
+          />
         </div>
         <Gutter className={classes.products}>
           <div className={classes.productList}>

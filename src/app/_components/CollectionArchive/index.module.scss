@@ -27,21 +27,28 @@
     margin-bottom: var(--base);
   }
 }
-
 .pageRange {
-  margin-bottom: var(--base);
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 10px;
+  font-size: 13px;
+  color: rgb(117, 117, 117);
+  margin-top: -60px;
 
   @include mid-break {
     margin-bottom: var(--base);
   }
 }
 
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(20%, 1fr));
   gap: 20px;
-  padding: 30px 0;
+  padding: 70px 0;
   width: 100%;
+  
   
 
   @include mid-break {

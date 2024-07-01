@@ -35,7 +35,7 @@ const Products = async () => {
   return (
     <div className={classes.container}>
       <div className={classes.filters}>
-        <Filters categories={categories} colors={colors} />
+        <Filters page_name={'Produtos'} categories={categories} colors={colors} />
       </div>
       <Gutter>
         <div className={classes.productList}>

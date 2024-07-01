@@ -34,7 +34,7 @@ const getColors = items => {
   return Array.from(colorSet)
 }
 
-const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
+const FilterMenu = ({ categories, colors, page_name, preselectedCategory = null }) => {
   const {
     categoryFilters,
     setCategoryFilters,
@@ -49,6 +49,8 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
     searchTerm,
     setSearchTerm,
   } = useFilter()
+
+  console.log(page_name)
 
   const [searchValue, setSearchValue] = useState(searchTerm || '')
   const [selectedSort, setSelectedSort] = useState(sort)
@@ -176,7 +178,7 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
         <div className={classes.filterMenu}>
           <div className={classes.pagePathContainer}>
             <span className={classes.home}>Home </span> &gt;{' '}
-            <span className={classes.newIn}>New In</span>
+            <span className={classes.newIn}>{page_name}</span>
           </div>
           <div className={classes.filterMenuButtons}>
             <button className={classes.mobileFilterButton} onClick={toggleMobileMenu}>
@@ -188,7 +190,7 @@ const FilterMenu = ({ categories, colors, preselectedCategory = null }) => {
           </div>
 
           <div className={classes.pageRangeContainer}>
-            <PageRange totalDocs={100} currentPage={1} collection={'Produtos'} limit={10} />
+            {/* <PageRange totalDocs={100} currentPage={1} collection={'Produtos'} limit={10} /> */}
           </div>
 
           <nav className={`${classes.navMenu} ${isMobileMenuOpen ? classes.open : ''}`}>
