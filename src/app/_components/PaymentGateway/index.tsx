@@ -1,21 +1,21 @@
-import { Payment, StatusScreen, initMercadoPago } from '@mercadopago/sdk-react'
 import React, { useState } from 'react'
-
+import { initMercadoPago, Payment, StatusScreen } from '@mercadopago/sdk-react'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
+
+import { useEmailSender } from '../../_components/email'
 import { useAuth } from '../../_providers/Auth'
 import { useCart } from '../../_providers/Cart'
-import { useEmailSender } from '../../_components/email'
-import { useRouter } from 'next/navigation'
 
 initMercadoPago('TEST-e4e31358-531f-4c4d-bd5c-3e77edc4ee3f', { locale: 'pt-BR' })
 
 export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipCode }) => {
   const router = useRouter()
-  const [orderIds, setOrderIds] = useState([]) 
+  const [orderIds, setOrderIds] = useState([])
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [paymentId, setPaymentId] = useState(null)
-  const [validationErrors, setValidationErrors] = useState([]) 
+  const [validationErrors, setValidationErrors] = useState([])
 
   const { sendEmail } = useEmailSender()
   const { user } = useAuth()
@@ -23,7 +23,7 @@ export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipC
 
   const transactionDescription = 'Minimo1'
 
-  const validateCartItems = (items) => {
+  const validateCartItems = items => {
     const errors = []
     items.forEach((item, index) => {
       if (!item.selectedSize) {
@@ -43,7 +43,7 @@ export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipC
     try {
       const addToCartResponse = await axios.post('/api/add-to-cart', {
         service: serviceId,
-        agency: '', 
+        agency: '',
         from: {
           postal_code: '96020360',
           name: 'cliente_name2',
@@ -78,15 +78,19 @@ export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipC
         const localOrderIds = [addToCartResponse.data.id]
         setOrderIds(localOrderIds)
 
-        const checkoutResponse = await axios.post('/api/purchase-labels', { orderIds: localOrderIds })
-        const generateLabelResponse = await axios.post('/api/generate-labels', { orderIds: localOrderIds })
+        const checkoutResponse = await axios.post('/api/purchase-labels', {
+          orderIds: localOrderIds,
+        })
+        const generateLabelResponse = await axios.post('/api/generate-labels', {
+          orderIds: localOrderIds,
+        })
         const printableResponse = await axios.post('/api/print-labels', {
           mode: 'public',
           orders: localOrderIds,
         })
 
         if (printableResponse.data && printableResponse.data.url) {
-          return printableResponse.data.url 
+          return printableResponse.data.url
         } else {
           throw new Error('No URL returned from the API')
         }
@@ -104,7 +108,6 @@ export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipC
 
   const initialization = {
     amount: amount,
-
   }
 
   const customization = {
@@ -115,18 +118,17 @@ export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipC
   }
 
   const onSubmit = async ({ formData }) => {
-
-      const paymentData = {
-        ...formData,
-        description: transactionDescription, // Inclui a descrição do produto, além do formulário
-        transaction_amount: parseFloat(amount.toFixed(2))
-    };
-      // Callback chamado ao clicar no botão de submissão dos dados
-      const response = await axios.post('/api/process-payment', { paymentData });
-      if (response.data && response.data.id) {
-        setPaymentId(response.data.id);
-        console.log('Payment processed', response);
-      }
+    const paymentData = {
+      ...formData,
+      description: transactionDescription, // Inclui a descrição do produto, além do formulário
+      transaction_amount: parseFloat(amount.toFixed(2)),
+    }
+    // Callback chamado ao clicar no botão de submissão dos dados
+    const response = await axios.post('/api/process-payment', { paymentData })
+    if (response.data && response.data.id) {
+      setPaymentId(response.data.id)
+      console.log('Payment processed', response)
+    }
 
     const errors = validateCartItems(cart?.items || [])
     if (errors.length > 0) {
@@ -163,13 +165,13 @@ export const PaymentGateway = ({ amount, serviceId, shippingData, userData, zipC
       })
 
       if (!orderReq.ok) throw new Error(orderReq.statusText || 'Something went wrong.')
-      
+
       const order = await orderReq.json()
       //sendEmail(userData.email, userData.name)
- 
+
       router.push(`/order-confirmation?order_id=${order.id}`)
     } catch (err) {
-      console.error(err.message) 
+      console.error(err.message)
       router.push(`/order-confirmation?error=${encodeURIComponent(err.message)}`)
     }
   }

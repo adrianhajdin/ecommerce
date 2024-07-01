@@ -34,7 +34,6 @@ export const CheckoutPage = () => {
     setShippingData(data)
   }
 
-  
   const [zipCode, setZipCode] = useState({}) // Estado para armazenar os dados de envio
 
   const handleZipCodeChange = data => {
@@ -45,7 +44,7 @@ export const CheckoutPage = () => {
 
   const handleUserDataChange = data => {
     setUserData(data)
-  } 
+  }
   const [onServiceId, setServiceId] = useState(null)
 
   // useEffect(() => {
@@ -122,9 +121,10 @@ export const CheckoutPage = () => {
       {showPersonalData && (
         <div className={`${classes.personalData} ${classes.fadeIn}`}>
           <h3>1) Dados Pessoais</h3>
-          <PersonalDataForm 
+          <PersonalDataForm
             onNext={handleShowShippingData}
-            onUserDataChange={handleUserDataChange} />
+            onUserDataChange={handleUserDataChange}
+          />
         </div>
       )}
 

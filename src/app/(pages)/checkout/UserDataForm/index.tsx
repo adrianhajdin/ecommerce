@@ -67,7 +67,7 @@ function parseSocialId(socialId) {
   }
 }
 
-export const PersonalDataForm = ({ onNext, onUserDataChange}) => {
+export const PersonalDataForm = ({ onNext, onUserDataChange }) => {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [isEditable, setIsEditable] = useState(true)
@@ -113,13 +113,11 @@ export const PersonalDataForm = ({ onNext, onUserDataChange}) => {
         } else {
           setError('Houve um problema ao atualizar sua conta.')
         }
-      }
-
-      else if (!user && isEditable) {
-          setError('')
-          onUserDataChange(data) // Passa os dados do formulário para o componente pai
-          setIsEditable(false) // Desabilita os campos após submissão
-          onNext()
+      } else if (!user && isEditable) {
+        setError('')
+        onUserDataChange(data) // Passa os dados do formulário para o componente pai
+        setIsEditable(false) // Desabilita os campos após submissão
+        onNext()
       } else if (!isEditable) {
         setIsEditable(true)
       }
@@ -141,7 +139,7 @@ export const PersonalDataForm = ({ onNext, onUserDataChange}) => {
           disabled={!isEditable}
           className={!isEditable ? classes.noBackground : ''}
         />
-          <Input
+        <Input
           name="email"
           label="E-mail"
           required={true}

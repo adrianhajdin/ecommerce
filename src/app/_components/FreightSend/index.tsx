@@ -19,7 +19,7 @@ export const FreightCalculator = ({
   onFreightPriceSet,
   onFreightCalculation,
   onServiceId,
-  onZipCodeChange
+  onZipCodeChange,
 }) => {
   const [freightInfo, setFreightInfo] = useState(null)
   const [error, setError] = useState('')
