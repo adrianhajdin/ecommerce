@@ -76,7 +76,12 @@ export default async function Page({ params: { slug = 'home' } }) {
         <>
           <Hero {...hero} />
           <div className={classes.filters}>
-            <Filters categories={categories} colors={categories} page_name={page.title} preselectedCategory={categories} />
+            <Filters
+              categories={categories}
+              colors={categories}
+              page_name={page.title}
+              preselectedCategory={categories}
+            />
           </div>
           <Gutter>
             <Blocks
