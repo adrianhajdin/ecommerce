@@ -59,15 +59,18 @@ export default async function Page({ params: { slug = 'home' } }) {
   return (
     <React.Fragment>
       {isDraftMode && (
-        <div style={{ backgroundColor: 'yellow'
-                    , padding: '10x'
-                    , textAlign: 'center' 
-                    , position: 'fixed'
-          ,width: '100%'
-          ,top: 0
-          ,left: 0
-          ,zIndex: 1000 
-                    }}>
+        <div
+          style={{
+            backgroundColor: 'yellow',
+            padding: '10x',
+            textAlign: 'center',
+            position: 'fixed',
+            width: '100%',
+            top: 0,
+            left: 0,
+            zIndex: 1000,
+          }}
+        >
           Você está no modo de pré-visualização
         </div>
       )}
