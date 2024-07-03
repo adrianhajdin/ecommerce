@@ -1,16 +1,15 @@
-import React from 'react'
-import { draftMode } from 'next/headers'
-
 import { Category, Color, Page } from '../../../payload/payload-types'
-import { fetchDoc } from '../../_api/fetchDoc'
-import { fetchDocs } from '../../_api/fetchDocs'
+
 import { Blocks } from '../../_components/Blocks'
 import { CollectionArchive } from '../../_components/CollectionArchive'
+import Filters from './Filters'
 import { Gutter } from '../../_components/Gutter'
 import { HR } from '../../_components/HR'
-import Filters from './Filters'
-
+import React from 'react'
 import classes from './index.module.scss'
+import { draftMode } from 'next/headers'
+import { fetchDoc } from '../../_api/fetchDoc'
+import { fetchDocs } from '../../_api/fetchDocs'
 
 const Products = async () => {
   const { isEnabled: isDraftMode } = draftMode()
@@ -34,6 +33,22 @@ const Products = async () => {
 
   return (
     <div className={classes.container}>
+      {isDraftMode && (
+        <div
+          style={{
+            backgroundColor: 'yellow',
+            padding: '10px',
+            textAlign: 'center',
+            position: 'fixed',
+            width: '100%',
+            top: 0,
+            left: 0,
+            zIndex: 1000,
+          }}
+        >
+          Você está no modo de pré-visualização
+        </div>
+      )}
       <div className={classes.filters}>
         <Filters page_name={'Produtos'} categories={categories} colors={colors} />
       </div>

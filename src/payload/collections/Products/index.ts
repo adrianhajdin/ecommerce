@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload/types'
 
 import { admins } from '../../access/admins'
 import { slugField } from '../../fields/slug'
+import { revalidateProduct } from './hooks/revalidateProduct'
 
 const Products: CollectionConfig = {
   slug: 'products',
@@ -14,6 +15,13 @@ const Products: CollectionConfig = {
         `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/products/${doc.slug}`,
       )}&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`
     },
+  },
+  hooks: {
+    afterChange: [revalidateProduct],
+    // Adicione outros hooks necessários aqui
+  },
+  versions: {
+    drafts: true,
   },
   access: {
     read: () => true,
