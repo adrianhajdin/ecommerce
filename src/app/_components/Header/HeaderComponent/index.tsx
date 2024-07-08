@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useRef, useState } from 'react'
-
 import Link from 'next/link'
+
 import classes from './index.module.scss'
 
 const organizeCategories = categories => {
@@ -62,7 +62,7 @@ export const HeaderComponent = ({ categories }) => {
   return (
     <div className={classes.headerButtons}>
       {/* New in */}
-      <Link href="/new-in" passHref >
+      <Link href="/new-in" passHref>
         <span className={classes.buttonLink}>New in</span>
       </Link>
 
@@ -72,35 +72,39 @@ export const HeaderComponent = ({ categories }) => {
         onMouseLeave={() => toggleDropdown('peças', false)}
         style={{ position: 'relative' }}
       >
-        <Link href="/products" >
-        <span className={classes.buttonLink} >
-        
-          Peças
-          {dropdownStates.peças && (
-            <div
-              className={classes.dropdownMenuVertical}
-              onMouseEnter={() => toggleDropdown('peças', true)}
-              onMouseLeave={() => toggleDropdown('peças', false)}
-            >
-              {Object.entries(categoriesMap).map(([category, items], index) => (
-                <div key={index} className={classes.dropdownColumn}>
-                  <Link href={`/products/${items[0].slug}`} passHref>
-                    <span className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>
-                      {category.toUpperCase()}
-                    </span>
-                  </Link>
-                  {items.map(item => (
-                    <Link key={item.id} href={`/products/${item.slug}`} passHref onClick={() => handleNavigation(`/products/${item.slug}`)}>
-                      <span className={classes.dropdownItem}>
-                        {item.subtitle.toUpperCase()}
+        <Link href="/products">
+          <span className={classes.buttonLink}>
+            Peças
+            {dropdownStates.peças && (
+              <div
+                className={classes.dropdownMenuVertical}
+                onMouseEnter={() => toggleDropdown('peças', true)}
+                onMouseLeave={() => toggleDropdown('peças', false)}
+              >
+                {Object.entries(categoriesMap).map(([category, items], index) => (
+                  <div key={index} className={classes.dropdownColumn}>
+                    <Link href={`/products/${items[0].slug}`} passHref>
+                      <span
+                        className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}
+                      >
+                        {category.toUpperCase()}
                       </span>
                     </Link>
-                  ))}
-                </div>
-              ))}
-            </div>
-          )}
-        </span>
+                    {items.map(item => (
+                      <Link
+                        key={item.id}
+                        href={`/products/${item.slug}`}
+                        passHref
+                        onClick={() => handleNavigation(`/products/${item.slug}`)}
+                      >
+                        <span className={classes.dropdownItem}>{item.subtitle.toUpperCase()}</span>
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
+          </span>
         </Link>
       </div>
 

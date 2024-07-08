@@ -42,7 +42,6 @@ export type Props = {
 export const CollectionArchive: React.FC<Props> = props => {
   const { categoryFilters, subCategoryFilters, colorFilters, sizeFilters, sort, searchTerm } =
     useFilter()
-    
 
   const {
     className,
@@ -112,7 +111,10 @@ export const CollectionArchive: React.FC<Props> = props => {
       {
         // sort,
         where: {
-          ...(categoryFilters && categoryFilters.length > 0 && subCategoryFilters && subCategoryFilters.length > 0
+          ...(categoryFilters &&
+          categoryFilters.length > 0 &&
+          subCategoryFilters &&
+          subCategoryFilters.length > 0
             ? {
                 and: [
                   {
@@ -124,8 +126,8 @@ export const CollectionArchive: React.FC<Props> = props => {
                     'categories.subtitle': {
                       in: subCategoryFilters,
                     },
-                  }
-                ]
+                  },
+                ],
               }
             : categoryFilters && categoryFilters.length > 0
             ? {
@@ -168,7 +170,7 @@ export const CollectionArchive: React.FC<Props> = props => {
         depth: 1,
       },
       { encode: false },
-    );
+    )
     // Log the query to console
     console.log('Query string being sent:', searchQuery)
 
