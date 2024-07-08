@@ -7,6 +7,7 @@ import { Category, Page } from '../../../payload/payload-types'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
+import ExitPreviewButton from '../../_components/ExitPreview'
 import { Gutter } from '../../_components/Gutter'
 import { Hero } from '../../_components/Hero'
 import { generateMeta } from '../../_utilities/generateMeta'
@@ -72,6 +73,7 @@ export default async function Page({ params: { slug = 'home' } }) {
           }}
         >
           Você está no modo de pré-visualização
+          <ExitPreviewButton />
         </div>
       )}
       {slug === 'home' ? (
