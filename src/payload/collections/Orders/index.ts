@@ -45,6 +45,16 @@ export const Orders: CollectionConfig = {
       min: 0,
     },
     {
+      name: 'shipped',
+      label: 'Enviado',
+      type: 'checkbox',
+    },
+    {
+      name: 'delivered',
+      label: 'Entregue',
+      type: 'checkbox',
+    },
+    {
       name: 'items',
       type: 'array',
       fields: [
