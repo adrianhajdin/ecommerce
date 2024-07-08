@@ -1,6 +1,4 @@
-// components/ExitPreviewButton.tsx
-
-"use client"
+'use client'
 
 import React from 'react'
 
@@ -14,11 +12,7 @@ const handleExitPreview = async () => {
 }
 
 const ExitPreviewButton: React.FC = () => {
-  return (
-    <button onClick={handleExitPreview}>
-      Sair
-    </button>
-  )
+  return <button onClick={handleExitPreview}>Sair</button>
 }
 
 export default ExitPreviewButton
