@@ -225,7 +225,7 @@ export const CollectionArchive: React.FC<Props> = props => {
       <div ref={scrollRef} className={classes.scrollRef} />
       {!isLoading && error && <div>{error}</div>}
       <Fragment>
-        {/* {showPageRange !== false && (
+        {showPageRange !== false && (
           <div className={classes.pageRange}>
             <PageRange
               totalDocs={results.totalDocs}
@@ -234,7 +234,7 @@ export const CollectionArchive: React.FC<Props> = props => {
               limit={limit}
             />
           </div>
-        )} */}
+        )}
 
         <div className={classes.grid}>
           {results.docs?.map((result, index) => {

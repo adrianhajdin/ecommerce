@@ -65,8 +65,6 @@ export default async function Product({ params: { slug } }) {
 
     const { hero } = page
 
-    console.log('passou')
-
     return (
       <div className={classes.container}>
         <Hero {...hero} />

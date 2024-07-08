@@ -8,6 +8,8 @@
   padding: 25px 0px;
   font-size: 15px;
 
+
+
 }
 
 .filterMenuButtons {
@@ -15,6 +17,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  z-index: 99;
 
 }
 
@@ -309,6 +312,7 @@
   margin-bottom: 20px;
   margin-top: 20px;
   position: relative; /* Add this line */
+
 }
 
 .filterInputContainer input {
