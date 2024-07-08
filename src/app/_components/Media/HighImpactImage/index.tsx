@@ -13,7 +13,7 @@ const { breakpoints } = cssVariables
 export const HighImpactImage: React.FC<MediaProps> = props => {
   const { imgClassName, onClick, onLoad: onLoadFromProps, resources, priority, fill } = props
 
-  console.log(resources)
+  // console.log(resources)
 
   // Função para manipular o evento onLoad
   const handleLoad = () => {

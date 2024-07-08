@@ -76,7 +76,7 @@ export const CheckoutPage = () => {
 
   // if (!user) return null
 
-  console.log(cart.items)
+  // console.log(cart.items)
 
   return (
     <Fragment>

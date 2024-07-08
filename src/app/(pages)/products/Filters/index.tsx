@@ -63,13 +63,14 @@ const FilterMenu = ({ categories, colors, page_name, preselectedCategory = null 
 
   useEffect(() => {
     if (preselectedCategory && !categoryFilters.includes(preselectedCategory.title)) {
-      setCategoryFilters([...categoryFilters, preselectedCategory.title])
+
+      setCategoryFilters([preselectedCategory.title])
     }
   }, [preselectedCategory])
 
   useEffect(() => {
     if (preselectedCategory && !subCategoryFilters.includes(preselectedCategory.subtitle)) {
-      setSubCategoryFilters([...subCategoryFilters, preselectedCategory.subtitle])
+      setSubCategoryFilters([preselectedCategory.subtitle])
     }
   }, [preselectedCategory])
 

@@ -42,6 +42,7 @@ export type Props = {
 export const CollectionArchive: React.FC<Props> = props => {
   const { categoryFilters, subCategoryFilters, colorFilters, sizeFilters, sort, searchTerm } =
     useFilter()
+    
 
   const {
     className,
@@ -109,17 +110,30 @@ export const CollectionArchive: React.FC<Props> = props => {
 
     const searchQuery = qs.stringify(
       {
-        sort,
+        // sort,
         where: {
-          or: whereConditions.length > 0 ? whereConditions : undefined,
-          ...(categoryFilters && categoryFilters.length > 0
+          ...(categoryFilters && categoryFilters.length > 0 && subCategoryFilters && subCategoryFilters.length > 0
+            ? {
+                and: [
+                  {
+                    'categories.title': {
+                      in: categoryFilters,
+                    },
+                  },
+                  {
+                    'categories.subtitle': {
+                      in: subCategoryFilters,
+                    },
+                  }
+                ]
+              }
+            : categoryFilters && categoryFilters.length > 0
             ? {
                 'categories.title': {
                   in: categoryFilters,
                 },
               }
-            : {}),
-          ...(subCategoryFilters && subCategoryFilters.length > 0
+            : subCategoryFilters && subCategoryFilters.length > 0
             ? {
                 'categories.subtitle': {
                   in: subCategoryFilters,
@@ -147,13 +161,14 @@ export const CollectionArchive: React.FC<Props> = props => {
                 },
               }
             : {}),
+          ...(whereConditions.length > 0 ? { or: whereConditions } : {}),
         },
         limit,
         page,
         depth: 1,
       },
       { encode: false },
-    )
+    );
     // Log the query to console
     console.log('Query string being sent:', searchQuery)
 
@@ -208,7 +223,7 @@ export const CollectionArchive: React.FC<Props> = props => {
       <div ref={scrollRef} className={classes.scrollRef} />
       {!isLoading && error && <div>{error}</div>}
       <Fragment>
-        {showPageRange !== false && (
+        {/* {showPageRange !== false && (
           <div className={classes.pageRange}>
             <PageRange
               totalDocs={results.totalDocs}
@@ -217,7 +232,7 @@ export const CollectionArchive: React.FC<Props> = props => {
               limit={limit}
             />
           </div>
-        )}
+        )} */}
 
         <div className={classes.grid}>
           {results.docs?.map((result, index) => {

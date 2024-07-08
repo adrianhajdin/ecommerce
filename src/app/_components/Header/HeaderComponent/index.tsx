@@ -1,12 +1,9 @@
 'use client'
+
 import React, { useRef, useState } from 'react'
-import Image from 'next/image'
 
+import Link from 'next/link'
 import classes from './index.module.scss'
-
-const handleNavigation = url => {
-  window.location.href = url
-}
 
 const organizeCategories = categories => {
   const catMap = {}
@@ -58,12 +55,16 @@ export const HeaderComponent = ({ categories }) => {
     }
   }
 
+  const handleNavigation = url => {
+    window.location.href = url
+  }
+
   return (
     <div className={classes.headerButtons}>
       {/* New in */}
-      <span className={classes.buttonLink} onClick={() => handleNavigation('/new-in')}>
-        New in
-      </span>
+      <Link href="/new-in" passHref >
+        <span className={classes.buttonLink}>New in</span>
+      </Link>
 
       {/* Peças */}
       <div
@@ -71,7 +72,9 @@ export const HeaderComponent = ({ categories }) => {
         onMouseLeave={() => toggleDropdown('peças', false)}
         style={{ position: 'relative' }}
       >
-        <span className={classes.buttonLink} onClick={() => handleNavigation('/products')}>
+        <Link href="/products" >
+        <span className={classes.buttonLink} >
+        
           Peças
           {dropdownStates.peças && (
             <div
@@ -81,37 +84,35 @@ export const HeaderComponent = ({ categories }) => {
             >
               {Object.entries(categoriesMap).map(([category, items], index) => (
                 <div key={index} className={classes.dropdownColumn}>
-                  <span
-                    className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}
-                    onClick={() => handleNavigation('/products')}
-                  >
-                    {category.toUpperCase()}
-                  </span>
-                  {items.map(item => (
-                    <span
-                      key={item.id}
-                      className={classes.dropdownItem}
-                      onClick={() => handleNavigation(`/products/${item.slug}`)}
-                    >
-                      {item.subtitle.toUpperCase()}
+                  <Link href={`/products/${items[0].slug}`} passHref>
+                    <span className={`${classes.dropdownItem} ${classes.boldUnderlineDropdownItem}`}>
+                      {category.toUpperCase()}
                     </span>
+                  </Link>
+                  {items.map(item => (
+                    <Link key={item.id} href={`/products/${item.slug}`} passHref onClick={() => handleNavigation(`/products/${item.slug}`)}>
+                      <span className={classes.dropdownItem}>
+                        {item.subtitle.toUpperCase()}
+                      </span>
+                    </Link>
                   ))}
                 </div>
               ))}
             </div>
           )}
         </span>
+        </Link>
       </div>
 
       {/* Em Alta */}
-      <span className={classes.buttonLink} onClick={() => handleNavigation('/hot')}>
-        Em Alta
-      </span>
+      <Link href="/hot" passHref>
+        <span className={classes.buttonLink}>Em Alta</span>
+      </Link>
 
       {/* Sale */}
-      <span className={classes.buttonLink} onClick={() => handleNavigation('/sale')}>
-        Sale
-      </span>
+      <Link href="/sale" passHref>
+        <span className={classes.buttonLink}>Sale</span>
+      </Link>
     </div>
   )
 }
