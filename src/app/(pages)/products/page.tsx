@@ -1,16 +1,17 @@
-import { Category, Color, Page } from '../../../payload/payload-types'
+import React from 'react'
+import { draftMode } from 'next/headers'
 
+import { Category, Color, Page } from '../../../payload/payload-types'
+import { fetchDocs } from '../..//_api/fetchDocs'
+import { Gutter } from '../..//_components/Gutter'
+import { HR } from '../..//_components/HR'
+import { fetchDoc } from '../../_api/fetchDoc'
 import { Blocks } from '../../_components/Blocks'
 import { CollectionArchive } from '../../_components/CollectionArchive'
 import ExitPreviewButton from '../../_components/ExitPreview'
 import Filters from './Filters'
-import { Gutter } from '../..//_components/Gutter'
-import { HR } from '../..//_components/HR'
-import React from 'react'
+
 import classes from './index.module.scss'
-import { draftMode } from 'next/headers'
-import { fetchDoc } from '../../_api/fetchDoc'
-import { fetchDocs } from '../..//_api/fetchDocs'
 
 const Products = async () => {
   const { isEnabled: isDraftMode } = draftMode()
