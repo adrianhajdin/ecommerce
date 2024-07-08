@@ -2,12 +2,13 @@ import React from 'react'
 import { draftMode } from 'next/headers'
 
 import { Category, Color, Page } from '../../../payload/payload-types'
+import { fetchDocs } from '../..//_api/fetchDocs'
+import { Gutter } from '../..//_components/Gutter'
+import { HR } from '../..//_components/HR'
 import { fetchDoc } from '../../_api/fetchDoc'
-import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
 import { CollectionArchive } from '../../_components/CollectionArchive'
-import { Gutter } from '../../_components/Gutter'
-import { HR } from '../../_components/HR'
+import ExitPreviewButton from '../../_components/ExitPreview'
 import Filters from './Filters'
 
 import classes from './index.module.scss'
@@ -48,6 +49,7 @@ const Products = async () => {
           }}
         >
           Você está no modo de pré-visualização
+          <ExitPreviewButton />
         </div>
       )}
       <div className={classes.filters}>
