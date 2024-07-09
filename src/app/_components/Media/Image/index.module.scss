@@ -9,8 +9,8 @@
   flex-direction: row;
   flex-wrap: nowrap;
   background-color: rgb(255, 255, 255);
-  gap:5px;
-
+  gap: 5px;
+  height: 500px; /* Define uma altura fixa para o container */
 }
 
 .container__slider > button {
@@ -26,7 +26,6 @@
 }
 
 .slider__btn_next {
-
   position: absolute;
   right: 0;
 }
@@ -64,17 +63,18 @@
 /* Adicione ao seu CSS */
 .slider__item {
   box-sizing: border-box;
-  min-width: 50%; /* Mudança de 100% para 50% */
-  height: auto;
+  min-width: 50%; /* Mantém duas imagens lado a lado */
+  height: 100%; /* Ajusta a altura para 100% do container */
   overflow: hidden;
   object-fit: cover;
   transform: translateX(0);
   transition: transform 1s ease;
+  padding-top: 33px;
 }
 
 .slider__item_active_1 {
   transform: translateX(0);
-    background-color: white;
+  background-color: white;
 }
 
 .slider__item_active_2 {
@@ -103,6 +103,5 @@
 
 .slider__item img {
   width: 100%;
-  height: auto;
-
+  height: 100%;
 }
