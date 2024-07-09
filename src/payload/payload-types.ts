@@ -153,7 +153,7 @@ export interface Page {
 }
 export interface Media {
   id: string;
-  alt: string;
+  alt?: string | null;
   caption?:
     | {
         [k: string]: unknown;
@@ -190,6 +190,7 @@ export interface Product {
   composition: string;
   price: number;
   discountPercentage?: number | null;
+  newprice?: number | null;
   photos?:
     | {
         photo?: string | Media | null;
@@ -201,6 +202,7 @@ export interface Product {
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 export interface Color {
   id: string;
@@ -268,6 +270,8 @@ export interface Order {
   id: string;
   orderedBy?: (string | null) | User;
   total: number;
+  shipped?: boolean | null;
+  delivered?: boolean | null;
   items?:
     | {
         product: string | Product;
