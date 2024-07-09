@@ -18,7 +18,28 @@ const Products: CollectionConfig = {
   },
   hooks: {
     afterChange: [revalidateProduct],
-    // Adicione outros hooks necessários aqui
+    beforeValidate: [
+      ({ data, originalDoc }) => {
+        if (data.sale && data.price && data.discountPercentage) {
+          data.newprice = data.price - (data.price * data.discountPercentage) / 100
+        } else if (!data.sale) {
+          data.newprice = null
+        } else {
+          data.newprice = originalDoc.newprice
+        }
+      },
+    ],
+    beforeChange: [
+      ({ data, originalDoc }) => {
+        if (data.sale && data.price && data.discountPercentage) {
+          data.newprice = data.price - (data.price * data.discountPercentage) / 100
+        } else if (!data.sale) {
+          data.newprice = 1
+        } else {
+          data.newprice = originalDoc.newprice
+        }
+      },
+    ],
   },
   versions: {
     drafts: true,
@@ -75,7 +96,6 @@ const Products: CollectionConfig = {
         { value: 'M', label: 'M' },
         { value: 'P', label: 'P' },
         { value: 'PP', label: 'PP' },
-        // Adicione mais tamanhos conforme necessário
       ],
       hasMany: true,
     },
@@ -115,6 +135,17 @@ const Products: CollectionConfig = {
         condition: (_, siblingData) => siblingData?.sale === true,
       },
       required: true,
+    },
+    {
+      name: 'newprice',
+      label: 'Preço após desconto',
+      type: 'number',
+      admin: {
+        step: 1.0,
+        condition: (_, siblingData) => siblingData?.sale === true,
+        readOnly: true, // Tornar o campo apenas leitura no admin
+      },
+      required: false,
     },
     {
       name: 'photos',
