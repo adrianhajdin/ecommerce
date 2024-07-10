@@ -13,6 +13,7 @@ import {
 import { fetchDoc } from '../../../_api/fetchDoc'
 import { fetchDocs } from '../../../_api/fetchDocs'
 import { Blocks } from '../../../_components/Blocks'
+import ExitPreviewButton from '../../../_components/ExitPreview'
 import { Gutter } from '../../../_components/Gutter'
 import { Hero } from '../../../_components/Hero'
 import { HR } from '../../../_components/HR'
@@ -67,6 +68,23 @@ export default async function Product({ params: { slug } }) {
 
     return (
       <div className={classes.container}>
+        {isDraftMode && (
+          <div
+            style={{
+              backgroundColor: 'yellow',
+              padding: '10px',
+              textAlign: 'center',
+              position: 'fixed',
+              width: '100%',
+              top: 0,
+              left: 0,
+              zIndex: 1000,
+            }}
+          >
+            Você está no modo de pré-visualização
+            <ExitPreviewButton />
+          </div>
+        )}
         <Hero {...hero} />
         <div className={classes.filters}>
           <Filters
@@ -87,8 +105,6 @@ export default async function Product({ params: { slug } }) {
       </div>
     )
   } else {
-    //const { isEnabled: isDraftMode } = draftMode()
-
     let product: Product | null = null
 
     try {
@@ -109,6 +125,23 @@ export default async function Product({ params: { slug } }) {
 
     return (
       <>
+        {isDraftMode && (
+          <div
+            style={{
+              backgroundColor: 'yellow',
+              padding: '10px',
+              textAlign: 'center',
+              position: 'fixed',
+              width: '100%',
+              top: 0,
+              left: 0,
+              zIndex: 1000,
+            }}
+          >
+            Você está no modo de pré-visualização
+            <ExitPreviewButton />
+          </div>
+        )}
         <div className={classes.productContainer}>
           <ProductHero product={product} />
 
