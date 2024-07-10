@@ -16,7 +16,7 @@ export const conditionalText: React.FC<Props> = (props) => {
         // you can do more stuff here
         let message = price * (1 - (discount / 100));
 
-        message = Math.round(message);
+        message = message.toFixed(2);
         message = message.toString();
   
         setValue(message);
