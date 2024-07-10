@@ -171,7 +171,7 @@ const Products: CollectionConfig = {
         date: {
           pickerAppearance: 'dayAndTime',
         },
-        hidden: true
+        hidden: true,
       },
     },
     {

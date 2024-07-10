@@ -12,12 +12,10 @@ export const ConditionalText: React.FC<Props> = props => {
 
   const concatFunction = React.useCallback(() => {
     // você pode fazer mais coisas aqui
-    let message = price * (1 - discount / 100)
+    const discountedPrice = price - (price * discount) / 100;
+    const formattedPrice = discountedPrice.toFixed(2); // 
 
-    message = message.toFixed(2)
-    message = message.toString()
-
-    setValue(message)
+    setValue(formattedPrice)
   }, [price, discount])
 
   useEffect(() => {
