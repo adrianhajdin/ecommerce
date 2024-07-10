@@ -3,6 +3,7 @@ import type { CollectionConfig } from 'payload/types'
 import { admins } from '../../access/admins'
 import { slugField } from '../../fields/slug'
 import { revalidateProduct } from './hooks/revalidateProduct'
+import { conditionalText } from '../../fields/conditionalText'
 
 const Products: CollectionConfig = {
   slug: 'products',
@@ -51,12 +52,16 @@ const Products: CollectionConfig = {
     delete: admins,
   },
   fields: [
+
     {
       name: 'title',
       label: 'Nome do Produto',
       type: 'text',
       required: true,
     },
+    
+
+
     {
       name: 'new',
       label: 'New In',
@@ -139,11 +144,13 @@ const Products: CollectionConfig = {
     {
       name: 'newprice',
       label: 'Preço após desconto',
-      type: 'number',
+      type: 'ui',
       admin: {
-        step: 1.0,
         condition: (_, siblingData) => siblingData?.sale === true,
-        readOnly: true, // Tornar o campo apenas leitura no admin
+        components: {
+          Field: conditionalText,
+
+        },
       },
       required: false,
     },
