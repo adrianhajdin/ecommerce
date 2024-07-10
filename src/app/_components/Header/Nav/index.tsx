@@ -16,8 +16,8 @@ export const HeaderNav: React.FC<{ header }> = ({ header }) => {
   const [isSearchVisible, setIsSearchVisible] = useState(false)
 
   // Handler for search action
-  const handleSearch = (query: string) => {
-    // Implement the search functionality here
+  const handleNavigation = url => {
+    window.location.href = url
   }
 
   const toggleSearchBar = () => {
@@ -45,7 +45,7 @@ export const HeaderNav: React.FC<{ header }> = ({ header }) => {
         <Link href="https://www.tiktok.com" target="_blank">
           <img src="/tiktok.png" alt="TikTok" className={classes.socialIcon} />
         </Link>
-        <Link href="/products">
+        <Link href={'/products'} passHref>
           <img src="/search.png" alt="Search" className={classes.socialIcon} />
         </Link>
         {user && (
