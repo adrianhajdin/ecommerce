@@ -1,9 +1,9 @@
 import type { CollectionConfig } from 'payload/types'
 
 import { admins } from '../../access/admins'
+import { ConditionalText } from '../../fields/conditionalText'
 import { slugField } from '../../fields/slug'
 import { revalidateProduct } from './hooks/revalidateProduct'
-import { conditionalText } from '../../fields/conditionalText'
 
 const Products: CollectionConfig = {
   slug: 'products',
@@ -52,15 +52,12 @@ const Products: CollectionConfig = {
     delete: admins,
   },
   fields: [
-
     {
       name: 'title',
       label: 'Nome do Produto',
       type: 'text',
       required: true,
     },
-    
-
 
     {
       name: 'new',
@@ -148,8 +145,7 @@ const Products: CollectionConfig = {
       admin: {
         condition: (_, siblingData) => siblingData?.sale === true,
         components: {
-          Field: conditionalText,
-
+          Field: ConditionalText,
         },
       },
       required: false,
