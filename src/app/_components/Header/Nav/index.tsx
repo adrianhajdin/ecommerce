@@ -45,9 +45,12 @@ export const HeaderNav: React.FC<{ header }> = ({ header }) => {
         <Link href="https://www.tiktok.com" target="_blank">
           <img src="/tiktok.png" alt="TikTok" className={classes.socialIcon} />
         </Link>
-        <Link href={'/products'} passHref>
-          <img src="/search.png" alt="Search" className={classes.socialIcon} />
-        </Link>
+        <img
+          src="/search.png"
+          alt="Search"
+          className={classes.socialIcon}
+          onClick={() => handleNavigation('/products')}
+        />
         {user && (
           <Link href="/account">
             <img className={classes.socialIcon} alt="Minha Conta" src="/user_profile.png" />
