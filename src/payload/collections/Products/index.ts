@@ -148,7 +148,6 @@ const Products: CollectionConfig = {
           Field: ConditionalText,
         },
       },
-      required: false,
     },
     {
       name: 'photos',
@@ -172,6 +171,7 @@ const Products: CollectionConfig = {
         date: {
           pickerAppearance: 'dayAndTime',
         },
+        hidden: true
       },
     },
     {

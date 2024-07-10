@@ -190,7 +190,6 @@ export interface Product {
   composition: string;
   price: number;
   discountPercentage?: number | null;
-  newprice?: number | null;
   photos?:
     | {
         photo?: string | Media | null;
