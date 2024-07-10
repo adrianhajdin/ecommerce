@@ -42,6 +42,11 @@
   padding-right: 60px;
   background-color: white; /* Cor de fundo */
   border: 1px solid rgb(238, 238, 238); /* Cor de fundo */
+
+  @include small-break {
+    margin-left: 0%;
+    margin: 0px;
+  }
 }
 
 .categoryWrapper {
