@@ -8,30 +8,20 @@
   font-size: 18px;
 
 
-
+// Todas resoluções entre  e 768
   @include large-break {
-    font-size: 23px;
+    font-size: 18px;
     gap: 60px;
-    left: 30%;
+    left: 25%;
   }
 
   @include mid-break {
-    font-size: 16px;
-    gap: 35px;
+    font-size: 18px;
+    gap: 30px;
+    left: 32%;
+    line-height: 32px;
   }
 
-  @include small-break {
-    flex-direction: column;
-    gap: 20px;
-    position: static;
-    left: 0;
-    font-size: 10px;
-  }
-
-  @include extra-small-break {
-    font-size: 16px;
-    gap: 15px;
-  }
 }
 
 .separator {
@@ -50,26 +40,7 @@
   }
 }
 
-.iconsContainer {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  width: 100%;
-  position: relative;
 
-  @include large-break {
-    justify-content: space-between;
-  }
-
-  @include mid-break {
-    justify-content: flex-end;
-  }
-
-  @include small-break {
-    flex-direction: column;
-    align-items: center;
-  }
-}
 
 .headerSocialIcons,
 .headerIcons {

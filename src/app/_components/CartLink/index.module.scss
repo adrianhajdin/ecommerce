@@ -7,26 +7,6 @@
   .icon {
     max-width: 25px;
     max-height: 25px;
-
-    @include large-break {
-      max-width: 33px;
-      max-height: 45px;
-    }
-
-    @include mid-break {
-      max-width: 24px;
-      max-height: 35px;
-    }
-
-    @include small-break {
-      max-width: 23px;
-      max-height: 35px;
-    }
-
-    @include extra-small-break {
-      max-width: 10px;
-      max-height: 15px;
-    }
   }
 }
 

@@ -10,7 +10,6 @@
   position: relative;
 
   @include small-break {
-    padding: 15px;
     flex-direction: row;
     align-items: center;
   }
@@ -24,21 +23,21 @@
   max-height: 100%;
   width: 200px;
 
-  @include large-break {
-    width: 200px;
-  }
+  // @include large-break {
+  //   width: 200px;
+  // }
 
-  @include mid-break {
-    width: 150px;
-  }
+  // @include mid-break {
+  //   width: 150px;
+  // }
 
-  @include small-break {
-    width: 150px;
-  }
+  // @include small-break {
+  //   width: 150px;
+  // }
 
-  @include extra-small-break {
-    width: 150px;
-  }
+  // @include extra-small-break {
+  //   width: 150px;
+  // }
 }
 
 .menu {

@@ -3,7 +3,7 @@
 
 .hamburgerMenu {
   display: none;
-  @include mid-break {
+  @include small-break {
     display: block;
   }
 }
