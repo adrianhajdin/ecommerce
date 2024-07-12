@@ -7,12 +7,10 @@ import { Gutter } from '../..//_components/Gutter'
 import { HR } from '../..//_components/HR'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { Blocks } from '../../_components/Blocks'
-
 import ExitPreviewButton from '../../_components/ExitPreview'
 import Filters from './Filters'
 
 import classes from './index.module.scss'
-
 
 const Products = async () => {
   const { isEnabled: isDraftMode } = draftMode()
@@ -26,8 +24,6 @@ const Products = async () => {
       collection: 'pages',
       slug: 'products',
       draft: isDraftMode,
-
-    
     })
 
     categories = await fetchDocs<Category>('categories')
@@ -38,7 +34,6 @@ const Products = async () => {
 
   return (
     <div className={classes.container}>
-
       {isDraftMode && (
         <div
           style={{

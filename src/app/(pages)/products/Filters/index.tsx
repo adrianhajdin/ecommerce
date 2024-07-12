@@ -61,7 +61,7 @@ const FilterMenu = ({ categories, colors, page_name, preselectedCategory = null 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false) // Add this line
   const [selectedFilter, setSelectedFilter] = useState(null)
 
-    useEffect(() => {
+  useEffect(() => {
     if (preselectedCategory && !categoryFilters.includes(preselectedCategory.title)) {
       setCategoryFilters([preselectedCategory.title])
     }

@@ -1,6 +1,6 @@
 import { PRODUCT_CATEGORIES } from './categories'
 import { LINK_FIELDS } from './link'
-import { MEDIA, MEDIA_FIELDS } from './media'
+import { MEDIA } from './media'
 
 export const CALL_TO_ACTION = `
 ...on Cta {
@@ -61,4 +61,3 @@ export const ARCHIVE_BLOCK = `
 
 }
 `
-

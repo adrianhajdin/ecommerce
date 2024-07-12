@@ -15,15 +15,13 @@ export const EditablePages: CollectionConfig = {
   slug: 'editablepages',
   labels: { plural: 'Páginas', singular: 'Página' },
   admin: {
-        livePreview: {
-    url: ({ data }) =>
-      `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/new-in`,
+    livePreview: {
+      url: ({}) => `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/new-in`,
     },
     hidden: false,
     useAsTitle: 'title',
     description: 'Páginas',
     defaultColumns: ['title', 'slug', 'updatedAt'],
-
   },
   hooks: {
     afterChange: [revalidatePage],

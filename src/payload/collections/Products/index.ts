@@ -11,7 +11,7 @@ const Products: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     livePreview: {
-    url: ({ data }) =>
+      url: ({ data }) =>
         `${process.env.PAYLOAD_PUBLIC_SITE_URL}${data.slug !== 'home' ? `/${data.slug}` : ''}`,
     },
     defaultColumns: ['title', 'price', 'discountPercentage', '_status'],

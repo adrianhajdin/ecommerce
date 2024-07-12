@@ -39,7 +39,8 @@ export type Props = {
 }
 
 export const CollectionArchive: React.FC<Props> = props => {
-  const {  categoryFilters, subCategoryFilters, colorFilters, sizeFilters, sort, searchTerm } = useFilter()
+  const { categoryFilters, subCategoryFilters, colorFilters, sizeFilters, sort, searchTerm } =
+    useFilter()
 
   const {
     className,
@@ -53,8 +54,6 @@ export const CollectionArchive: React.FC<Props> = props => {
     sale: saleFilter,
     hot: hotFilter,
   } = props
-
-  
 
   const [results, setResults] = useState<Result>({
     totalDocs: typeof populatedDocsTotal === 'number' ? populatedDocsTotal : 0,
@@ -81,115 +80,131 @@ export const CollectionArchive: React.FC<Props> = props => {
     }
   }
 
-
-  const fetchProducts = useCallback(debounce(async () => {
-    if (hasHydrated.current) {
-      setIsLoading(true)
-    }
-
-    const whereConditions: any[] = []
-
-    if (newFilter === true) {
-      whereConditions.push({ new: { equals: newFilter } })
-    }
-    if (saleFilter === true) {
-      whereConditions.push({ sale: { equals: saleFilter } })
-    }
-    if (hotFilter === true) {
-      whereConditions.push({ hot: { equals: hotFilter } })
-    }
-
-    const searchQuery = qs.stringify(
-      {
-        // sort,
-        where: {
-          ...(categoryFilters &&
-          categoryFilters.length > 0 &&
-          subCategoryFilters &&
-          subCategoryFilters.length > 0
-            ? {
-                and: [
-                  {
-                    'categories.title': {
-                      in: categoryFilters,
-                    },
-                  },
-                  {
-                    'categories.subtitle': {
-                      in: subCategoryFilters,
-                    },
-                  },
-                ],
-              }
-            : categoryFilters && categoryFilters.length > 0
-            ? {
-                'categories.title': {
-                  in: categoryFilters,
-                },
-              }
-            : subCategoryFilters && subCategoryFilters.length > 0
-            ? {
-                'categories.subtitle': {
-                  in: subCategoryFilters,
-                },
-              }
-            : {}),
-          ...(colorFilters && colorFilters.length > 0
-            ? {
-                'colors.color': {
-                  in: colorFilters,
-                },
-              }
-            : {}),
-          ...(sizeFilters && sizeFilters.length > 0
-            ? {
-                sizes: {
-                  in: sizeFilters,
-                },
-              }
-            : {}),
-          ...(searchTerm.trim() !== ''
-            ? {
-                title: {
-                  like: `${searchTerm}`,
-                },
-              }
-            : {}),
-          ...(whereConditions.length > 0 ? { or: whereConditions } : {}),
-        },
-        limit,
-        page,
-        depth: 1,
-      },
-      { encode: false },
-    )
-
-    // Log the query to console
-    console.log('Query string being sent:', searchQuery)
-
-    try {
-      const req = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${relationTo}?${searchQuery}`,
-      )
-      const json = await req.json()
-
-      hasHydrated.current = true
-
-      const { docs } = json as { docs: Product[] }
-
-      if (docs && Array.isArray(docs)) {
-        setResults(json)
-        setIsLoading(false)
-        if (typeof onResultChange === 'function') {
-          onResultChange(json)
-        }
+  const fetchProducts = useCallback(
+    debounce(async () => {
+      if (hasHydrated.current) {
+        setIsLoading(true)
       }
-    } catch (err) {
-      console.warn(err) // eslint-disable-line no-console
-      setIsLoading(false)
-      setError(`Unable to load "${relationTo} archive" data at this time.`)
-    }
-  }, 500), [page, categoryFilters, subCategoryFilters, colorFilters, sizeFilters, relationTo, onResultChange, sort, limit, newFilter, saleFilter, hotFilter, searchTerm])
+
+      const whereConditions: any[] = []
+
+      if (newFilter === true) {
+        whereConditions.push({ new: { equals: newFilter } })
+      }
+      if (saleFilter === true) {
+        whereConditions.push({ sale: { equals: saleFilter } })
+      }
+      if (hotFilter === true) {
+        whereConditions.push({ hot: { equals: hotFilter } })
+      }
+
+      const searchQuery = qs.stringify(
+        {
+          // sort,
+          where: {
+            ...(categoryFilters &&
+            categoryFilters.length > 0 &&
+            subCategoryFilters &&
+            subCategoryFilters.length > 0
+              ? {
+                  and: [
+                    {
+                      'categories.title': {
+                        in: categoryFilters,
+                      },
+                    },
+                    {
+                      'categories.subtitle': {
+                        in: subCategoryFilters,
+                      },
+                    },
+                  ],
+                }
+              : categoryFilters && categoryFilters.length > 0
+              ? {
+                  'categories.title': {
+                    in: categoryFilters,
+                  },
+                }
+              : subCategoryFilters && subCategoryFilters.length > 0
+              ? {
+                  'categories.subtitle': {
+                    in: subCategoryFilters,
+                  },
+                }
+              : {}),
+            ...(colorFilters && colorFilters.length > 0
+              ? {
+                  'colors.color': {
+                    in: colorFilters,
+                  },
+                }
+              : {}),
+            ...(sizeFilters && sizeFilters.length > 0
+              ? {
+                  sizes: {
+                    in: sizeFilters,
+                  },
+                }
+              : {}),
+            ...(searchTerm.trim() !== ''
+              ? {
+                  title: {
+                    like: `${searchTerm}`,
+                  },
+                }
+              : {}),
+            ...(whereConditions.length > 0 ? { or: whereConditions } : {}),
+          },
+          limit,
+          page,
+          depth: 1,
+        },
+        { encode: false },
+      )
+
+      // Log the query to console
+      console.log('Query string being sent:', searchQuery)
+
+      try {
+        const req = await fetch(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${relationTo}?${searchQuery}`,
+        )
+        const json = await req.json()
+
+        hasHydrated.current = true
+
+        const { docs } = json as { docs: Product[] }
+
+        if (docs && Array.isArray(docs)) {
+          setResults(json)
+          setIsLoading(false)
+          if (typeof onResultChange === 'function') {
+            onResultChange(json)
+          }
+        }
+      } catch (err) {
+        console.warn(err) // eslint-disable-line no-console
+        setIsLoading(false)
+        setError(`Unable to load "${relationTo} archive" data at this time.`)
+      }
+    }, 500),
+    [
+      page,
+      categoryFilters,
+      subCategoryFilters,
+      colorFilters,
+      sizeFilters,
+      relationTo,
+      onResultChange,
+      sort,
+      limit,
+      newFilter,
+      saleFilter,
+      hotFilter,
+      searchTerm,
+    ],
+  )
 
   useEffect(() => {
     // Verifica se há filtros aplicados ou outras condições que justifiquem a busca
@@ -201,7 +216,8 @@ export const CollectionArchive: React.FC<Props> = props => {
       searchTerm.trim() !== '' ||
       newFilter ||
       saleFilter ||
-      hotFilter || true
+      hotFilter ||
+      true
     ) {
       fetchProducts()
     } else if (hasHydrated.current) {

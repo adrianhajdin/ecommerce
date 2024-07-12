@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { Metadata } from 'next'
 import { draftMode } from 'next/headers'
@@ -23,18 +22,13 @@ import { ProductHero } from '../../../_heros/Product'
 import { generateMeta } from '../../../_utilities/generateMeta'
 import Filters from '.././Filters'
 
-
 import classes from '../index.module.scss'
 
 // Force this page to be dynamic so that Next.js does not cache it
 // See the note in '../../../[slug]/page.tsx' about this
 export const dynamic = 'force-dynamic'
 
-
 export default async function Product({ params: { slug } }) {
-
-
-
   const { isEnabled: isDraftMode } = draftMode()
 
   let page: Page | null = null
@@ -56,8 +50,7 @@ export default async function Product({ params: { slug } }) {
 
   const category = findCategoryIdBySlug(categories, slug)
 
-  if (category) { 
-
+  if (category) {
     try {
       page = await fetchDoc<Page>({
         collection: 'pages',
@@ -71,8 +64,6 @@ export default async function Product({ params: { slug } }) {
     }
 
     const { hero } = page
-
-    
 
     return (
       <div className={classes.container}>

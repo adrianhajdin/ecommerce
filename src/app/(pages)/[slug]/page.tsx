@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLivePreview } from '@payloadcms/live-preview-react'
 import { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
@@ -13,17 +14,13 @@ import { Hero } from '../../_components/Hero'
 import { generateMeta } from '../../_utilities/generateMeta'
 import Filters from '../products/Filters'
 
-import { useLivePreview } from '@payloadcms/live-preview-react'
-
-
 export const dynamic = 'force-dynamic'
 
 import Categories from '../../_components/Categories'
 import Promotion from '../../_components/Promotion'
-
-import classes from './index.module.scss'
 import { PageTemplate } from './page.client'
 
+import classes from './index.module.scss'
 
 export default async function Page({ params: { slug = 'home' } }) {
   const { isEnabled: isDraftMode } = draftMode()
@@ -58,15 +55,11 @@ export default async function Page({ params: { slug = 'home' } }) {
     return notFound()
   }
 
-
   const { hero, layout } = page
-
 
   const pageTitle = page.title === 'hot' ? 'Em Alta' : page.title
 
-  return (
-    <PageTemplate page={page} slug={slug} isDraftMode={isDraftMode} categories={categories} />
-  )
+  return <PageTemplate page={page} slug={slug} isDraftMode={isDraftMode} categories={categories} />
 }
 
 export async function generateStaticParams() {

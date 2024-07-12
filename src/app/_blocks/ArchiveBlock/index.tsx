@@ -33,7 +33,6 @@ export const ArchiveBlock: React.FC<
 
   console.log(categoryFilters)
 
-
   return (
     <div id={`block-${id}`} className={classes.archiveBlock}>
       <CollectionArchive
