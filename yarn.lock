@@ -1510,6 +1510,11 @@
   resolved "https://registry.npmjs.org/@payloadcms/eslint-config/-/eslint-config-0.0.1.tgz"
   integrity sha512-Il59+0C4E/bI6uM2hont3I+oABWkJZbfbItubje5SGMrXkymUq8jT/UZRk0eCt918bB7gihxDXx8guFnR/aNIw==
 
+"@payloadcms/live-preview@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@payloadcms/live-preview/-/live-preview-0.2.2.tgz#271e4a49bf21e5e46168f054f7306ea34b9232a1"
+  integrity sha512-FOcg/HOIzzESjoT4vXgM7Pjd+bODodZTKR/pEJWsjLtyARd6NfF3MNWS+tdlfa3TOZrdT8WnHBAKsKyREyE3og==
+
 "@payloadcms/plugin-cloud@^2.0.0":
   version "2.2.6"
   resolved "https://registry.npmjs.org/@payloadcms/plugin-cloud/-/plugin-cloud-2.2.6.tgz"
@@ -2064,18 +2069,6 @@
     "@smithy/abort-controller" "^2.0.14"
     "@smithy/types" "^2.6.0"
     tslib "^2.5.0"
-
-"@stripe/react-stripe-js@^1.16.3":
-  version "1.16.5"
-  resolved "https://registry.npmjs.org/@stripe/react-stripe-js/-/react-stripe-js-1.16.5.tgz"
-  integrity sha512-lVPW3IfwdacyS22pP+nBB6/GNFRRhT/4jfgAK6T2guQmtzPwJV1DogiGGaBNhiKtSY18+yS8KlHSu+PvZNclvQ==
-  dependencies:
-    prop-types "^15.7.2"
-
-"@stripe/stripe-js@^1.46.0":
-  version "1.54.2"
-  resolved "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-1.54.2.tgz"
-  integrity sha512-R1PwtDvUfs99cAjfuQ/WpwJ3c92+DAMy9xGApjqlWQMj0FKQabUAys2swfTRNzuYAYJh7NqK2dzcYVNkKLEKUg==
 
 "@swc/core-darwin-arm64@1.3.76":
   version "1.3.76"
