@@ -32,7 +32,7 @@
     "@payloadcms/plugin-seo": "^1.0.10",
     "@payloadcms/plugin-stripe": "^0.0.14",
     "@payloadcms/richtext-slate": "^1.0.0",
-    "@payloadcms/live-preview-react": "0.2.2",
+    "@payloadcms/live-preview-react": "0.2.0",
     "axios": "1.6.8",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
