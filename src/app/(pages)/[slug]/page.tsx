@@ -7,17 +7,10 @@ import { notFound } from 'next/navigation'
 import { Category, Page } from '../../../payload/payload-types'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
-import { Blocks } from '../../_components/Blocks'
-import ExitPreviewButton from '../../_components/ExitPreview'
-import { Gutter } from '../../_components/Gutter'
-import { Hero } from '../../_components/Hero'
 import { generateMeta } from '../../_utilities/generateMeta'
-import Filters from '../products/Filters'
 
 export const dynamic = 'force-dynamic'
 
-import Categories from '../../_components/Categories'
-import Promotion from '../../_components/Promotion'
 import { PageTemplate } from './page.client'
 
 import classes from './index.module.scss'
@@ -54,10 +47,6 @@ export default async function Page({ params: { slug = 'home' } }) {
   if (!page) {
     return notFound()
   }
-
-  const { hero, layout } = page
-
-  const pageTitle = page.title === 'hot' ? 'Em Alta' : page.title
 
   return <PageTemplate page={page} slug={slug} isDraftMode={isDraftMode} categories={categories} />
 }

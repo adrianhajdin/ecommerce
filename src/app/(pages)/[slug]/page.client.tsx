@@ -2,19 +2,11 @@
 
 import React from 'react'
 import { useLivePreview } from '@payloadcms/live-preview-react'
-import { Metadata } from 'next'
-import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
 
 import { Gutter } from '../../../app/_components/Gutter'
-import RichText from '../../../app/_components/RichText'
-import { Category, Page } from '../../../payload/payload-types'
-import { fetchDoc } from '../../_api/fetchDoc'
-import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
 import ExitPreviewButton from '../../_components/ExitPreview'
 import { Hero } from '../../_components/Hero'
-import { generateMeta } from '../../_utilities/generateMeta'
 import Filters from '../products/Filters'
 
 import classes from './index.module.scss'
@@ -28,7 +20,7 @@ export const PageTemplate: React.FC<{
   const { data } = useLivePreview({
     serverURL: `${process.env.PAYLOAD_PUBLIC_SERVER_URL}`,
     depth: 2,
-    initialata: page,
+    initialData: page,
   })
   const { hero, layout } = data
 
