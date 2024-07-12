@@ -18,7 +18,7 @@ export const PageTemplate: React.FC<{
   isDraftMode
 }> = ({ page, slug, categories, isDraftMode }) => {
   const { data } = useLivePreview({
-    serverURL: `${process.env.PAYLOAD_PUBLIC_SERVER_URL}`,
+    serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
     depth: 2,
     initialData: page,
   })
