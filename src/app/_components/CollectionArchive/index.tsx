@@ -1,5 +1,4 @@
 'use client'
-'use client'
 
 import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import qs from 'qs'
@@ -40,8 +39,7 @@ export type Props = {
 }
 
 export const CollectionArchive: React.FC<Props> = props => {
-  const { categoryFilters, subCategoryFilters, colorFilters, sizeFilters, sort, searchTerm } =
-    useFilter()
+  const {  categoryFilters, subCategoryFilters, colorFilters, sizeFilters, sort, searchTerm } = useFilter()
 
   const {
     className,
@@ -55,6 +53,8 @@ export const CollectionArchive: React.FC<Props> = props => {
     sale: saleFilter,
     hot: hotFilter,
   } = props
+
+  
 
   const [results, setResults] = useState<Result>({
     totalDocs: typeof populatedDocsTotal === 'number' ? populatedDocsTotal : 0,
@@ -73,27 +73,19 @@ export const CollectionArchive: React.FC<Props> = props => {
   const hasHydrated = useRef(false)
   const [page, setPage] = useState(1)
 
-  const scrollToRef = useCallback(() => {
-    const { current } = scrollRef
-    if (current) {
-      // current.scrollIntoView({
-      //   behavior: 'smooth',
-      // })
+  const debounce = (func, delay) => {
+    let timer
+    return (...args) => {
+      clearTimeout(timer)
+      timer = setTimeout(() => func(...args), delay)
     }
-  }, [])
+  }
 
-  useEffect(() => {
-    if (!isLoading && typeof results.page !== 'undefined') {
-      // scrollToRef()
+
+  const fetchProducts = useCallback(debounce(async () => {
+    if (hasHydrated.current) {
+      setIsLoading(true)
     }
-  }, [isLoading, scrollToRef, results])
-
-  useEffect(() => {
-    const timer: NodeJS.Timeout = setTimeout(() => {
-      if (hasHydrated) {
-        setIsLoading(true)
-      }
-    }, 500)
 
     const whereConditions: any[] = []
 
@@ -171,54 +163,51 @@ export const CollectionArchive: React.FC<Props> = props => {
       },
       { encode: false },
     )
+
     // Log the query to console
     console.log('Query string being sent:', searchQuery)
 
-    const makeRequest = async () => {
-      try {
-        const req = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${relationTo}?${searchQuery}`,
-        )
-        const json = await req.json()
-        clearTimeout(timer)
-        hasHydrated.current = true
+    try {
+      const req = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${relationTo}?${searchQuery}`,
+      )
+      const json = await req.json()
 
-        const { docs } = json as { docs: Product[] }
+      hasHydrated.current = true
 
-        if (docs && Array.isArray(docs)) {
-          setResults(json)
-          setIsLoading(false)
-          if (typeof onResultChange === 'function') {
-            onResultChange(json)
-          }
-        }
-      } catch (err) {
-        console.warn(err) // eslint-disable-line no-console
+      const { docs } = json as { docs: Product[] }
+
+      if (docs && Array.isArray(docs)) {
+        setResults(json)
         setIsLoading(false)
-        setError(`Unable to load "${relationTo} archive" data at this time.`)
+        if (typeof onResultChange === 'function') {
+          onResultChange(json)
+        }
       }
+    } catch (err) {
+      console.warn(err) // eslint-disable-line no-console
+      setIsLoading(false)
+      setError(`Unable to load "${relationTo} archive" data at this time.`)
     }
+  }, 500), [page, categoryFilters, subCategoryFilters, colorFilters, sizeFilters, relationTo, onResultChange, sort, limit, newFilter, saleFilter, hotFilter, searchTerm])
 
-    makeRequest()
-
-    return () => {
-      if (timer) clearTimeout(timer)
+  useEffect(() => {
+    // Verifica se há filtros aplicados ou outras condições que justifiquem a busca
+    if (
+      categoryFilters.length > 0 ||
+      subCategoryFilters.length > 0 ||
+      colorFilters.length > 0 ||
+      sizeFilters.length > 0 ||
+      searchTerm.trim() !== '' ||
+      newFilter ||
+      saleFilter ||
+      hotFilter || true
+    ) {
+      fetchProducts()
+    } else if (hasHydrated.current) {
+      setIsLoading(false)
     }
-  }, [
-    page,
-    categoryFilters,
-    subCategoryFilters,
-    colorFilters,
-    sizeFilters,
-    relationTo,
-    onResultChange,
-    sort,
-    limit,
-    newFilter,
-    saleFilter,
-    hotFilter,
-    searchTerm,
-  ])
+  }, [fetchProducts])
 
   return (
     <div className={[classes.collectionArchive, className].filter(Boolean).join(' ')}>

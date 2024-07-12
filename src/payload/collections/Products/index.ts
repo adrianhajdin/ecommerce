@@ -10,6 +10,10 @@ const Products: CollectionConfig = {
   labels: { plural: 'Produtos', singular: 'Produto' },
   admin: {
     useAsTitle: 'title',
+    livePreview: {
+    url: ({ data }) =>
+        `${process.env.PAYLOAD_PUBLIC_SITE_URL}${data.slug !== 'home' ? `/${data.slug}` : ''}`,
+    },
     defaultColumns: ['title', 'price', 'discountPercentage', '_status'],
     preview: doc => {
       return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/preview?url=${encodeURIComponent(

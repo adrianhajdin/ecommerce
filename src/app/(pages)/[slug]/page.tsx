@@ -13,12 +13,17 @@ import { Hero } from '../../_components/Hero'
 import { generateMeta } from '../../_utilities/generateMeta'
 import Filters from '../products/Filters'
 
+import { useLivePreview } from '@payloadcms/live-preview-react'
+
+
 export const dynamic = 'force-dynamic'
 
 import Categories from '../../_components/Categories'
 import Promotion from '../../_components/Promotion'
 
 import classes from './index.module.scss'
+import { PageTemplate } from './page.client'
+
 
 export default async function Page({ params: { slug = 'home' } }) {
   const { isEnabled: isDraftMode } = draftMode()
@@ -53,53 +58,14 @@ export default async function Page({ params: { slug = 'home' } }) {
     return notFound()
   }
 
+
   const { hero, layout } = page
+
 
   const pageTitle = page.title === 'hot' ? 'Em Alta' : page.title
 
   return (
-    <React.Fragment>
-      {isDraftMode && (
-        <div
-          style={{
-            backgroundColor: 'yellow',
-            padding: '10x',
-            textAlign: 'center',
-            position: 'fixed',
-            width: '100%',
-            top: 0,
-            left: 0,
-            zIndex: 1000,
-          }}
-        >
-          Você está no modo de pré-visualização
-          <ExitPreviewButton />
-        </div>
-      )}
-      {slug === 'home' ? (
-        <section>
-          <Hero {...hero} />
-        </section>
-      ) : (
-        <>
-          <Hero {...hero} />
-          <div className={classes.filters}>
-            <Filters
-              categories={categories}
-              colors={categories}
-              page_name={pageTitle}
-              preselectedCategory={categories}
-            />
-          </div>
-          <Gutter>
-            <Blocks
-              blocks={layout}
-              disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
-            />
-          </Gutter>
-        </>
-      )}
-    </React.Fragment>
+    <PageTemplate page={page} slug={slug} isDraftMode={isDraftMode} categories={categories} />
   )
 }
 

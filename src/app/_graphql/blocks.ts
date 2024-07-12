@@ -58,23 +58,7 @@ export const ARCHIVE_BLOCK = `
       }
     }
   }
-  populatedDocs {
-    relationTo
-    value {
-      ...on Product {
-        id
-        slug
-        title
-        price
-        ${PRODUCT_CATEGORIES}
-        photos {
-          photo{
-            ${MEDIA_FIELDS}
-          }}
-        description
-      }
-    }
-  }
-  populatedDocsTotal
+
 }
 `
+

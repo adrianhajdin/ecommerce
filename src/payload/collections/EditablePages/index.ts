@@ -15,15 +15,15 @@ export const EditablePages: CollectionConfig = {
   slug: 'editablepages',
   labels: { plural: 'Páginas', singular: 'Página' },
   admin: {
+        livePreview: {
+    url: ({ data }) =>
+      `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/new-in`,
+    },
     hidden: false,
     useAsTitle: 'title',
     description: 'Páginas',
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    preview: doc => {
-      return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/preview?url=${encodeURIComponent(
-        `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${doc.slug !== 'home' ? doc.slug : ''}`,
-      )}&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`
-    },
+
   },
   hooks: {
     afterChange: [revalidatePage],

@@ -42,6 +42,8 @@ export const PAGE = `
   }
 `
 
+
+
 export const EDITABLE_PAGES = `
   query EditablePages {
     Editablepages(limit: 300, where: { slug: { not_equals: "cart" } })  {

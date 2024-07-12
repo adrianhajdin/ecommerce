@@ -52,7 +52,7 @@ const LoginForm: React.FC = () => {
         else router.push('/')
         window.location.href = '/'
       } catch (_) {
-        setError('There was an error with the credentials provided. Please try again.')
+        setError('Erro ao fazer entrar com os dados fornecidos. Tente novamente.')
       }
     },
     [login, router],
