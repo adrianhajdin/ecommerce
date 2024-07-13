@@ -144,27 +144,29 @@ export default async function Product({ params: { slug } }) {
         <div className={classes.productContainer}>
           <ProductHero product={product} />
 
-          {relatedProducts.length > 0 && (<Blocks
-            disableTopPadding
-            blocks={[
-              {
-                blockType: 'relatedProducts',
-                blockName: 'Produtos Relacionados',
-                relationTo: 'products',
-                introContent: [
-                  {
-                    type: 'h3',
-                    children: [
-                      {
-                        text: 'Produtos Relacionados',
-                      },
-                    ],
-                  },
-                ],
-                docs: relatedProducts,
-              },
-            ]}
-          />)}
+          {relatedProducts.length > 0 && (
+            <Blocks
+              disableTopPadding
+              blocks={[
+                {
+                  blockType: 'relatedProducts',
+                  blockName: 'Produtos Relacionados',
+                  relationTo: 'products',
+                  introContent: [
+                    {
+                      type: 'h3',
+                      children: [
+                        {
+                          text: 'Produtos Relacionados',
+                        },
+                      ],
+                    },
+                  ],
+                  docs: relatedProducts,
+                },
+              ]}
+            />
+          )}
         </div>
       </>
     )

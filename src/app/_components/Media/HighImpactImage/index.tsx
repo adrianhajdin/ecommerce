@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import NextImage from 'next/image'
 
 import cssVariables from '../../../cssVariables'
@@ -9,8 +9,6 @@ import { Props as MediaProps } from '../types'
 import classes from './index.module.scss'
 
 const { breakpoints } = cssVariables
-
-
 
 export const HighImpactImage: React.FC<MediaProps> = props => {
   const { imgClassName, onClick, onLoad: onLoadFromProps, resources, priority, fill } = props

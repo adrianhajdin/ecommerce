@@ -31,7 +31,7 @@ export async function Header() {
   }
 
   return (
-    <Gutter >
+    <Gutter>
       <header className={classes.header}>
         <Link href="/">
           <img className={classes.logo} alt="Minimo 1" src="/minimo_1_small.jpeg" />
