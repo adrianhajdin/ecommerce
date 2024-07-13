@@ -60,16 +60,16 @@ export const CartPage: React.FC<{
             <div className={classes.cartWrapper}>
               <div>
                 {/* CART LIST HEADER */}
- 
+
                 <div className={classes.header}>
                   <div>Produtos</div>
                   <div className={classes.headerDetails}>
-                  <div></div>
-                  <div>Quantidade</div>
+                    <div></div>
+                    <div>Quantidade</div>
                   </div>
                   <div className={classes.headerWrapper}>
-                  <div>Subtotal</div>
-                  <div></div>
+                    <div>Subtotal</div>
+                    <div></div>
                   </div>
                 </div>
 
@@ -82,7 +82,7 @@ export const CartPage: React.FC<{
                         product,
                         product: { id, title },
                         selectedSize,
-                        selectedColor
+                        selectedColor,
                       } = item
 
                       const isLast = index === (cart?.items?.length || 0) - 1

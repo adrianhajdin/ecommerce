@@ -190,23 +190,18 @@ export const CartProvider = props => {
   }, [user, cart])
 
   const isProductInCart = useCallback(
-    (incomingItem ): boolean => {
-
-      
+    (incomingItem): boolean => {
       let isInCart = false
       const { items: itemsInCart } = cart || {}
 
-      
       if (Array.isArray(itemsInCart) && itemsInCart.length > 0) {
         isInCart = Boolean(
           itemsInCart.find(({ product, selectedSize, selectedColor }) =>
             typeof product === 'string'
               ? product === incomingItem.product.id
-              : product?.id === incomingItem.product.id
-              &&
-          selectedSize === incomingItem.selectedSize
-          &&
-          selectedColor === incomingItem.selectedColor
+              : product?.id === incomingItem.product.id &&
+                selectedSize === incomingItem.selectedSize &&
+                selectedColor === incomingItem.selectedColor,
           ), // eslint-disable-line function-paren-newline
         )
       }
@@ -223,7 +218,7 @@ export const CartProvider = props => {
     })
   }, [])
 
-  const deleteItemFromCart = useCallback((incomingItem) => {
+  const deleteItemFromCart = useCallback(incomingItem => {
     dispatchCart({
       type: 'DELETE_ITEM',
       payload: incomingItem,

@@ -32,7 +32,7 @@ export const AddToCartButton: React.FC<{
   const router = useRouter()
 
   useEffect(() => {
-    setIsInCart(isProductInCart({product, selectedSize, selectedColor}))
+    setIsInCart(isProductInCart({ product, selectedSize, selectedColor }))
   }, [isProductInCart, product, cart, selectedSize, selectedColor])
 
   return (

@@ -1,5 +1,4 @@
-import { defaultOverrides } from 'next/dist/server/require-hook'
-import type { CartItems, Product, User } from '../../../payload/payload-types'
+import type { CartItems, User } from '../../../payload/payload-types'
 
 export type CartItem = CartItems[0]
 
@@ -43,7 +42,11 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
         const productId = typeof item.product === 'string' ? item.product : item?.product?.id
 
         const indexInAcc = acc.findIndex(({ product, selectedColor, selectedSize }) =>
-          typeof product === 'string' ? product === productId : product?.id === productId && selectedColor === item.selectedColor && selectedSize === item.selectedSize
+          typeof product === 'string'
+            ? product === productId
+            : product?.id === productId &&
+              selectedColor === item.selectedColor &&
+              selectedSize === item.selectedSize,
         ) // eslint-disable-line function-paren-newline
 
         if (indexInAcc > -1) {
@@ -72,7 +75,9 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
         typeof incomingItem.product === 'string' ? incomingItem.product : incomingItem?.product?.id
 
       const indexInCart = cart?.items?.findIndex(({ product, selectedSize }) =>
-        typeof product === 'string' ? product === productId : product?.id === productId && selectedSize === incomingItem.selectedSize,
+        typeof product === 'string'
+          ? product === productId
+          : product?.id === productId && selectedSize === incomingItem.selectedSize,
       ) // eslint-disable-line function-paren-newline
 
       let withAddedItem = [...(cart?.items || [])]
@@ -100,12 +105,15 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
       const { payload: incomingItem } = action
       const withDeletedItem = { ...cart }
 
-      const productId = typeof incomingItem.product === 'string' ? incomingItem.product : incomingItem?.product?.id
+      const productId =
+        typeof incomingItem.product === 'string' ? incomingItem.product : incomingItem?.product?.id
 
       const indexInCart = cart?.items?.findIndex(({ product, selectedColor, selectedSize }) =>
         typeof product === 'string'
           ? product === productId
-          : product?.id === productId  && selectedColor === incomingItem.selectedColor && selectedSize === incomingItem.selectedSize 
+          : product?.id === productId &&
+            selectedColor === incomingItem.selectedColor &&
+            selectedSize === incomingItem.selectedSize,
       ) // eslint-disable-line function-paren-newline
 
       if (typeof indexInCart === 'number' && withDeletedItem.items && indexInCart > -1)

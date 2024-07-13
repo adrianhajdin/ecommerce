@@ -10,7 +10,7 @@ import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
 
 import classes from './index.module.scss'
 
-const DiscountedPrice = ( price, discountPercentage ) => {
+const DiscountedPrice = (price, discountPercentage) => {
   // Calcula o preço com desconto, considerando desconto nulo como zero
   const discount = discountPercentage ? discountPercentage : 0
   const discountedPrice = price * (1 - discount / 100)
@@ -48,7 +48,7 @@ const CartItem = ({ product, title, qty, selectedSize, selectedColor, addItemToC
     setQuantity(updatedQty)
     addItemToCart({ product, selectedSize, selectedColor, quantity: Number(updatedQty) })
   }
-  
+
   return (
     <li className={classes.item} key={title}>
       <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
@@ -66,12 +66,13 @@ const CartItem = ({ product, title, qty, selectedSize, selectedColor, addItemToC
       <div className={classes.itemDetails}>
         <div className={classes.titleWrapper}>
           <h6>{title}</h6>
-          <p className={classes.itemSizeColor}>{selectedColor} - {selectedSize}</p>
-          <p className={classes.itemSizeColor}>{DiscountedPrice(product.price, product.discountPercentage)}</p>
+          <p className={classes.itemSizeColor}>
+            {selectedColor} - {selectedSize}
+          </p>
+          <p className={classes.itemSizeColor}>
+            {DiscountedPrice(product.price, product.discountPercentage)}
+          </p>
         </div>
-
-        
-
 
         <div className={classes.quantity}>
           <div className={classes.quantityBtn} onClick={decrementQty}>
@@ -104,8 +105,12 @@ const CartItem = ({ product, title, qty, selectedSize, selectedColor, addItemToC
       </div>
 
       <div className={classes.subtotalWrapper}>
-      <p >{DiscountedPrice(quantity * product.price, product.discountPercentage)}</p>
-        <RemoveFromCartButton product={product} selectedSize={selectedSize} selectedColor={selectedColor}  />
+        <p>{DiscountedPrice(quantity * product.price, product.discountPercentage)}</p>
+        <RemoveFromCartButton
+          product={product}
+          selectedSize={selectedSize}
+          selectedColor={selectedColor}
+        />
       </div>
     </li>
   )
