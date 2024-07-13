@@ -97,6 +97,8 @@ export const CheckoutPage = () => {
                 title={item.product.title}
                 quantity={item.quantity}
                 index={index}
+                selectedColor={item.selectedColor}
+                selectedSize={item.selectedSize}
               />
             ))}
             <FreightCalculator

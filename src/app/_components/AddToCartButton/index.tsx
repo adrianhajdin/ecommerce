@@ -32,8 +32,8 @@ export const AddToCartButton: React.FC<{
   const router = useRouter()
 
   useEffect(() => {
-    setIsInCart(isProductInCart(product))
-  }, [isProductInCart, product, cart])
+    setIsInCart(isProductInCart({product, selectedSize, selectedColor}))
+  }, [isProductInCart, product, cart, selectedSize, selectedColor])
 
   return (
     <Button
@@ -59,8 +59,6 @@ export const AddToCartButton: React.FC<{
                 selectedColor,
                 selectedSize,
               })
-
-              router.push('/cart')
             }
           : undefined
       }

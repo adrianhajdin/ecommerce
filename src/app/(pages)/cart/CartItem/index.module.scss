@@ -28,7 +28,7 @@
 
 .itemDetails {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
   align-items: center;
 
@@ -89,4 +89,8 @@
     justify-content: space-between;
     align-items: end;
   }
+}
+
+.itemSizeColor{
+  font-size: 14px;
 }

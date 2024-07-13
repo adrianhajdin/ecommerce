@@ -20,7 +20,7 @@ export type CartContext = {
   deleteItemFromCart: (product: Product) => void
   cartIsEmpty: boolean | undefined
   clearCart: () => void
-  isProductInCart: (product: Product) => boolean
+  isProductInCart: (product: any) => boolean
   cartTotal: {
     formatted: string
     raw: number
@@ -190,15 +190,23 @@ export const CartProvider = props => {
   }, [user, cart])
 
   const isProductInCart = useCallback(
-    (incomingProduct: Product): boolean => {
+    (incomingItem ): boolean => {
+
+      
       let isInCart = false
       const { items: itemsInCart } = cart || {}
+
+      
       if (Array.isArray(itemsInCart) && itemsInCart.length > 0) {
         isInCart = Boolean(
-          itemsInCart.find(({ product }) =>
+          itemsInCart.find(({ product, selectedSize, selectedColor }) =>
             typeof product === 'string'
-              ? product === incomingProduct.id
-              : product?.id === incomingProduct.id,
+              ? product === incomingItem.product.id
+              : product?.id === incomingItem.product.id
+              &&
+          selectedSize === incomingItem.selectedSize
+          &&
+          selectedColor === incomingItem.selectedColor
           ), // eslint-disable-line function-paren-newline
         )
       }
@@ -215,10 +223,10 @@ export const CartProvider = props => {
     })
   }, [])
 
-  const deleteItemFromCart = useCallback((incomingProduct: Product) => {
+  const deleteItemFromCart = useCallback((incomingItem) => {
     dispatchCart({
       type: 'DELETE_ITEM',
-      payload: incomingProduct,
+      payload: incomingItem,
     })
   }, [])
 

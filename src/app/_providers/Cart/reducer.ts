@@ -1,3 +1,4 @@
+import { defaultOverrides } from 'next/dist/server/require-hook'
 import type { CartItems, Product, User } from '../../../payload/payload-types'
 
 export type CartItem = CartItems[0]
@@ -19,7 +20,7 @@ type CartAction =
     }
   | {
       type: 'DELETE_ITEM'
-      payload: Product
+      payload: CartItem
     }
   | {
       type: 'CLEAR_CART'
@@ -41,8 +42,8 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
         // remove duplicates
         const productId = typeof item.product === 'string' ? item.product : item?.product?.id
 
-        const indexInAcc = acc.findIndex(({ product }) =>
-          typeof product === 'string' ? product === productId : product?.id === productId,
+        const indexInAcc = acc.findIndex(({ product, selectedColor, selectedSize }) =>
+          typeof product === 'string' ? product === productId : product?.id === productId && selectedColor === item.selectedColor && selectedSize === item.selectedSize
         ) // eslint-disable-line function-paren-newline
 
         if (indexInAcc > -1) {
@@ -70,8 +71,8 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
       const productId =
         typeof incomingItem.product === 'string' ? incomingItem.product : incomingItem?.product?.id
 
-      const indexInCart = cart?.items?.findIndex(({ product }) =>
-        typeof product === 'string' ? product === productId : product?.id === productId,
+      const indexInCart = cart?.items?.findIndex(({ product, selectedSize }) =>
+        typeof product === 'string' ? product === productId : product?.id === productId && selectedSize === incomingItem.selectedSize,
       ) // eslint-disable-line function-paren-newline
 
       let withAddedItem = [...(cart?.items || [])]
@@ -96,13 +97,15 @@ export const cartReducer = (cart: CartType, action: CartAction): CartType => {
     }
 
     case 'DELETE_ITEM': {
-      const { payload: incomingProduct } = action
+      const { payload: incomingItem } = action
       const withDeletedItem = { ...cart }
 
-      const indexInCart = cart?.items?.findIndex(({ product }) =>
+      const productId = typeof incomingItem.product === 'string' ? incomingItem.product : incomingItem?.product?.id
+
+      const indexInCart = cart?.items?.findIndex(({ product, selectedColor, selectedSize }) =>
         typeof product === 'string'
-          ? product === incomingProduct.id
-          : product?.id === incomingProduct.id,
+          ? product === productId
+          : product?.id === productId  && selectedColor === incomingItem.selectedColor && selectedSize === incomingItem.selectedSize 
       ) // eslint-disable-line function-paren-newline
 
       if (typeof indexInCart === 'number' && withDeletedItem.items && indexInCart > -1)

@@ -14,10 +14,11 @@
   }
 }
 
+
 .header {
   display: grid;
   grid-template-columns: 100px 2fr 1fr;
-  gap: 24px;
+  gap: 60px;
   margin-bottom: 8px;
 
   @include small-break {
@@ -25,14 +26,30 @@
   }
 }
 
-.headerItemDetails {
+.headerDetails {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 60px;
+  margin-right: 30px;
+
+  @include small-break {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+  }
 }
 
-.headersubtotal {
-  text-align: end;
-}
 
 .itemsList {
   border-top: 1px solid var(--color-dark-50);

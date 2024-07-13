@@ -10,7 +10,7 @@ import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
 
 import classes from './index.module.scss'
 
-const DiscountedPrice = ({ price, discountPercentage }) => {
+const DiscountedPrice = ( price, discountPercentage ) => {
   // Calcula o preço com desconto, considerando desconto nulo como zero
   const discount = discountPercentage ? discountPercentage : 0
   const discountedPrice = price * (1 - discount / 100)
@@ -21,10 +21,10 @@ const DiscountedPrice = ({ price, discountPercentage }) => {
     currency: 'BRL',
   })
 
-  return <p>{formattedPrice}</p>
+  return formattedPrice
 }
 
-const CartItem = ({ product, title, qty, addItemToCart }) => {
+const CartItem = ({ product, title, qty, selectedSize, selectedColor, addItemToCart }) => {
   const metaImage = product.photos.map(item => item.photo)
   const [quantity, setQuantity] = useState(qty)
 
@@ -32,23 +32,23 @@ const CartItem = ({ product, title, qty, addItemToCart }) => {
     const updatedQty = quantity > 1 ? quantity - 1 : 1
 
     setQuantity(updatedQty)
-    addItemToCart({ product, quantity: Number(updatedQty) })
+    addItemToCart({ product, selectedSize, selectedColor, quantity: Number(updatedQty) })
   }
 
   const incrementQty = () => {
     const updatedQty = quantity + 1
 
     setQuantity(updatedQty)
-    addItemToCart({ product, quantity: Number(updatedQty) })
+    addItemToCart({ product, selectedSize, selectedColor, quantity: Number(updatedQty) })
   }
 
   const enterQty = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updatedQty = Number(e.target.value)
 
     setQuantity(updatedQty)
-    addItemToCart({ product, quantity: Number(updatedQty) })
+    addItemToCart({ product, selectedSize, selectedColor, quantity: Number(updatedQty) })
   }
-
+  
   return (
     <li className={classes.item} key={title}>
       <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
@@ -66,8 +66,12 @@ const CartItem = ({ product, title, qty, addItemToCart }) => {
       <div className={classes.itemDetails}>
         <div className={classes.titleWrapper}>
           <h6>{title}</h6>
-          <DiscountedPrice price={product.price} discountPercentage={product.discountPercentage} />
+          <p className={classes.itemSizeColor}>{selectedColor} - {selectedSize}</p>
+          <p className={classes.itemSizeColor}>{DiscountedPrice(product.price, product.discountPercentage)}</p>
         </div>
+
+        
+
 
         <div className={classes.quantity}>
           <div className={classes.quantityBtn} onClick={decrementQty}>
@@ -100,11 +104,8 @@ const CartItem = ({ product, title, qty, addItemToCart }) => {
       </div>
 
       <div className={classes.subtotalWrapper}>
-        <DiscountedPrice
-          price={quantity * product.price}
-          discountPercentage={product.discountPercentage}
-        />
-        <RemoveFromCartButton product={product} />
+      <p >{DiscountedPrice(quantity * product.price, product.discountPercentage)}</p>
+        <RemoveFromCartButton product={product} selectedSize={selectedSize} selectedColor={selectedColor}  />
       </div>
     </li>
   )

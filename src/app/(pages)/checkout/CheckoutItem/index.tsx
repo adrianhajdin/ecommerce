@@ -6,7 +6,7 @@ import { Price } from '../../../_components/Price'
 
 import classes from './index.module.scss'
 
-const DiscountedPrice = ({ price, discountPercentage }) => {
+const DiscountedPrice = ( price, discountPercentage ) => {
   // Calcula o preço com desconto, considerando desconto nulo como zero
   const discount = discountPercentage ? discountPercentage : 0
   const discountedPrice = price * (1 - discount / 100)
@@ -17,10 +17,10 @@ const DiscountedPrice = ({ price, discountPercentage }) => {
     currency: 'BRL',
   })
 
-  return <p>{formattedPrice}</p>
+  return formattedPrice
 }
 
-export const CheckoutItem = ({ product, title, quantity, index }) => {
+export const CheckoutItem = ({ product, title, quantity, index, selectedSize, selectedColor }) => {
   const metaImage = product.photos.map(item => item.photo)
   return (
     <li className={classes.item} key={index}>
@@ -37,18 +37,17 @@ export const CheckoutItem = ({ product, title, quantity, index }) => {
       </Link>
 
       <div className={classes.itemDetails}>
-        <div className={classes.titleWrapper}>
+      <div className={classes.titleWrapper}>
           <h6>{title}</h6>
-          <DiscountedPrice price={product.price} discountPercentage={product.discountPercentage} />
+          <p>{selectedColor} - {selectedSize}</p>
+          <p>{DiscountedPrice(product.price, product.discountPercentage)}</p>
         </div>
         <p className={classes.quantity}>x{quantity}</p>
       </div>
 
       <div className={classes.subtotal}>
-        <DiscountedPrice
-          price={quantity * product.price}
-          discountPercentage={product.discountPercentage}
-        />
+
+         <p >{DiscountedPrice(quantity * product.price, product.discountPercentage)}</p>
       </div>
     </li>
   )
