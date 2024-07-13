@@ -36,16 +36,14 @@
   flex-direction: column;
   margin: 30px;
   margin-left: 15%;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding: 24px 60px;
   background-color: white; /* Cor de fundo */
   border: 1px solid rgb(238, 238, 238); /* Cor de fundo */
 
-  @include small-break {
+  @include mid-break {
     margin-left: 0%;
     margin: 0px;
+    padding: 10px 15px;
   }
 }
 

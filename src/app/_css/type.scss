@@ -97,7 +97,10 @@
   line-height: 24px;
   text-transform: uppercase;
 
+  @include large-break {
+    font-size: 12px;
+  }
   @include mid-break {
-    font-size: 13px;
+    font-size: 14px;
   }
 }

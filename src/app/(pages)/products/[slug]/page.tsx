@@ -144,7 +144,7 @@ export default async function Product({ params: { slug } }) {
         <div className={classes.productContainer}>
           <ProductHero product={product} />
 
-          <Blocks
+          {relatedProducts.length > 0 && (<Blocks
             disableTopPadding
             blocks={[
               {
@@ -164,7 +164,7 @@ export default async function Product({ params: { slug } }) {
                 docs: relatedProducts,
               },
             ]}
-          />
+          />)}
         </div>
       </>
     )
