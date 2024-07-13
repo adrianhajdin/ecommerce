@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NextImage from 'next/image'
 
 import cssVariables from '../../../cssVariables'
@@ -10,8 +10,11 @@ import classes from './index.module.scss'
 
 const { breakpoints } = cssVariables
 
+
+
 export const HighImpactImage: React.FC<MediaProps> = props => {
   const { imgClassName, onClick, onLoad: onLoadFromProps, resources, priority, fill } = props
+  const [gridColumns, setGridColumns] = useState('repeat(1, 1fr)')
 
   // console.log(resources)
 
@@ -22,8 +25,26 @@ export const HighImpactImage: React.FC<MediaProps> = props => {
     }
   }
 
-  // Calcula o número de colunas baseado no número de imagens
-  const gridColumns = resources ? `repeat(${resources.length}, 1fr)` : 'repeat(1, 1fr)'
+  useEffect(() => {
+    const updateGridColumns = () => {
+      const width = window.innerWidth
+      if (width <= 425) {
+        setGridColumns('repeat(1, 1fr)')
+      } else if (width <= 800) {
+        setGridColumns('repeat(2, 1fr)')
+      } else {
+        setGridColumns(`repeat(${resources?.length || 1}, 1fr)`)
+      }
+    }
+
+    // Atualiza o gridColumns na montagem e ao redimensionar a janela
+    updateGridColumns()
+    window.addEventListener('resize', updateGridColumns)
+
+    return () => {
+      window.removeEventListener('resize', updateGridColumns)
+    }
+  }, [resources])
 
   const containerStyle = {
     display: 'grid',
