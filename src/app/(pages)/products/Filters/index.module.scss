@@ -15,9 +15,10 @@
 .filterMenuButtons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-star;
   width: 100%;
   z-index: 99;
+  gap: 20px;
 
 }
 
@@ -49,6 +50,10 @@
   justify-content: flex-start;
   width: 100%;
   padding-left: 10px;
+
+  @include small-break {
+    display: none;
+  }
 
 }
 
@@ -264,7 +269,8 @@
 .mobileFilterButton {
   background-color: rgb(255, 255, 255); /* Cor de fundo do botão */
   color: black; /* Cor do texto */
-  padding: 5px 15px; /* Espaçamento interno do botão */
+  padding-top: 5px;
+  padding-bottom: 5px;
   border: none; /* Remover bordas */
   border-radius: 1px; /* Bordas arredondadas */
   text-align: center; /* Centralizar texto */
@@ -273,7 +279,7 @@
   font-size: 14px; /* Tamanho da fonte */
   cursor: pointer; /* Cursor de mão ao passar sobre o botão */
   transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
-  margin-left: 15px;
+
   border: 1px solid rgb(236, 236, 236); /* Adicionando borda preta fina */
 
 
@@ -339,3 +345,4 @@
   right: 10px; /* Adjust the position of the clear icon */
   cursor: pointer; /* Add pointer cursor */
 }
+

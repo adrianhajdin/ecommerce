@@ -28,7 +28,7 @@ export const HighImpactImage: React.FC<MediaProps> = props => {
   useEffect(() => {
     const updateGridColumns = () => {
       const width = window.innerWidth
-      if (width <= 425) {
+      if (width <= 450) {
         setGridColumns('repeat(1, 1fr)')
       } else if (width <= 800) {
         setGridColumns('repeat(2, 1fr)')

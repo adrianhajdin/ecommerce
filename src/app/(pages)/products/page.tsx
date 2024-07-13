@@ -54,7 +54,7 @@ const Products = async () => {
       <div className={classes.filters}>
         <Filters page_name={'Produtos'} categories={categories} colors={colors} />
       </div>
-      <Gutter>
+      <Gutter className={classes.gutterMobile}>
         <div className={classes.productList}>
           <div className={classes.productView}>
             <Blocks blocks={page?.layout} disableTopPadding={true} />

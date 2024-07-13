@@ -1,7 +1,16 @@
+@use '../../_css/queries.scss' as *;
+
 .gutterLeft {
   padding-left: 60px;
+  @include small-break {
+    padding-left: 25px;
+  }
 }
 
 .gutterRight {
   padding-right: 60px;
+  @include small-break {
+    padding-right: 15px;
+  }
 }
+

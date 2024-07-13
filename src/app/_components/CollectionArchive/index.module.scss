@@ -37,7 +37,8 @@
   margin-top: -75px;
 
   @include mid-break {
-    margin-bottom: var(--base);
+    margin-top: 0;
+    justify-content: flex-start;
   }
 }
 
@@ -53,6 +54,7 @@
 
   @include mid-break {
     gap: 20px;
+    padding: 15px 0;
   }
 
   @include small-break {

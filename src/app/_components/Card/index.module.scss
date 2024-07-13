@@ -15,9 +15,8 @@
   background-color: white;
   width: 100%;
 
-  @include small-break {
-    padding: calc(var(--base) / 2);
-    gap: calc(var(--base) / 4);
+  @include mid-break {
+    padding: 5px 2px;
   }
 }
 
@@ -55,7 +54,6 @@
 }
 
 .description {
-  margin: 20;
   line-height: 24px;
 
   white-space: nowrap;
