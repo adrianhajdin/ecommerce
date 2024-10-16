@@ -42,6 +42,7 @@
     "medusa-payment-manual": "1.0.25",
     "medusa-payment-stripe": "6.0.11",
     "prism-react-renderer": "^2.0.4",
+    "swc-loader": "^0.2.6",
     "typeorm": "0.3.16"
   },
   "devDependencies": {
