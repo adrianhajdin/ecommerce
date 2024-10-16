@@ -1,0 +1,69 @@
+name: "Update Preview Dependencies (feat/v2)"
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v2.3.5
+        with:
+          ref: 'feat/v2'
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Remove yarn.lock
+        run: rm yarn.lock
+
+      - name: Install Dependencies
+        run: yarn
+        
+      - name: Close Previous PRs
+        shell: "bash"
+        run: |
+
+          PR_LIST=$(gh pr list --base feat/v2 --json number,headRefName)
+
+          # Filter out PRs where headRefName starts with 'chore/update-preview'
+          FILTERED_PR_LIST=$(echo "$PR_LIST" | jq '[.[] | select(.headRefName | test("^chore/update-preview"))]')
+
+          echo "$FILTERED_PR_LIST"
+
+          # Check if any pull requests were found after filtering
+          if [ -z "$FILTERED_PR_LIST" ] || [ "$FILTERED_PR_LIST" = "[]" ]; then
+            echo "No pull requests found on branch feat/v2 after filtering"
+            exit 0
+          fi
+
+          # Close each filtered pull request
+          echo "$FILTERED_PR_LIST" | jq -r '.[].number' | while read -r PR_NUMBER; do
+            echo "Closing pull request #$PR_NUMBER"
+            gh pr close "$PR_NUMBER" -d
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+
+      - name: Open PR with changes
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "chore(feat/v2): updated preview dependencies [automated]"
+          body: "This PR updates preview dependencies to the latest versions."
+          commit-message: "chore(feat/v2): updated preview dependencies [automated]"
+          branch: "chore/update-preview"
+          branch-suffix: "timestamp"
+          token: ${{ secrets.PAT_TOKEN }}
+          base: "feat/v2"
+          add-paths: yarn.lock
+          committer: "GitHub <noreply@github.com>"
+          author: "GitHub <github-actions[bot]@users.noreply.github.com>"

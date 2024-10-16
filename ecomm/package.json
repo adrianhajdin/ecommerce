@@ -1,0 +1,95 @@
+{
+  "name": "medusa-starter-default",
+  "version": "0.0.1",
+  "description": "A starter for Medusa projects.",
+  "author": "Medusa (https://medusajs.com)",
+  "license": "MIT",
+  "keywords": [
+    "sqlite",
+    "postgres",
+    "typescript",
+    "ecommerce",
+    "headless",
+    "medusa"
+  ],
+  "scripts": {
+    "clean": "cross-env ./node_modules/.bin/rimraf dist",
+    "build": "cross-env npm run clean && npm run build:server && npm run build:admin",
+    "build:server": "cross-env npm run clean && tsc -p tsconfig.server.json",
+    "build:admin": "cross-env medusa-admin build",
+    "watch": "cross-env tsc --watch",
+    "test": "cross-env jest",
+    "seed": "cross-env medusa seed -f ./data/seed.json",
+    "start": "cross-env npm run build && medusa start",
+    "start:custom": "cross-env npm run build && node --preserve-symlinks --trace-warnings index.js",
+    "dev": "cross-env npm run build:server && medusa develop"
+  },
+  "dependencies": {
+    "@medusajs/admin": "^7.1.16",
+    "@medusajs/cache-inmemory": "1.8.11",
+    "@medusajs/cache-redis": "^1.9.2",
+    "@medusajs/event-bus-local": "1.9.9",
+    "@medusajs/event-bus-redis": "^1.8.14",
+    "@medusajs/file-local": "1.0.4",
+    "@medusajs/medusa": "^1.20.9",
+    "@tanstack/react-query": "4.22.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "16.3.1",
+    "express": "^4.17.2",
+    "medusa-fulfillment-manual": "1.1.41",
+    "medusa-interfaces": "1.3.10",
+    "medusa-payment-manual": "1.0.25",
+    "medusa-payment-stripe": "6.0.11",
+    "prism-react-renderer": "^2.0.4",
+    "typeorm": "0.3.16"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-typescript": "^7.21.4",
+    "@medusajs/medusa-cli": "1.3.23",
+    "@stdlib/number-float64-base-normalize": "0.0.8",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.0",
+    "@types/mime": "1.3.5",
+    "@types/node": "^17.0.8",
+    "babel-preset-medusa-package": "^1.1.19",
+    "cross-env": "^7.0.3",
+    "eslint": "^6.8.0",
+    "jest": "^27.3.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.7",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.2"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.spec.json"
+      }
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/node_modules/"
+    ],
+    "rootDir": "src",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
+    "transform": {
+      ".ts": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node"
+  },
+  "resolutions": {
+    "glob": "^7.1.6"
+  }
+}

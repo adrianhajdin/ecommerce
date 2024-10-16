@@ -1,0 +1,222 @@
+name: Test CLI
+on:
+ pull_request:
+  branches:
+    - 'feat/v2'
+    - 'feat/v2-ci'
+
+jobs:
+  test-cli-yarn:
+    name: "Test CLI (Yarn)"
+    env:
+      NODE_ENV: CI
+      REDIS_URL: redis://localhost:6379
+      DATABASE_URL: "postgres://postgres:postgres@localhost/cli-test"
+      POSTGRES_URL: "postgres://postgres:postgres@localhost/cli-test"
+    services:
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+ 
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: cli-test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+ 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+  
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Check CLI tool is installed
+        run: ./node_modules/.bin/medusa -v
+
+      - name: run build
+        run: yarn build
+
+      - name: Run migrations
+        run: npx medusa db:migrate
+
+      - name: Run seed
+        run: yarn seed
+
+      - name: Run development server
+        run: yarn dev &
+
+      - name: Wait for live server response
+        shell: "bash"
+        run: ./.github/scripts/wait-for-server-live.sh
+
+      - name: Kill server
+        shell: "bash"
+        run: kill -9 $(lsof -t -i :9000)
+          
+  test-cli-npm:
+    name: "Test CLI (npm)"
+    env:
+      NODE_ENV: CI
+      REDIS_URL: redis://localhost:6379
+      DATABASE_URL: "postgres://postgres:postgres@localhost/cli-test"
+      POSTGRES_URL: "postgres://postgres:postgres@localhost/cli-test"
+    services: 
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: cli-test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+ 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "npm"
+  
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Check CLI tool is installed
+        run: ./node_modules/.bin/medusa -v
+
+      - name: run medusa build
+        run: npm run build
+
+      - name: Run migrations
+        run: npx medusa db:migrate
+
+      - name: Run seed
+        run: npm run seed
+
+      - name: Run development server
+        run: npm run dev -- &
+
+      - name: Wait for live server response
+        shell: "bash"
+        run: ./.github/scripts/wait-for-server-live.sh
+
+      - name: Kill server
+        shell: "bash"
+        run: kill -9 $(lsof -t -i :9000)
+          
+  test-cli-pnpm:
+    name: "Test CLI (pnpm)"
+    env:
+      NODE_ENV: CI
+      REDIS_URL: redis://localhost:6379
+      DATABASE_URL: "postgres://postgres:postgres@localhost/cli-test"
+      POSTGRES_URL: "postgres://postgres:postgres@localhost/cli-test"
+    services: 
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: cli-test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+ 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Create pnpm-lock.yaml
+        run: touch pnpm-lock.yaml
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.32.9
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "pnpm"
+  
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Check CLI tool is installed
+        run: ./node_modules/.bin/medusa -v
+
+      - name: run medusa build
+        run: pnpm run build
+
+      - name: Run migrations
+        run: npx medusa db:migrate
+
+      - name: Run seed
+        run: pnpm run seed
+
+      - name: Run development server
+        run: pnpm run dev -- &
+
+      - name: Wait for live server response
+        shell: "bash"
+        run: ./.github/scripts/wait-for-server-live.sh
+
+      - name: Kill server
+        shell: "bash"
+        run: kill -9 $(lsof -t -i :9000)
+          
