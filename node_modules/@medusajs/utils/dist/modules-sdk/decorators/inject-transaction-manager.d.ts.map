@@ -1,0 +1,1 @@
+{"version":3,"file":"inject-transaction-manager.d.ts","sourceRoot":"","sources":["../../../src/modules-sdk/decorators/inject-transaction-manager.ts"],"names":[],"mappings":"AAIA,wBAAgB,wBAAwB,CACtC,uCAAuC,GACnC,MAAM,GACN,CAAC,CAAC,MAAM,EAAE,GAAG,KAAK,OAAO,CAAe,EAC5C,eAAe,CAAC,EAAE,MAAM,GACvB,eAAe,CA4EjB"}

@@ -1,0 +1,22 @@
+{
+  "name": "long-timeout",
+  "version": "0.1.1",
+  "description": "Long timeout makes it possible to have a timeout or interval that is longer than 24.8 days (2^31-1 milliseconds).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tellnes/long-timeout.git"
+  },
+  "author": "Christian Tellnes <christian@tellnes.no> (http://christian.tellnes.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tellnes/long-timeout/issues"
+  },
+  "homepage": "https://github.com/tellnes/long-timeout",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}

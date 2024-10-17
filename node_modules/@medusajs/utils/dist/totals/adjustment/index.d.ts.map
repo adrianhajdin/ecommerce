@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/totals/adjustment/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,cAAc,EAAE,MAAM,iBAAiB,CAAA;AAKnE,wBAAgB,wBAAwB,CAAC,EACvC,WAAW,EACX,WAAW,EACX,OAAO,GACR,EAAE;IACD,WAAW,EAAE,IAAI,CAAC,iBAAiB,EAAE,QAAQ,CAAC,EAAE,CAAA;IAChD,WAAW,CAAC,EAAE,OAAO,CAAA;IACrB,OAAO,CAAC,EAAE,cAAc,CAAA;CACzB,oCA0BA"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"migration-down.d.ts","sourceRoot":"","sources":["../../../src/modules-sdk/migration-scripts/migration-down.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAU,eAAe,EAAE,MAAM,iBAAiB,CAAA;AAOxE;;;;;;GAMG;AACH,wBAAgB,0BAA0B,CAAC,EACzC,UAAU,EACV,MAAM,EACN,gBAAgB,GACjB;;;;CAAA,2BAWI,KACD,cAAc,gBAAgB,8BAA8B,CAAC,EAC7D,SAAS,GAAG,QAAQ,CACrB,mBA2BF"}

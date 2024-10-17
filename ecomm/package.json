@@ -41,6 +41,7 @@
     "medusa-interfaces": "1.3.10",
     "medusa-payment-manual": "1.0.25",
     "medusa-payment-stripe": "6.0.11",
+    "medusa-plugin-segment": "^1.3.8",
     "prism-react-renderer": "^2.0.4",
     "swc-loader": "^0.2.6",
     "typeorm": "0.3.16"

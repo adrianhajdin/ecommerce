@@ -1,0 +1,43 @@
+{
+  "name": "cross-inspect",
+  "version": "1.0.1",
+  "description": "Cross platform implementation of Node's util.inspect",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^2.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ardatan/graphql-tools",
+    "directory": "packages/inspect"
+  },
+  "author": "Arda TANRIKULU <ardatanrikulu@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "typings": "typings/index.d.ts",
+  "typescript": {
+    "definition": "typings/index.d.ts"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./typings/index.d.cts",
+        "default": "./cjs/index.js"
+      },
+      "import": {
+        "types": "./typings/index.d.ts",
+        "default": "./esm/index.js"
+      },
+      "default": {
+        "types": "./typings/index.d.ts",
+        "default": "./esm/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  }
+}

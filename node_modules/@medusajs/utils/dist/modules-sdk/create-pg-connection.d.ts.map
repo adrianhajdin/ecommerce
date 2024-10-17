@@ -1,0 +1,1 @@
+{"version":3,"file":"create-pg-connection.d.ts","sourceRoot":"","sources":["../../src/modules-sdk/create-pg-connection.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,8BAA8B,EAAE,MAAM,iBAAiB,CAAA;AAGhE,KAAK,OAAO,GAAG,8BAA8B,CAAC,UAAU,CAAC,CAAA;AAEzD;;;GAGG;AACH,wBAAgB,kBAAkB,CAAC,OAAO,EAAE,OAAO,4CAuBlD"}

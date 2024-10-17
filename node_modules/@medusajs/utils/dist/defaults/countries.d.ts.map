@@ -1,0 +1,1 @@
+{"version":3,"file":"countries.d.ts","sourceRoot":"","sources":["../../src/defaults/countries.ts"],"names":[],"mappings":"AAAA,MAAM,MAAM,OAAO,GAAG;IACpB,MAAM,EAAE,MAAM,CAAA;IACd,IAAI,EAAE,MAAM,CAAA;IACZ,MAAM,EAAE,MAAM,CAAA;IACd,OAAO,EAAE,MAAM,CAAA;CAChB,CAAA;AAED,eAAO,MAAM,gBAAgB,EAAE,OAAO,EA4YrC,CAAA"}

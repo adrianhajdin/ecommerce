@@ -1,0 +1,1 @@
+{"version":3,"file":"tax-provider.js","sourceRoot":"","sources":["../../src/models/tax-provider.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,mCAAuD;AAGvD;IAAA;IAMA,CAAC;IALC;QAAC,IAAA,uBAAa,GAAE;;2CACN;IAEV;QAAC,IAAA,gBAAM,EAAC,EAAE,OAAO,EAAE,IAAI,EAAE,CAAC;;qDACL;IALV,WAAW;QADvB,IAAA,gBAAM,GAAE;OACI,WAAW,CAMvB;IAAD,kBAAC;CAAA,AAND,IAMC;AANY,kCAAW;AAQxB;;;;;;;;;;;;;;;;;;GAkBG"}

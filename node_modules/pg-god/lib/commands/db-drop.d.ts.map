@@ -1,0 +1,1 @@
+{"version":3,"file":"db-drop.d.ts","sourceRoot":"","sources":["../../src/commands/db-drop.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,OAAO,EAAE,KAAK,EAAC,MAAM,gBAAgB,CAAA;AAK7C,MAAM,CAAC,OAAO,OAAO,MAAO,SAAQ,OAAO;IACzC,MAAM,CAAC,OAAO,WAAc;IAC5B,MAAM,CAAC,WAAW,SAAoB;IAEtC,MAAM,CAAC,QAAQ,WAMd;IAED,MAAM,CAAC,KAAK;;;;;;;;;;;MAiBX;IAEK,GAAG;CA2CV"}

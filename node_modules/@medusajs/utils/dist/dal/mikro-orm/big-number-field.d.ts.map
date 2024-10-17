@@ -1,0 +1,1 @@
+{"version":3,"file":"big-number-field.d.ts","sourceRoot":"","sources":["../../../src/dal/mikro-orm/big-number-field.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,iBAAiB,CAAA;AAK1C,wBAAgB,yBAAyB,CACvC,OAAO,GAAE,UAAU,CAAC,OAAO,QAAQ,CAAC,CAAC,CAAC,CAAC,GAAG;IACxC,aAAa,CAAC,EAAE,MAAM,CAAA;CAClB,YAEmB,GAAG,cAAc,MAAM,UAiEjD"}

@@ -1,0 +1,2 @@
+export declare function InjectTransactionManager(shouldForceTransactionOrManagerProperty?: string | ((target: any) => boolean), managerProperty?: string): MethodDecorator;
+//# sourceMappingURL=inject-transaction-manager.d.ts.map

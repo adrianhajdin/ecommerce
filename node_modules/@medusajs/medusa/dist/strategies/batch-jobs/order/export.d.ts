@@ -1,0 +1,41 @@
+import { FlagRouter } from "@medusajs/utils";
+import { EntityManager } from "typeorm";
+import { OrderDescriptor } from ".";
+import { AdminPostBatchesReq } from "../../../api";
+import { AbstractBatchJobStrategy, IFileService } from "../../../interfaces";
+import { OrderService } from "../../../services";
+import BatchJobService from "../../../services/batch-job";
+type InjectedDependencies = {
+    fileService: IFileService;
+    orderService: OrderService;
+    batchJobService: BatchJobService;
+    manager: EntityManager;
+    featureFlagRouter: FlagRouter;
+};
+declare class OrderExportStrategy extends AbstractBatchJobStrategy {
+    static identifier: string;
+    static batchType: string;
+    defaultMaxRetry: number;
+    protected readonly DEFAULT_LIMIT = 100;
+    protected readonly NEWLINE = "\r\n";
+    protected readonly DELIMITER = ";";
+    protected manager_: EntityManager;
+    protected transactionManager_: EntityManager | undefined;
+    protected readonly fileService_: IFileService;
+    protected readonly batchJobService_: BatchJobService;
+    protected readonly orderService_: OrderService;
+    protected readonly featureFlagRouter_: FlagRouter;
+    protected readonly orderExportPropertiesDescriptors: OrderDescriptor[];
+    protected readonly defaultRelations_: string[];
+    protected readonly defaultFields_: string[];
+    constructor({ fileService, batchJobService, orderService, manager, featureFlagRouter, }: InjectedDependencies);
+    prepareBatchJobForProcessing(batchJob: AdminPostBatchesReq, req: Express.Request): Promise<AdminPostBatchesReq>;
+    preProcessBatchJob(batchJobId: string): Promise<void>;
+    processJob(batchJobId: string): Promise<void>;
+    buildTemplate(): Promise<string>;
+    private buildHeader;
+    private buildCSVLine;
+    private getLineDescriptor;
+    private addSalesChannelColumns;
+}
+export default OrderExportStrategy;

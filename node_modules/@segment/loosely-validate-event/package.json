@@ -1,0 +1,24 @@
+{
+  "name": "@segment/loosely-validate-event",
+  "version": "2.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava",
+    "coverage": "nyc ava"
+  },
+  "devDependencies": {
+    "ava": "^0.18.0",
+    "nyc": "^10.1.2",
+    "standard": "^8.6.0"
+  },
+  "dependencies": {
+    "component-type": "^1.2.1",
+    "join-component": "^1.1.0"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "html"
+    ]
+  }
+}

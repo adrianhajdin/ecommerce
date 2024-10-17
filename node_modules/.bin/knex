@@ -1,0 +1,1 @@
+../knex/bin/cli.js

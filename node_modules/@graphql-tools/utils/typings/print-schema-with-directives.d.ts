@@ -1,0 +1,25 @@
+import { DirectiveDefinitionNode, DirectiveNode, DocumentNode, EnumTypeDefinitionNode, EnumValueDefinitionNode, FieldDefinitionNode, GraphQLArgument, GraphQLDirective, GraphQLEnumType, GraphQLEnumValue, GraphQLField, GraphQLInputField, GraphQLInputObjectType, GraphQLInterfaceType, GraphQLObjectType, GraphQLScalarType, GraphQLSchema, GraphQLUnionType, InputObjectTypeDefinitionNode, InputValueDefinitionNode, InterfaceTypeDefinitionNode, ObjectTypeDefinitionNode, ScalarTypeDefinitionNode, SchemaDefinitionNode, SchemaExtensionNode, UnionTypeDefinitionNode } from 'graphql';
+import { DirectableGraphQLObject, DirectiveAnnotation } from './get-directives.js';
+import { GetDocumentNodeFromSchemaOptions, Maybe, PrintSchemaWithDirectivesOptions } from './types.js';
+export declare function getDocumentNodeFromSchema(schema: GraphQLSchema, options?: GetDocumentNodeFromSchemaOptions): DocumentNode;
+export declare function printSchemaWithDirectives(schema: GraphQLSchema, options?: PrintSchemaWithDirectivesOptions): string;
+export declare function astFromSchema(schema: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): SchemaDefinitionNode | SchemaExtensionNode | null;
+export declare function astFromDirective(directive: GraphQLDirective, schema?: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): DirectiveDefinitionNode;
+export declare function getDirectiveNodes<TDirectiveNode extends DirectiveNode>(entity: DirectableGraphQLObject & {
+    deprecationReason?: string | null;
+    specifiedByUrl?: string | null;
+    specifiedByURL?: string | null;
+}, schema?: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): Array<TDirectiveNode>;
+export declare function astFromArg(arg: GraphQLArgument, schema?: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): InputValueDefinitionNode;
+export declare function astFromObjectType(type: GraphQLObjectType, schema: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): ObjectTypeDefinitionNode;
+export declare function astFromInterfaceType(type: GraphQLInterfaceType, schema: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): InterfaceTypeDefinitionNode;
+export declare function astFromUnionType(type: GraphQLUnionType, schema: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): UnionTypeDefinitionNode;
+export declare function astFromInputObjectType(type: GraphQLInputObjectType, schema: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): InputObjectTypeDefinitionNode;
+export declare function astFromEnumType(type: GraphQLEnumType, schema: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): EnumTypeDefinitionNode;
+export declare function astFromScalarType(type: GraphQLScalarType, schema: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): ScalarTypeDefinitionNode;
+export declare function astFromField(field: GraphQLField<any, any>, schema: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): FieldDefinitionNode;
+export declare function astFromInputField(field: GraphQLInputField, schema: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): InputValueDefinitionNode;
+export declare function astFromEnumValue(value: GraphQLEnumValue, schema: GraphQLSchema, pathToDirectivesInExtensions?: Array<string>): EnumValueDefinitionNode;
+export declare function makeDeprecatedDirective<TDirectiveNode extends DirectiveNode>(deprecationReason: string): TDirectiveNode;
+export declare function makeDirectiveNode<TDirectiveNode extends DirectiveNode>(name: string, args?: Record<string, any>, directive?: Maybe<GraphQLDirective>): TDirectiveNode;
+export declare function makeDirectiveNodes<TDirectiveNode extends DirectiveNode>(schema: Maybe<GraphQLSchema>, directiveValues: DirectiveAnnotation[]): Array<TDirectiveNode>;

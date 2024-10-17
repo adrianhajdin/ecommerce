@@ -1,0 +1,873 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"src/app/layout.tsx","import":"Jost","arguments":[{"subsets":["latin"],"weight":["400","700"],"variable":"--font-jost"}],"variableName":"jost"} ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/* cyrillic */
+@font-face {
+  font-family: '__Jost_e0a269';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/_next/static/media/b8c37bb59076c047-s.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: '__Jost_e0a269';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/_next/static/media/5bbac197f803cc34-s.woff2) format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: '__Jost_e0a269';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/_next/static/media/9dd75fadc5b3df29-s.p.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: '__Jost_e0a269';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/_next/static/media/b8c37bb59076c047-s.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: '__Jost_e0a269';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/_next/static/media/5bbac197f803cc34-s.woff2) format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: '__Jost_e0a269';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/_next/static/media/9dd75fadc5b3df29-s.p.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}@font-face {font-family: '__Jost_Fallback_e0a269';src: local("Arial");ascent-override: 111.66%;descent-override: 39.13%;line-gap-override: 0.00%;size-adjust: 95.83%
+}.__className_e0a269 {font-family: '__Jost_e0a269', '__Jost_Fallback_e0a269';font-style: normal
+}.__variable_e0a269 {--font-jost: '__Jost_e0a269', '__Jost_Fallback_e0a269'
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/_components/Gutter/index.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Gutter_gutter__QB0_n {
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Gutter_gutterLeft__9iSai {
+  padding-left: var(--gutter-h);
+}
+
+.Gutter_gutterRight__4jfEx {
+  padding-right: var(--gutter-h);
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/_components/AdminBar/index.module.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.AdminBar_adminBar__ceGCp {
+  z-index: 10;
+  width: 100%;
+  padding: 5px 0;
+  font-size: calc(var(--html-font-size) * 1px);
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  background-color: var(--theme-elevation-100);
+  transition: opacity 150ms linear;
+}
+
+[data-theme="dark"] .AdminBar_adminBar__ceGCp {
+  background-color: var(--theme-elevation-0);
+}
+
+.AdminBar_payloadAdminBar__skl88 {
+  color: var(--theme-text) !important;
+}
+
+.AdminBar_show__g8VSt {
+  visibility: visible;
+  opacity: 1;
+}
+
+.AdminBar_controls__qLraR > *:not(:last-child) {
+  margin-right: 10px !important;
+}
+
+.AdminBar_user__F84n_ {
+  margin-right: 10px !important;
+}
+
+.AdminBar_logo__0UGR_ {
+  margin-right: 10px !important;
+}
+
+.AdminBar_blockContainer__sOKl5 {
+  position: relative;
+}
+
+.AdminBar_hr__FMeNP {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--light-gray);
+  height: 2px;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/_components/Button/index.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Button_label__pYjjJ {
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+@media (max-width: 1024px) {
+  .Button_label__pYjjJ {
+    font-size: 13px;
+  }
+}
+
+.Button_button__QvmpL {
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  background-color: transparent;
+  text-decoration: none;
+  display: inline-flex;
+  padding: 10px 24px;
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  border-radius: 10px;
+}
+
+.Button_content__rz2Uk {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.Button_content__rz2Uk svg {
+  margin-right: calc(var(--base) / 2);
+  width: var(--base);
+  height: var(--base);
+}
+
+.Button_label__pYjjJ {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.Button_appearance--primary__aXtFJ {
+  background-color: var(--theme-elevation-1000);
+  color: var(--theme-elevation-0);
+}
+
+.Button_appearance--secondary__67RnZ {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px var(--theme-elevation-1000);
+}
+
+.Button_primary--invert__abvn4 {
+  background-color: var(--theme-elevation-0);
+  color: var(--theme-elevation-1000);
+}
+
+.Button_secondary--invert__OpT85 {
+  background-color: var(--theme-elevation-1000);
+  box-shadow: inset 0 0 0 1px var(--theme-elevation-0);
+}
+
+.Button_appearance--default__Hxo2A {
+  padding: 0;
+  color: var(--theme-text);
+}
+
+.Button_appearance--none__nd_sY {
+  padding: 0;
+  color: var(--theme-text);
+}
+.Button_appearance--none__nd_sY .Button_label__pYjjJ {
+  text-transform: none;
+  line-height: inherit;
+  font-size: inherit;
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/_components/Footer/FooterComponent/index.module.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.FooterComponent_footer__DpGym {
+  padding: 30px 0;
+  background-color: var(--theme-elevation-1000);
+  color: var(--theme-elevation-0);
+}
+@media (max-width: 768px) {
+  .FooterComponent_footer__DpGym {
+    padding: calc(var(--base) * 2) 0;
+  }
+}
+
+.FooterComponent_inclusions__coIk3 {
+  display: grid;
+  justify-content: center;
+  grid-gap: 30px;
+  gap: 30px;
+  padding: 0;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 100px 0;
+}
+@media (max-width: 1440px) {
+  .FooterComponent_inclusions__coIk3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 1024px) {
+  .FooterComponent_inclusions__coIk3 {
+    margin: 60px 0;
+  }
+}
+@media (max-width: 400px) {
+  .FooterComponent_inclusions__coIk3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.FooterComponent_icon__7RTwE {
+  margin-bottom: 16px;
+}
+
+[data-theme="dark"] .FooterComponent_footer__DpGym {
+  background-color: var(--theme-elevation-50);
+  color: var(--theme-elevation-1000);
+}
+
+.FooterComponent_wrap__5tvbs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(var(--base) / 2) var(--base);
+}
+@media (max-width: 768px) {
+  .FooterComponent_wrap__5tvbs {
+    margin-top: 30px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.FooterComponent_logo__pBTPf {
+  width: 170px;
+}
+
+.FooterComponent_hr__Tj2mn {
+  border-color: var(--color-white-500-20);
+}
+
+.FooterComponent_socialLinks___YuUf {
+  display: flex;
+  gap: 20px;
+}
+
+.FooterComponent_socialLinkItem__H2_G4 {
+  width: 100%;
+}
+
+.FooterComponent_socialIcon__l7_HP {
+  width: 24px;
+  height: 24px;
+}
+
+.FooterComponent_hide__nxJ_z {
+  display: none;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/_components/CartLink/index.module.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.CartLink_cartLink__VhF_d {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.CartLink_quantity__8mgwJ {
+  margin-left: 2px;
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/_components/Header/Nav/index.module.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Nav_nav__GahsC {
+  display: flex;
+  gap: calc(var(--base) / 4) var(--base);
+  align-items: center;
+  flex-wrap: wrap;
+  opacity: 1;
+  transition: opacity 100ms linear;
+  visibility: visible;
+}
+.Nav_nav__GahsC > * {
+  text-decoration: none;
+}
+
+.Nav_hide__HQv51 {
+  opacity: 0;
+  visibility: hidden;
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/_components/Header/HeaderComponent/index.module.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.HeaderComponent_header__fcrJ1 {
+  padding: 36px 0;
+}
+
+.HeaderComponent_wrap__dB0Bq {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: calc(var(--base) / 2) var(--base);
+}
+
+.HeaderComponent_logo__Jh_5E {
+  width: 170px;
+}
+
+.HeaderComponent_hide__CgE6b {
+  display: none;
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/app/_css/app.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  --color-base-0: rgb(255, 255, 255);
+  --color-base-50: rgb(245, 245, 245);
+  --color-base-100: rgb(235, 235, 235);
+  --color-base-150: rgb(221, 221, 221);
+  --color-base-200: rgb(208, 208, 208);
+  --color-base-250: rgb(195, 195, 195);
+  --color-base-300: rgb(181, 181, 181);
+  --color-base-350: rgb(168, 168, 168);
+  --color-base-400: rgb(154, 154, 154);
+  --color-base-450: rgb(141, 141, 141);
+  --color-base-500: rgb(128, 128, 128);
+  --color-base-550: rgb(114, 114, 114);
+  --color-base-600: rgb(101, 101, 101);
+  --color-base-650: rgb(87, 87, 87);
+  --color-base-700: rgb(74, 74, 74);
+  --color-base-750: rgb(60, 60, 60);
+  --color-base-800: rgb(47, 47, 47);
+  --color-base-850: rgb(34, 34, 34);
+  --color-base-900: rgb(20, 20, 20);
+  --color-base-950: rgb(7, 7, 7);
+  --color-base-1000: rgb(0, 0, 0);
+  --color-success-50: rgb(247, 255, 251);
+  --color-success-100: rgb(240, 255, 247);
+  --color-success-150: rgb(232, 255, 243);
+  --color-success-200: rgb(224, 255, 239);
+  --color-success-250: rgb(217, 255, 235);
+  --color-success-300: rgb(209, 255, 230);
+  --color-success-350: rgb(201, 255, 226);
+  --color-success-400: rgb(193, 255, 222);
+  --color-success-450: rgb(186, 255, 218);
+  --color-success-500: rgb(178, 255, 214);
+  --color-success-550: rgb(160, 230, 193);
+  --color-success-600: rgb(142, 204, 171);
+  --color-success-650: rgb(125, 179, 150);
+  --color-success-700: rgb(107, 153, 128);
+  --color-success-750: rgb(89, 128, 107);
+  --color-success-800: rgb(71, 102, 86);
+  --color-success-850: rgb(53, 77, 64);
+  --color-success-900: rgb(36, 51, 43);
+  --color-success-950: rgb(18, 25, 21);
+  --color-warning-50: rgb(255, 255, 246);
+  --color-warning-100: rgb(255, 255, 237);
+  --color-warning-150: rgb(254, 255, 228);
+  --color-warning-200: rgb(254, 255, 219);
+  --color-warning-250: rgb(254, 255, 210);
+  --color-warning-300: rgb(254, 255, 200);
+  --color-warning-350: rgb(254, 255, 191);
+  --color-warning-400: rgb(253, 255, 182);
+  --color-warning-450: rgb(253, 255, 173);
+  --color-warning-500: rgb(253, 255, 164);
+  --color-warning-550: rgb(228, 230, 148);
+  --color-warning-600: rgb(202, 204, 131);
+  --color-warning-650: rgb(177, 179, 115);
+  --color-warning-700: rgb(152, 153, 98);
+  --color-warning-750: rgb(127, 128, 82);
+  --color-warning-800: rgb(101, 102, 66);
+  --color-warning-850: rgb(76, 77, 49);
+  --color-warning-900: rgb(51, 51, 33);
+  --color-warning-950: rgb(25, 25, 16);
+  --color-error-50: rgb(255, 241, 241);
+  --color-error-100: rgb(255, 226, 228);
+  --color-error-150: rgb(255, 212, 214);
+  --color-error-200: rgb(255, 197, 200);
+  --color-error-250: rgb(255, 183, 187);
+  --color-error-300: rgb(255, 169, 173);
+  --color-error-350: rgb(255, 154, 159);
+  --color-error-400: rgb(255, 140, 145);
+  --color-error-450: rgb(255, 125, 132);
+  --color-error-500: rgb(255, 111, 118);
+  --color-error-550: rgb(230, 100, 106);
+  --color-error-600: rgb(204, 89, 94);
+  --color-error-650: rgb(179, 78, 83);
+  --color-error-700: rgb(153, 67, 71);
+  --color-error-750: rgb(128, 56, 59);
+  --color-error-800: rgb(102, 44, 47);
+  --color-error-850: rgb(77, 33, 35);
+  --color-error-900: rgb(51, 22, 24);
+  --color-error-950: rgb(25, 11, 12);
+  --color-dark-50: rgba(243, 243, 243, 1);
+  --color-dark-60: rgba(237, 236, 238, 1);
+  --color-dark-500: rgba(19, 17, 24, 1);
+  --color-dark-500-5: rgba(19, 17, 24, 0.05);
+  --color-white-500: rgba(255, 255, 255, 1);
+  --color-white-500-20: rgba(255, 255, 255, 0.2);
+  --color-gray-500: rgba(164, 161, 170, 1);
+  --color-green-500: rgba(60, 209, 57, 1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  margin: 0;
+}
+
+h1 {
+  font-size: 64px;
+  line-height: 70px;
+  font-weight: bold;
+}
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 42px;
+    line-height: 42px;
+  }
+}
+
+h2 {
+  font-size: 48px;
+  line-height: 54px;
+  font-weight: bold;
+}
+@media (max-width: 1024px) {
+  h2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+h3 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: bold;
+}
+@media (max-width: 1024px) {
+  h3 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+
+h4 {
+  font-size: 30px;
+  line-height: 43px;
+  font-weight: 400;
+  letter-spacing: 0em;
+}
+@media (max-width: 1024px) {
+  h4 {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+
+h5 {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: bold;
+}
+@media (max-width: 1024px) {
+  h5 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+h6 {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: bold;
+}
+
+html {
+  font-size: 18px;
+  line-height: 32px;
+}
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
+
+[data-theme=light] {
+  --theme-success-50: var(--color-success-50);
+  --theme-success-100: var(--color-success-100);
+  --theme-success-150: var(--color-success-150);
+  --theme-success-200: var(--color-success-200);
+  --theme-success-250: var(--color-success-250);
+  --theme-success-300: var(--color-success-300);
+  --theme-success-350: var(--color-success-350);
+  --theme-success-400: var(--color-success-400);
+  --theme-success-450: var(--color-success-450);
+  --theme-success-500: var(--color-success-500);
+  --theme-success-550: var(--color-success-550);
+  --theme-success-600: var(--color-success-600);
+  --theme-success-650: var(--color-success-650);
+  --theme-success-700: var(--color-success-700);
+  --theme-success-750: var(--color-success-750);
+  --theme-success-800: var(--color-success-800);
+  --theme-success-850: var(--color-success-850);
+  --theme-success-900: var(--color-success-900);
+  --theme-success-950: var(--color-success-950);
+  --theme-warning-50: var(--color-warning-50);
+  --theme-warning-100: var(--color-warning-100);
+  --theme-warning-150: var(--color-warning-150);
+  --theme-warning-200: var(--color-warning-200);
+  --theme-warning-250: var(--color-warning-250);
+  --theme-warning-300: var(--color-warning-300);
+  --theme-warning-350: var(--color-warning-350);
+  --theme-warning-400: var(--color-warning-400);
+  --theme-warning-450: var(--color-warning-450);
+  --theme-warning-500: var(--color-warning-500);
+  --theme-warning-550: var(--color-warning-550);
+  --theme-warning-600: var(--color-warning-600);
+  --theme-warning-650: var(--color-warning-650);
+  --theme-warning-700: var(--color-warning-700);
+  --theme-warning-750: var(--color-warning-750);
+  --theme-warning-800: var(--color-warning-800);
+  --theme-warning-850: var(--color-warning-850);
+  --theme-warning-900: var(--color-warning-900);
+  --theme-warning-950: var(--color-warning-950);
+  --theme-error-50: var(--color-error-50);
+  --theme-error-100: var(--color-error-100);
+  --theme-error-150: var(--color-error-150);
+  --theme-error-200: var(--color-error-200);
+  --theme-error-250: var(--color-error-250);
+  --theme-error-300: var(--color-error-300);
+  --theme-error-350: var(--color-error-350);
+  --theme-error-400: var(--color-error-400);
+  --theme-error-450: var(--color-error-450);
+  --theme-error-500: var(--color-error-500);
+  --theme-error-550: var(--color-error-550);
+  --theme-error-600: var(--color-error-600);
+  --theme-error-650: var(--color-error-650);
+  --theme-error-700: var(--color-error-700);
+  --theme-error-750: var(--color-error-750);
+  --theme-error-800: var(--color-error-800);
+  --theme-error-850: var(--color-error-850);
+  --theme-error-900: var(--color-error-900);
+  --theme-error-950: var(--color-error-950);
+  --theme-elevation-0: var(--color-base-0);
+  --theme-elevation-50: var(--color-base-50);
+  --theme-elevation-100: var(--color-base-100);
+  --theme-elevation-150: var(--color-base-150);
+  --theme-elevation-200: var(--color-base-200);
+  --theme-elevation-250: var(--color-base-250);
+  --theme-elevation-300: var(--color-base-300);
+  --theme-elevation-350: var(--color-base-350);
+  --theme-elevation-400: var(--color-base-400);
+  --theme-elevation-450: var(--color-base-450);
+  --theme-elevation-500: var(--color-base-500);
+  --theme-elevation-550: var(--color-base-550);
+  --theme-elevation-600: var(--color-base-600);
+  --theme-elevation-650: var(--color-base-650);
+  --theme-elevation-700: var(--color-base-700);
+  --theme-elevation-750: var(--color-base-750);
+  --theme-elevation-800: var(--color-base-800);
+  --theme-elevation-850: var(--color-base-850);
+  --theme-elevation-900: var(--color-base-900);
+  --theme-elevation-950: var(--color-base-950);
+  --theme-elevation-1000: var(--color-base-1000);
+  --theme-bg: var(--theme-elevation-0);
+  --theme-input-bg: var(--theme-elevation-50);
+  --theme-text: var(--theme-elevation-750);
+  --theme-border-color: var(--theme-elevation-150);
+  color-scheme: light;
+  color: var(--theme-text);
+  --highlight-default-bg-color: var(--theme-success-400);
+  --highlight-default-text-color: var(--theme-text);
+  --highlight-danger-bg-color: var(--theme-error-150);
+  --highlight-danger-text-color: var(--theme-text);
+}
+[data-theme=light] h1 a,
+[data-theme=light] h2 a,
+[data-theme=light] h3 a,
+[data-theme=light] h4 a,
+[data-theme=light] h5 a,
+[data-theme=light] h6 a {
+  color: var(--theme-elevation-750);
+}
+[data-theme=light] h1 a:hover,
+[data-theme=light] h2 a:hover,
+[data-theme=light] h3 a:hover,
+[data-theme=light] h4 a:hover,
+[data-theme=light] h5 a:hover,
+[data-theme=light] h6 a:hover {
+  color: var(--theme-elevation-800);
+}
+[data-theme=light] h1 a:visited,
+[data-theme=light] h2 a:visited,
+[data-theme=light] h3 a:visited,
+[data-theme=light] h4 a:visited,
+[data-theme=light] h5 a:visited,
+[data-theme=light] h6 a:visited {
+  color: var(--theme-elevation-750);
+}
+[data-theme=light] h1 a:visited:hover,
+[data-theme=light] h2 a:visited:hover,
+[data-theme=light] h3 a:visited:hover,
+[data-theme=light] h4 a:visited:hover,
+[data-theme=light] h5 a:visited:hover,
+[data-theme=light] h6 a:visited:hover {
+  color: var(--theme-elevation-800);
+}
+
+[data-theme=dark] {
+  --theme-elevation-0: var(--color-base-1000);
+  --theme-elevation-50: var(--color-base-950);
+  --theme-elevation-100: var(--color-base-900);
+  --theme-elevation-150: var(--color-base-850);
+  --theme-elevation-200: var(--color-base-800);
+  --theme-elevation-250: var(--color-base-750);
+  --theme-elevation-300: var(--color-base-700);
+  --theme-elevation-350: var(--color-base-650);
+  --theme-elevation-400: var(--color-base-600);
+  --theme-elevation-450: var(--color-base-550);
+  --theme-elevation-500: var(--color-base-500);
+  --theme-elevation-550: var(--color-base-450);
+  --theme-elevation-600: var(--color-base-400);
+  --theme-elevation-650: var(--color-base-350);
+  --theme-elevation-700: var(--color-base-300);
+  --theme-elevation-750: var(--color-base-250);
+  --theme-elevation-800: var(--color-base-200);
+  --theme-elevation-850: var(--color-base-150);
+  --theme-elevation-900: var(--color-base-100);
+  --theme-elevation-950: var(--color-base-50);
+  --theme-elevation-1000: var(--color-base-0);
+  --theme-success-50: var(--color-success-950);
+  --theme-success-100: var(--color-success-900);
+  --theme-success-150: var(--color-success-850);
+  --theme-success-200: var(--color-success-800);
+  --theme-success-250: var(--color-success-750);
+  --theme-success-300: var(--color-success-700);
+  --theme-success-350: var(--color-success-650);
+  --theme-success-400: var(--color-success-600);
+  --theme-success-450: var(--color-success-550);
+  --theme-success-500: var(--color-success-500);
+  --theme-success-550: var(--color-success-450);
+  --theme-success-600: var(--color-success-400);
+  --theme-success-650: var(--color-success-350);
+  --theme-success-700: var(--color-success-300);
+  --theme-success-750: var(--color-success-250);
+  --theme-success-800: var(--color-success-200);
+  --theme-success-850: var(--color-success-150);
+  --theme-success-900: var(--color-success-100);
+  --theme-success-950: var(--color-success-50);
+  --theme-warning-50: var(--color-warning-950);
+  --theme-warning-100: var(--color-warning-900);
+  --theme-warning-150: var(--color-warning-850);
+  --theme-warning-200: var(--color-warning-800);
+  --theme-warning-250: var(--color-warning-750);
+  --theme-warning-300: var(--color-warning-700);
+  --theme-warning-350: var(--color-warning-650);
+  --theme-warning-400: var(--color-warning-600);
+  --theme-warning-450: var(--color-warning-550);
+  --theme-warning-500: var(--color-warning-500);
+  --theme-warning-550: var(--color-warning-450);
+  --theme-warning-600: var(--color-warning-400);
+  --theme-warning-650: var(--color-warning-350);
+  --theme-warning-700: var(--color-warning-300);
+  --theme-warning-750: var(--color-warning-250);
+  --theme-warning-800: var(--color-warning-200);
+  --theme-warning-850: var(--color-warning-150);
+  --theme-warning-900: var(--color-warning-100);
+  --theme-warning-950: var(--color-warning-50);
+  --theme-error-50: var(--color-error-950);
+  --theme-error-100: var(--color-error-900);
+  --theme-error-150: var(--color-error-850);
+  --theme-error-200: var(--color-error-800);
+  --theme-error-250: var(--color-error-750);
+  --theme-error-300: var(--color-error-700);
+  --theme-error-350: var(--color-error-650);
+  --theme-error-400: var(--color-error-600);
+  --theme-error-450: var(--color-error-550);
+  --theme-error-500: var(--color-error-500);
+  --theme-error-550: var(--color-error-450);
+  --theme-error-600: var(--color-error-400);
+  --theme-error-650: var(--color-error-350);
+  --theme-error-700: var(--color-error-300);
+  --theme-error-750: var(--color-error-250);
+  --theme-error-800: var(--color-error-200);
+  --theme-error-850: var(--color-error-150);
+  --theme-error-900: var(--color-error-100);
+  --theme-error-950: var(--color-error-50);
+  --theme-bg: var(--theme-elevation-100);
+  --theme-text: var(--theme-elevation-900);
+  --theme-input-bg: var(--theme-elevation-150);
+  --theme-border-color: var(--theme-elevation-250);
+  color-scheme: dark;
+  color: var(--theme-text);
+  --highlight-default-bg-color: var(--theme-success-100);
+  --highlight-default-text-color: var(--theme-success-600);
+  --highlight-danger-bg-color: var(--theme-error-100);
+  --highlight-danger-text-color: var(--theme-error-550);
+}
+[data-theme=dark] h1 a,
+[data-theme=dark] h2 a,
+[data-theme=dark] h3 a,
+[data-theme=dark] h4 a,
+[data-theme=dark] h5 a,
+[data-theme=dark] h6 a {
+  color: var(--theme-success-600);
+}
+[data-theme=dark] h1 a:hover,
+[data-theme=dark] h2 a:hover,
+[data-theme=dark] h3 a:hover,
+[data-theme=dark] h4 a:hover,
+[data-theme=dark] h5 a:hover,
+[data-theme=dark] h6 a:hover {
+  color: var(--theme-success-400);
+}
+[data-theme=dark] h1 a:visited,
+[data-theme=dark] h2 a:visited,
+[data-theme=dark] h3 a:visited,
+[data-theme=dark] h4 a:visited,
+[data-theme=dark] h5 a:visited,
+[data-theme=dark] h6 a:visited {
+  color: var(--theme-success-700);
+}
+[data-theme=dark] h1 a:visited:hover,
+[data-theme=dark] h2 a:visited:hover,
+[data-theme=dark] h3 a:visited:hover,
+[data-theme=dark] h4 a:visited:hover,
+[data-theme=dark] h5 a:visited:hover,
+[data-theme=dark] h6 a:visited:hover {
+  color: var(--theme-success-500);
+}
+
+:root {
+  --base: 24px;
+  --font-body: "Jost", sans-serif;
+  --font-jost: "Jost", sans-serif;
+  --gutter-h: 180px;
+  --block-padding: 120px;
+}
+@media (max-width: 1440px) {
+  :root {
+    --gutter-h: 144px;
+    --block-padding: 96px;
+  }
+}
+@media (max-width: 1024px) {
+  :root {
+    --gutter-h: 24px;
+    --block-padding: 60px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--theme-bg);
+  -webkit-font-smoothing: antialiased;
+  opacity: 0;
+}
+html[data-theme=dark], html[data-theme=light] {
+  opacity: initial;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-jost);
+  margin: 0;
+  padding: 0;
+  color: var(--color-dark-500);
+  display: flex;
+  flex-flow: column;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+::selection {
+  background: var(--color-dark-500);
+  color: var(--color-base-800);
+}
+
+::-moz-selection {
+  background: var(--color-dark-50);
+  color: var(--color-base-800);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--color-dark-500);
+  text-decoration: none;
+}
+a:focus {
+  opacity: 0.8;
+  outline: none;
+}
+a:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+svg {
+  vertical-align: middle;
+}
