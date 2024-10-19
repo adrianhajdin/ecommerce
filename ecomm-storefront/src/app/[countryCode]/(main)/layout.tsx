@@ -1,6 +1,5 @@
-import { Metadata } from "next"
-
 import Footer from "@modules/layout/templates/footer"
+import { Metadata } from "next"
 import Nav from "@modules/layout/templates/nav"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:8000"
@@ -14,7 +13,7 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
     <>
       <Nav />
       {props.children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

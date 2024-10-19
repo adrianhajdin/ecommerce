@@ -4,7 +4,7 @@ import LoginTemplate from "@modules/account/templates/login-template"
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Sign in to your Medusa Store account.",
+  description: "Sign in to your Castle Archivs account.",
 }
 
 export default function Login() {

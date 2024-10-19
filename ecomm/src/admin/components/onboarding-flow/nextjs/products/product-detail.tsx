@@ -8,7 +8,7 @@ const ProductDetailNextjs = ({ onNext, isComplete, data }: StepContentProps) => 
     <div>
       <div className="flex flex-col gap-2">
         <Text>
-          We have now created a few sample products in your Medusa store. You can scroll down to see what the Product Detail view looks like in the Admin dashboard.
+          We have now created a few sample products in your Castle Archivs. You can scroll down to see what the Product Detail view looks like in the Admin dashboard.
           This is also the view you use to edit existing products.
         </Text>
         <Text>
