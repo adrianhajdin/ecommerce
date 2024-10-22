@@ -52,13 +52,16 @@ const plugins = [
       },
     },
   },
-    // ...
-    {
-      resolve: `medusa-plugin-segment`,
-      options: {
-        write_key: process.env.SEGMENT_WRITE_KEY,
-      },
+  {
+    resolve: `medusa-plugin-sendgrid`,
+    options: {
+      api_key: process.env.SENDGRID_API_KEY,
+      from: "giannnlaa@gmail.com",
+      order_placed_template:"d-e69e46b356e7493c8dd7d0b692828f38",
+      
     },
+  },
+  
   
 ];
 
@@ -75,6 +78,15 @@ const modules = {
       redisUrl: REDIS_URL
     }
   },*/
+
+    // ...
+    cacheService: {
+      resolve: "@medusajs/cache-redis",
+      options: { 
+        redisUrl: process.env.CACHE_REDIS_URL,
+        ttl: 30,
+      },
+    },
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
