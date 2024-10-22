@@ -22,6 +22,7 @@
   "dependencies": {
     "@headlessui/react": "^1.6.1",
     "@hookform/error-message": "^2.0.0",
+    "@medusajs/icons": "^1.2.2",
     "@medusajs/link-modules": "^0.2.3",
     "@medusajs/medusa-js": "^6.1.7",
     "@medusajs/modules-sdk": "^1.12.3",
