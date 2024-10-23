@@ -1,1 +1,0 @@
-{"version":3,"file":"transform-properties-to-bignumber.d.ts","sourceRoot":"","sources":["../../src/totals/transform-properties-to-bignumber.ts"],"names":[],"mappings":"AAEA,wBAAgB,8BAA8B,CAC5C,GAAG,KAAA,EACH,EACE,MAAe,EACf,OAAY,EACZ,OAAY,GACb,GAAE;IACD,MAAM,CAAC,EAAE,MAAM,CAAA;IACf,OAAO,CAAC,EAAE,MAAM,EAAE,CAAA;IAClB,OAAO,CAAC,EAAE,MAAM,EAAE,CAAA;CACd,QA2CP"}

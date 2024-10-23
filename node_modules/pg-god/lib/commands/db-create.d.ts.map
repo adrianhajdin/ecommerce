@@ -1,1 +1,0 @@
-{"version":3,"file":"db-create.d.ts","sourceRoot":"","sources":["../../src/commands/db-create.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,OAAO,EAAE,KAAK,EAAC,MAAM,gBAAgB,CAAA;AAK7C,MAAM,CAAC,OAAO,OAAO,QAAS,SAAQ,OAAO;IAC3C,MAAM,CAAC,OAAO,WAAgB;IAC9B,MAAM,CAAC,WAAW,SAA6B;IAE/C,MAAM,CAAC,QAAQ,WAMd;IAED,MAAM,CAAC,KAAK;;;;;;;;;;MAgBX;IAEK,GAAG;CAqCV"}
