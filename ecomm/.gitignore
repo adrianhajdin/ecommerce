@@ -12,6 +12,7 @@ coverage
 
 ./tsconfig.tsbuildinfo
 package-lock.json
+pnpm-lock.yaml
 yarn.lock
 medusa-db.sql
 build
