@@ -25,10 +25,11 @@ const ADMIN_CORS = process.env.ADMIN_CORS || "http://localhost:7000,http://local
 const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000";
 const DATABASE_URL = process.env.DATABASE_URL || "postgres://localhost/medusa-starter-default";
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
+const isDev = process.env.NODE_ENV === 'dev'; // Use local redis docker container in development to reduce cloud upstash Redis usage. 
 
 // Common Redis options to optimize connections
 const commonRedisConfig = {
-  tls: true,
+  tls: !isDev,
   maxRetriesPerRequest: 1,
   enableOfflineQueue: false,
   commandTimeout: 5000,
@@ -74,13 +75,9 @@ const plugins = [
   },
 ];
 
-// Use local event bus and cache in development to reduce Redis usage
-const isDev = false //process.env.NODE_ENV === 'development';
 
 const modules = {
-  eventBus: isDev ? {
-    resolve: "@medusajs/event-bus-local"
-  } : {
+  eventBus: {
     resolve: "@medusajs/event-bus-redis",
     options: {
       redisUrl: process.env.EVENTS_REDIS_URL,
@@ -92,9 +89,7 @@ const modules = {
       }
     },
   },
-  cacheService: isDev ? {
-    resolve: "@medusajs/cache-inmemory"
-  } : {
+  cacheService: {
     resolve: "@medusajs/cache-redis",
     options: {
       redisUrl: process.env.CACHE_REDIS_URL,
