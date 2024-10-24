@@ -33,16 +33,18 @@ const commonRedisConfig = {
   maxRetriesPerRequest: 1,
   enableOfflineQueue: false,
   commandTimeout: 5000,
-  maxConnections: 10,
-  keepAlive: 30000,
+  maxConnections: 5,
+  keepAlive: 60000,
   connectTimeout: 10000,
+  lazyConnect: true,
+  showFriendlyErrorStack: isDev,
+  retryStrategy: (times) => {
+    if (times > 2) return null;
+    return Math.min(times * 2000, 10000);
+  },
   reconnectOnError: (err) => {
     const targetError = 'READONLY';
     return err.message.includes(targetError);
-  },
-  retryStrategy: (times) => {
-    if (times > 3) return null;
-    return Math.min(times * 1000, 3000);
   }
 };
 
@@ -77,31 +79,39 @@ const plugins = [
 
 
 const modules = {
-  eventBus: {
+  eventBus: isDev ? {
+    resolve: "@medusajs/event-bus-local"  // Use local event bus in development
+  } : {
     resolve: "@medusajs/event-bus-redis",
     options: {
       redisUrl: process.env.EVENTS_REDIS_URL,
       ...commonRedisConfig,
-      healthCheckInterval: 30000,
-      lockDuration: 30000,
-      subscriberDefinitions: {
-        // Event subscriptions here
-      }
+      healthCheckInterval: 60000,
+      lockDuration: 60000,
+      pollInterval: 5000,
+      maxPollingAttempts: 3,
+      subscriberDefinitions: {},
     },
   },
-  cacheService: {
+  cacheService: isDev ? {
+    resolve: "@medusajs/cache-inmemory"  // Use in-memory cache in development
+  } : {
     resolve: "@medusajs/cache-redis",
     options: {
       redisUrl: process.env.CACHE_REDIS_URL,
       ...commonRedisConfig,
-      // Cache specific optimizations
-      ttl: 30, // 30 seconds
-      keyPrefix: "cache:", // Add prefix to distinguish cache keys
+      ttl: 300,
+      keyPrefix: "cache:",
       maxMemoryPolicy: 'allkeys-lru',
-      compressionThreshold: 1024, // Compress values larger than 1KB
+      disableKeepAlive: true,
+      lazyConnect: true,
+      maxLoadingRetryTime: 2000,
+      noDelay: true
     },
   },
 };
+
+
 
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
 const projectConfig = {
@@ -120,7 +130,16 @@ const projectConfig = {
   redis_options: {
     ...commonRedisConfig,
     keyPrefix: "medusa:",
-    scripts: {}, // Add any custom Redis scripts here
+    scripts: {}, 
+    connectionPool: {
+      min: 1,
+      max: 3,
+      acquireTimeoutMillis: 5000,
+      createTimeoutMillis: 5000,
+      idleTimeoutMillis: 30000,
+      reapIntervalMillis: 1000,
+      createRetryIntervalMillis: 200,
+    }
   }
 };
 
