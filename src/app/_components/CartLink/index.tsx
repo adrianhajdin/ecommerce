@@ -21,7 +21,7 @@ export const CartLink: React.FC<{
   return (
     <Link className={[classes.cartLink, className].filter(Boolean).join(' ')} href="/cart">
       <Fragment>
-        Cart
+        Carrinho
         {typeof length === 'number' && length > 0 && (
           <small className={classes.quantity}>({length})</small>
         )}
