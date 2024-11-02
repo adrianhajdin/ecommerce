@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 import classes from './index.module.scss'
+import Starswars from '../Starswars'
 
 const Promotion = () => {
   const [time, setTime] = useState({
@@ -53,6 +54,10 @@ const Promotion = () => {
           <StatBox label="Minutes" value={time.minutes} />
           <StatBox label="Seconds" value={time.seconds} />
         </ul>
+      </div>
+
+      <div>
+        <Starswars />
       </div>
     </section>
   )
