@@ -31,11 +31,39 @@
       width: 100%;
       height: 100vh;
       min-height: 750px;
-      background: url(https://res.cloudinary.com/muhammederdem/image/upload/v1536405234/starwars/death_star.jpg) center no-repeat;
+      background: linear-gradient(
+    to bottom,
+    #ffdf0f,
+    #fad60f,
+    #f6cd0f,
+    #f1c30f,
+    #edba0e,
+    #e8b10e,
+    #e4a80e,
+    #df9f0e, #db960e,
+    #d68c0e,
+    #d2830e,
+    #cd7a0e,
+    #c9710d,
+    #c4680d,
+    #c05f0d,
+    #bb550d,
+    #b74c0d,
+    #b2430d,
+    #ae3a0d,
+    #a9310d,
+    #a5280c,
+    #a01e0c,
+    #9c150c,
+    #970c0c
+  );
+      // background-color: rgba(206, 151, 88, 0.487);
+      // background: url(https://res.cloudinary.com/muhammederdem/image/upload/v1536405234/starwars/death_star.jpg) center no-repeat;
       background-size: cover;
       position: relative;
       overflow: hidden;
       display: flex;
+      border-radius: 20px;
      
     
       @media screen and (max-width: 992px) {
@@ -110,7 +138,7 @@
       }
     
       @media screen and (max-width: 576px) {
-        height: 200px;
+        height: 150px;
        
         padding: 30px;
       }
@@ -175,7 +203,7 @@
       }
     
       @media screen and (max-width: 992px) {
-        top: 170px;
+        // top: 170px;
       }
     
     }
@@ -233,7 +261,7 @@
           position: relative;
           top: 0;
           margin-top: 170px;
-          margin-bottom: 100px;
+          
     
           br {
             display: none;
@@ -287,7 +315,7 @@
     
             circle {
               animation: progress 1s ease-out forwards;
-              animation-delay: .5s;
+              animation-delay: .9s;
               opacity: 0.75;
             }
           }
@@ -353,7 +381,7 @@
           }
     
           @media screen and (max-width: 576px) {
-            padding-top: 220px;
+            padding-top: 120px;
             padding-left: 15px;
             padding-right: 15px;
           }
@@ -364,7 +392,7 @@
           margin: 0;
           margin-bottom: 10px;
           font-weight: 900;
-          font-size: 41px;
+          font-size: 40px;
           line-height: 1.2em;
           letter-spacing: 2px;
           opacity: 1;
@@ -376,7 +404,7 @@
           }
     
           @media screen and (max-width: 576px) {
-            font-size: 24px;
+            font-size: 12px;
           }
     
         }
@@ -393,7 +421,7 @@
           }
     
           @media screen and (max-width: 576px) {
-            font-size: 30px;
+            font-size: 25px;
           }
     
           sup {
@@ -426,11 +454,14 @@
             max-width: 300px;
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 50px;
+           
           }
         }
     
         &__fav {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           color: #888e94;
           background: none;
           border: none;
@@ -438,17 +469,18 @@
           padding-left: 25px;
           outline: none;
           cursor: pointer;
+         
     
           &:focus {
             outline: none;
           }
     
           .heart {
-            display: block;
-            position: absolute;
+            display: flex;
+          
             left: 0;
-            transform: translate(-50%, -50%) scale(0.7);
-            top: 50%;
+            
+            
             pointer-events: none;
             width: 100px;
             height: 100px;
@@ -580,15 +612,18 @@
         }
       }
       &-inf {
+        height: 100%;
         text-align: center;
+        
     
         @media screen and (max-width: 767px) {
           width: 100%;
+          display: flex;
         }
     
         &__percent {
           font-weight: 700;
-          font-size: 22px;
+          font-size: 18px;
           letter-spacing: 1px;
           margin-bottom: 12px;
           font-family: 'Dosis', sans-serif;
@@ -604,15 +639,23 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+           
           }
     
         }
     
         &__title {
+          display: flex;
           font-family: 'Dosis', sans-serif;
           font-weight: 700;
           letter-spacing: 2px;
-          font-size: 18px;
+          font-size: 25px;
+          
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+         
+
         }
     
       }
@@ -727,4 +770,16 @@
     
     
     
-    
+/*     Modification PERSO _________________________________________________________________________________________________________________*/
+
+
+.title_card {
+  font-size: 3em;
+  font-weight: 700;
+  justify-content: center;
+  width: 100%;
+  color: #fff;
+ 
+  text-align: center;
+  margin-bottom: 10px;
+} 

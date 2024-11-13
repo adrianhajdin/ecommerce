@@ -62,16 +62,33 @@ export const Starswars: React.FC = () => {
 
   return (
     // PURPLE
+    
     <div className={classes.wrapper} >
       {/* VERT */}
+      <button onClick={goToPrevious} className={classes.prev}>
+            <span className={classes.icon}>
+            <FontAwesomeIcon icon={faArrowLeft} />
+            </span>
+          </button>
+          
+          <button onClick={goToNext} className={classes.next}>
+            <span className={classes.icon}>
+            <FontAwesomeIcon icon={faArrowRight} />
+            </span>
+          </button>
+
       <div className={classes.content}> 
         <div className={classes['bg-shape']}>
-          <Image
+          {/* <Image
             src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405214/starwars/logo.webp"
             alt=""
             width={200}
             height={100}
-          />
+          /> */}
+          <h1 className={`${classes['title_card']}`}>
+               PROMOTION <br />
+               DEALS
+          </h1>
         </div>
         {/* RED */}
         <div className={`${classes['product-img']} ${classes['active']}`}>
@@ -94,18 +111,7 @@ export const Starswars: React.FC = () => {
         </div>
     
         <div className={classes['product-slider' ]}>
-          <button onClick={goToPrevious} className={classes.prev}>
-            <span className={classes.icon}>
-            <FontAwesomeIcon icon={faArrowLeft} />
-            </span>
-          </button>
-          
-          <button onClick={goToNext} className={classes.next}>
-            <span className={classes.icon}>
-            <FontAwesomeIcon icon={faArrowRight} />
-            </span>
-          </button>
-
+        
         <div className={`${classes['product-slider__wrp']} swiper-wrapper`}>
           <div className={`${classes['product-slider__item']} swiper-slide`} data-target={`img${currentSlide.id}`}>
             <div className={classes['product-slider__card']}>
@@ -176,9 +182,12 @@ export const Starswars: React.FC = () => {
                   <span className={classes['hr-vertical']}></span>
 
                   <div className={classes['product-inf']}>
+                    <span className={classes['product-inf__title']}>
+                      {currentSlide.durability.title}
+                    </span>
                     <div className={classes['product-inf__percent']}>
                       <div className={classes['product-inf__percent-circle']}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 100 100">
                           <defs>
                             <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                               <stop offset="0%" stopColor="#0c1e2c" stopOpacity="0" />
@@ -200,9 +209,6 @@ export const Starswars: React.FC = () => {
                         {currentSlide.durability.rate}
                       </div>
                     </div>
-                    <span className={classes['product-inf__title']}>
-                      {currentSlide.durability.title}
-                    </span>
                   </div>
                 </div>
               
@@ -216,6 +222,7 @@ export const Starswars: React.FC = () => {
                     <span className={`${classes['heart']} ${isFavActive ? classes['is-active'] : ""}`}> </span> 
                     ADD TO WISHLIST
                   </button>
+                  
                 </div>
           </div>
         </div>
@@ -223,33 +230,7 @@ export const Starswars: React.FC = () => {
         </div>
         </div>
       </div>
-
-      <div className={classes.social}>
-        <a href="https://twitter.com/imuhammederdem" target="_blank" className={classes['social__item']}>
-          <Image
-            src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405220/starwars/twitter.webp"
-            alt="muhammed erdem"
-            className={classes['social__img']}
-            width={200}
-            height={100}
-          />
-          <span className={classes['social__txt']}>Coded By Muhammed Erdem</span>
-        </a>
-
-        <a href="https://dribbble.com/shots/3453028-Star-Wars-TIE-Fighter-UI" target="_blank" className={classes['social__item']}>
-          <Image
-            src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405220/starwars/dribbble.webp"
-            alt="eray yeşilyurt"
-            className={classes['social__img']}
-            width={200}
-            height={100}
-          />
-          <span className={classes['social__txt']}>Designed By Eray Yeşilyurt</span>
-        </a>
-      </div>
     </div>
-
-
   );
 }
 

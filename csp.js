@@ -10,7 +10,14 @@ const policies = {
   ],
   'child-src': ["'self'"],
   'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-  'img-src': ["'self'", 'https://*.stripe.com', 'https://raw.githubusercontent.com'],
+  'img-src': [
+    "'self'", 
+    'data:', 
+    'https://raw.githubusercontent.com', 
+    
+    'https://res.cloudinary.com',
+    'https://cdn.prod.website-files.com',
+  ], // 'https://*.stripe.com',
   'font-src': ["'self'"],
   'frame-src': [
     "'self'",

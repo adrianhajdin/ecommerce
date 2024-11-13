@@ -16,6 +16,10 @@
 }
 
 .textBox {
+  padding: 10px;
+  color: white;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.274);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,6 +42,7 @@
 }
 
 .stats {
+
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(4, 100px);
@@ -48,6 +53,8 @@
 }
 
 .statBox {
+  color: black;
+  background-color: white;
   border-radius: 10px;
   border: 1px solid var(--color-dark-60);
   padding: 16px;

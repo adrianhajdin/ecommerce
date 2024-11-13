@@ -2,7 +2,32 @@
 
 .footer {
   padding: 30px 0;
-  background-color: var(--theme-elevation-1000);
+  background: linear-gradient(
+    to bottom,
+    #ffdf0f,
+    #fad60f,
+    #f6cd0f,
+    #f1c30f,
+    #edba0e,
+    #e8b10e,
+    #e4a80e,
+    #df9f0e, #db960e,
+    #d68c0e,
+    #d2830e,
+    #cd7a0e,
+    #c9710d,
+    #c4680d,
+    #c05f0d,
+    #bb550d,
+    #b74c0d,
+    #b2430d,
+    #ae3a0d,
+    #a9310d,
+    #a5280c,
+    #a01e0c,
+    #9c150c,
+    #970c0c
+  );
   color: var(--theme-elevation-0);
 
   @include small-break {
