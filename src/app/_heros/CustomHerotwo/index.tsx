@@ -1,36 +1,75 @@
-"use client"
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import classes from './index.module.scss'
 
-import Background from "hero-slider/dist/components/Slide/Background";
-import ImageSlider from "./ImageSlider"
-import { BackgroundColor } from "../../_components/BackgroundColor";
-import { redirect } from "next/dist/server/api-utils";
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
-export const CustomHerotwo = () => {
-  const slides = [
-    { url: "https://www.canva.com/design/DAGU0dhf4l0/u_iX7Tzx6xvDdutBxcU48w/edit?utm_content=DAGU0dhf4l0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton", title: "beach" },
-    { url: "https://cdn.prod.website-files.com/6243c3bb3b5a1852803d0c7f/64ac9b4418ae081acf7be4e8_hero-section-examples.jpg", title: "boat" },
-    { url: "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405215/starwars/item-1-bg.webp", title: "forest" },
-    { url: "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405215/starwars/item-3-bg.webp", title: "city" },
-    { url: "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405215/starwars/item-2-bg.webp", title: "italy" },
-  ];
-  const containerStyles = {
-    // width: "500px",
-    height: '550px',
-    margin: "0 auto",
-   /*  backgroundColor: "red", */
-    };
+
+// import required modules
+import { Pagination } from 'swiper/modules';
+import Image from 'next/image';
+
+const containerStyles = {
+  height: '550px',
+  margin: "0 auto",
+  backgroundColor: "red",
+  };
 
 
 
+
+  export const CustomHerotwo = () => {
   return (
-    <div>
-      
-      <div style={containerStyles}>
-        <ImageSlider slides={slides} />
-        
-      </div>
-    </div>
+    <>
+      <Swiper
+        pagination={{
+          dynamicBullets: true,
+        }}
+        modules={[Pagination]}
+        style={containerStyles}
+      >
+        <SwiperSlide>
+        <Image
+      src="/canva/Sacoche Noir - Story.jpg"
+      width={500}
+      height={500}
+      alt="Picture of the author"
+    /> 
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+      src="/canva/Sacoche Noir - Story.jpg"
+      width={500}
+      height={500}
+      alt="Picture of the author"
+    /> 
+    </SwiperSlide>
+        <SwiperSlide>
+          <Image
+      src="/canva/Sacoche Noir - Story.jpg"
+      width={500}
+      height={500}
+      alt="Picture of the author"
+    /> 
+    </SwiperSlide>
+        <SwiperSlide>
+          <Image
+      src="/canva/Sacoche Noir - Story.jpg"
+      width={500}
+      height={500}
+      alt="Picture of the author"
+    /> 
+
+        </SwiperSlide>
+        <SwiperSlide>Slide 5</SwiperSlide>
+        <SwiperSlide>Slide 6</SwiperSlide>
+        <SwiperSlide>Slide 7</SwiperSlide>
+        <SwiperSlide>Slide 8</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+      </Swiper>
+    </>
   );
-};
-
-
+}

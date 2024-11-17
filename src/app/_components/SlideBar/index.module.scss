@@ -1,4 +1,5 @@
-@use '../../../_css/queries.scss' as *;
+// import media queries from queries.scss file 
+@use '../../_css/queries.scss' as *; 
 
 .nav {
   display: flex;
@@ -12,7 +13,7 @@
   > * {
     text-decoration: none;
   }
-  border: 2px solid red; 
+  /* border: 2px solid red;  */
 }
 
 .hide {
