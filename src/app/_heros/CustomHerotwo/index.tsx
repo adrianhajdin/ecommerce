@@ -1,75 +1,52 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import classes from './index.module.scss'
-
-// Import Swiper styles
+import classes from './index.module.scss';
 import 'swiper/css';
 import 'swiper/css/pagination';
-
-
-// import required modules
 import { Pagination } from 'swiper/modules';
 import Image from 'next/image';
 
-const containerStyles = {
-  height: '550px',
-  margin: "0 auto",
-  backgroundColor: "red",
-  };
-
-
-
-
-  export const CustomHerotwo = () => {
+export const CustomHerotwo = () => {
   return (
-    <>
+    <div className={classes.container}>
       <Swiper
-        pagination={{
-          dynamicBullets: true,
-        }}
+        pagination={{ dynamicBullets: true }}
         modules={[Pagination]}
-        style={containerStyles}
+        className={classes['swiper-container']}
       >
-        <SwiperSlide>
-        <Image
-      src="/canva/Sacoche Noir - Story.jpg"
-      width={500}
-      height={500}
-      alt="Picture of the author"
-    /> 
+        <SwiperSlide className={classes['swiper-slide']}>
+          <Image
+            src="/canva/Sacoche Noir - Story.jpg"
+            width={500}
+            height={500}
+            alt="Sacoche Noir"
+          />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className={classes['swiper-slide']}>
           <Image
-      src="/canva/Sacoche Noir - Story.jpg"
-      width={500}
-      height={500}
-      alt="Picture of the author"
-    /> 
-    </SwiperSlide>
-        <SwiperSlide>
-          <Image
-      src="/canva/Sacoche Noir - Story.jpg"
-      width={500}
-      height={500}
-      alt="Picture of the author"
-    /> 
-    </SwiperSlide>
-        <SwiperSlide>
-          <Image
-      src="/canva/Sacoche Noir - Story.jpg"
-      width={500}
-      height={500}
-      alt="Picture of the author"
-    /> 
-
+            src="/canva/Sacoche Noir - Story.jpg"
+            width={500}
+            height={500}
+            alt="Sacoche Noir"
+          />
         </SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide className={classes['swiper-slide']}>
+          <Image
+            src="/canva/Sacoche Noir - Story.jpg"
+            width={500}
+            height={500}
+            alt="Sacoche Noir"
+          />
+        </SwiperSlide>
+        <SwiperSlide className={classes['swiper-slide']}>
+          <Image
+            src="/canva/Sacoche Noir - Story.jpg"
+            width={500}
+            height={500}
+            alt="Sacoche Noir"
+          />
+        </SwiperSlide>
       </Swiper>
-    </>
+    </div>
   );
-}
+};
