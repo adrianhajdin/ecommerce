@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 
 
-const __ImagesSlider = () => {
+const _ImagesSlider = () => {
 
 const images = [
         "/ImagesSlider/accessories-category.png",
@@ -42,4 +42,4 @@ const images = [
   )
 }
 
-export default __ImagesSlider
+export default _ImagesSlider

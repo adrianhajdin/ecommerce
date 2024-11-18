@@ -4,6 +4,9 @@ import Link from 'next/link'
 import { Footer } from '../../../payload/payload-types'
 import { fetchFooter } from '../../_api/fetchGlobals'
 import FooterComponent from './FooterComponent'
+import FooterComponentTwo from './FooterComponentTwo'
+
+import { MantineProvider } from '@mantine/core';
 
 export async function Footer() {
   let footer: Footer | null = null
@@ -19,6 +22,9 @@ export async function Footer() {
   return (
     <>
       <FooterComponent footer={footer} />
+      <MantineProvider>
+        <FooterComponentTwo />
+      </MantineProvider>
     </>
   )
 }

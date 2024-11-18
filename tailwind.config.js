@@ -6,6 +6,7 @@ module.exports = {
     './_components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './_css/**/*.css', // Si tu utilises un dossier `_css`
     
   ],
   prefix: "",
