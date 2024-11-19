@@ -23,6 +23,7 @@ export const ProductHero: React.FC<{
       </div>
 
       <div className={classes.details}>
+        <h1> Ici le -heros Prooduct  </h1>
         <h3 className={classes.title}>{title}</h3>
 
         <div className={classes.categoryWrapper}>

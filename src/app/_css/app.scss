@@ -36,6 +36,8 @@ html {
   &[data-theme=light] {
     opacity: initial;
   }
+
+  scroll-behavior: smooth;
 }
 
 html,

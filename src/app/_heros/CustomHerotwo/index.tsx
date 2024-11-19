@@ -20,6 +20,7 @@ export const CustomHerotwo = () => {
             width={500}
             height={500}
             alt="Sacoche Noir"
+            priority // Load the image as soon as possible
           />
         </SwiperSlide>
         <SwiperSlide className={classes['swiper-slide']}>
@@ -28,6 +29,7 @@ export const CustomHerotwo = () => {
             width={500}
             height={500}
             alt="Sacoche Noir"
+            priority
           />
         </SwiperSlide>
         <SwiperSlide className={classes['swiper-slide']}>
@@ -36,6 +38,7 @@ export const CustomHerotwo = () => {
             width={500}
             height={500}
             alt="Sacoche Noir"
+            priority
           />
         </SwiperSlide>
         <SwiperSlide className={classes['swiper-slide']}>
@@ -44,6 +47,7 @@ export const CustomHerotwo = () => {
             width={500}
             height={500}
             alt="Sacoche Noir"
+            priority
           />
         </SwiperSlide>
       </Swiper>

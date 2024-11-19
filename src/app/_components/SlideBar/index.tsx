@@ -1,29 +1,30 @@
 'use client';
 
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { slide as Menu } from 'react-burger-menu';
 import Image from 'next/image';
-
 import { Header as HeaderType } from '../../../../payload/payload-types';
 import { useAuth } from '../../_providers/Auth';
 import { Button } from '../Button';
 import { CartLink } from '../CartLink';
 import { CMSLink } from '../Link';
-
-import CarouselSideBar  from '../_CarouselSidebar';
+import CarouselSideBar from '../_CarouselSidebar';
 import classes from './index.module.scss';
+
+// Utiliser dynamic pour désactiver le SSR pour react-burger-menu
+const Menu = dynamic(() => import('react-burger-menu').then((mod) => mod.slide), {
+  ssr: false,
+});
 
 export const SlideBar: React.FC<{ header: HeaderType }> = ({ header }) => {
   const navItems = header?.navItems || [];
   const { user } = useAuth();
 
-  // Fonction pour gérer les clics sur "Settings"
   const showSettings = (event: React.MouseEvent) => {
     event.preventDefault();
     alert('Settings clicked!');
   };
-
 
   const styles = {
     bmBurgerButton: {
@@ -32,13 +33,10 @@ export const SlideBar: React.FC<{ header: HeaderType }> = ({ header }) => {
       height: '25px',
       right: '15px',
       top: '15px',
-      zIndex: '1000'
+      zIndex: '1000',
     },
     bmBurgerBars: {
-      background: '#373a47'
-    },
-    bmBurgerBarsHover: {
-      background: '#a90000'
+      background: '#373a47',
     },
     bmCrossButton: {
       height: '24px',
@@ -52,25 +50,22 @@ export const SlideBar: React.FC<{ header: HeaderType }> = ({ header }) => {
       width: '100%',
       height: '100%',
       top: '0',
-      left: '0'
+      left: '0',
     },
     bmMenu: {
       background: 'white',
       padding: '0em 1.5em',
       fontSize: '1.15em',
       height: '100%',
-      overflowY: 'auto'
-    },
-    bmMorphShape: {
-      fill: '#373a47'
+      overflowY: 'auto',
     },
     bmItemList: {
       color: '#b8b7ad',
-      padding: '0.8em'
+      padding: '0.8em',
     },
     bmItem: {
       display: 'block',
-      padding: '0.9em'
+      padding: '0.9em',
     },
     bmOverlay: {
       position: 'fixed',
@@ -79,17 +74,15 @@ export const SlideBar: React.FC<{ header: HeaderType }> = ({ header }) => {
       width: '100%',
       height: '100%',
       background: 'rgba(0, 0, 0, 0.7)',
-      zIndex: '999'
-    }
-  
-  }
+      zIndex: '999',
+    },
+  };
 
   return (
-    
     <Menu styles={styles} right>
       <Link href="/">
-         <Image src="/logo-black.jpg" alt="logo" width={250} height={50} />
-    </Link>
+        <Image src="/logo-black.jpg" alt="logo" width={250} height={50} />
+      </Link>
       <CarouselSideBar />
 
       {/* Liens du menu burger */}
@@ -120,3 +113,4 @@ export const SlideBar: React.FC<{ header: HeaderType }> = ({ header }) => {
   );
 };
 
+export default SlideBar;
