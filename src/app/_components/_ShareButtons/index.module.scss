@@ -1,0 +1,18 @@
+.shareButtons {
+    display: flex;
+    gap: 10px;
+  
+    .button {
+      padding: 8px 12px;
+      background-color: var(--color-blue-500);
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+  
+      &:hover {
+        background-color: var(--color-blue-700);
+      }
+    }
+  }
+  

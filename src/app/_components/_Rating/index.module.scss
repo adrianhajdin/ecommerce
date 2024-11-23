@@ -1,0 +1,14 @@
+.rating {
+    display: flex;
+    font-size: 18px;
+    color: var(--color-yellow-500);
+  
+    .filled {
+      color: var(--color-yellow-500);
+    }
+  
+    .empty {
+      color: var(--color-gray-400);
+    }
+  }
+  

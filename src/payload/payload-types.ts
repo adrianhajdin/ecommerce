@@ -195,6 +195,17 @@ export interface Category {
 export interface Product {
   id: string;
   title: string;
+
+  price?: number; // Ajout du prix
+  rating?: {
+    average: number;
+    count: number;
+  }; // Ajout des informations de rating
+  variants?: {
+    label: string;
+  }[]; // Ajout des variants de produit
+  discount?: number; // Ajout de la réduction
+  
   publishedOn?: string | null;
   layout?:
     | (
