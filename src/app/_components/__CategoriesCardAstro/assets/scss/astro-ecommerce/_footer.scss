@@ -1,0 +1,14 @@
+.footer {
+  .nav-link {
+    color: $dark;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-sm;
+    padding-top: 0;
+    padding-bottom: $nav-link-footer-padding;
+
+    &:hover {
+      opacity: 1 !important;
+      transition: $footer-link-animation;
+    }
+  }
+}

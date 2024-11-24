@@ -22,6 +22,7 @@ const policies = {
     'https://cdn.prod.website-files.com',
     'https://lh3.googleusercontent.com',
     'https://maps.googleapis.com',
+    'https://images.unsplash.com/',
   ],
   'font-src': [
     "'self'",

@@ -6,7 +6,7 @@ import Link from 'next/link'
 import data from '../../../assets/dataAstro-ecommerce.json'
 import _CardCategoriesAstro from '../_CategoriesCardAstro'
 
-/* import '../../../assets/Astro-ecommerce.scss'; */
+import './assets/scss/astro-ecommerce.scss'
 
 
 const __CategoryCard = ({ category }: CategoryCardProps) => {
@@ -19,7 +19,7 @@ const __CategoryCard = ({ category }: CategoryCardProps) => {
         <div className="d-block text-center mb-5">
           <h3>Shop by category</h3>
           <a className="text-dark font-weight-bold" href="#">Browse all categories &#62;</a>
-        </div> */
+        </div> 
       {/* Liste des catégories supplémentaires */}
         {data.categories.slice(0, 4).map((jsonCategory, index) => (
           <div className="col-md-6 col-lg-3">
@@ -41,6 +41,7 @@ const __CategoryCard = ({ category }: CategoryCardProps) => {
           <a className="text-dark font-weight-bold" href="#">Browse all categories &#62;</a>
         </div>
         <div className="col-md-6">
+        <div className="mb-4">
           <_CardCategoriesAstro
             classList = "h-100"
             cta = ""
@@ -48,6 +49,7 @@ const __CategoryCard = ({ category }: CategoryCardProps) => {
             title = {data.categories[4].title}
             collection=''
           />
+          </div>
         </div>
         <div className="col-md-6">
           <div className="mb-4">

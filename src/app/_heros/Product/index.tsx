@@ -83,7 +83,7 @@ export const ProductHero: React.FC<{
 
           <div className={classes.status}>
           {rating && <Rating rating={rating.average} count={rating.count} />}
-          <Rating rating={4} totalStars={5} />
+          
           
           <p className={classes.stock}>
             {stock > 0 ? `In stock (${stock} available)` : 'Out of stock'}

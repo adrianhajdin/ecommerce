@@ -1,0 +1,12 @@
+.btn-group,
+.btn-group-vertical {
+
+  > .btn {
+    font-weight: $font-weight-normal;
+  }
+
+  > .btn.active {
+    font-weight: $font-weight-bolder;
+    color: $primary;
+  }
+}

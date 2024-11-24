@@ -1,0 +1,427 @@
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-caret:                true !default;
+$enable-rounded:              true !default;
+$enable-shadows:              false !default;
+$enable-gradients:            false !default;
+$enable-transitions:          true !default;
+$enable-reduced-motion:       true !default;
+$enable-grid-classes:         true !default;
+$enable-button-pointers:      true !default;
+$enable-rfs:                  true !default;
+$enable-validation-icons:     true !default;
+$enable-negative-margins:     true !default;
+$enable-deprecation-messages: true !default;
+$enable-important-utilities:  true !default;
+// Internal Bootstrap function to turn maps into its negative variant.
+// It prefixes the keys with `n` and makes the value negative.
+@function negativify-map($map) {
+    $result: ();
+    @each $key, $value in $map {
+      @if $key != 0 {
+        $result: map-merge($result, ("n" + $key: (-$value)));
+      }
+    }
+    @return $result;
+  }
+  
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 6,
+  8: $spacer * 8,
+  9: $spacer * 10,
+  10: $spacer * 12,
+  11: $spacer * 14,
+  12: $spacer * 16,
+) !default;
+
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
+
+
+
+$navbar-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .16) !default;
+
+
+$fixed-plugin-bottom: 30px !default;
+$fixed-plugin-right: $fixed-plugin-bottom !default;
+$fixed-plugin-radius: 50% !default;
+$fixed-plugin-box-shadow: $navbar-box-shadow !default;
+$fixed-plugin-button-z-index: 990 !default;
+$fixed-plugin-card-z-index: 1020 !default;
+$fixed-plugin-card-width: 360px !default;
+
+
+// Color system
+
+$white:    #fff !default;
+$gray-100: #f9fafb !default; // corporate done
+$gray-200: #e9ecef !default;
+$gray-300: #dde0e5 !default; // corporate all grays should be fixed
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:      'Noto Sans', 'Open Sans' !default;
+$font-family-pt-mono:         'PT Mono' !default;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+// stylelint-enable value-keyword-case
+$font-family-base:            var(--bs-font-sans-serif) !default;
+$font-family-code:            var(--bs-font-monospace) !default;
+
+// Corporate colors
+$slate-900: #0f172a;
+$slate-800: #1e293b;
+$slate-700: #334155;
+$slate-600: #474568;
+$slate-500: #64748b;
+$slate-400: #94a3b8;
+$slate-350: #dde0e5;
+$slate-300: #cbd5e1;
+
+// $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
+// $font-size-base effects the font size of the body text
+$font-size-root:              null !default;
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-xxs:               $font-size-base * .65 !default;
+$font-size-xs:                $font-size-base * .75 !default;
+$font-size-sm:                $font-size-base * .875 !default;
+$font-size-lg:                $font-size-base * 1.125 !default;
+$font-size-xl:                $font-size-base * 1.25 !default;
+$font-size-2xl:               $font-size-base * 1.5 !default;
+$font-size-3xl:               $font-size-base * 1.875 !default;
+$font-size-4xl:               $font-size-base * 2 !default;
+$font-size-5xl:               $font-size-base * 2.25 !default;
+$font-size-6xl:               $font-size-base * 3 !default;
+$font-size-7xl:               $font-size-base * 3.75 !default;
+$font-size-8xl:               $font-size-base * 4 !default;
+$font-size-9xl:               $font-size-base * 5 !default;
+
+$font-weight-lighter:         lighter !default;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-semibold:        500 !default;
+$font-weight-bold:            600 !default;
+$font-weight-bolder:          700 !default;
+$font-weight-black:           800 !default;
+
+$font-weight-base:            $font-weight-normal !default;
+
+$h1-font-weight:              $font-weight-bold !default;
+$h2-font-weight:              $font-weight-bold !default;
+$h3-font-weight:              $font-weight-bold !default;
+$h4-font-weight:              $font-weight-bold !default;
+$h5-font-weight:              $font-weight-bold !default;
+$h6-font-weight:              $font-weight-bold !default;
+$p-font-weight:               $font-weight-normal !default;
+$lead-font-weight:            $font-weight-normal !default;
+$text-sm-font-weight:         $font-weight-normal !default;
+$text-xs-font-weight:         $font-weight-normal !default;
+
+$line-height:                 1.75rem !default;
+$line-height-base:            1.5 !default;
+$line-height-sm:              1.25 !default;
+$line-height-lg:              2 !default;
+
+$h1-line-height:              1.25 !default;
+$h2-line-height:              1.3 !default;
+$h3-line-height:              1.375 !default;
+$h4-line-height:              1.375 !default;
+$h5-line-height:              1.375 !default;
+$h6-line-height:              1.625 !default;
+$p-line-height:               1.6 !default;
+$lead-line-height:            1.625 !default;
+$text-sm-line-height:         1.5 !default;
+$text-xs-line-height:         1.25 !default;
+
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$h1-font-size:                $font-size-base * 3 !default;
+$h2-font-size:                $font-size-base * 2.25 !default;
+$h3-font-size:                $font-size-base * 1.875 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;
+$lead-font-size:              $font-size-base * 1.25 !default;
+
+
+$text-sm-font-size:           .875rem !default;
+$text-xs-font-size:           .75rem !default;
+$p-font-size:                 1rem !default;
+
+$headings-margin-bottom:      $spacer * 0.5 !default;
+$headings-font-family:        null !default;
+$headings-font-style:         null !default;
+$headings-font-weight:        400 !default;
+$headings-line-height:        1.2 !default;
+$headings-color:              $slate-800 !default;
+
+
+  $card-box-shadow:                   0 20px 27px 0 rgba(0,0,0,0.05)  !default;
+  $card-background-blur:              rgba(255, 255, 255, 0.65) !default;
+  
+  $card-header-padding:               1rem !default;
+  
+  $card-body-padding:                 1rem !default;
+  $card-plain-bg-color:               transparent !default;
+  $card-plain-box-shadow:             none !default;
+  
+  $card-footer-padding:               $card-body-padding !default;
+  
+  $card-title-font-weight:            $font-weight-bold !default;
+  $card-title-line-height:            1.2 !default;
+  
+  $card-author-display:               flex !default;
+  $card-author-name-line-height:      1.571 !default;
+  $card-author-name-color:            #3A416F !default;
+  $card-author-stats-color:           #5D6494 !default;
+  $card-avatar-width:                 30px !default;
+  $card-avatar-height:                $card-avatar-width !default;
+  $card-avatar-overflow:              hidden !default;
+  $card-avatar-radius:                50% !default;
+  $card-avatar-mr:                    5px !default;
+  $card-stats-name-mt:                -4px !default;
+  $card-name-ml:                      .25rem !default;
+  
+  $card-badge-text-transform:         uppercase !default;
+  $card-badge-bg-color:               #FAFAFF !default;
+  
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns:                12 !default;
+$grid-gutter-width:           1.5rem !default;
+$grid-row-columns:            6 !default;
+
+
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 6,
+  8: $spacer * 8,
+  9: $spacer * 10,
+  10: $spacer * 12,
+  11: $spacer * 14,
+  12: $spacer * 16,
+) !default;
+
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
+
+
+
+$navbar-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .16) !default;
+
+
+$fixed-plugin-bottom: 30px !default;
+$fixed-plugin-right: $fixed-plugin-bottom !default;
+$fixed-plugin-radius: 50% !default;
+$fixed-plugin-box-shadow: $navbar-box-shadow !default;
+$fixed-plugin-button-z-index: 990 !default;
+$fixed-plugin-card-z-index: 1020 !default;
+$fixed-plugin-card-width: 360px !default;
+
+// Card Background
+$card-bg-align-items:               center !default;
+$card-bg-body-position:             relative !default;
+$card-bg-body-z-index:              2 !default;
+$card-bg-content-min-height:        330px !default;
+$card-bg-content-max-width:         450px !default;
+$card-bg-content-pt:                60px !default;
+$card-bg-content-pb:                $card-bg-content-pt !default;
+$card-bg-body-left-width:           90% !default;
+
+$card-bg-description-margin:        24px !default;
+
+$card-bg-filter-position:           absolute !default;
+$card-bg-filter-top:                0 !default;
+$card-bg-filter-bottom:             $card-bg-filter-top !default;
+$card-bg-filter-left:               $card-bg-filter-top !default;
+$card-bg-filter-height:             100% !default;
+$card-bg-filter-width:              $card-bg-filter-height !default;
+$card-bg-filter-z-index:            1 !default;
+$card-bg-filter-display:            block !default;
+$card-bg-filter-content:            "" !default;
+$card-bg-filter-bg:                 rgba(0,0,0,.4) !default;
+$card-bg-filter-mask-bg:            rgba(0,0,0,.2) !default;
+$card-bg-filter-radius:             1rem !default;
+
+$card-full-bg-bg-position:          50% !default;
+$card-full-bg-bg-size:              cover !default;
+$card-full-bg-mb:                   30px !default;
+$card-full-bg-width:                100% !default;
+$card-full-bg-height:               $card-full-bg-width !default;
+$card-full-bg-position:             absolute !default;
+$card-full-bg-radius:               $card-bg-filter-radius !default;
+
+// Cards
+
+$card-spacer-y:                     $spacer !default;
+$card-spacer-x:                     $spacer !default;
+$card-title-spacer-y:               $spacer * 0.5 !default;
+$card-border-width:                 0 !default;
+$card-border-radius:                0.375rem !default;
+$card-border-color:                 rgba($black, .125) !default;
+$card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
+$card-cap-padding-y:                $card-spacer-y * 0.5 !default;
+$card-cap-padding-x:                $card-spacer-x !default;
+$card-cap-bg:                       $white !default;
+$card-cap-color:                    null !default;
+$card-height:                       null !default;
+$card-color:                        null !default;
+$card-bg:                           $white !default;
+
+$card-img-overlay-padding:          $spacer !default;
+
+$card-group-margin:                 $grid-gutter-width * 0.5 !default;
+
+
+.card {
+    left: -$fixed-plugin-card-width !important;
+    right: auto; 
+    margin: 30px;
+  
+    &.card-product {
+      img {
+        object-fit: cover;
+      }
+    }
+  
+    &.card-background {
+      align-items: $card-bg-align-items;
+      margin: 30px;
+  
+      .full-background {
+        background-position: $card-full-bg-bg-position;
+        background-size: $card-full-bg-bg-size;
+        margin-bottom: $card-full-bg-mb;
+        width: $card-full-bg-width;
+        height: $card-full-bg-height;
+        position: $card-full-bg-position;
+        border-radius: $card-border-radius;
+        margin: 30px;
+      }
+  
+      .card-body {
+        color: $white;
+        position: $card-bg-body-position;
+        z-index: $card-bg-body-z-index;
+        margin: 30px;
+  
+        .content-center,
+        .content-left {
+          min-height: $card-bg-content-min-height;
+          max-width: $card-bg-content-max-width;
+          padding-top: $card-bg-content-pt;
+          padding-bottom: $card-bg-content-pb;
+        }
+  
+        .content-center {
+          text-align: center;
+        }
+  
+        &.body-left {
+          width: $card-bg-body-left-width;
+        }
+  
+        .author {
+          .name {
+            span,
+            .stats {
+              color: $white;
+            }
+          }
+        }
+      }
+  
+      &:after {
+        position: $card-bg-filter-position;
+        top: $card-bg-filter-top;
+        bottom: $card-bg-filter-bottom;
+        left: $card-bg-filter-left;
+        height: $card-bg-filter-height;
+        width: $card-bg-filter-width;
+        z-index: $card-bg-filter-z-index;
+        display: $card-bg-filter-display;
+        content: $card-bg-filter-content;
+        background: $card-bg-filter-bg;
+        border-radius: $card-border-radius;
+      }
+    }
+  
+    &.show {
+      .card {
+        right: auto;
+        left: 0 !important;
+      }
+    }
+  }
+  
+  // Specific product card styling
+  .card {
+    &.card-plain {
+      background-color: $card-plain-bg-color;
+      box-shadow: $card-plain-box-shadow;
+      margin: 30px;
+    }
+  
+    .card-footer {
+      padding: $card-footer-padding;
+      background-color: transparent;
+    }
+  
+    .author {
+      display: $card-author-display;
+  
+      .name > span {
+        line-height: $card-author-name-line-height;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-sm;
+        color: $card-author-name-color;
+      }
+  
+      .stats {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+      }
+    }
+  }
+  
+  

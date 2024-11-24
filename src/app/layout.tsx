@@ -25,6 +25,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <InitTheme />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <script>
+          import "./_components/__CategoriesCardAstro/assets/js/astro-ecommerce.js"
+          
+      </script>
       </head>
       <body className={jost.variable}>
         <Providers>
@@ -35,6 +39,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {/* @ts-expect-error */}
           <Footer />
         </Providers>
+        <script>
+          import "./_components/__CategoriesCardAstro/assets/js/astro-ecommerce.js"
+          
+      </script>
       </body>
     </html>
   )

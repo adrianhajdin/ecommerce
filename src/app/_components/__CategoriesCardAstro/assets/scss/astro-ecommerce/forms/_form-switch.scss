@@ -1,0 +1,30 @@
+.form-switch{
+  .form-check-input{
+    border: 1px solid $gray-200;
+    position: relative;
+    background-color: rgba($dark-gradient-state, .1);
+    height: $form-check-input-width + .02;
+
+    &:after {
+      transition: transform $form-check-transition-time ease-in-out, background-color $form-check-transition-time ease-in-out;
+      content: "";
+      width: $form-switch-check-after-width;
+      height: $form-switch-check-after-width;
+      border-radius: 50%;
+      position: absolute;
+      background-color: $white;
+      transform: translateX($form-switch-translate-x-start);
+      box-shadow: $form-switch-round-box-shadow;
+      top: 1px;
+    }
+
+    &:checked:after {
+      transform: translateX($form-switch-translate-x-end);
+    }
+
+    &:checked {
+      border-color: rgba($dark-gradient-state, .95);
+      background-color: rgba($dark-gradient-state, .95);
+    }
+  }
+}
