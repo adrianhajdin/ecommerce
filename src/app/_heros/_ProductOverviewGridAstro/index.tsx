@@ -6,6 +6,8 @@ import ProductGallery from '../../_components/_ProductGalleryAstro/productGaller
 import ProductSizes from '../../_components/_ProductSizeAstro/productSizes'
 import ProductAccordion from '../../_components/_ProductAccordionAstro';
 
+import { Reviews } from '../../_components/_Vercelreviewstshirt/reviews';
+
 import data from '../../../assets/dataAstro-ecommerce.json'
 
 /* import './index.module.scss'; */
@@ -104,6 +106,7 @@ export default function ProductOverview({
            }
         </div>
         <ProductAccordion />
+        <Reviews />
       </div>
     </div>
     </>
