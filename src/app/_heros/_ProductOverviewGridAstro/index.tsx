@@ -8,7 +8,7 @@ import ProductAccordion from '../../_components/_ProductAccordionAstro';
 
 import data from '../../../assets/dataAstro-ecommerce.json'
 
-import './index.module.scss';
+/* import './index.module.scss'; */
 
 interface Props {
   title: string;
@@ -103,7 +103,7 @@ export default function ProductOverview({
             </>
            }
         </div>
-        <ProductAccordion data={data} />
+        <ProductAccordion />
       </div>
     </div>
     </>

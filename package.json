@@ -30,6 +30,8 @@
     "@mantine/core": "^7.14.1",
     "@mantine/hooks": "^7.14.1",
     "@mantinex/mantine-logo": "^1.0.1",
+    "@nextui-org/accordion": "^2.0.40",
+    "@nextui-org/theme": "^2.2.11",
     "@payloadcms/bundler-webpack": "^1.0.0",
     "@payloadcms/db-mongodb": "^1.0.0",
     "@payloadcms/plugin-cloud": "^2.0.0",

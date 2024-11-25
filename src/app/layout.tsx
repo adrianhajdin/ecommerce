@@ -12,6 +12,8 @@ import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
 import './_css/app.scss'
 import './_css/globals.css'
 
+import './_components/__CategoriesCardAstro/assets/scss/astro-ecommerce.scss'
+
 const jost = Jost({
   subsets: ['latin'],
   weight: ['400', '700'],
