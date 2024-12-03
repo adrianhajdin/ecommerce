@@ -1,0 +1,236 @@
+.btn {
+  margin-bottom: $btn-margin-bottom;
+  box-shadow: $btn-box-shadow;
+
+  &:not([class*="btn-outline-"]) {
+    //border: 0;
+  }
+
+  &:active,
+  &:active:focus,
+  &:active:hover {
+    box-shadow: $btn-hover-box-shadow;
+    //transform: $btn-active-hover-transform;
+    opacity: $btn-hover-opacity;
+  }
+
+  @include hover {
+    opacity: 0.85;
+
+    &:not(.btn-icon-only){
+      box-shadow: $btn-hover-box-shadow;
+      opacity: 0.85;
+      // transform: $btn-hover-transform;
+    }
+  }
+
+  &.bg-white {
+    @include hover {
+      color: $body-color;
+    }
+  }
+
+  &.btn-white{
+    border: 1px solid $slate-350;
+
+    @include hover {
+      border-color: $slate-500;
+    }
+  }
+
+  &.btn-blur{
+    background: rgba($white, .2);
+    backdrop-filter: $blur-backdrop-filter-btn;
+    &:hover,
+    &:active{
+      background: rgba($white, .25);
+      color: $white;
+    }
+    &:focus{
+      color: $white;
+    }
+  }
+
+  &.btn-link{
+    box-shadow: none;
+    font-weight: $btn-font-weight;
+
+    &:hover,
+    &:focus{
+      box-shadow: none;
+    }
+  }
+  &.btn-round {
+    border-radius: $btn-border-rounded;
+  }
+  // Button Just Icon
+
+  &.btn-icon-only {
+    width: $btn-just-icon-width;
+    height: $btn-just-icon-height;
+    padding: $btn-just-icon-padding-y $btn-just-icon-padding-x;
+  }
+
+  // Button Icon Sizes
+
+  &.btn-sm {
+    &.btn-icon-only {
+      width: $btn-just-icon-width-sm;
+      height: $btn-just-icon-height-sm;
+      padding: $btn-just-icon-padding-y-sm $btn-just-icon-padding-x-sm;
+    }
+
+    i {
+      font-size: $btn-just-icon-sm-font-size;
+    }
+  }
+
+  &.btn-lg {
+    &.btn-icon-only {
+      width: $btn-just-icon-width-lg;
+      height: $btn-just-icon-height-lg;
+      padding: $btn-just-icon-padding-y-lg $btn-just-icon-padding-x-lg;
+    }
+
+    i {
+      font-size: $btn-just-icon-lg-font-size;
+      position: $btn-just-icon-lg-position;
+      top: $btn-just-icon-lg-top;
+    }
+  }
+
+  &.btn-rounded {
+    border-radius: $btn-border-rounded;
+  }
+
+  &.btn-transparent {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+}
+
+.btn-check{
+  &:checked{
+    +.btn{
+      font-weight: $font-weight-bolder;
+      color: $primary;
+      border: 1px solid $slate-350;
+      svg{
+        .color-background{
+          fill: $white;
+        }
+      }
+      &:hover{
+        svg{
+          .color-background{
+            fill: $dark;
+          }
+        }
+      }
+    }
+  }
+}
+
+.icon-move-right {
+  i {
+    transition: $btn-icon-transition;
+  }
+  &:hover,
+  &:focus {
+    i {
+      transform: $btn-icon-transform-right;
+    }
+  }
+}
+
+.icon-move-left{
+  i {
+    transition: $btn-icon-transition;
+  }
+  &:hover,
+  &:focus {
+    i {
+      transform: $btn-icon-transform-left;
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+    .btn-#{$color} {
+      @include hover {
+        background-color: $value;
+        border-color: $value;
+      }
+      .btn.bg-outline-#{$color} {
+        border: $border-width solid $value;
+      }
+
+      &:not(:disabled):not(.disabled).active,
+      &:not(:disabled):not(.disabled):active,
+      .show > &.dropdown-toggle {
+        color: color-yiq($value);
+        background-color: $value;
+      }
+  }
+}
+//
+//     @if $value != $white and $value != $light {
+//       &.focus,
+//       &:focus {
+//         color: $white;
+//       }
+//     }
+//   }
+
+  // .btn-#{$color},
+  // .btn.bg-gradient-#{$color}{
+  //   &:focus{
+  //     box-shadow: 0 0 0 3px rgba($value,.5);
+  //   }
+  // }
+
+//   .btn-outline-#{$color} {
+//     box-shadow: none;
+//     @include hover {
+//       &:not(.active){
+//         background-color: transparent;
+//         opacity: .75;
+//         box-shadow: none;
+//         color: $value;
+//       }
+//     }
+//   }
+// }
+
+.btn-outline-white{
+  border-color: rgba($white, .75);
+  background: rgba($white, .1);
+}
+
+@each $color, $value in $btn-font-colors {
+  .btn-#{$color},
+  .btn.bg-gradient-#{$color} {
+    color: $value;
+    @include hover {
+      color: $value;
+      border-color: transparent;
+    }
+    &:focus{
+      border-color: transparent;
+    }
+  }
+}
+
+// buttons box-shadow
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color},
+  .btn.bg-gradient-#{$color}{
+    //box-shadow: $btn-box-shadow-values rgba($value, .2);
+
+    @include hover {
+      //box-shadow: $btn-box-shadow-hover-values rgba($value, .2);
+    }
+  }
+}

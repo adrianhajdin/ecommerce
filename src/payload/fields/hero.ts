@@ -37,6 +37,10 @@ export const hero: Field = {
           label: 'Custom Hero',
           value: 'customHero',
         },
+        {
+          label: 'Custom Hero V2',
+          value: 'customHerotwo',
+        },
       ],
     },
     richText({
@@ -57,7 +61,7 @@ export const hero: Field = {
       required: true,
       admin: {
         condition: (_, { type } = {}) =>
-          ['highImpact', 'mediumImpact', 'customHero'].includes(type),
+          ['highImpact', 'mediumImpact', 'customHero', 'customHerotwo'].includes(type),
       },
     },
   ],

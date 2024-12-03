@@ -1,0 +1,22 @@
+// import media queries from queries.scss file 
+@use '../../_css/queries.scss' as *; 
+
+.nav {
+  display: flex;
+  gap: calc(var(--base) / 4) var(--base);
+  align-items: center;
+  flex-wrap: wrap;
+  opacity: 1;
+  transition: opacity 100ms linear;
+  visibility: visible;
+
+  > * {
+    text-decoration: none;
+  }
+  /* border: 2px solid red;  */
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+}

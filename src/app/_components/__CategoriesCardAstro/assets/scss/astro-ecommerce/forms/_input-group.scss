@@ -1,0 +1,69 @@
+.input-group {
+  @include border-radius($input-border-radius, 0);
+  box-shadow: $input-box-shadow;
+  &,
+  .input-group-text {
+    transition: $input-transition;
+  }
+
+  & > :not(:first-child):not(.dropdown-menu) {
+    margin-left: 0;
+  }
+
+	.form-control {
+    box-shadow: none;
+    &:focus {
+      border-left: $input-border-width solid $input-focus-border-color !important;
+      border-right: $input-border-width solid $input-focus-border-color !important;
+      border-color: $input-focus-border-color !important;
+    }
+
+		&:not(:first-child) {
+	    border-left: $input-border-width solid transparent;
+		}
+		&:not(:last-child) {
+			border-right: $input-border-width solid transparent;
+			padding-right: 0;
+		}
+
+    & + .input-group-text {
+      border-right: $input-border-width solid $input-border-color;
+    }
+	}
+
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.input-group-text {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.form-control {
+  border-radius: $input-border-radius;
+  border-top-right-radius: $input-border-radius;
+  border-bottom-right-radius: $input-border-radius;
+  border-left-width: 1px;
+  box-shadow: $input-box-shadow;
+}
+
+.focused {
+  box-shadow: $input-focus-box-shadow;
+  transition: $input-transition;
+
+  .form-control {
+    &:focus {
+      box-shadow: none;
+    }
+    + .input-group-text {
+      border-color: $input-focus-border-color;
+      border-right: $input-border-width solid $input-focus-border-color !important;
+    }
+  }
+  .input-group-text {
+    border-color: $input-focus-border-color;
+  }
+}

@@ -1,0 +1,79 @@
+[
+    {
+      "id": 1,
+      "title": "STORMTROOPER HELMET",
+      "price": "1,299.99",
+      "currency": "$",
+      "imagebg": "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405223/starwars/item-4-bg.webp",
+      "imageproduct": "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405215/starwars/item-4.webp", 
+      "options": {
+        "title": "HELMET SIZE",
+        "choices": ["S", "M", "L", "XL"]
+      },
+      "durability": {
+        "rate": "75%",
+        "title": "AVIS"
+      }
+    },
+    {
+      "id": 2,
+      "title": "IMPERIAL ARMY'S TIE FIGHTER",
+      "price": "9,999.99",
+      "currency": "$",
+      "imagebg": "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405222/starwars/item-1-bg.webp",
+      "imageproduct":"https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405217/starwars/item-1.webp",
+      "options": {
+        "title": "ENGINE UNIT",
+        "choices": ["P-S4 TWIN", "P-W401"]
+      },
+      "durability": {
+        "rate": "75%",
+        "title": "DURABILITY"
+      }
+    },
+    {
+      "id": 3,
+      "title": "KYLO REN'S LIGHTSABER",
+      "price": "1,699.99",
+      "currency": "$",
+      "imagebg": "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405222/starwars/item-2-bg.webp",
+      "imageproduct":"https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405217/starwars/item-2.webp",
+      "options": [
+        {
+          "title": "VOLTAGE RANGE",
+          "choices": ["2000 WATT", "2800 WATT"]
+        },
+        {
+          "title": "LASER SIZE",
+          "choices": ["S", "M", "L", "XL"]
+        }
+      ],
+      "durability": {
+        "rate": "80%",
+        "title": "DURABILITY"
+      }
+    },
+    {
+      "id": 4,
+      "title": "IMPERIAL ARMY'S DEATH STAR",
+      "price": "9,999.99",
+      "currency": "$",
+      "imagebg": "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405215/starwars/item-3-bg.webp",
+      "imageproduct": "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405218/starwars/item-3.webp",
+      "options": [
+        {
+          "title": "HYPERDRIVE RATING",
+          "choices": ["CLASS 4", "CLASS 20"]
+        },
+        {
+          "title": "ARMAMENT",
+          "choices": ["SUPERLASER", "TURBOLASER"]
+        }
+      ],
+      "durability": {
+        "rate": "80%",
+        "title": "DURABILITY RATE"
+      }
+    }
+  ]
+  

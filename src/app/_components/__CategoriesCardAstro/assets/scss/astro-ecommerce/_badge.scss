@@ -1,0 +1,19 @@
+@each $prop, $value in $theme-colors {
+  .badge.bg-#{$prop} {
+    background: rgba($value, .1) !important;
+  }
+}
+.badge {
+  text-transform: inherit;
+}
+
+@each $prop, $value in $colors {
+  .badge.bg-#{$prop} {
+    background: $value !important;
+  }
+}
+
+// @import 'badges/badge';
+// @import 'badges/badge-circle';
+// @import 'badges/badge-dot';
+// @import 'badges/badge-floating';

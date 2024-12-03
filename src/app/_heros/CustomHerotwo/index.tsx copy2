@@ -1,0 +1,117 @@
+import React, { Fragment } from 'react'
+
+import { Page } from '../../../payload/payload-types'
+import { Gutter } from '../../_components/Gutter'
+import { CMSLink } from '../../_components/Link'
+import { Media } from '../../_components/Media'
+import RichText from '../../_components/RichText'
+
+import classes from './index.module.scss'
+
+export const CustomHerotwo: React.FC<Page['hero']> = ({ richText, media, links }) => {
+  const mediaUrl =
+    media &&
+    typeof media !== 'string' &&
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${media.filename}`
+
+  return (
+    <section className={classes.hero}>
+      <div className={classes.heroWrapper} style={{ backgroundImage: `url(${mediaUrl})` }}>
+        <div className={classes.heroTextBox}>
+          <RichText content={richText} />
+          <p> twwwwwwwwwwwwoooooooooooooooo</p>
+          {Array.isArray(links) && links.length > 0 && (
+            <ul className={classes.links}>
+              {links.map(({ link }, i) => {
+                return (
+                  <li key={i}>
+                    <CMSLink {...link} />
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import classes from './index.module.scss'
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+
+// import required modules
+import { Pagination } from 'swiper/modules';
+
+export default function App() {
+  return (
+    <>
+      <Swiper
+        pagination={{
+          dynamicBullets: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide>Slide 1</SwiperSlide>
+        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide>Slide 4</SwiperSlide>
+        <SwiperSlide>Slide 5</SwiperSlide>
+        <SwiperSlide>Slide 6</SwiperSlide>
+        <SwiperSlide>Slide 7</SwiperSlide>
+        <SwiperSlide>Slide 8</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+      </Swiper>
+    </>
+  );
+}
+
+
+
+
+
+"use client"
+
+import Background from "hero-slider/dist/components/Slide/Background";
+import ImageSlider from "./ImageSlider"
+import { BackgroundColor } from "../../_components/BackgroundColor";
+import { redirect } from "next/dist/server/api-utils";
+
+export const CustomHerotwo = () => {
+  const slides = [
+    { url: "/public/canva/Sacoche Noir - Story (Site Web).jpg", title: "beach" },
+    { url: "https://cdn.prod.website-files.com/6243c3bb3b5a1852803d0c7f/64ac9b4418ae081acf7be4e8_hero-section-examples.jpg", title: "boat" }, 
+    { url: "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405215/starwars/item-1-bg.webp", title: "forest" },
+    { url: "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405215/starwars/item-3-bg.webp", title: "city" },
+    { url: "https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1536405215/starwars/item-2-bg.webp", title: "italy" },
+  ];
+  const containerStyles = {
+    // width: "500px",
+    height: '550px',
+    margin: "0 auto",
+   /*  backgroundColor: "red", */
+    };
+
+
+
+  return (
+    <div>
+      
+      <div style={containerStyles}>
+        <ImageSlider slides={slides} />
+        
+      </div>
+    </div>
+  );
+};
+
+

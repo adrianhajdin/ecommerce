@@ -9,6 +9,7 @@ import { Header } from '../../../../payload/payload-types'
 import { noHeaderFooterUrls } from '../../../constants'
 import { Gutter } from '../../Gutter'
 import { HeaderNav } from '../Nav'
+import { SlideBar } from '../../SlideBar'
 
 import classes from './index.module.scss'
 
@@ -22,11 +23,14 @@ const HeaderComponent = ({ header }: { header: Header }) => {
         .join(' ')}
     >
       <Gutter className={classes.wrap}>
+        
         <Link href="/">
-          <Image src="/logo-black.svg" alt="logo" width={170} height={50} />
+          <Image src="/logo-black.jpg" alt="logo" width={250} height={50} />
         </Link>
+        
 
-        <HeaderNav header={header} />
+        <SlideBar />
+        {/* <HeaderNav header={header} /> */}
       </Gutter>
     </nav>
   )

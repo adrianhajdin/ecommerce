@@ -1,0 +1,52 @@
+.input-group {
+  @include border-radius($input-border-radius, 0);
+
+  &,
+  .input-group-text {
+    transition: $input-transition;
+  }
+
+  & > :not(:first-child):not(.dropdown-menu) {
+    margin-left: 0;
+  }
+
+	.form-control {
+		box-shadow: none;
+    background-image: none;
+
+		&:not(:first-child) {
+	    border-left: 0;
+	    padding-left: 0;
+		}
+		&:not(:last-child) {
+			border-right: 0;
+			padding-right: 0;
+		}
+
+    & + .input-group-text {
+      border-left: 0;
+      border-right: $input-border-width solid $input-border-color;
+    }
+    &:disabled{
+      cursor: no-drop;
+      &:hover{
+        border-color: inherit;
+      }
+    }
+	}
+
+
+
+  &.focused {
+    box-shadow: $input-focus-box-shadow;
+  }
+
+  &.focused .input-group-text {
+    border-color: $input-focus-border-color;
+  }
+}
+
+
+.form-group {
+  margin-bottom: 1rem;
+}

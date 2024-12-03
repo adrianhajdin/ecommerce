@@ -1,59 +1,91 @@
-@use '../../_css/common.scss' as *;
 
+// index.module.scss
+@import './mixins'; // Adjust the path according to your project structure
+
+// Container principal du produit
 .productHero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
 
-  @include small-break {
-    grid-template-columns: 1fr;
+  @include breakpoint('mobile') {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
+// Wrapper pour les médias
 .mediaWrapper {
-  position: relative;
-  min-height: 400px;
-  background-color: var(--color-dark-50);
+  flex: 1 1 60%;
+  padding: 20px;
 
-  @include small-break {
-    min-height: 250px;
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @include breakpoint('mobile') {
+    flex: 1 1 100%;
   }
 }
 
-.image {
-  padding: 24px;
-  object-fit: contain;
-  aspect-ratio: 1/1;
-  max-width: 100%;
-}
-
+// Détails du produit
 .details {
+  flex: 1 1 40%;
+  padding: 20px;
+  background: grey;
+  border-left: 1px solid red;
+
+  h1, h2, h3 {
+    margin-top: 0;
+  }
+
+  @include breakpoint('mobile') {
+    flex: 1 1 100%;
+    border-left: none;
+    border-top: 1px solid purple;
+  }
+}
+
+// Boutons d'action
+.button {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken(blue, 10%);
+  }
+}
+
+// Responsive grid pour les images de galerie
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  @include breakpoint('mobile') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Éléments de navigation et utilitaires
+.nav-links {
   display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-}
+  justify-content: space-between;
+  padding: 10px 0;
 
-.categoryWrapper {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 16px;
-  margin-top: 8px;
-}
+  a {
+    color: blue;
+    text-decoration: none;
 
-.category {
-  font-size: 16px;
-}
-
-.stock {
-  color: var(--color-green-500);
-}
-
-.separator {
-  color: var(--color-gray-500);
-  padding: 0 10px;
-}
-
-.description {
-  padding: 30px 0;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

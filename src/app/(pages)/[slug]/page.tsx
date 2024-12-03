@@ -23,6 +23,10 @@ export const dynamic = 'force-dynamic'
 import Categories from '../../_components/Categories'
 import Promotion from '../../_components/Promotion'
 
+import __ImagesSlider from '../../_components/__ImagesSlider'
+import __CardStack from '../../_components/__CardStack'
+import __CategoriesCardAstro from '../../_components/__CategoriesCardAstro'
+
 import classes from './index.module.scss'
 
 export default async function Page({ params: { slug = 'home' } }) {
@@ -67,7 +71,10 @@ export default async function Page({ params: { slug = 'home' } }) {
 
           <Gutter className={classes.home}>
             <Categories categories={categories} />
+            <__CategoriesCardAstro />
             <Promotion />
+            <__ImagesSlider />
+            <__CardStack />
           </Gutter>
         </section>
       ) : (

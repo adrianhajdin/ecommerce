@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   payload:
     image: node:18-alpine
@@ -14,6 +12,15 @@ services:
       - mongo
     env_file:
       - .env
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /home/node/app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
 
   mongo:
     image: mongo:latest
@@ -29,3 +36,4 @@ services:
 volumes:
   data:
   node_modules:
+

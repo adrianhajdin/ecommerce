@@ -1,0 +1,29 @@
+.form-control{
+  &.is-invalid{
+    &:focus{
+      box-shadow: 0 0 0 2px rgba($form-feedback-invalid-color, .6);
+    }
+  }
+
+  &.is-valid{
+    &:focus{
+      box-shadow: 0 0 0 2px rgba($form-feedback-valid-color, .65);
+    }
+  }
+
+
+  &:hover{
+    border-color: #c0c4cc;
+
+    &:focus{
+      border-color: #1b89f7;
+    }
+  }
+
+  &:disabled{
+    cursor: no-drop;
+    &:hover{
+      border-color: $slate-350;
+    }
+  }
+}

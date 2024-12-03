@@ -1,0 +1,11 @@
+// _mixins.scss
+@mixin breakpoint($break) {
+    @if $break == 'mobile' {
+      @media (max-width: 768px) { @content; }
+    } @else if $break == 'tablet' {
+      @media (max-width: 1024px) { @content; }
+    } @else if $break == 'desktop' {
+      @media (min-width: 1025px) { @content; }
+    }
+  }
+  

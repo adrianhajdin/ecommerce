@@ -1,0 +1,24 @@
+.card {
+  &.card-product {
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .badge {
+    border: 1px solid $light;
+    border-radius: .25rem;
+    cursor: pointer;
+    display: inline-block;
+    height: 23px;
+    margin-right: 5px;
+    position: relative;
+    width: 23px;
+    transition: $transition-base;
+    
+    &:hover,
+    &.active {
+      border-color: $dark;
+    }
+  }
+}

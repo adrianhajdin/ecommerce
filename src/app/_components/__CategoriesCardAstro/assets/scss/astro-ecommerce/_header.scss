@@ -1,0 +1,25 @@
+.page-header {
+  padding: $page-header-padding;
+  position: $page-header-position;
+  overflow: $page-header-overflow;
+  display: $page-header-display;
+  align-items: $page-header-align-items;
+  background-size: $page-header-bg-size;
+  background-position: $page-header-bg-position;
+
+  .container {
+    z-index: $page-header-conteiner-index;
+  }
+}
+
+.oblique {
+  overflow: $header-oblique-overflow;
+  width: $header-oblique-img-width;
+  right: $header-oblique-img-right;
+  border-bottom-left-radius: $border-radius-lg;
+
+  .oblique-image {
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+  }
+}

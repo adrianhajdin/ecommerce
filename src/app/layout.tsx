@@ -10,6 +10,9 @@ import { InitTheme } from './_providers/Theme/InitTheme'
 import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
 
 import './_css/app.scss'
+import './_css/globals.css'
+
+import './_components/__CategoriesCardAstro/assets/scss/astro-ecommerce.scss'
 
 const jost = Jost({
   subsets: ['latin'],
@@ -24,6 +27,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <InitTheme />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <script>
+          import "./_components/__CategoriesCardAstro/assets/js/astro-ecommerce.js"
+          
+      </script>
       </head>
       <body className={jost.variable}>
         <Providers>
@@ -34,6 +41,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {/* @ts-expect-error */}
           <Footer />
         </Providers>
+        <script>
+          import "./_components/__CategoriesCardAstro/assets/js/astro-ecommerce.js"
+          
+      </script>
       </body>
     </html>
   )

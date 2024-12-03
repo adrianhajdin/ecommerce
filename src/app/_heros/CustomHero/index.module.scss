@@ -5,6 +5,7 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
+  border: red 1px solid;
 
   @include small-break {
     margin: 0;

@@ -1,0 +1,65 @@
+.page-item {
+  &.active .page-link {
+    border: $pagination-active-border;
+  }
+
+  .page-link,
+  span {
+    display: $page-link-display;
+    align-items: $page-link-align-items;
+    justify-content: $page-link-justify-content;
+    color: $secondary;
+    padding: 0;
+    margin: $page-link-margin;
+    border-radius: $page-link-radius !important;
+    width: $page-link-width;
+    height: $page-link-height;
+    font-size: $font-size-sm;
+  }
+
+  &.disabled{
+    cursor: no-drop;
+    .page-link{
+      opacity: .6;
+    }
+  }
+}
+
+.pagination-lg {
+  .page-item {
+    .page-link,
+    span {
+      width: $page-link-width-lg;
+      height: $page-link-height-lg;
+      line-height: $page-link-line-height-lg;
+    }
+  }
+}
+
+.pagination-sm {
+  .page-item {
+    .page-link,
+    span {
+      width: $page-link-width-sm;
+      height: $page-link-height-sm;
+      line-height: $page-link-line-height-sm;
+    }
+  }
+}
+
+
+// Colors
+.pagination {
+  @each $name, $value in $theme-colors {
+    &.pagination-#{$name} {
+      .page-item.active > .page-link {
+        &,
+        &:focus,
+        &:hover {
+          background: rgba($value, .2);
+          border: 1px solid $value;
+        }
+      }
+    }
+  }
+}

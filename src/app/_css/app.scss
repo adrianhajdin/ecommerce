@@ -36,6 +36,8 @@ html {
   &[data-theme=light] {
     opacity: initial;
   }
+
+  scroll-behavior: smooth;
 }
 
 html,
@@ -56,6 +58,9 @@ body {
 
 .main {
   flex: 1 1 auto;
+  
+  margin: 30px;
+  
 }
 
 ::selection {
